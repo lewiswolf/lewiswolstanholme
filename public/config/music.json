@@ -1,0 +1,14 @@
+[
+	{
+		"title": "Chroma / Weaving",
+		"src": "music-chroma.png",
+		"released": false,
+		"link": null
+	},
+	{
+		"title": "bach.fractal",
+		"src": "music-bach.png",
+		"released": true,
+		"link": "https://bois.bandcamp.com/album/bach-fractal"
+	}
+]

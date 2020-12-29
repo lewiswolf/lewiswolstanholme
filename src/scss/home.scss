@@ -1,0 +1,8 @@
+#home-header > div {
+	justify-self: center;
+	align-self: self-end;
+
+	@media (max-width: $ipad) {
+		align-self: center;
+	}
+}

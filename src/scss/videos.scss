@@ -1,0 +1,17 @@
+.videos iframe {
+	height: 40.5vw;
+	max-height: 478.125px;
+	width: 72vw;
+	max-width: 850px;
+	display: flex;
+	margin: 0 auto 20px auto;
+
+	&:last-of-type {
+		margin: 0 auto;
+	}
+
+	@media (max-width: $ipad) {
+		height: calc(56.25vw - 40px);
+		width: 100%;
+	}
+}

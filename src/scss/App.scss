@@ -1,0 +1,63 @@
+// var
+
+$ipad: 812px;
+
+// children
+
+@import './navi.scss';
+@import './home.scss';
+@import './music.scss';
+@import './scores.scss';
+@import './videos.scss';
+@import './code.scss';
+@import './info.scss';
+
+// structure
+
+body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	font-family: helvetica, sans-serif;
+	font-size: 16px;
+	color: black;
+	-webkit-text-size-adjust: 100%;
+	background-image: url('../images/background.png');
+	background-size: 30px 30px;
+	background-color: #e5e5e5;
+}
+
+#root {
+	display: grid;
+	grid-template-columns: 100vw;
+	grid-template-rows: minmax(160px, auto) max-content;
+	grid-gap: 0px;
+	grid-template-areas: 'h' 'm';
+}
+
+.header {
+	grid-area: h;
+	height: 160px;
+	max-width: 100%;
+	margin: 0 20px;
+	display: grid;
+
+	@media (max-width: $ipad) {
+		height: 100px;
+		margin: 160px 20px -20px 20px;
+	}
+}
+
+main {
+	grid-area: m;
+	height: fit-content;
+	width: calc(100vw - 70px);
+	margin: 20px 35px;
+	float: right;
+
+	@media (max-width: $ipad) {
+		height: fit-content;
+		width: calc(100vw - 40px);
+		margin: 20px;
+	}
+}
