@@ -115,7 +115,7 @@ class Repository extends Component {
 						)
 					})
 			} else {
-				this.setState({ md: '' })
+				this.setState({ md: null })
 			}
 		}
 	}
@@ -129,8 +129,8 @@ class Repository extends Component {
 					background: 'unset',
 					backgroundColor: 'none',
 					border: 'none',
+					margin: 0,
 				}}
-				onLoad={() => this.fixToken()}
 			>
 				{value}
 			</SyntaxHighlighter>
@@ -174,7 +174,6 @@ class Repository extends Component {
 							bodyBackground={this.props.iframeOverrideBG ? 'unset' : null}
 							src={this.props.iframe}
 							title={this.props.id}
-							onMessage={(e) => console.log(e)}
 						/>
 					</div>
 				)}
