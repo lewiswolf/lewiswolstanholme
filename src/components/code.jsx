@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import IframeResizer from 'iframe-resizer-react'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { coy } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { coy } from '../syntax'
 import * as MaxMSP from 'maxmsp-gui'
 
 export default class Code extends Component {

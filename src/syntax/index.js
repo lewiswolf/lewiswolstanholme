@@ -1,0 +1,1 @@
+export { default as coy } from './coy';
