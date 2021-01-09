@@ -6,6 +6,7 @@ todo.md
 /node_modules
 
 # production
+/api
 /build
 
 # misc
