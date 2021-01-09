@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { findDOMNode } from 'react-dom';
+import React, { Component } from 'react'
+import { findDOMNode } from 'react-dom'
 
 export default class GridFromJSON extends Component {
 	static defaultProps = {
@@ -7,17 +7,17 @@ export default class GridFromJSON extends Component {
 		maxWidth: 280,
 		gridSpacer: 20,
 		json: null,
-	};
+	}
 
 	constructor(props) {
-		super(props);
+		super(props)
 		this.state = {
 			json: [],
 			gridDim: 0,
 			gridWidth: '',
 			maxColl: '',
-		};
-		this.gridResponse = this.gridResponse.bind(this);
+		}
+		this.gridResponse.bind(this)
 	}
 
 	componentDidMount() {
@@ -30,28 +30,27 @@ export default class GridFromJSON extends Component {
 							json,
 						},
 						() => {
-							window.addEventListener('resize', this.gridResponse);
-							this.gridResponse();
+							window.addEventListener('resize', this.gridResponse)
+							this.gridResponse()
 						}
 					)
-				);
+				)
 	}
 
 	componentWillUnmount() {
-		window.removeEventListener('resize', this.gridResponse);
+		window.removeEventListener('resize', this.gridResponse)
 	}
 
 	gridResponse = () => {
-		let contentWidth = findDOMNode(this).parentElement.getBoundingClientRect().width;
-		let largestGrid =
-			this.state.json.length * (this.props.maxWidth + this.props.gridSpacer) - this.props.gridSpacer;
+		let contentWidth = findDOMNode(this).parentElement.getBoundingClientRect().width
+		let largestGrid = this.state.json.length * (this.props.maxWidth + this.props.gridSpacer) - this.props.gridSpacer
 
 		this.setState({
 			gridDim: contentWidth < this.props.maxWidth ? contentWidth : this.props.maxWidth,
 			gridWidth: contentWidth > largestGrid ? `${largestGrid}px` : '100%',
 			maxColl: contentWidth > largestGrid ? this.state.json.length : 'auto-fill',
-		});
-	};
+		})
+	}
 
 	render() {
 		return (
@@ -71,6 +70,6 @@ export default class GridFromJSON extends Component {
 			>
 				{this.state.json.map((obj, i) => this.props.children(obj, i, this.props.maxWidth))}
 			</div>
-		);
+		)
 	}
 }
