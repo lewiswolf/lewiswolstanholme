@@ -1,7 +1,7 @@
 export default {
     "code[class*=\"language-\"]": {
         "color": "black",
-        "background": "none",
+        "background": "unset",
         "fontFamily": "inherit",
         "fontSize": "1em",
         "textAlign": "left",
@@ -25,7 +25,7 @@ export default {
     },
     "pre[class*=\"language-\"]": {
         "color": "black",
-        "background": "none",
+        "background": "unset",
         "fontFamily": "inherit",
         "fontSize": "1em",
         "textAlign": "left",
@@ -42,10 +42,10 @@ export default {
         "msHyphens": "none",
         "hyphens": "none",
         "position": "relative",
-        "margin": ".5em 0",
+        "margin": "0",
         "overflow": "visible",
         "padding": "0",
-        "backgroundColor": "#fdfdfd",
+        "backgroundColor": "none",
         "WebkitBoxSizing": "border-box",
         "MozBoxSizing": "border-box",
         "boxSizing": "border-box",
@@ -55,14 +55,14 @@ export default {
         "position": "relative",
         "borderLeft": "10px solid #358ccb",
         "boxShadow": "-1px 0px 0px 0px #358ccb, 0px 0px 0px 1px #dfdfdf",
-        "backgroundColor": "#fdfdfd",
+        "backgroundColor": "none",
         "backgroundImage": "linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%)",
         "backgroundSize": "3em 3em",
         "backgroundOrigin": "content-box",
         "backgroundAttachment": "local"
     },
     ":not(pre) > code[class*=\"language-\"]": {
-        "backgroundColor": "#fdfdfd",
+        "backgroundColor": "none",
         "WebkitBoxSizing": "border-box",
         "MozBoxSizing": "border-box",
         "boxSizing": "border-box",

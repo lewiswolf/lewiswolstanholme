@@ -111,12 +111,9 @@ class Repository extends Component {
 				this.setState({ md: null })
 			}
 		}
-		// if (
-		// 	prevState.md !== this.state.md &&
-		// 	this.state.md !== null &&
-		// 	ReactDOM.findDOMNode(this).getElementsByTagName('pre')
-		// ) {
+		// if (prevState.md !== this.state.md && ReactDOM.findDOMNode(this).getElementsByTagName('pre')) {
 		// 	if (this.props.codeSyntax === 'KSP') {
+		// 		console.log('bang')
 		// 		this.KSPsyntax()
 		// 	}
 		// }
@@ -124,16 +121,7 @@ class Repository extends Component {
 
 	codeBlock = ({ language, value }) => {
 		return (
-			<SyntaxHighlighter
-				language={language}
-				style={coy}
-				customStyle={{
-					background: 'unset',
-					backgroundColor: 'none',
-					border: 'none',
-					margin: 0,
-				}}
-			>
+			<SyntaxHighlighter language={language} style={coy}>
 				{value}
 			</SyntaxHighlighter>
 		)
