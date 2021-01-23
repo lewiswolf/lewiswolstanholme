@@ -97,27 +97,29 @@ class Repository extends Component {
 		}
 	}
 
-	componentDidUpdate(prevProps) {
+	componentDidUpdate(prevProps, prevState) {
 		if (prevProps !== this.props) {
 			if (this.props.readme) {
 				fetch(this.props.readme)
 					.then((res) => res.text())
 					.then((md) => {
-						this.setState(
-							{
-								md: md.slice(0, this.props.name.length + 3) + md.slice(this.props.name.length + 22),
-							},
-							() => {
-								if (this.props.codeSyntax === 'KSP') {
-									this.KSPsyntax()
-								}
-							}
-						)
+						this.setState({
+							md: md.slice(0, this.props.name.length + 3) + md.slice(this.props.name.length + 22),
+						})
 					})
 			} else {
 				this.setState({ md: null })
 			}
 		}
+		// if (
+		// 	prevState.md !== this.state.md &&
+		// 	this.state.md !== null &&
+		// 	ReactDOM.findDOMNode(this).getElementsByTagName('pre')
+		// ) {
+		// 	if (this.props.codeSyntax === 'KSP') {
+		// 		this.KSPsyntax()
+		// 	}
+		// }
 	}
 
 	codeBlock = ({ language, value }) => {
