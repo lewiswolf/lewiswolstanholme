@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 export default class Videos extends Component {
 	state = {
 		json: [],
-	};
+	}
 
 	componentDidMount() {
 		fetch(`${process.env.PUBLIC_URL}/config/videos.json`)
@@ -12,7 +12,7 @@ export default class Videos extends Component {
 				this.setState({
 					json,
 				})
-			);
+			)
 	}
 
 	render() {
@@ -29,9 +29,9 @@ export default class Videos extends Component {
 							allow='accelerometer; autoplay; encrypted-media; gyroscope;'
 							allowFullScreen='1'
 						/>
-					);
+					)
 				})}
 			</main>
-		);
+		)
 	}
 }
