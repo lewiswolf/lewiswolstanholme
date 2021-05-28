@@ -1,11 +1,6 @@
 import React, { Component } from 'react'
 import { Helmet } from 'react-helmet'
 
-const browserTruthTable = {
-	Chrome: !!window.chrome,
-	Firefox: typeof InstallTrigger !== 'undefined',
-}
-
 export default class Head extends Component {
 	static defaultProps = {
 		darkModeFavicon: false,
