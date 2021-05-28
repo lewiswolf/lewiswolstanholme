@@ -1,14 +1,15 @@
 {
-	"short_name": "Lewis Wolf",
 	"name": "Lewis Wolstanholme",
+	"short_name": "Lewis Wolf",
+	"description": "Lewis Wolstanholme - Musician, Composer & Creative Coder",
+	"author": "Lewis Wolf",
+	"start_url": ".",
+	"display": "standalone",
+	"theme_color": "#333333",
+	"background_color": "#e5e5e5",
 	"icons": [
 		{
 			"src": "favicon.ico",
-			"sizes": "64x64 32x32 24x24 16x16",
-			"type": "image/x-icon"
-		},
-		{
-			"src": "favicon-dark.ico",
 			"sizes": "64x64 32x32 24x24 16x16",
 			"type": "image/x-icon"
 		},
@@ -27,10 +28,11 @@
 			"type": "image/png",
 			"sizes": "196x196",
 			"purpose": "any maskable"
+		},
+		{
+			"src": "favicon-dark.ico",
+			"sizes": "64x64 32x32 24x24 16x16",
+			"type": "image/x-icon"
 		}
-	],
-	"start_url": ".",
-	"display": "standalone",
-	"theme_color": "#333333",
-	"background_color": "#e5e5e5"
+	]
 }

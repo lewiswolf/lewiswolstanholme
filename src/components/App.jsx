@@ -38,16 +38,7 @@ export default function App() {
 
 	return (
 		<React.Fragment>
-			<Head
-				title={
-					location === '/'
-						? 'Lewis Wolstanholme'
-						: `Lewis Wolstanholme | ${location[1].toUpperCase() + location.slice(2)}`
-				}
-				description='Lewis Wolstanholme - Musician, Composer &amp; Creative Coder'
-				themeColor='#333333'
-				gtag='G-52FG4N6KPP'
-			/>
+			<Head darkModeFavicon={true} gtag='G-52FG4N6KPP' />
 			<Navi />
 			<Switch>
 				<Route exact path='/' component={Home} />
