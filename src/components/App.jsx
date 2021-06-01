@@ -38,7 +38,15 @@ export default function App() {
 
 	return (
 		<React.Fragment>
-			<Head darkModeFavicon={true} gtag='G-52FG4N6KPP' />
+			<Head
+				darkModeFavicon={true}
+				gtag='G-52FG4N6KPP'
+				title={
+					location === '/'
+						? 'Lewis Wolstanholme'
+						: `Lewis Wolstanholme | ${location[1].toUpperCase() + location.slice(2)}`
+				}
+			/>
 			<Navi />
 			<Switch>
 				<Route exact path='/' component={Home} />

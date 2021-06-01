@@ -5,13 +5,13 @@ export default class Head extends Component {
 	static defaultProps = {
 		darkModeFavicon: false,
 		gtag: '',
+		title: '',
 		children: null,
 	}
 
 	constructor(props) {
 		super(props)
 		this.state = {
-			title: '',
 			description: '',
 			themeColor: '',
 			appleIcon: '',
@@ -24,7 +24,6 @@ export default class Head extends Component {
 			.then((res) => res.json())
 			.then((json) => {
 				this.setState({
-					title: json.name || '',
 					description: json.description || '',
 					themeColor: json.theme_color || '',
 					appleIcon: json.icons[1].src || '',
@@ -35,7 +34,7 @@ export default class Head extends Component {
 	render() {
 		return (
 			<Helmet>
-				<title>{this.state.title}</title>
+				<title>{this.props.title}</title>
 				<meta charset='utf-8' />
 				<meta http-equiv='X-UA-Compatible' content='IE=edge' />
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
