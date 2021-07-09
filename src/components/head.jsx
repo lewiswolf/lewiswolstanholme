@@ -2,31 +2,42 @@ import React, { Component } from 'react'
 import { Helmet } from 'react-helmet'
 
 export default class Head extends Component {
+	/*
+	A react class used to render the <head> metatags. Uses the project's _manifest.json_ to
+	infer the description, theme colour and extended favicons. Supports dark-mode favicon.
+
+	props:
+		childern			- add extra elements to <head>
+		darkModeFavicon		- use a darkmode favicon if supported?
+		gtag				- ID for google analytics v4
+		title				- title of the current web page
+	*/
+
 	static defaultProps = {
+		children: null,
 		darkModeFavicon: false,
 		gtag: '',
 		title: '',
-		children: null,
 	}
 
 	constructor(props) {
 		super(props)
 		this.state = {
+			appleIcon: '',
 			description: '',
 			themeColor: '',
-			appleIcon: '',
 		}
 	}
 
 	componentDidMount() {
-		// fetch manifest.json
+		// fetch properties from manifest.json
 		fetch(`${process.env.PUBLIC_URL}/manifest.json`)
 			.then((res) => res.json())
 			.then((json) => {
 				this.setState({
+					appleIcon: json.icons[1].src || '',
 					description: json.description || '',
 					themeColor: json.theme_color || '',
-					appleIcon: json.icons[1].src || '',
 				})
 			})
 	}
