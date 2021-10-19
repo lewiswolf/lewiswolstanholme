@@ -1,6 +1,12 @@
 [
 	{
-		"title": "Chroma / Weaving",
+		"title": "morass / cairn",
+		"src": "music-morass.png",
+		"released": true,
+		"link": "https://juliaset.bandcamp.com/album/morass-cairn"
+	},
+	{
+		"title": "Chroma",
 		"src": "music-chroma.png",
 		"released": false,
 		"link": null
