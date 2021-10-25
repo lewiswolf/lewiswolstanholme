@@ -11,7 +11,7 @@ export default function Videos(): JSX.Element {
 		<main className='videos'>
 			<GridFromJSON
 				json={`${process.env.PUBLIC_URL}/config/videos.json`}
-				children={(obj: VideosJSON, i: number) => (
+				children={(obj: VideosJSON, i: number): JSX.Element => (
 					<iframe
 						key={i}
 						title={obj.name}
