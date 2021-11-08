@@ -1,20 +1,26 @@
 [
 	{
-		"title": "Chroma / Weaving",
-		"src": "music-chroma.png",
+		"link": "https://juliaset.bandcamp.com/album/morass-cairn",
+		"released": true,
+		"src": "music-morass.png",
+		"title": "morass / cairn"
+	},
+	{
+		"link": "",
 		"released": false,
-		"link": null
+		"src": "music-chroma.png",
+		"title": "Chroma / Weaving"
 	},
 	{
-		"title": "Noble / Seed",
+		"link": "https://bois.bandcamp.com/album/noble",
+		"released": true,
 		"src": "music-noble.png",
-		"released": true,
-		"link": "https://bois.bandcamp.com/album/noble"
+		"title": "Noble / Seed"
 	},
 	{
-		"title": "bach.fractal",
-		"src": "music-bach.png",
+		"link": "https://bois.bandcamp.com/album/bach-fractal",
 		"released": true,
-		"link": "https://bois.bandcamp.com/album/bach-fractal"
+		"src": "music-bach.png",
+		"title": "bach.fractal"
 	}
 ]

@@ -10,10 +10,10 @@ interface Props {
 }
 
 interface State {
-	json: { [key: string]: any }[]
 	gridDim: number
 	gridWidth: string
-	maxColl: string
+	json: { [key: string]: any }[]
+	maxCol: string
 }
 
 export default class GridFromJSON extends React.Component<Props, State> {
@@ -36,7 +36,7 @@ export default class GridFromJSON extends React.Component<Props, State> {
 			json: [],
 			gridDim: 0,
 			gridWidth: '',
-			maxColl: '',
+			maxCol: '',
 		}
 		this.self = React.createRef()
 		this.gridResponse = this.gridResponse.bind(this)
@@ -46,15 +46,10 @@ export default class GridFromJSON extends React.Component<Props, State> {
 		fetch(this.props.json)
 			.then((res: Response) => res.json())
 			.then((json: { [key: string]: any }[]) =>
-				this.setState(
-					{
-						json,
-					},
-					(): void => {
-						window.addEventListener('resize', this.gridResponse)
-						this.gridResponse()
-					}
-				)
+				this.setState({ json }, (): void => {
+					window.addEventListener('resize', this.gridResponse)
+					this.gridResponse()
+				})
 			)
 	}
 
@@ -63,14 +58,14 @@ export default class GridFromJSON extends React.Component<Props, State> {
 	}
 
 	gridResponse = (): void => {
-		let contentWidth: number = this.self.current!.parentElement!.getBoundingClientRect().width
-		let largestGrid: number =
+		const contentWidth: number = this.self.current!.parentElement!.getBoundingClientRect().width
+		const largestGrid: number =
 			this.state.json.length * (this.props.maxWidth! + this.props.gridSpacer!) - this.props.gridSpacer!
 
 		this.setState({
 			gridDim: contentWidth < this.props.maxWidth! ? contentWidth : this.props.maxWidth!,
 			gridWidth: contentWidth > largestGrid ? `${largestGrid}px` : '100%',
-			maxColl: contentWidth > largestGrid ? `${this.state.json.length}` : 'auto-fill',
+			maxCol: contentWidth > largestGrid ? `${this.state.json.length}` : 'auto-fill',
 		})
 	}
 
@@ -81,7 +76,7 @@ export default class GridFromJSON extends React.Component<Props, State> {
 				style={{
 					width: this.state.gridWidth,
 					display: 'grid',
-					gridTemplateColumns: `repeat(${this.state.maxColl}, ${this.state.gridDim}px)`,
+					gridTemplateColumns: `repeat(${this.state.maxCol}, ${this.state.gridDim}px)`,
 					gridAutoRows: `${this.props.maxHeight}px`,
 					columnGap: `${this.props.gridSpacer}px`,
 					rowGap: `${this.props.gridSpacer}px`,

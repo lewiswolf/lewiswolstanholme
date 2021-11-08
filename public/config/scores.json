@@ -1,32 +1,32 @@
 [
 	{
-		"title": "Chroma",
+		"file": "Chroma_by_Lewis_Wolstanholme.pdf",
 		"instrumentation": "for live electronics and surround sound speakers",
-		"year": "2019",
-		"file": "Chroma_by_Lewis_Wolstanholme.pdf"
+		"title": "Chroma",
+		"year": "2019"
 	},
 	{
-		"title": "Weaving",
+		"file": "Weaving_by_Lewis_Wolstanholme.pdf",
 		"instrumentation": "for three microtonal synthesisers",
-		"year": "2018 - 2019",
-		"file": "Weaving_by_Lewis_Wolstanholme.pdf"
+		"title": "Weaving",
+		"year": "2018 - 2019"
 	},
 	{
-		"title": "Quotient",
+		"file": "Quotient_by_Lewis_Wolstanholme.pdf",
 		"instrumentation": "for string trio",
-		"year": "2019",
-		"file": "Quotient_by_Lewis_Wolstanholme.pdf"
+		"title": "ℚuotient",
+		"year": "2019"
 	},
 	{
-		"title": "Coprime",
+		"file": "Coprime_by_Lewis_Wolstanholme.pdf",
 		"instrumentation": "for piano trio",
-		"year": "2019",
-		"file": "Coprime_by_Lewis_Wolstanholme.pdf"
+		"title": "Coprime",
+		"year": "2019"
 	},
 	{
-		"title": "Lorem Ipsum",
+		"file": "Lorem_Ipsum_by_Lewis_Wolstanholme.pdf",
 		"instrumentation": "for microtonal piano",
-		"year": "2018",
-		"file": "Lorem_Ipsum_by_Lewis_Wolstanholme.pdf"
+		"title": "Lorem Ipsum",
+		"year": "2018"
 	}
 ]
