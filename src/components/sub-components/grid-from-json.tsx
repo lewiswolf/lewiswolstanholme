@@ -4,7 +4,7 @@ import React from 'react'
 interface Props {
 	children: (obj: any, i: number) => JSX.Element
 	gridSpacer?: number
-	json: string
+	json: string | { [key: string]: any }[]
 	maxHeight?: number
 	maxWidth?: number
 }
@@ -43,14 +43,18 @@ export default class GridFromJSON extends React.Component<Props, State> {
 	}
 
 	componentDidMount(): void {
-		fetch(this.props.json)
-			.then((res: Response) => res.json())
-			.then((json: { [key: string]: any }[]) =>
-				this.setState({ json }, (): void => {
-					window.addEventListener('resize', this.gridResponse)
-					this.gridResponse()
-				})
-			)
+		if (typeof this.props.json === 'string') {
+			fetch(this.props.json)
+				.then((res: Response) => res.json())
+				.then((json: { [key: string]: any }[]) =>
+					this.setState({ json }, (): void => {
+						window.addEventListener('resize', this.gridResponse)
+						this.gridResponse()
+					})
+				)
+		} else {
+			this.setState({ json: this.props.json })
+		}
 	}
 
 	componentWillUnmount(): void {
