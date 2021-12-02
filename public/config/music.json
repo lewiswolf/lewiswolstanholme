@@ -1,5 +1,11 @@
 [
 	{
+		"title": "terracotta",
+		"src": "music-terracotta.png",
+		"released": true,
+		"link": "https://juliaset.bandcamp.com/album/terracotta"
+	},
+	{
 		"title": "morass / cairn",
 		"src": "music-morass.png",
 		"released": true,
