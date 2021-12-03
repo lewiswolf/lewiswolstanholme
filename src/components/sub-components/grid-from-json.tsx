@@ -22,6 +22,8 @@ export default class GridFromJSON extends React.Component<Props, State> {
 	within the parent element.
 	*/
 
+	// TO FIX
+	// default props actually suck, you have to use ! everywhere
 	static defaultProps = {
 		maxHeight: 280,
 		maxWidth: 280,
@@ -47,13 +49,13 @@ export default class GridFromJSON extends React.Component<Props, State> {
 			fetch(this.props.json)
 				.then((res: Response) => res.json())
 				.then((json: { [key: string]: any }[]) =>
-					this.setState({ json }, (): void => {
+					this.setState({ json }, () => {
 						window.addEventListener('resize', this.gridResponse)
 						this.gridResponse()
 					})
 				)
 		} else {
-			this.setState({ json: this.props.json }, (): void => {
+			this.setState({ json: this.props.json }, () => {
 				window.addEventListener('resize', this.gridResponse)
 				this.gridResponse()
 			})
