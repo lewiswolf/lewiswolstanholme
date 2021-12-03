@@ -6,12 +6,14 @@ import 'maxmsp-gui/dist/index.css' // this can be removed with the next build of
 import Navi from './navi'
 import Home from './home'
 import Music from './music'
+import Videos from './videos'
 
 // scss
 import '../scss/App.scss'
 
 // config
 import { music_json } from '../config/music'
+import { videos_json } from '../config/videos'
 
 export default function App(): JSX.Element {
 	return (
@@ -21,7 +23,7 @@ export default function App(): JSX.Element {
 				<Route path='/' element={<Home />} />
 				<Route path='/music' element={<Music json={music_json} />} />
 				<Route path='/scores' element={<></>} />
-				<Route path='/videos' element={<></>} />
+				<Route path='/videos' element={<Videos json={videos_json} />} />
 				<Route path='/code' element={<></>} />
 				<Route path='/info' element={<></>} />
 				<Route path='*' element={<Navigate to='/' />} />
