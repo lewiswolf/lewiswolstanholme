@@ -17,8 +17,8 @@ const Music: React.FC<{ json: MusicJSON[] }> = ({ json }) => {
 						aria-label={`listen to ${obj.title}`}
 						role='button'
 						tabIndex={0}
-						onClick={(): Window | null => window.open(obj.link, '_blank')}
-						onKeyDown={(e: React.KeyboardEvent): void => {
+						onClick={() => window.open(obj.link, '_blank')}
+						onKeyDown={(e) => {
 							if (e.key === 'Enter' || e.key === ' ') {
 								e.preventDefault()
 								window.open(obj.link, '_blank')
