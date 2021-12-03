@@ -1,5 +1,8 @@
+// dependencies
 import { Object, RadioGroup } from 'maxmsp-gui'
 import { useLocation, useNavigate } from 'react-router-dom'
+
+// src
 import { ReactComponent as SVG } from '../svg/navi-cable.svg'
 
 export default function Navi(): JSX.Element {

@@ -1,12 +1,13 @@
+// dependencies
 import { Navigate, Route, Routes } from 'react-router-dom'
+import 'maxmsp-gui/dist/index.css' // this can be removed with the next build of maxmsp-gui
 
+// src
+import '../scss/App.scss'
 import Navi from './navi'
 import Home from './home'
 
-import '../scss/App.scss'
-import 'maxmsp-gui/dist/index.css' // this can be removed with the next build of maxmsp-gui
-
-export default function App() {
+export default function App(): JSX.Element {
 	return (
 		<>
 			<Navi />

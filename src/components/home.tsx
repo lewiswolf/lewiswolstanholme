@@ -1,3 +1,4 @@
+// dependencies
 import { Slider } from 'maxmsp-gui'
 
 export default function Home(): JSX.Element {
