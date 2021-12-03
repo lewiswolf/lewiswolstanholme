@@ -1,4 +1,3 @@
-import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 
 import Navi from './navi'
@@ -9,7 +8,7 @@ import 'maxmsp-gui/dist/index.css' // this can be removed with the next build of
 
 export default function App() {
 	return (
-		<React.Fragment>
+		<>
 			<Navi />
 			<Routes>
 				<Route path='/' element={<Home />} />
@@ -20,7 +19,7 @@ export default function App() {
 				<Route path='/info' element={<></>} />
 				<Route path='*' element={<Navigate to='/' />} />
 			</Routes>
-		</React.Fragment>
+		</>
 	)
 }
 

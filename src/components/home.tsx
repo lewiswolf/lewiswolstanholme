@@ -1,9 +1,8 @@
-import React from 'react'
 import { Slider } from 'maxmsp-gui'
 
 export default function Home(): JSX.Element {
 	return (
-		<React.Fragment>
+		<>
 			<div className='header' id='home-header'>
 				<Slider
 					fidelity={1000}
@@ -12,6 +11,6 @@ export default function Home(): JSX.Element {
 				/>
 			</div>
 			<main className='home'></main>
-		</React.Fragment>
+		</>
 	)
 }
