@@ -1,0 +1,14 @@
+.music .albumcover {
+	@include focus();
+	height: 100%;
+	width: 100%;
+	position: relative;
+	cursor: pointer;
+
+	img {
+		height: 100%;
+		width: 100%;
+		outline: 0;
+		user-select: none;
+	}
+}

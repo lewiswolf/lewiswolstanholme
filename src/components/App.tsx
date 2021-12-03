@@ -2,10 +2,16 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import 'maxmsp-gui/dist/index.css' // this can be removed with the next build of maxmsp-gui
 
-// src
-import '../scss/App.scss'
+// components
 import Navi from './navi'
 import Home from './home'
+import Music from './music'
+
+// scss
+import '../scss/App.scss'
+
+// config
+import { music_json } from '../config/music'
 
 export default function App(): JSX.Element {
 	return (
@@ -13,7 +19,7 @@ export default function App(): JSX.Element {
 			<Navi />
 			<Routes>
 				<Route path='/' element={<Home />} />
-				<Route path='/music' element={<></>} />
+				<Route path='/music' element={<Music json={music_json} />} />
 				<Route path='/scores' element={<></>} />
 				<Route path='/videos' element={<></>} />
 				<Route path='/code' element={<></>} />
