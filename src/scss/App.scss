@@ -1,16 +1,25 @@
 // var
 
 $ipad: 812px;
+$highlight: #b4b4b4;
+
+// mixins
+
+@mixin focus() {
+	&:focus {
+		outline: $highlight solid 3px;
+	}
+}
 
 // children
 
 @import './navi.scss';
 @import './home.scss';
-@import './music.scss';
-@import './scores.scss';
-@import './videos.scss';
-@import './code.scss';
-@import './info.scss';
+// @import './music.scss';
+// @import './scores.scss';
+// @import './videos.scss';
+// @import './code.scss';
+// @import './info.scss';
 
 // structure
 
