@@ -23,15 +23,18 @@ const GridFromJSON: React.FC<Props> = ({
 	maxWidth = 280,
 }): JSX.Element => {
 	const self = React.useRef<HTMLDivElement>(null)
-	const [content, setContent] = React.useState<{ [key: string]: any }[]>([{}])
+	const [content, setContent] = React.useState<{ [key: string]: any }[]>([])
 	const [grid_properties, setGrid] = React.useState<GridProperties>({
 		gridDim: 0,
 		gridWidth: '',
 		maxCol: '',
 	})
 
-	React.useEffect(() => {
-		// set content
+	React.useEffect((): void => {
+		/*
+			This effect is used to dyanmically load the content either as a raw json file
+			from the public folder, or update the content using the prop itself.
+		*/
 		if (typeof json === 'string') {
 			fetch(json)
 				.then((res: Response) => res.json())
@@ -40,33 +43,37 @@ const GridFromJSON: React.FC<Props> = ({
 		} else {
 			setContent(json)
 		}
+	}, [json])
 
-		// add listeners
-		const gridResponse = (): void => {
-			/*
-			This function is used in conjunction with the 'resize' window event listener.
+	React.useEffect((): void => {
+		/*
+			This effect is used in conjunction with the 'resize' window event listener.
 			When the window is resized, the size of the parent element is queried, from
 			which the grid dimensions are inferred. This method keeps the grid centered
 			within the parent, and sized according to the maximum number of grid cells
 			per row.
-			*/
-			if (self.current !== null && self.current.parentElement !== null) {
-				const contentWidth: number =
-					self.current.parentElement.getBoundingClientRect().width
-				const largestGrid: number = json.length * (maxWidth + gridSpacer) - gridSpacer
-				setGrid({
-					gridDim: contentWidth < maxWidth ? contentWidth : maxWidth,
-					gridWidth: contentWidth > largestGrid ? `${largestGrid}px` : '100%',
-					maxCol: contentWidth > largestGrid ? `${json.length}` : 'auto-fill',
-				})
-			}
-		}
-		window.addEventListener('resize', gridResponse)
-		gridResponse()
+		*/
+		if (content.length > 0) {
+			const gridResponse = (): void => {
+				if (self.current !== null && self.current.parentElement !== null) {
+					const contentWidth: number =
+						self.current.parentElement.getBoundingClientRect().width
+					const largestGrid: number =
+						content.length * (maxWidth + gridSpacer) - gridSpacer
 
-		// remove listeners
-		return window.removeEventListener('resize', gridResponse)
-	}, [json, gridSpacer, maxHeight, maxWidth])
+					setGrid({
+						gridDim: contentWidth < maxWidth ? contentWidth : maxWidth,
+						gridWidth: contentWidth > largestGrid ? `${largestGrid}px` : '100%',
+						maxCol: contentWidth > largestGrid ? `${content.length}` : 'auto-fill',
+					})
+				}
+			}
+			// Add and remove event listeners
+			window.addEventListener('resize', gridResponse)
+			gridResponse()
+			return window.removeEventListener('resize', gridResponse)
+		}
+	}, [content.length, gridSpacer, maxWidth])
 
 	return (
 		<div
