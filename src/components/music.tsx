@@ -26,7 +26,7 @@ const Music: React.FC<{ json: MusicJSON[] }> = ({ json }): JSX.Element => {
 						}}
 					>
 						<img
-							alt={obj.title}
+							alt={`album artwork for ${obj.title}`}
 							src={`${process.env.PUBLIC_URL}/images/${obj.src}`}
 							tabIndex={-1}
 						/>
