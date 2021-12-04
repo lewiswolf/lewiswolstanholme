@@ -23,7 +23,7 @@ export const music_json: MusicJSON[] = [
 	{
 		link: 'https://lewiswolf.bandcamp.com/album/noble-seed',
 		src: 'music-noble.png',
-		title: 'Noble / Seed',
+		title: 'noble / seed',
 	},
 	{
 		link: 'https://ciarancorr.bandcamp.com/album/bach-fractal',
