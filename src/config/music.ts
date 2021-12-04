@@ -25,9 +25,9 @@ export const music_json: MusicJSON[] = [
 		src: 'music-noble.png',
 		title: 'Noble / Seed',
 	},
-	// {
-	// 	link: 'https://bois.bandcamp.com/album/bach-fractal',
-	// 	src: 'music-bach.png',
-	// 	title: 'bach.fractal',
-	// },
+	{
+		link: 'https://ciarancorr.bandcamp.com/album/bach-fractal',
+		src: 'music-bach.png',
+		title: 'bach.fractal',
+	},
 ]
