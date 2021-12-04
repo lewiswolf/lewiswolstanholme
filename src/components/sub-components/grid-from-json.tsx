@@ -24,13 +24,13 @@ const GridFromJSON: React.FC<Props> = ({
 }): JSX.Element => {
 	const self = React.useRef<HTMLDivElement>(null)
 	const [content, setContent] = React.useState<{ [key: string]: any }[]>([])
-	const [grid_properties, setGrid] = React.useState<GridProperties>({
+	const [gridState, setGrid] = React.useState<GridProperties>({
 		gridDim: 0,
 		gridWidth: '',
 		maxCol: '',
 	})
 
-	React.useEffect((): void => {
+	React.useEffect(() => {
 		/*
 			This effect is used to dyanmically load the content either as a raw json file
 			from the public folder, or update the content using the prop itself.
@@ -45,7 +45,7 @@ const GridFromJSON: React.FC<Props> = ({
 		}
 	}, [json])
 
-	React.useEffect((): void => {
+	React.useEffect(() => {
 		/*
 			This effect is used in conjunction with the 'resize' window event listener.
 			When the window is resized, the size of the parent element is queried, from
@@ -53,25 +53,22 @@ const GridFromJSON: React.FC<Props> = ({
 			within the parent, and sized according to the maximum number of grid cells
 			per row.
 		*/
-		if (content.length > 0) {
-			const gridResponse = (): void => {
-				if (self.current !== null && self.current.parentElement !== null) {
-					const contentWidth: number =
-						self.current.parentElement.getBoundingClientRect().width
-					const largestGrid: number =
-						content.length * (maxWidth + gridSpacer) - gridSpacer
-
-					setGrid({
-						gridDim: contentWidth < maxWidth ? contentWidth : maxWidth,
-						gridWidth: contentWidth > largestGrid ? `${largestGrid}px` : '100%',
-						maxCol: contentWidth > largestGrid ? `${content.length}` : 'auto-fill',
-					})
-				}
+		const gridResponse = (): void => {
+			if (self.current !== null && self.current.parentElement !== null) {
+				const parentWidth: number = self.current.parentElement.getBoundingClientRect().width
+				const largestGrid: number = content.length * (maxWidth + gridSpacer) - gridSpacer
+				setGrid({
+					gridDim: parentWidth < maxWidth ? parentWidth : maxWidth,
+					gridWidth: parentWidth > largestGrid ? `${largestGrid}px` : '100%',
+					maxCol: parentWidth > largestGrid ? `${content.length}` : 'auto-fill',
+				})
 			}
-			// Add and remove event listeners
+		}
+		// Add and remove event listeners
+		if (content.length > 0) {
 			window.addEventListener('resize', gridResponse)
 			gridResponse()
-			return window.removeEventListener('resize', gridResponse)
+			return () => window.removeEventListener('resize', gridResponse)
 		}
 	}, [content.length, gridSpacer, maxWidth])
 
@@ -79,13 +76,13 @@ const GridFromJSON: React.FC<Props> = ({
 		<div
 			ref={self}
 			style={{
-				width: grid_properties.gridWidth,
+				width: gridState.gridWidth,
 				margin: '0 auto',
 				display: 'grid',
 				justifyContent: 'space-evenly',
 				justifyItems: 'center',
 				alignItems: 'center',
-				gridTemplateColumns: `repeat(${grid_properties.maxCol}, ${grid_properties.gridDim}px)`,
+				gridTemplateColumns: `repeat(${gridState.maxCol}, ${gridState.gridDim}px)`,
 				gridAutoRows: `${maxHeight}px`,
 				columnGap: `${gridSpacer}px`,
 				rowGap: `${gridSpacer}px`,
