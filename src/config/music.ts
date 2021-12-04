@@ -20,14 +20,14 @@ export const music_json: MusicJSON[] = [
 	// 	src: 'music-chroma.png',
 	// 	title: 'Chroma / Weaving',
 	// },
-	// {
-	// 	link: 'https://bois.bandcamp.com/album/noble',
-	// 	src: 'music-noble.png',
-	// 	title: 'Noble / Seed',
-	// },
+	{
+		link: 'https://lewiswolf.bandcamp.com/album/noble-seed',
+		src: 'music-noble.png',
+		title: 'Noble / Seed',
+	},
 	// {
 	// 	link: 'https://bois.bandcamp.com/album/bach-fractal',
 	// 	src: 'music-bach.png',
 	// 	title: 'bach.fractal',
-	// }
+	// },
 ]
