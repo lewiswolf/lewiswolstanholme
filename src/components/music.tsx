@@ -10,7 +10,7 @@ const Music: React.FC<{ json: MusicJSON[] }> = ({ json }): JSX.Element => {
 		<main className='music'>
 			<GridFromJSON
 				json={json}
-				children={(obj: MusicJSON, i: number): JSX.Element => (
+				cell={(obj: MusicJSON, i: number): JSX.Element => (
 					<div
 						aria-label={`listen to ${obj.title}`}
 						className='albumcover'
