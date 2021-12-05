@@ -19,10 +19,7 @@ import { videos_json } from '../config/videos'
 
 export default function App(): JSX.Element {
 	const location = useLocation().pathname
-
-	React.useEffect(() => {
-		analyticsPageView()
-	}, [location])
+	React.useEffect(() => analyticsPageView(), [location])
 
 	return (
 		<>
