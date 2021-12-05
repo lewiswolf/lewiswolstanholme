@@ -20,8 +20,7 @@ const GoogleAnalytics: React.FC<{ id: string }> = ({ id }): JSX.Element => {
 }
 
 const analyticsPageView = (): void => {
-	window.location.hostname !== 'localhost' &&
-		window?.gtag &&
+	window?.gtag &&
 		window.gtag('event', 'pageview', {
 			page_location: window.location.href,
 			page_path: window.location.pathname,
