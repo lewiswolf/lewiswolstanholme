@@ -38,7 +38,7 @@ const GridFromJSON: React.FC<Props> = ({
 		if (typeof json === 'string') {
 			fetch(json)
 				.then((res: Response) => res.json())
-				.then((res: { [key: string]: any }[]) => setContent(res))
+				.then((json: { [key: string]: any }[]) => setContent(json))
 				.catch()
 		} else {
 			setContent(json)
@@ -69,6 +69,8 @@ const GridFromJSON: React.FC<Props> = ({
 			window.addEventListener('resize', gridResponse)
 			gridResponse()
 			return () => window.removeEventListener('resize', gridResponse)
+		} else {
+			return () => {}
 		}
 	}, [content.length, gridSpacer, maxWidth])
 

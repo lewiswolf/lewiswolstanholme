@@ -27,5 +27,5 @@ export const videos_json: VideosJSON[] = [
 	{
 		hash: 'sZYNHRozFBc',
 		title: 'bach.fractal',
-	}
+	},
 ]
