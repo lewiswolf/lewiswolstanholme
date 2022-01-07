@@ -4,7 +4,7 @@ import React from 'react'
 // config
 import { VideosJSON } from '../config/videos'
 
-const Videos: React.FC<{ json: VideosJSON[] }> = ({ json }): JSX.Element => {
+const Videos: React.FC<{ json: VideosJSON[] }> = ({ json }) => {
 	return (
 		<main className='videos'>
 			{json.map((obj: VideosJSON, i: number): JSX.Element => {

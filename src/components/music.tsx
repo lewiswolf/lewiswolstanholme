@@ -5,7 +5,7 @@ import GridFromJSON from './sub-components/grid-from-json'
 // config
 import { MusicJSON } from '../config/music'
 
-const Music: React.FC<{ json: MusicJSON[] }> = ({ json }): JSX.Element => {
+const Music: React.FC<{ json: MusicJSON[] }> = ({ json }) => {
 	return (
 		<main className='music'>
 			<GridFromJSON

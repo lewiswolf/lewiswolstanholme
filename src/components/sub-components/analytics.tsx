@@ -1,7 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 
-const GoogleAnalytics: React.FC<{ id: string }> = ({ id }): JSX.Element => {
+const GoogleAnalytics: React.FC<{ id: string }> = ({ id }) => {
 	if (window.location.hostname !== 'localhost') {
 		return (
 			<Helmet>

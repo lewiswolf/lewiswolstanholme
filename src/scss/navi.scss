@@ -1,8 +1,8 @@
 nav {
-	grid-area: h;
 	height: fit-content;
 	width: 130px;
 	margin: 19.5px 0 0 35px;
+	grid-area: h;
 	position: absolute;
 	left: 0;
 	right: unset;
@@ -17,11 +17,10 @@ nav {
 	.navi-cable {
 		height: 13.5px;
 		width: 100%;
-		position: relative;
+		display: grid;
 
 		svg {
-			position: absolute;
-			top: 0;
+			grid-area: 1/1;
 		}
 	}
 
