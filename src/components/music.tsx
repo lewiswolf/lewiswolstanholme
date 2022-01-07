@@ -1,15 +1,14 @@
-// dependencies
-import React from 'react'
+// src
 import GridFromJSON from './sub-components/grid-from-json'
 
 // config
-import { MusicJSON } from '../config/music'
+import { MusicJSON, music_json } from '../config/music'
 
-const Music: React.FC<{ json: MusicJSON[] }> = ({ json }) => {
+const Music = (): JSX.Element => {
 	return (
 		<main className='music'>
 			<GridFromJSON
-				json={json}
+				json={music_json}
 				cell={(obj: MusicJSON, i: number): JSX.Element => (
 					<div
 						aria-label={`listen to ${obj.title}`}

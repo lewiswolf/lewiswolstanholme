@@ -14,10 +14,6 @@ import Info from './info'
 // scss
 import '../scss/App.scss'
 
-// config
-import { music_json } from '../config/music'
-import { videos_json } from '../config/videos'
-
 export default function App(): JSX.Element {
 	const location = useLocation().pathname
 	React.useEffect(() => analyticsPageView(), [location])
@@ -28,9 +24,9 @@ export default function App(): JSX.Element {
 			<Navi />
 			<Routes>
 				<Route path='/' element={<Home />} />
-				<Route path='/music' element={<Music json={music_json} />} />
+				<Route path='/music' element={<Music />} />
 				<Route path='/scores' element={<></>} />
-				<Route path='/videos' element={<Videos json={videos_json} />} />
+				<Route path='/videos' element={<Videos />} />
 				<Route path='/code' element={<></>} />
 				<Route path='/info' element={<Info />} />
 				<Route path='*' element={<Navigate to='/' />} />

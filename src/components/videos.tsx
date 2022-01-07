@@ -1,13 +1,10 @@
-// dependencies
-import React from 'react'
-
 // config
-import { VideosJSON } from '../config/videos'
+import { VideosJSON, videos_json } from '../config/videos'
 
-const Videos: React.FC<{ json: VideosJSON[] }> = ({ json }) => {
+const Videos = (): JSX.Element => {
 	return (
 		<main className='videos'>
-			{json.map((obj: VideosJSON, i: number): JSX.Element => {
+			{videos_json.map((obj: VideosJSON, i: number): JSX.Element => {
 				return (
 					<iframe
 						allow='accelerometer; autoplay; encrypted-media; gyroscope;'
