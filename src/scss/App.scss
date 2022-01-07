@@ -19,7 +19,7 @@ $highlight: #b4b4b4;
 // @import './scores';
 @import './videos';
 // @import './code';
-// @import './info';
+@import './info';
 
 // structure
 
@@ -45,11 +45,11 @@ body {
 }
 
 .header {
-	grid-area: h;
 	height: 160px;
 	max-width: 100%;
 	margin: 0 20px;
 	display: grid;
+	grid-area: h;
 
 	@media (max-width: $ipad) {
 		height: 100px;

@@ -1,0 +1,10 @@
+#info-header p {
+	margin: 0;
+	justify-self: center;
+	align-self: self-end;
+	line-height: 24px;
+
+	@media (max-width: $ipad) {
+		align-self: center;
+	}
+}
