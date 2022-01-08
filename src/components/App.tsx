@@ -8,6 +8,7 @@ import { GoogleAnalytics, analyticsPageView } from './sub-components/analytics'
 import Navi from './navi'
 import Home from './home'
 import Music from './music'
+import Scores from './scores'
 import Videos from './videos'
 import Info from './info'
 
@@ -25,7 +26,7 @@ export default function App(): JSX.Element {
 			<Routes>
 				<Route path='/' element={<Home />} />
 				<Route path='/music' element={<Music />} />
-				<Route path='/scores' element={<></>} />
+				<Route path='/scores' element={<Scores />} />
 				<Route path='/videos' element={<Videos />} />
 				<Route path='/code' element={<></>} />
 				<Route path='/info' element={<Info />} />

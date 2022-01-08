@@ -20,7 +20,7 @@ const GridFromJSON: React.FC<Props> = ({
 	json,
 	gridSpacer = 20,
 	maxHeight = 280,
-	maxWidth = 280,
+	maxWidth = maxHeight,
 }) => {
 	const self = React.useRef<HTMLDivElement>(null)
 	const [content, setContent] = React.useState<{ [key: string]: any }[]>([])
