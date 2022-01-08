@@ -1,7 +1,7 @@
-// config
+// src
 import { VideosJSON, videos_json } from '../config/videos'
 
-const Videos = (): JSX.Element => {
+export default function Videos(): JSX.Element {
 	return (
 		<main className='videos'>
 			{videos_json.map((obj: VideosJSON, i: number): JSX.Element => {
@@ -19,5 +19,3 @@ const Videos = (): JSX.Element => {
 		</main>
 	)
 }
-
-export default Videos

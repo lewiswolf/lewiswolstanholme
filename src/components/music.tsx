@@ -1,10 +1,8 @@
 // src
 import GridFromJSON from './sub-components/grid-from-json'
-
-// config
 import { MusicJSON, music_json } from '../config/music'
 
-const Music = (): JSX.Element => {
+export default function Music(): JSX.Element {
 	return (
 		<main className='music'>
 			<GridFromJSON
@@ -35,5 +33,3 @@ const Music = (): JSX.Element => {
 		</main>
 	)
 }
-
-export default Music

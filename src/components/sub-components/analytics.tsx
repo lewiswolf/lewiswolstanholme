@@ -1,7 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 
-const GoogleAnalytics: React.FC<{ id: string }> = ({ id }) => {
+export const GoogleAnalytics: React.FC<{ id: string }> = ({ id }) => {
 	if (window.location.hostname !== 'localhost') {
 		return (
 			<Helmet>
@@ -19,12 +19,10 @@ const GoogleAnalytics: React.FC<{ id: string }> = ({ id }) => {
 	}
 }
 
-const analyticsPageView = (): void => {
+export const analyticsPageView = (): void => {
 	window?.gtag &&
 		window.gtag('event', 'pageview', {
 			page_location: window.location.href,
 			page_path: window.location.pathname,
 		})
 }
-
-export { GoogleAnalytics, analyticsPageView }

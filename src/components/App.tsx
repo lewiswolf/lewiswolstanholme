@@ -1,5 +1,5 @@
 // dependencies
-import React from 'react'
+import { useEffect } from 'react'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import 'maxmsp-gui/dist/index.css' // this can be removed with the next build of maxmsp-gui
 
@@ -16,7 +16,7 @@ import '../scss/App.scss'
 
 export default function App(): JSX.Element {
 	const location = useLocation().pathname
-	React.useEffect(() => analyticsPageView(), [location])
+	useEffect(() => analyticsPageView(), [location])
 
 	return (
 		<>
