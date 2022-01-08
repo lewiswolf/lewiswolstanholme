@@ -2,6 +2,7 @@ nav {
 	height: fit-content;
 	width: 130px;
 	margin: 19.5px 0 0 35px;
+	display: grid;
 	grid-area: h;
 	position: absolute;
 	left: 0;
@@ -14,17 +15,11 @@ nav {
 		right: 0;
 	}
 
-	.navi-cable {
-		height: 13.5px;
-		width: 100%;
-		display: grid;
-
-		svg {
-			grid-area: 1/1;
-		}
+	> div {
+		justify-self: right;
 	}
 
-	> div {
-		float: right;
+	svg {
+		grid-area: 2/1;
 	}
 }

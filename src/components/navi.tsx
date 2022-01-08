@@ -2,8 +2,8 @@
 import { Object, RadioGroup } from 'maxmsp-gui'
 import { useLocation, useNavigate } from 'react-router-dom'
 
-// src
-import { ReactComponent as SVG } from '../svg/navi-cable.svg'
+// svg
+import { ReactComponent as NaviCable } from '../svg/navi-cable.svg'
 
 export default function Navi(): JSX.Element {
 	const pages = ['home', 'music', 'scores', 'videos', 'code', 'info']
@@ -17,9 +17,7 @@ export default function Navi(): JSX.Element {
 				value={location && pages.indexOf(location) !== -1 ? pages.indexOf(location) : 0}
 				onClick={(i: number) => (i !== 0 ? navigate(`/${pages[i]}`) : navigate('/'))}
 			/>
-			<div className='navi-cable'>
-				<SVG />
-			</div>
+			<NaviCable />
 			<Object text='Lewis Wolstanholme' />
 		</nav>
 	)
