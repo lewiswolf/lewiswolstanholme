@@ -2,11 +2,14 @@
 import IframeResizer from 'iframe-resizer-react'
 import { Umenu, TextButton } from 'maxmsp-gui'
 import { useEffect, useState } from 'react'
+import remarkGfm from 'remark-gfm'
 import ReactMarkdown from 'react-markdown'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 
 // src
 import { projects } from '../config/code'
+import { default as syntax } from '../config/syntax'
 
 export default function Code(): JSX.Element {
 	const location: string = useLocation().search.slice(6)
@@ -22,10 +25,10 @@ export default function Code(): JSX.Element {
 				`https://raw.githubusercontent.com/${projects[location]?.github}/master/readme.md`
 			)
 				.then((res: Response) => res.text())
-				.then((markdown: string) => setMarkdown(markdown))
+				.then((markdown: string) => setMarkdown(markdown.replace('by Lewis Wolf', '')))
 				.catch()
 		}
-	}, [location])
+	})
 
 	return (
 		<>
@@ -53,7 +56,25 @@ export default function Code(): JSX.Element {
 						title={projects[location]?.name}
 					/>
 				)}
-				<ReactMarkdown className='readme' children={markdown} />
+				<ReactMarkdown
+					children={markdown}
+					className='readme'
+					components={{
+						code({ className, children }) {
+							const match = /language-(\w+)/.exec(className || '')
+							return match ? (
+								<SyntaxHighlighter
+									children={String(children).replace(/\n$/, '')}
+									style={syntax}
+									language={match[1]}
+								/>
+							) : (
+								<code className={className}>{children}</code>
+							)
+						},
+					}}
+					remarkPlugins={[remarkGfm]}
+				/>
 			</main>
 		</>
 	)
@@ -64,5 +85,5 @@ export default function Code(): JSX.Element {
 		- Fix links in all readmes (semantics).
 		- iframeresizer is as weird as ever.
 		- not all readmes load.
-		- no syntax highlighter.
+		- no syntax highlighter for ksp (start by adding it to the code tag at least).
 */
