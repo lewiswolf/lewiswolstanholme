@@ -1,6 +1,7 @@
 // var
 
 $ipad: 812px;
+$iphone: 400px;
 $highlight: #b4b4b4;
 
 // mixins
@@ -49,13 +50,23 @@ header {
 	display: grid;
 	grid-area: h;
 	grid-auto-flow: column;
+	grid-row-gap: 20px;
 	grid-column-gap: 20px;
 	align-content: end;
+	justify-items: center;
 	justify-self: center;
 
 	@media (max-width: $ipad) {
 		height: 100px;
 		margin: 160px 20px -20px 20px;
+		grid-auto-flow: column;
+		align-content: center;
+	}
+
+	@media (max-width: $iphone) {
+		height: 100px;
+		margin: 160px 20px -20px 20px;
+		grid-auto-flow: row;
 		align-content: center;
 	}
 

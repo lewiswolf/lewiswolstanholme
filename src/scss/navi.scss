@@ -1,7 +1,7 @@
 nav {
-	height: fit-content;
+	height: 140px;
 	width: 130px;
-	margin: 19.5px 0 0 35px;
+	margin: 20px 0 0 35px;
 	display: grid;
 	grid-area: h;
 	position: absolute;
@@ -10,7 +10,7 @@ nav {
 	z-index: 10;
 
 	@media (max-width: $ipad) {
-		margin: 19.5px 19.5px 0 0;
+		margin: 20px 20px 0 0;
 		left: unset;
 		right: 0;
 	}
