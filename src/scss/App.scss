@@ -58,10 +58,11 @@ body {
 }
 
 main {
-	grid-area: m;
 	height: fit-content;
 	width: calc(100vw - 70px);
 	margin: 20px 35px;
+	grid-area: m;
+	align-self: center;
 
 	@media (max-width: $ipad) {
 		height: fit-content;

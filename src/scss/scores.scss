@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,700;1,400&display=swap');
 
+#scores-header {
+	justify-content: center;
+	justify-self: center;
+	align-content: end;
+
+	@media (max-width: $ipad) {
+		align-content: center;
+	}
+}
+
 .scores .score-cover {
 	@include focus();
 	height: 100%;
