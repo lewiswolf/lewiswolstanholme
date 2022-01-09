@@ -1,0 +1,32 @@
+.code {
+	iframe {
+		width: 100%;
+		overflow: auto;
+		border: 0;
+	}
+
+	.readme {
+		width: 80%;
+		margin: 0 auto;
+		text-align: justify;
+		cursor: default;
+
+		@media (max-width: $ipad) {
+			width: 100%;
+		}
+
+		*:first-child {
+			margin-top: 0;
+		}
+
+		*:last-child {
+			margin-bottom: 0;
+		}
+
+		a {
+			@include focus();
+			color: black;
+			text-decoration: underline;
+		}
+	}
+}

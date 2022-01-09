@@ -1,53 +1,49 @@
 export type CodeProjectsJSON = {
 	github: string
+	iframe: string
+	iframeArguments: { [key: string]: any }
 	name: string
 }
 
 export const projects: { [key: string]: CodeProjectsJSON } = {
 	'tempgen': {
 		github: 'lewiswolf/Temperament-Generator',
+		// iframe: 'https://www.youtube-nocookie.com/embed/C4txE2hQ53w?theme=dark&color=white',
+		// iframeArguments: {
+		// 	allow: 'accelerometer; autoplay; encrypted-media; gyroscope;',
+		// 	allowFullScreen: true,
+		// 	autoResize: false,
+		// 	frameBorder: 0,
+		// 	style: {
+		// 		height: 'auto !important',
+		// 	}
+		// },
+		iframe: '',
+		iframeArguments: {},
 		name: 'Temperament Generator',
 	},
 	'microtonal-kontakt': {
 		github: 'lewiswolf/Polyphonic-Microtuning-in-Kontakt-with-Max-MSP',
+		// iframe: 'https://www.youtube-nocookie.com/embed/bQRwxHz54rs?theme=dark&color=white',
+		// iframeArguments: {
+		// 	allow: 'accelerometer; autoplay; encrypted-media; gyroscope;',
+		// 	allowFullScreen: true,
+		// 	autoResize: false,
+		// 	frameBorder: 0,
+		// },
+		iframe: '',
+		iframeArguments: {},
 		name: 'Polyphonic Microtuning in Kontakt with Max MSP',
 	},
 	'maxmsp-gui': {
 		github: 'lewiswolf/maxmsp-gui',
+		iframe: 'https://lewiswolf.github.io/maxmsp-gui/',
+		iframeArguments: {
+			autoResize: true,
+			bodyBackground: 'unset',
+			checkOrigin: false,
+			scrolling: true,
+		},
 		name: 'maxmsp-gui',
 	},
 }
-	// {
-	// 	"id": "tempgen",
-	// 	"name": "Temperament Generator",
-	// 	"readme": "https://raw.githubusercontent.com/lewiswolf/Temperament-Generator/master/README.md",
-	// 	"github": "https://github.com/lewiswolf/Temperament-Generator",
-	// 	"npm": null,
-	// 	"iframe": null,
-	// 	"iframeOverrideBG": false,
-	// 	"img": "code-tempgen.png",
-	// 	"codeSyntax": null
-	// },
-	// {
-	// 	"id": "microtonal-kontakt",
-	// 	"name": "Polyphonic Microtuning in Kontakt with Max MSP",
-	// 	"readme": "https://raw.githubusercontent.com/lewiswolf/Polyphonic-Microtuning-in-Kontakt-with-Max-MSP/master/readme.md",
-	// 	"github": "https://github.com/lewiswolf/Polyphonic-Microtuning-in-Kontakt-with-Max-MSP",
-	// 	"npm": null,
-	// 	"iframe": null,
-	// 	"iframeOverrideBG": false,
-	// 	"img": "code-kontakt.png",
-	// 	"codeSyntax": "KSP"
-	// },
-	// {
-	// 	"id": "maxmsp-gui",
-	// 	"name": "maxmsp-gui",
-	// 	"readme": "https://raw.githubusercontent.com/lewiswolf/maxmsp-gui/master/README.md",
-	// 	"github": "https://github.com/lewiswolf/maxmsp-gui",
-	// 	"npm": "",
-	// 	"iframe": "https://lewiswolf.github.io/maxmsp-gui/",
-	// 	"iframeOverrideBG": true,
-	// 	"img": null,
-	// 	"codeSyntax": "default"
-	// }
-
