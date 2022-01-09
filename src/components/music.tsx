@@ -22,11 +22,7 @@ export default function Music(): JSX.Element {
 							}
 						}}
 					>
-						<img
-							alt={`album artwork for ${obj.title}`}
-							src={`${process.env.PUBLIC_URL}/images/${obj.src}`}
-							tabIndex={-1}
-						/>
+						<img alt={`album artwork for ${obj.title}`} src={obj.src} tabIndex={-1} />
 					</div>
 				)}
 			/>
