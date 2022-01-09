@@ -1,6 +1,6 @@
 // dependencies
-import { useEffect } from 'react'
 import { Umenu } from 'maxmsp-gui'
+import { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 // src

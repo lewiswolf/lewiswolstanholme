@@ -1,5 +1,5 @@
 // dependencies
-import React from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 type Props = {
 	cell: (obj: any, i: number) => JSX.Element
@@ -22,15 +22,15 @@ const GridFromJSON: React.FC<Props> = ({
 	maxHeight = 280,
 	maxWidth = maxHeight,
 }) => {
-	const self = React.useRef<HTMLDivElement>(null)
-	const [content, setContent] = React.useState<{ [key: string]: any }[]>([])
-	const [gridState, setGrid] = React.useState<GridProperties>({
+	const self = useRef<HTMLDivElement>(null)
+	const [content, setContent] = useState<{ [key: string]: any }[]>([])
+	const [gridState, setGrid] = useState<GridProperties>({
 		gridDim: 0,
 		gridWidth: '',
 		maxCol: '',
 	})
 
-	React.useEffect(() => {
+	useEffect(() => {
 		/*
 			This effect is used to dyanmically load the content either as a raw json file
 			from the public folder, or update the content using the prop itself.
@@ -45,7 +45,7 @@ const GridFromJSON: React.FC<Props> = ({
 		}
 	}, [json])
 
-	React.useEffect(() => {
+	useEffect(() => {
 		/*
 			This effect is used in conjunction with the 'resize' window event listener.
 			When the window is resized, the size of the parent element is queried, from
