@@ -1,5 +1,5 @@
 // dependencies
-import React from 'react'
+import { useEffect } from 'react'
 import { Umenu } from 'maxmsp-gui'
 import { useLocation, useNavigate } from 'react-router-dom'
 
@@ -37,7 +37,7 @@ export default function Scores(): JSX.Element {
 	const location: string = useLocation().search.slice(6)
 	const navigate = useNavigate()
 
-	React.useEffect(() => {
+	useEffect(() => {
 		if (pages.indexOf(location) === -1) {
 			navigate(`/scores?view=${pages[0]}`)
 		}
@@ -45,7 +45,7 @@ export default function Scores(): JSX.Element {
 
 	return (
 		<>
-			<div className='header' id='scores-header'>
+			<header>
 				<Umenu
 					ariaLabel='What type of scores are on the page?'
 					items={pages.map(
@@ -54,7 +54,7 @@ export default function Scores(): JSX.Element {
 					width={200}
 					onChange={(i: number) => navigate(`/scores?view=${pages[i]}`)}
 				/>
-			</div>
+			</header>
 			<main className='scores'>
 				<GridFromJSON
 					json={location && location === pages[1] ? engravings : compositions}

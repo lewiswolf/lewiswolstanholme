@@ -10,6 +10,7 @@ import Home from './home'
 import Music from './music'
 import Scores from './scores'
 import Videos from './videos'
+import Code from './code'
 import Info from './info'
 
 // scss
@@ -28,7 +29,7 @@ export default function App(): JSX.Element {
 				<Route path='/music' element={<Music />} />
 				<Route path='/scores' element={<Scores />} />
 				<Route path='/videos' element={<Videos />} />
-				<Route path='/code' element={<></>} />
+				<Route path='/code' element={<Code />} />
 				<Route path='/info' element={<Info />} />
 				<Route path='*' element={<Navigate to='/' />} />
 			</Routes>

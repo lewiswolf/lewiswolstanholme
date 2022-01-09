@@ -14,12 +14,10 @@ $highlight: #b4b4b4;
 // children
 
 @import './navi';
-@import './home';
 @import './music';
 @import './scores';
 @import './videos';
 // @import './code';
-@import './info';
 
 // structure
 
@@ -44,16 +42,26 @@ body {
 	grid-template-areas: 'h' 'm';
 }
 
-.header {
+header {
 	height: 160px;
 	max-width: 100%;
 	margin: 0 20px;
 	display: grid;
 	grid-area: h;
+	grid-auto-flow: column;
+	grid-column-gap: 20px;
+	align-content: end;
+	justify-self: center;
 
 	@media (max-width: $ipad) {
 		height: 100px;
 		margin: 160px 20px -20px 20px;
+		align-content: center;
+	}
+
+	p {
+		line-height: 24px;
+		margin: 0;
 	}
 }
 

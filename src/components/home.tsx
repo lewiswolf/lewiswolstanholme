@@ -7,9 +7,9 @@ export default function Home(): JSX.Element {
 
 	return (
 		<>
-			<div className='header' id='home-header'>
+			<header>
 				<Slider fidelity={1000} length={200} onChange={(v: number) => setVisitibility(v)} />
-			</div>
+			</header>
 			<main
 				className='home'
 				style={{
