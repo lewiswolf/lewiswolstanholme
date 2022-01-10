@@ -17,8 +17,8 @@ type GridProperties = {
 
 const GridFromJSON: React.FC<Props> = ({
 	cell,
-	json,
 	gridSpacer = 20,
+	json,
 	maxHeight = 280,
 	maxWidth = maxHeight,
 }) => {
@@ -81,13 +81,13 @@ const GridFromJSON: React.FC<Props> = ({
 				width: gridState.gridWidth,
 				margin: '0 auto',
 				display: 'grid',
-				justifyContent: 'space-evenly',
-				justifyItems: 'center',
-				alignItems: 'center',
 				gridTemplateColumns: `repeat(${gridState.maxCol}, ${gridState.gridDim}px)`,
 				gridAutoRows: `${maxHeight}px`,
 				columnGap: `${gridSpacer}px`,
 				rowGap: `${gridSpacer}px`,
+				justifyContent: 'space-evenly',
+				justifyItems: 'center',
+				alignItems: 'center',
 			}}
 		>
 			{content.map((obj: any, i: number): JSX.Element => cell(obj, i))}

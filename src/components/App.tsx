@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 
 // components
+import Metadata from './sub-components/metadata'
 import { GoogleAnalytics, analyticsPageView } from './sub-components/analytics'
 import Navi from './navi'
 import Home from './home'
@@ -22,16 +23,21 @@ export default function App(): JSX.Element {
 
 	return (
 		<>
+			<Metadata
+				darkModeFavicon={true}
+				description='Lewis Wolstanholme - Musician, Composer & Creative Coder'
+				title={'Lewis Wolstanholme'}
+			/>
 			<GoogleAnalytics id='G-52FG4N6KPP' />
 			<Navi />
 			<Routes>
-				<Route path='/' element={<Home />} />
-				<Route path='/music' element={<Music />} />
-				<Route path='/scores' element={<Scores />} />
-				<Route path='/videos' element={<Videos />} />
-				<Route path='/code' element={<Code />} />
-				<Route path='/info' element={<Info />} />
-				<Route path='*' element={<Navigate to='/' />} />
+				<Route element={<Home />} path='/' />
+				<Route element={<Music />} path='/music' />
+				<Route element={<Scores />} path='/scores' />
+				<Route element={<Videos />} path='/videos' />
+				<Route element={<Code />} path='/code' />
+				<Route element={<Info />} path='/info' />
+				<Route element={<Navigate to='/' />} path='*' />
 			</Routes>
 		</>
 	)
