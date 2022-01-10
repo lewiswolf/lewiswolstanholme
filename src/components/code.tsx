@@ -28,7 +28,7 @@ export default function Code(): JSX.Element {
 				.then((markdown: string) => setMarkdown(markdown.replace('by Lewis Wolf', '')))
 				.catch()
 		}
-	})
+	}, [location, navigate, pages])
 
 	return (
 		<>

@@ -12,14 +12,6 @@ $highlight: #b4b4b4;
 	}
 }
 
-// children
-
-@import './navi';
-@import './music';
-@import './scores';
-@import './videos';
-@import './code';
-
 // structure
 
 body {
@@ -58,14 +50,14 @@ header {
 
 	@media (max-width: $ipad) {
 		height: 100px;
-		margin: 160px 20px -20px 20px;
+		margin: 160px 20px 0 20px;
 		grid-auto-flow: column;
 		align-content: center;
 	}
 
 	@media (max-width: $iphone) {
 		height: 100px;
-		margin: 160px 20px -20px 20px;
+		margin: 160px 20px 0 20px;
 		grid-auto-flow: row;
 		align-content: center;
 	}
@@ -86,6 +78,15 @@ main {
 	@media (max-width: $ipad) {
 		height: fit-content;
 		width: calc(100vw - 40px);
-		margin: 20px;
+		margin: 0 20px 20px 20px;
 	}
 }
+
+// children
+
+@import './navi';
+@import './home';
+@import './music';
+@import './scores';
+@import './videos';
+@import './code';
