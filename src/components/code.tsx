@@ -1,11 +1,11 @@
 // dependencies
 import IframeResizer from 'iframe-resizer-react'
-import { Umenu, TextButton } from 'maxmsp-gui'
+import { TextButton, Umenu } from 'maxmsp-gui'
 import { useEffect, useState } from 'react'
 import remarkGfm from 'remark-gfm'
 import ReactMarkdown from 'react-markdown'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { Prism } from 'react-syntax-highlighter'
 
 // src
 import { projects } from '../config/code'
@@ -63,10 +63,10 @@ export default function Code(): JSX.Element {
 						code({ className, children }) {
 							const match = /language-(\w+)/.exec(className || '')
 							return match ? (
-								<SyntaxHighlighter
+								<Prism
 									children={String(children).replace(/\n$/, '')}
-									style={syntax}
 									language={match[1]}
+									style={syntax}
 								/>
 							) : (
 								<code className={className}>{children}</code>

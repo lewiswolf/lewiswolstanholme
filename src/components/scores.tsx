@@ -22,7 +22,7 @@ const CompositionThumb: React.FC<{ obj: ScoresJSON }> = ({ obj }) => {
 const EngravingThumb: React.FC<{ obj: ScoresJSON }> = ({ obj }) => {
 	return (
 		<div className='engraving-thumb' tabIndex={-1}>
-			<p>{obj.composer ? obj.composer : ''}</p>
+			<p>{obj.composer}</p>
 			<p>{obj.title}</p>
 			<hr />
 			<p>{obj.instrumentation}</p>
@@ -61,9 +61,9 @@ export default function Scores(): JSX.Element {
 					cell={(obj: ScoresJSON, i: number): JSX.Element => {
 						return (
 							<div
-								key={i}
+								aria-label={`Download the score for ${obj.title}.`}
 								className='score-cover'
-								aria-label={`download the score for ${obj.title}`}
+								key={i}
 								role='button'
 								tabIndex={0}
 								onClick={() =>
@@ -84,10 +84,10 @@ export default function Scores(): JSX.Element {
 									}
 								}}
 							>
-								{location && location === pages[1] ? (
-									<EngravingThumb obj={obj} />
-								) : (
+								{location && location === pages[0] ? (
 									<CompositionThumb obj={obj} />
+								) : (
+									<EngravingThumb obj={obj} />
 								)}
 							</div>
 						)

@@ -9,7 +9,7 @@ export default function Music(): JSX.Element {
 				json={music_json}
 				cell={(obj: MusicJSON, i: number): JSX.Element => (
 					<div
-						aria-label={`listen to ${obj.title}`}
+						aria-label={`Listen to ${obj.title}.`}
 						className='albumcover'
 						key={i}
 						role='button'
@@ -22,7 +22,7 @@ export default function Music(): JSX.Element {
 							}
 						}}
 					>
-						<img alt={`album artwork for ${obj.title}`} src={obj.src} tabIndex={-1} />
+						<img alt={`Album artwork for ${obj.title}.`} src={obj.src} tabIndex={-1} />
 					</div>
 				)}
 			/>
