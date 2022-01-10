@@ -3,17 +3,32 @@
 	<head>
 		<title>Lewis Wolstanholme</title>
 		<meta charset="utf-8" />
+		<meta
+			http-equiv="Content-Security-Policy"
+			content="
+				connect-src 'self' raw.githubusercontent.com www.google-analytics.com;
+				default-src 'self';
+				frame-src lewiswolf.github.io www.youtube-nocookie.com;
+				font-src fonts.gstatic.com;
+				img-src 'self' * data: 'self'; 
+				script-src 'self' 'unsafe-inline' www.googletagmanager.com; 
+				style-src 'unsafe-inline' fonts.googleapis.com;
+			"
+		/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="theme-color" content="#333333" />
+		<meta name="author" content="Lewis Wolf" />
+		<meta name="color-scheme" content="dark light" />
 		<meta
 			name="description"
 			content="Lewis Wolstanholme - Musician, Composer & Creative Coder"
 			data-react-helmet="true"
 		/>
-		<link rel="manifest" href="/manifest.json" />
-		<link rel="icon" media="(prefers-color-scheme: light)" href="/favicon.ico" />
+		<meta name="keywords" content="Lewis Wolstanholme Music Art Creative Code" />
+		<meta name="theme-color" content="#333333" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="apple-touch-icon" href="/favicon192.png" />
+		<link rel="icon" media="(prefers-color-scheme: light)" href="/favicon.ico" />
+		<link rel="manifest" href="/manifest.json" />
 	</head>
 	<body>
 		<noscript>You need to enable JavaScript to run this app.</noscript>
