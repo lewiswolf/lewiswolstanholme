@@ -88,6 +88,79 @@ class Triangle {
 		}
 		return collision
 	}
+
+	drawTriangleOnTop = (triangle: Triangle, p5: any) => {
+		const intersections = this.findIntersections(triangle)
+
+		this.lines.forEach((line, idx) => {
+			let vertexInTriangle = [
+				triangle.isPointInsideOfTriangle(line[0]),
+				triangle.isPointInsideOfTriangle(line[1]),
+			]
+			if (!vertexInTriangle[0] && !vertexInTriangle[1] && !intersections[idx].length) {
+				// if both vertex of line outside of triangle and no intersections
+				p5.line(...line[0], ...line[1])
+			} else if (!vertexInTriangle[0] && vertexInTriangle[1] && intersections[idx]) {
+				// if vertex A outside, vertex B inside, find closest intersection and draw line A to intersection
+				let a = getClosestPointToVertex(line[0], intersections[idx])
+				a && p5.line(...line[0], ...a)
+			} else if (vertexInTriangle[0] && !vertexInTriangle[1] && intersections[idx]) {
+				// if vertex A inside, vertex B outside, find closest intersection and draw line B to intersection
+				let a = getClosestPointToVertex(line[1], intersections[idx])
+				a && p5.line(...line[1], ...a)
+			} else if (
+				vertexInTriangle[0] &&
+				vertexInTriangle[1] &&
+				intersections[idx].length == 2
+			) {
+				// if both vertex in triangle
+				p5.line(...intersections[0], ...intersections[1])
+			} else if (
+				!vertexInTriangle[0] &&
+				!vertexInTriangle[1] &&
+				intersections[idx].length == 2
+			) {
+				// if both vertex  of triangle and two intersections
+
+				let a = getClosestPointToVertex(line[0], intersections[idx])
+				a && p5.line(...line[0], ...a)
+				let b = getClosestPointToVertex(line[1], intersections[idx])
+				b && p5.line(...line[1], ...b)
+			}
+		})
+	}
+	drawTriangleInside = (triangle: Triangle, p5: any) => {
+		const intersections = this.findIntersections(triangle)
+
+		this.lines.forEach((line, idx) => {
+			let vertexInTriangle = [
+				triangle.isPointInsideOfTriangle(line[0]),
+				triangle.isPointInsideOfTriangle(line[1]),
+			]
+			if (vertexInTriangle[0] && vertexInTriangle[1]) {
+				p5.line(...line[0], ...line[1])
+			} else if (vertexInTriangle[0] && !vertexInTriangle[1] && intersections[idx]) {
+				let a = getClosestPointToVertex(line[0], intersections[idx])
+				a && p5.line(...line[0], ...a)
+			} else if (!vertexInTriangle[0] && vertexInTriangle[1] && intersections[idx]) {
+				let a = getClosestPointToVertex(line[1], intersections[idx])
+				a && p5.line(...line[1], ...a)
+			}
+			// } else if (!vertexInTriangle[0] && vertexInTriangle[1] && intersections[idx]) {
+			// 	let a = getClosestPointToVertex(line[0], intersections[idx])
+			// 	a && p5.line(...line[0], ...a)
+			// } else if (vertexInTriangle[0] && !vertexInTriangle[1] && intersections[idx]) {
+			// 	let a = getClosestPointToVertex(line[1], intersections[idx])
+			// 	a && p5.line(...line[1], ...a)
+			// } else if (
+			// 	!vertexInTriangle[0] &&
+			// 	!vertexInTriangle[1] &&
+			// 	intersections[idx].length == 2
+			// ) {
+			// 	p5.line(...intersections[0], ...intersections[1])
+			// }
+		})
+	}
 }
 
 const calculateAreaOfTriangle = (v0: Point, v1: Point, v2: Point): number =>
@@ -121,8 +194,9 @@ const getClosestPointToVertex = (vertex: Point, arrayOfPoints: Point[]): Point |
 }
 
 const sketch = (p5: any) => {
-	let triangles: [Triangle, Triangle]
-	let spin: [number, number] = [
+	let triangles: [Triangle, Triangle, Triangle]
+	let spin: [number, number, number] = [
+		(Math.round(Math.random()) * 2 - 1) * (Math.random() * 0.01 + 0.002),
 		(Math.round(Math.random()) * 2 - 1) * (Math.random() * 0.01 + 0.002),
 		(Math.round(Math.random()) * 2 - 1) * (Math.random() * 0.01 + 0.002),
 	]
@@ -133,7 +207,11 @@ const sketch = (p5: any) => {
 
 	p5.setup = (): void => {
 		p5.createCanvas(dim.width, dim.height)
-		triangles = [new Triangle(Math.random() * 50 + 50), new Triangle(Math.random() * 50 + 50)]
+		triangles = [
+			new Triangle(Math.random() * 50 + 50),
+			new Triangle(Math.random() * 50 + 50),
+			new Triangle(Math.random() * 50 + 50),
+		]
 	}
 
 	p5.updateWithProps = (props: SketchProps): void => {
@@ -148,41 +226,48 @@ const sketch = (p5: any) => {
 		p5.translate(dim.width / 2, dim.height / 2)
 		p5.fill(0, 0)
 		p5.strokeWeight(1)
-		triangles[0].rotate(spin[0])
+		console.log(spin)
+		// triangles[0].rotate(spin[0])
 		triangles[1].rotate(spin[1])
+		triangles[2].rotate(spin[2])
+
 		p5.stroke('black')
 
-		triangles[1].lines.forEach((line) => {
-			p5.stroke('black')
-
+		triangles[2].lines.forEach((line) => {
 			p5.line(...line[0], ...line[1])
 		})
-		const intersections = triangles[0].findIntersections(triangles[1])
 
-		triangles[0].lines.forEach((line, idx) => {
-			let vertexInTriangle = [
-				triangles[1].isPointInsideOfTriangle(line[0]),
-				triangles[1].isPointInsideOfTriangle(line[1]),
-			]
-			if (!vertexInTriangle[0] && !vertexInTriangle[1] && !intersections[idx].length) {
-				p5.line(...line[0], ...line[1])
-			} else if (!vertexInTriangle[0] && vertexInTriangle[1] && intersections[idx]) {
-				let a = getClosestPointToVertex(line[0], intersections[idx])
-				a && p5.line(...line[0], ...a)
-			} else if (vertexInTriangle[0] && !vertexInTriangle[1] && intersections[idx]) {
-				let a = getClosestPointToVertex(line[1], intersections[idx])
-				a && p5.line(...line[1], ...a)
-			} else if (
-				!vertexInTriangle[0] &&
-				!vertexInTriangle[1] &&
-				intersections[idx].length == 2
-			) {
-				let b = getClosestPointToVertex(line[0], intersections[idx])
-				b && p5.line(...line[0], ...b)
-				let a = getClosestPointToVertex(line[1], intersections[idx])
-				a && p5.line(...line[1], ...a)
-			}
-		})
+		triangles[1].drawTriangleOnTop(triangles[2], p5)
+		// triangles[1].drawTriangleOnTop(triangles[2], p5)
+
+		// triangles[2].drawTriangleInside(triangles[0], p5)
+
+		// const intersections = triangles[0].findIntersections(triangles[1])
+
+		// triangles[0].lines.forEach((line, idx) => {
+		// 	let vertexInTriangle = [
+		// 		triangles[1].isPointInsideOfTriangle(line[0]),
+		// 		triangles[1].isPointInsideOfTriangle(line[1]),
+		// 	]
+		// 	if (!vertexInTriangle[0] && !vertexInTriangle[1] && !intersections[idx].length) {
+		// 		p5.line(...line[0], ...line[1])
+		// 	} else if (!vertexInTriangle[0] && vertexInTriangle[1] && intersections[idx]) {
+		// 		let a = getClosestPointToVertex(line[0], intersections[idx])
+		// 		a && p5.line(...line[0], ...a)
+		// 	} else if (vertexInTriangle[0] && !vertexInTriangle[1] && intersections[idx]) {
+		// 		let a = getClosestPointToVertex(line[1], intersections[idx])
+		// 		a && p5.line(...line[1], ...a)
+		// 	} else if (
+		// 		!vertexInTriangle[0] &&
+		// 		!vertexInTriangle[1] &&
+		// 		intersections[idx].length == 2
+		// 	) {
+		// 		let b = getClosestPointToVertex(line[0], intersections[idx])
+		// 		b && p5.line(...line[0], ...b)
+		// 		let a = getClosestPointToVertex(line[1], intersections[idx])
+		// 		a && p5.line(...line[1], ...a)
+		// 	}
+		// })
 
 		//inverted case DO NOT DELETE YET
 
