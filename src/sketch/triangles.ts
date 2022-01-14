@@ -1,5 +1,6 @@
 // dependencies
 import { SketchProps } from 'react-p5-wrapper'
+//import { transform } from 'typescript'
 
 // src
 import { Dimensions } from '../components/sub-components/p5'
@@ -109,17 +110,15 @@ const collideLineLine = (v: Line, w: Line): [number, number] | null => {
 	}
 }
 
-// const getIdxOfClosestPointToVertex = (vertex: Point, arrayOfPoints: Point[]): number => {
-// 	let distances: number[] = []
-
-// 	arrayOfPoints.forEach((pointB: Point) => {
-// 		distances.push(
-// 			Math.sqrt(Math.pow(vertex[0] - pointB[0], 2) + Math.pow(vertex[1] - pointB[1], 2))
-// 		)
-// 	})
-
-// 	return distances.indexOf(Math.max.apply(Math, distances))
-// }
+const getClosestPointToVertex = (vertex: Point, arrayOfPoints: Point[]): Point | undefined => {
+	let distances: number[] = []
+	arrayOfPoints.forEach((pointB: Point) => {
+		distances.push(
+			Math.sqrt(Math.pow(vertex[0] - pointB[0], 2) + Math.pow(vertex[1] - pointB[1], 2))
+		)
+	})
+	return arrayOfPoints[distances.indexOf(Math.min.apply(Math, distances))]
+}
 
 const sketch = (p5: any) => {
 	let triangles: [Triangle, Triangle]
@@ -149,97 +148,120 @@ const sketch = (p5: any) => {
 		p5.translate(dim.width / 2, dim.height / 2)
 		p5.fill(0, 0)
 		p5.strokeWeight(1)
-
 		triangles[0].rotate(spin[0])
 		triangles[1].rotate(spin[1])
+		p5.stroke('black')
 
-		// triangle 0
-		triangles[0].lines.forEach((line) => {
-			p5.stroke('red')
-
-			p5.line(...line[0], ...line[1])
-		})
 		triangles[1].lines.forEach((line) => {
 			p5.stroke('black')
 
 			p5.line(...line[0], ...line[1])
 		})
-
 		const intersections = triangles[0].findIntersections(triangles[1])
-		if (intersections) {
-			p5.strokeWeight(5)
-			p5.stroke('red')
-			intersections.forEach((pointsOnLine: any, idx: number) => {
-				// if (pointsOnLine.length == 0) {
-				// 	p5.strokeWeight(2)
-				// 	p5.stroke('green')
-				// 	triangles[0].vertices.forEach((vertex) => {
-				// 		if (
-				// 			!triangles[0].isPointInsideOfTriangle(vertex) &&
-				// 			triangles[0].lines[idx]?.includes(vertex)
-				// 		) {
-				// 			let line = triangles[0].lines[idx]
-				// 			line && p5.line(...line[0], ...line[1])
-				// 		}
-				// 	})
-				// }
-				console.log(triangles[0].lines[idx])
 
-				if (pointsOnLine.length == 0) {
-					let [a, b] = triangles[0].lines[idx] || [
-						[0, 0],
-						[0, 0],
-					]
-					if (
-						triangles[1].isPointInsideOfTriangle(a) &&
-						triangles[1].isPointInsideOfTriangle(b)
-					) {
-						p5.strokeWeight(2)
-						p5.stroke('blue')
-						p5.line(...a, ...b)
-					}
-				}
+		triangles[0].lines.forEach((line, idx) => {
+			let vertexInTriangle = [
+				triangles[1].isPointInsideOfTriangle(line[0]),
+				triangles[1].isPointInsideOfTriangle(line[1]),
+			]
+			if (!vertexInTriangle[0] && !vertexInTriangle[1] && !intersections[idx].length) {
+				p5.line(...line[0], ...line[1])
+			} else if (!vertexInTriangle[0] && vertexInTriangle[1] && intersections[idx]) {
+				let a = getClosestPointToVertex(line[0], intersections[idx])
+				a && p5.line(...line[0], ...a)
+			} else if (vertexInTriangle[0] && !vertexInTriangle[1] && intersections[idx]) {
+				let a = getClosestPointToVertex(line[1], intersections[idx])
+				a && p5.line(...line[1], ...a)
+			} else if (
+				!vertexInTriangle[0] &&
+				!vertexInTriangle[1] &&
+				intersections[idx].length == 2
+			) {
+				let b = getClosestPointToVertex(line[0], intersections[idx])
+				b && p5.line(...line[0], ...b)
+				let a = getClosestPointToVertex(line[1], intersections[idx])
+				a && p5.line(...line[1], ...a)
+			}
+		})
 
-				// case 2 points on same line
+		//inverted case DO NOT DELETE YET
 
-				if (pointsOnLine.length == 2) {
-					p5.strokeWeight(2)
-					p5.stroke('blue')
-					p5.line(...pointsOnLine[0], ...pointsOnLine[1])
-					p5.strokeWeight(5)
-					p5.stroke('red')
-					p5.point(...pointsOnLine[0])
-					p5.point(...pointsOnLine[1])
-					// draw closest point
-					// triangles[0].vertices.forEach((vertex) => {
-					// 	if (triangles[0].lines[idx]?.includes(vertex)) {
-					// 		p5.strokeWeight(2)
-					// 		p5.stroke('green')
-					// 		p5.line(
-					// 			...vertex,
-					// 			...pointsOnLine[getIdxOfClosestPointToVertex(vertex, pointsOnLine)]
-					// 		)
-					// 	}
-					// })
-				}
-				// case vertex inside triangle0
-				if (pointsOnLine.length == 1) {
-					triangles[0].vertices.forEach((vertex) => {
-						if (
-							triangles[0].lines[idx]?.includes(vertex) &&
-							triangles[1].isPointInsideOfTriangle(vertex)
-						) {
-							p5.strokeWeight(5)
-							p5.stroke('red')
-							p5.point(...pointsOnLine[0])
-							p5.strokeWeight(2)
-							p5.stroke('blue')
-							p5.line(...pointsOnLine[0], ...vertex)
-						}
-					})
-				}
-			})
-		}
+		// const intersections = triangles[0].findIntersections(triangles[1])
+
+		// if (intersections) {
+		// 	p5.strokeWeight(5)
+		// 	p5.stroke('red')
+		// 	intersections.forEach((pointsOnLine: any, idx: number) => {
+		// 		// if (pointsOnLine.length == 0) {
+		// 		// 	p5.strokeWeight(2)
+		// 		// 	p5.stroke('green')
+		// 		// 	triangles[0].vertices.forEach((vertex) => {
+		// 		// 		if (
+		// 		// 			!triangles[0].isPointInsideOfTriangle(vertex) &&
+		// 		// 			triangles[0].lines[idx]?.includes(vertex)
+		// 		// 		) {
+		// 		// 			let line = triangles[0].lines[idx]
+		// 		// 			line && p5.line(...line[0], ...line[1])
+		// 		// 		}
+		// 		// 	})
+		// 		// }
+		// 		console.log(triangles[0].lines[idx])
+
+		// 		if (pointsOnLine.length == 0) {
+		// 			let [a, b] = triangles[0].lines[idx] || [
+		// 				[0, 0],
+		// 				[0, 0],
+		// 			]
+		// 			if (
+		// 				triangles[1].isPointInsideOfTriangle(a) &&
+		// 				triangles[1].isPointInsideOfTriangle(b)
+		// 			) {
+		// 				p5.strokeWeight(2)
+		// 				p5.stroke('blue')
+		// 				p5.line(...a, ...b)
+		// 			}
+		// 		}
+
+		// 		// case 2 points on same line
+
+		// 		if (pointsOnLine.length == 2) {
+		// 			p5.strokeWeight(2)
+		// 			p5.stroke('blue')
+		// 			p5.line(...pointsOnLine[0], ...pointsOnLine[1])
+		// 			p5.strokeWeight(5)
+		// 			p5.stroke('red')
+		// 			p5.point(...pointsOnLine[0])
+		// 			p5.point(...pointsOnLine[1])
+		// 			// draw closest point
+		// 			// triangles[0].vertices.forEach((vertex) => {
+		// 			// 	if (triangles[0].lines[idx]?.includes(vertex)) {
+		// 			// 		p5.strokeWeight(2)
+		// 			// 		p5.stroke('green')
+		// 			// 		p5.line(
+		// 			// 			...vertex,
+		// 			// 			...pointsOnLine[getIdxOfClosestPointToVertex(vertex, pointsOnLine)]
+		// 			// 		)
+		// 			// 	}
+		// 			// })
+		// 		}
+		// 		// case vertex inside triangle0
+		// 		if (pointsOnLine.length == 1) {
+		// 			triangles[0].vertices.forEach((vertex) => {
+		// 				if (
+		// 					triangles[0].lines[idx]?.includes(vertex) &&
+		// 					triangles[1].isPointInsideOfTriangle(vertex)
+		// 				) {
+		// 					p5.strokeWeight(5)
+		// 					p5.stroke('red')
+		// 					p5.point(...pointsOnLine[0])
+		// 					p5.strokeWeight(2)
+		// 					p5.stroke('blue')
+		// 					p5.line(...pointsOnLine[0], ...vertex)
+		// 				}
+		// 			})
+		// 		}
+		// 	})
+		// }
 	}
 }
 
