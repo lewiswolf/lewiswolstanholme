@@ -1,6 +1,7 @@
 // dependencies
 import { Slider } from 'maxmsp-gui'
-import { useEffect, useRef, useState } from 'react'
+// import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 
 // src
 import { P5 } from './sub-components/p5'
@@ -8,17 +9,17 @@ import sketch from '../sketch/triangles'
 
 export default function Home(): JSX.Element {
 	const fidelity: number = 1000
-	const audio = useRef<HTMLAudioElement>(new Audio(`${process.env.PUBLIC_URL}/audio/newts.mp3`))
+	// const audio = useRef<HTMLAudioElement>(new Audio(`${process.env.PUBLIC_URL}/audio/newts.mp3`))
 	const [visibility, setVisitibility] = useState<number>(0)
 
-	useEffect(() => {
-		audio.current.volume = visibility / fidelity
-		if (visibility !== 0) {
-			audio.current.play()
-		} else {
-			audio.current.pause()
-		}
-	}, [visibility])
+	// useEffect(() => {
+	// 	audio.current.volume = visibility / fidelity
+	// 	if (visibility !== 0) {
+	// 		audio.current.play()
+	// 	} else {
+	// 		audio.current.pause()
+	// 	}
+	// }, [visibility])
 
 	return (
 		<>
