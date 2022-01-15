@@ -1,102 +1,100 @@
 // dependencies
-import { SketchProps } from 'react-p5-wrapper'
-//import { transform } from 'typescript'
+import { Sketch, SketchProps } from 'react-p5-wrapper'
 
 // src
 import { Dimensions } from '../components/sub-components/p5'
-
-type Point = [number, number]
-type Line = [[number, number], [number, number]]
+import {
+	Line,
+	Point,
+	intersectionLineLine,
+	isPointInsideOfPolygon,
+	rotatePoint
+} from './geometry'
 
 class Triangle {
-	area: number
-	lines: [Line, Line, Line]
+	spin: number
 	vertices: [Point, Point, Point]
 
-	constructor(size: number) {
-		const A: Point = [size, size]
-		const B: Point = [
-			size * Math.cos((4 * Math.PI) / 3) + Math.random() * 50,
-			size * Math.sin((4 * Math.PI) / 3) + Math.random() * 50,
+	constructor(size: number, spin: number) {
+		this.vertices = [
+			[
+				size,
+				size,
+			],
+			[
+				size * Math.cos((4 * Math.PI) / 3) + Math.random() * 50,
+				size * Math.sin((4 * Math.PI) / 3) + Math.random() * 50,
+			],
+			[
+				size * Math.cos((2 * Math.PI) / 3) + Math.random() * 50,
+				size * Math.sin((2 * Math.PI) / 3) + Math.random() * 50,
+			],
 		]
-		const C: Point = [
-			size * Math.cos((2 * Math.PI) / 3) + Math.random() * 50,
-			size * Math.sin((2 * Math.PI) / 3) + Math.random() * 50,
-		]
-		this.vertices = [A, B, C]
-		this.lines = [
-			[A, B],
-			[B, C],
-			[C, A],
-		]
-		this.area = calculateAreaOfTriangle(...this.vertices)
+		this.spin = spin
 	}
 
-	rotate = (spin: number) => {
-		this.vertices[0] = [
-			this.vertices[0][0] * Math.cos(spin) - this.vertices[0][1] * Math.sin(spin),
-			this.vertices[0][0] * Math.sin(spin) + this.vertices[0][1] * Math.cos(spin),
-		]
-		this.vertices[1] = [
-			this.vertices[1][0] * Math.cos(spin) - this.vertices[1][1] * Math.sin(spin),
-			this.vertices[1][0] * Math.sin(spin) + this.vertices[1][1] * Math.cos(spin),
-		]
-		this.vertices[2] = [
-			this.vertices[2][0] * Math.cos(spin) - this.vertices[2][1] * Math.sin(spin),
-			this.vertices[2][0] * Math.sin(spin) + this.vertices[2][1] * Math.cos(spin),
-		]
-		this.lines = [
-			[this.vertices[0], this.vertices[1]],
-			[this.vertices[1], this.vertices[2]],
-			[this.vertices[2], this.vertices[0]],
+	rotate = (): void => {
+		this.vertices = [
+			rotatePoint(...this.vertices[0], this.spin),
+			rotatePoint(...this.vertices[1], this.spin),
+			rotatePoint(...this.vertices[2], this.spin),
 		]
 	}
+
+	lines = (): [Line, Line, Line] => [
+		[this.vertices[0], this.vertices[1]],
+		[this.vertices[1], this.vertices[2]],
+		[this.vertices[2], this.vertices[0]],
+	]
+
+	// linesInsideTriangle = (t: Triangle): Line[] => {
+	// 	let lines: Line[] = []
+	// 	for (let line of this.lines()) {
+	// 		const intersections: Point[] = t.lines().map((tLine: Line) => intersectionLineLine(line, tLine)).filter((x) => typeof x !== null)
+	// 		const vertexInTriangle: [boolean, boolean] = [
+	// 			isPointInsideOfPolygon(line[0], t.vertices),
+	// 			isPointInsideOfPolygon(line[1], t.vertices),
+	// 		]
+
+	// 		if (vertexInTriangle[0] && vertexInTriangle[1]) {
+	// 			lines.push(line)
+	// 		} else if (vertexInTriangle[0] && !vertexInTriangle[1] && intersections.length === 1) {
+	// 			let a = getClosestPointToVertex(line[0], intersections)
+	// 			a && lines.push([line[0], a])
+	// 		} else if (!vertexInTriangle[0] && vertexInTriangle[1] && intersections.length === 1) {
+	// 			let a = getClosestPointToVertex(line[1], intersections)
+	// 			a && lines.push([line[1], a])
+	// 		} else if (!vertexInTriangle[0] && !vertexInTriangle[1] && intersections.length === 2) { }
+
+	// 	}
+	// 	return lines
+	// }
+
+	// linesOutsideTriangle = (t: Triangle): Line[] => {
+	// 	for (let line of t.lines()) {
+
+	// 	}
+	// 	return []
+	// }
+
 	findIntersections = (triangle: Triangle): any | null => {
 		const intersections: any = [[], [], []]
-		this.lines.forEach((lineA: Line, aIdx: number) => {
-			triangle.lines.forEach((lineB: Line) => {
-				let intersection: Point | null = collideLineLine(lineA, lineB)
+		this.lines().forEach((lineA: Line, aIdx: number) => {
+			triangle.lines().forEach((lineB: Line) => {
+				let intersection: Point | null = intersectionLineLine(lineA, lineB)
 				intersection && intersections[aIdx].push(intersection)
 			})
 		})
 		return intersections
 	}
-	isPointInsideOfTriangle = (point: Point): boolean => {
-		// https://github.com/bmoren/p5.collide2D
-		var collision = false
-
-		// go through each of the vertices, plus the next vertex in the list
-		var next = 0
-		for (var current = 0; current < this.vertices.length; current++) {
-			// get next vertex in list if we've hit the end, wrap around to 0
-			next = current + 1
-			if (next === this.vertices.length) next = 0
-
-			// get the PVectors at our current position this makes our if statement a little cleaner
-			var vc = this.vertices[current] // c for "current"
-			var vn = this.vertices[next] // n for "next"
-
-			// compare position, flip 'collision' variable back and forth
-			if (
-				vc &&
-				vn &&
-				((vc[1] >= point[1] && vn[1] < point[1]) ||
-					(vc[1] < point[1] && vn[1] >= point[1])) &&
-				point[0] < ((vn[0] - vc[0]) * (point[1] - vc[1])) / (vn[1] - vc[1]) + vc[0]
-			) {
-				collision = !collision
-			}
-		}
-		return collision
-	}
 
 	drawTriangleOnTop = (triangle: Triangle, p5: any) => {
 		const intersections = this.findIntersections(triangle)
 
-		this.lines.forEach((line, idx) => {
+		this.lines().forEach((line, idx) => {
 			let vertexInTriangle = [
-				triangle.isPointInsideOfTriangle(line[0]),
-				triangle.isPointInsideOfTriangle(line[1]),
+				isPointInsideOfPolygon(line[0], triangle.vertices),
+				isPointInsideOfPolygon(line[1], triangle.vertices),
 			]
 			if (!vertexInTriangle[0] && !vertexInTriangle[1] && !intersections[idx].length) {
 				// if both vertex of line outside of triangle and no intersections
@@ -112,14 +110,14 @@ class Triangle {
 			} else if (
 				vertexInTriangle[0] &&
 				vertexInTriangle[1] &&
-				intersections[idx].length == 2
+				intersections[idx].length === 2
 			) {
 				// if both vertex in triangle
 				p5.line(...intersections[0], ...intersections[1])
 			} else if (
 				!vertexInTriangle[0] &&
 				!vertexInTriangle[1] &&
-				intersections[idx].length == 2
+				intersections[idx].length === 2
 			) {
 				// if both vertex  of triangle and two intersections
 
@@ -133,10 +131,10 @@ class Triangle {
 	drawTriangleInside = (triangle: Triangle, p5: any) => {
 		const intersections = this.findIntersections(triangle)
 
-		this.lines.forEach((line, idx) => {
+		this.lines().forEach((line, idx) => {
 			let vertexInTriangle = [
-				triangle.isPointInsideOfTriangle(line[0]),
-				triangle.isPointInsideOfTriangle(line[1]),
+				isPointInsideOfPolygon(line[0], triangle.vertices),
+				isPointInsideOfPolygon(line[1], triangle.vertices),
 			]
 			if (vertexInTriangle[0] && vertexInTriangle[1]) {
 				// if both vertex of inside of triangle and no intersections draw line between vertex
@@ -152,7 +150,7 @@ class Triangle {
 			} else if (
 				!vertexInTriangle[0] &&
 				!vertexInTriangle[1] &&
-				intersections[idx].length == 2
+				intersections[idx].length === 2
 			) {
 				// if both vertex outside of triangle and two intersections, draw line between intersections
 				intersections[0][0] &&
@@ -166,26 +164,6 @@ class Triangle {
 	}
 }
 
-const calculateAreaOfTriangle = (v0: Point, v1: Point, v2: Point): number =>
-	Math.abs((v0[0] * (v1[1] - v2[1]) + v1[0] * (v2[1] - v0[1]) + v2[0] * (v0[1] - v1[1])) / 2.0)
-
-const collideLineLine = (v: Line, w: Line): [number, number] | null => {
-	// calculate the distance to intersection point
-	const uA: number =
-		((w[1][0] - w[0][0]) * (v[0][1] - w[0][1]) - (w[1][1] - w[0][1]) * (v[0][0] - w[0][0])) /
-		((w[1][1] - w[0][1]) * (v[1][0] - v[0][0]) - (w[1][0] - w[0][0]) * (v[1][1] - v[0][1]))
-	const uB: number =
-		((v[1][0] - v[0][0]) * (v[0][1] - w[0][1]) - (v[1][1] - v[0][1]) * (v[0][0] - w[0][0])) /
-		((w[1][1] - w[0][1]) * (v[1][0] - v[0][0]) - (w[1][0] - w[0][0]) * (v[1][1] - v[0][1]))
-
-	// if uA and uB are between 0-1, lines are colliding
-	if (uA >= 0 && uA <= 1 && uB >= 0 && uB <= 1) {
-		return [v[0][0] + uA * (v[1][0] - v[0][0]), v[0][1] + uA * (v[1][1] - v[0][1])]
-	} else {
-		return null
-	}
-}
-
 const getClosestPointToVertex = (vertex: Point, arrayOfPoints: Point[]): Point | undefined => {
 	let distances: number[] = []
 	arrayOfPoints.forEach((pointB: Point) => {
@@ -196,27 +174,33 @@ const getClosestPointToVertex = (vertex: Point, arrayOfPoints: Point[]): Point |
 	return arrayOfPoints[distances.indexOf(Math.min.apply(Math, distances))]
 }
 
-const sketch = (p5: any) => {
-	let triangles: [Triangle, Triangle, Triangle]
-	let spin: [number, number, number] = [
-		(Math.round(Math.random()) * 2 - 1) * (Math.random() * 0.01 + 0.002),
-		(Math.round(Math.random()) * 2 - 1) * (Math.random() * 0.01 + 0.002),
-		(Math.round(Math.random()) * 2 - 1) * (Math.random() * 0.01 + 0.002),
-	]
+const sketch: Sketch = (p5) => {
 	let dim: Dimensions = {
 		height: 0,
 		width: 0,
 	}
+	const triangles: [Triangle, Triangle, Triangle] = [
+		new Triangle(
+			Math.random() * 50 + 50,
+			(Math.round(Math.random()) * 2 - 1) * (Math.random() * 0.01 + 0.002)
+		),
+		new Triangle(
+			Math.random() * 50 + 50,
+			(Math.round(Math.random()) * 2 - 1) * (Math.random() * 0.01 + 0.002)
+		),
+		new Triangle(
+			Math.random() * 50 + 50,
+			(Math.round(Math.random()) * 2 - 1) * (Math.random() * 0.01 + 0.002)
+		),
+	]
 
+	// create canvas
 	p5.setup = (): void => {
 		p5.createCanvas(dim.width, dim.height)
-		triangles = [
-			new Triangle(Math.random() * 50 + 50),
-			new Triangle(Math.random() * 50 + 50),
-			new Triangle(Math.random() * 50 + 50),
-		]
+		p5.describe('An illusory animation of three triangles rotating.')
 	}
 
+	// update canvas props
 	p5.updateWithProps = (props: SketchProps): void => {
 		if (props.dimensions) {
 			dim = props.dimensions
@@ -225,25 +209,36 @@ const sketch = (p5: any) => {
 	}
 
 	p5.draw = (): void => {
+		// canvas styles
 		p5.clear()
-		p5.translate(dim.width / 2, dim.height / 2)
+		p5.translate(p5.width / 2, p5.height / 2)
 		p5.fill(0, 0)
-		p5.strokeWeight(1)
-
-		triangles[0].rotate(spin[0])
-		triangles[1].rotate(spin[1])
-		triangles[2].rotate(spin[2])
-
 		p5.stroke('black')
-		// triangle 2 always shows
-		triangles[2].lines.forEach((line) => {
+		p5.strokeWeight(1)
+		// rotate triangles
+		for (let tri of triangles) {
+			tri.rotate()
+		}
+		// triangle 0 always shows
+		for (let line of triangles[0].lines()) {
 			p5.line(...line[0], ...line[1])
-		})
-		triangles[0].drawTriangleOnTop(triangles[1], p5)
-		triangles[1].drawTriangleOnTop(triangles[2], p5)
-
-		// triangle 0 inside of triangle 2 (syntax here is the other way round for some reason)
-		triangles[0].drawTriangleInside(triangles[2], p5)
+		}
+		// // triangle 1 is hidden by triangle 0
+		// for (let line of triangles[1].linesOutsideTriangle(triangles[0])) {
+		// 	p5.line(...line[0], ...line[1])
+		// }
+		// // triangle 2 inside of triangle 0, but hidden by triangle 1
+		// for (let line of triangles[2].linesInsideTriangle(triangles[0])) {
+		// 	p5.line(...line[0], ...line[1])
+		// }
+		// for (let line of triangles[2].linesOutsideTriangle(triangles[1])) {
+		// 	p5.line(...line[0], ...line[1])
+		// }
+		// triangle 1 is hidden by triangle 0
+		triangles[1].drawTriangleOnTop(triangles[0], p5)
+		// triangle 2 inside of triangle 0, but hidden by triangle 1
+		triangles[2].drawTriangleOnTop(triangles[1], p5)
+		triangles[2].drawTriangleInside(triangles[0], p5)
 	}
 }
 
