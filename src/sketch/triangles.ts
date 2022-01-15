@@ -62,6 +62,7 @@ class Triangle {
 		return intersections
 	}
 	isPointInsideOfTriangle = (point: Point): boolean => {
+		// https://github.com/bmoren/p5.collide2D
 		var collision = false
 
 		// go through each of the vertices, plus the next vertex in the list
@@ -234,17 +235,15 @@ const sketch = (p5: any) => {
 		triangles[2].rotate(spin[2])
 
 		p5.stroke('black')
-
+		// triangle 2 always shows
 		triangles[2].lines.forEach((line) => {
 			p5.line(...line[0], ...line[1])
 		})
-
-		p5.stroke('black')
-
+		triangles[0].drawTriangleOnTop(triangles[1], p5)
 		triangles[1].drawTriangleOnTop(triangles[2], p5)
-		// triangles[1].drawTriangleOnTop(triangles[2], p5)
 
-		// triangles[2].drawTriangleInside(triangles[0], p5)
+		// triangle 0 inside of triangle 2 (syntax here is the other way round for some reason)
+		triangles[0].drawTriangleInside(triangles[2], p5)
 	}
 }
 
