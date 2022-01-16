@@ -6,9 +6,10 @@ import { Dimensions } from '../components/sub-components/p5'
 import {
 	Line,
 	Point,
+	compareShortestVector,
 	intersectionLineLine,
 	isPointInsideOfPolygon,
-	rotatePoint
+	rotatePoint,
 } from './geometry'
 
 class Triangle {
@@ -50,7 +51,11 @@ class Triangle {
 	// linesInsideTriangle = (t: Triangle): Line[] => {
 	// 	let lines: Line[] = []
 	// 	for (let line of this.lines()) {
-	// 		const intersections: Point[] = t.lines().map((tLine: Line) => intersectionLineLine(line, tLine)).filter((x) => typeof x !== null)
+	// 		let intersections: Point[] = []
+	// 		for (let tLine of t.lines()) {
+	// 			const int = intersectionLineLine(line, tLine)
+	// 			int && intersections.push(int)
+	// 		}
 	// 		const vertexInTriangle: [boolean, boolean] = [
 	// 			isPointInsideOfPolygon(line[0], t.vertices),
 	// 			isPointInsideOfPolygon(line[1], t.vertices),
@@ -59,11 +64,9 @@ class Triangle {
 	// 		if (vertexInTriangle[0] && vertexInTriangle[1]) {
 	// 			lines.push(line)
 	// 		} else if (vertexInTriangle[0] && !vertexInTriangle[1] && intersections.length === 1) {
-	// 			let a = getClosestPointToVertex(line[0], intersections)
-	// 			a && lines.push([line[0], a])
+	// 			lines.push([line[0], compareShortestVector(line[0], intersections)[0]])
 	// 		} else if (!vertexInTriangle[0] && vertexInTriangle[1] && intersections.length === 1) {
-	// 			let a = getClosestPointToVertex(line[1], intersections)
-	// 			a && lines.push([line[1], a])
+	// 			lines.push([line[1], compareShortestVector(line[1], intersections)[0]])
 	// 		} else if (!vertexInTriangle[0] && !vertexInTriangle[1] && intersections.length === 2) { }
 
 	// 	}
@@ -101,12 +104,10 @@ class Triangle {
 				p5.line(...line[0], ...line[1])
 			} else if (!vertexInTriangle[0] && vertexInTriangle[1] && intersections[idx]) {
 				// if vertex A outside, vertex B inside, find closest intersection and draw line A to intersection
-				let a = getClosestPointToVertex(line[0], intersections[idx])
-				a && p5.line(...line[0], ...a)
+				p5.line(...line[0], ...compareShortestVector(line[0], intersections[idx])[0])
 			} else if (vertexInTriangle[0] && !vertexInTriangle[1] && intersections[idx]) {
 				// if vertex A inside, vertex B outside, find closest intersection and draw line B to intersection
-				let a = getClosestPointToVertex(line[1], intersections[idx])
-				a && p5.line(...line[1], ...a)
+				p5.line(...line[1], ...compareShortestVector(line[1], intersections[idx])[0])
 			} else if (
 				vertexInTriangle[0] &&
 				vertexInTriangle[1] &&
@@ -121,9 +122,8 @@ class Triangle {
 			) {
 				// if both vertex  of triangle and two intersections
 
-				let a = getClosestPointToVertex(line[0], intersections[idx])
-				a && p5.line(...line[0], ...a)
-				let b = getClosestPointToVertex(line[1], intersections[idx])
+				p5.line(...line[0], ...compareShortestVector(line[0], intersections[idx])[0])
+				let b = compareShortestVector(line[1], intersections[idx])[0]
 				b && p5.line(...line[1], ...b)
 			}
 		})
@@ -141,12 +141,10 @@ class Triangle {
 				p5.line(...line[0], ...line[1])
 			} else if (vertexInTriangle[0] && !vertexInTriangle[1] && intersections[idx]) {
 				// if vertex A inside, vertex B outside, find closest point between vertex A and intersection and draw line
-				let a = getClosestPointToVertex(line[0], intersections[idx])
-				a && p5.line(...line[0], ...a)
+				p5.line(...line[0], ...compareShortestVector(line[0], intersections[idx])[0])
 			} else if (!vertexInTriangle[0] && vertexInTriangle[1] && intersections[idx]) {
 				// if vertex A outside, vertex B inside, find closest point between vertex B and intersection and draw line
-				let a = getClosestPointToVertex(line[1], intersections[idx])
-				a && p5.line(...line[1], ...a)
+				p5.line(...line[1], ...compareShortestVector(line[1], intersections[idx])[0])
 			} else if (
 				!vertexInTriangle[0] &&
 				!vertexInTriangle[1] &&
@@ -162,16 +160,6 @@ class Triangle {
 			}
 		})
 	}
-}
-
-const getClosestPointToVertex = (vertex: Point, arrayOfPoints: Point[]): Point | undefined => {
-	let distances: number[] = []
-	arrayOfPoints.forEach((pointB: Point) => {
-		distances.push(
-			Math.sqrt(Math.pow(vertex[0] - pointB[0], 2) + Math.pow(vertex[1] - pointB[1], 2))
-		)
-	})
-	return arrayOfPoints[distances.indexOf(Math.min.apply(Math, distances))]
 }
 
 const sketch: Sketch = (p5) => {
