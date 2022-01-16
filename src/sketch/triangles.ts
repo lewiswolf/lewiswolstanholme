@@ -48,117 +48,66 @@ class Triangle {
 		[this.vertices[2], this.vertices[0]],
 	]
 
-	// linesInsideTriangle = (t: Triangle): Line[] => {
-	// 	let lines: Line[] = []
-	// 	for (let line of this.lines()) {
-	// 		let intersections: Point[] = []
-	// 		for (let tLine of t.lines()) {
-	// 			const int = intersectionLineLine(line, tLine)
-	// 			int && intersections.push(int)
-	// 		}
-	// 		const vertexInTriangle: [boolean, boolean] = [
-	// 			isPointInsideOfPolygon(line[0], t.vertices),
-	// 			isPointInsideOfPolygon(line[1], t.vertices),
-	// 		]
-
-	// 		if (vertexInTriangle[0] && vertexInTriangle[1]) {
-	// 			lines.push(line)
-	// 		} else if (vertexInTriangle[0] && !vertexInTriangle[1] && intersections.length === 1) {
-	// 			lines.push([line[0], compareShortestVector(line[0], intersections)[0]])
-	// 		} else if (!vertexInTriangle[0] && vertexInTriangle[1] && intersections.length === 1) {
-	// 			lines.push([line[1], compareShortestVector(line[1], intersections)[0]])
-	// 		} else if (!vertexInTriangle[0] && !vertexInTriangle[1] && intersections.length === 2) { }
-
-	// 	}
-	// 	return lines
-	// }
-
-	// linesOutsideTriangle = (t: Triangle): Line[] => {
-	// 	for (let line of t.lines()) {
-
-	// 	}
-	// 	return []
-	// }
-
-	findIntersections = (triangle: Triangle): any | null => {
-		const intersections: any = [[], [], []]
-		this.lines().forEach((lineA: Line, aIdx: number) => {
-			triangle.lines().forEach((lineB: Line) => {
-				let intersection: Point | null = intersectionLineLine(lineA, lineB)
-				intersection && intersections[aIdx].push(intersection)
+	linesInsideTriangle = (t: Triangle): Line[] => {
+		let lines: Line[] = []
+		this.lines().forEach((line) => {
+			let intersections: Point[] = []
+			t.lines().forEach((tLine: Line) => {
+				let intersection = intersectionLineLine(line, tLine)
+				intersection && intersections.push(intersection)
 			})
-		})
-		return intersections
-	}
-
-	drawTriangleOnTop = (triangle: Triangle, p5: any) => {
-		const intersections = this.findIntersections(triangle)
-
-		this.lines().forEach((line, idx) => {
-			let vertexInTriangle = [
-				isPointInsideOfPolygon(line[0], triangle.vertices),
-				isPointInsideOfPolygon(line[1], triangle.vertices),
-			]
-			if (!vertexInTriangle[0] && !vertexInTriangle[1] && !intersections[idx].length) {
-				// if both vertex of line outside of triangle and no intersections
-				p5.line(...line[0], ...line[1])
-			} else if (!vertexInTriangle[0] && vertexInTriangle[1] && intersections[idx]) {
-				// if vertex A outside, vertex B inside, find closest intersection and draw line A to intersection
-				p5.line(...line[0], ...compareShortestVector(line[0], intersections[idx])[0])
-			} else if (vertexInTriangle[0] && !vertexInTriangle[1] && intersections[idx]) {
-				// if vertex A inside, vertex B outside, find closest intersection and draw line B to intersection
-				p5.line(...line[1], ...compareShortestVector(line[1], intersections[idx])[0])
-			} else if (
-				vertexInTriangle[0] &&
-				vertexInTriangle[1] &&
-				intersections[idx].length === 2
-			) {
-				// if both vertex in triangle
-				p5.line(...intersections[0], ...intersections[1])
-			} else if (
-				!vertexInTriangle[0] &&
-				!vertexInTriangle[1] &&
-				intersections[idx].length === 2
-			) {
-				// if both vertex  of triangle and two intersections
-
-				p5.line(...line[0], ...compareShortestVector(line[0], intersections[idx])[0])
-				let b = compareShortestVector(line[1], intersections[idx])[0]
-				b && p5.line(...line[1], ...b)
-			}
-		})
-	}
-	drawTriangleInside = (triangle: Triangle, p5: any) => {
-		const intersections = this.findIntersections(triangle)
-
-		this.lines().forEach((line, idx) => {
-			let vertexInTriangle = [
-				isPointInsideOfPolygon(line[0], triangle.vertices),
-				isPointInsideOfPolygon(line[1], triangle.vertices),
+			const vertexInTriangle: [boolean, boolean] = [
+				isPointInsideOfPolygon(line[0], t.vertices),
+				isPointInsideOfPolygon(line[1], t.vertices),
 			]
 			if (vertexInTriangle[0] && vertexInTriangle[1]) {
 				// if both vertex of inside of triangle and no intersections draw line between vertex
-				p5.line(...line[0], ...line[1])
-			} else if (vertexInTriangle[0] && !vertexInTriangle[1] && intersections[idx]) {
-				// if vertex A inside, vertex B outside, find closest point between vertex A and intersection and draw line
-				p5.line(...line[0], ...compareShortestVector(line[0], intersections[idx])[0])
-			} else if (!vertexInTriangle[0] && vertexInTriangle[1] && intersections[idx]) {
-				// if vertex A outside, vertex B inside, find closest point between vertex B and intersection and draw line
-				p5.line(...line[1], ...compareShortestVector(line[1], intersections[idx])[0])
-			} else if (
-				!vertexInTriangle[0] &&
-				!vertexInTriangle[1] &&
-				intersections[idx].length === 2
-			) {
+				lines.push(line)
+			} else if (vertexInTriangle[0] && !vertexInTriangle[1] && intersections[0]) {
+				// if vertex A outside, vertex B inside, find closest intersection and draw line A to intersection
+				lines.push([line[0], intersections[0]])
+			} else if (!vertexInTriangle[0] && vertexInTriangle[1] && intersections[0]) {
+				// if vertex A inside, vertex B outside, find closest intersection and draw line B to intersection
+				lines.push([line[1], compareShortestVector(line[1], intersections)[0]])
+			} else if (!vertexInTriangle[0] && !vertexInTriangle[1] && intersections[0] && intersections[1]) {
 				// if both vertex outside of triangle and two intersections, draw line between intersections
-				intersections[0][0] &&
-					intersections[0][1] &&
-					p5.line(...intersections[0][0], ...intersections[0][1])
-				intersections[1][0] &&
-					intersections[1][1] &&
-					p5.line(...intersections[1][0], ...intersections[1][1])
+				lines.push([intersections[0], intersections[1]])
 			}
 		})
+		return lines
+	}
+
+	linesOutsideTriangle = (t: Triangle): Line[] => {
+		let lines: Line[] = []
+		this.lines().forEach((line) => {
+			let intersections: Point[] = []
+			t.lines().forEach((tLine: Line) => {
+				let intersection = intersectionLineLine(line, tLine)
+				intersection && intersections.push(intersection)
+			})
+			const vertexInTriangle: [boolean, boolean] = [
+				isPointInsideOfPolygon(line[0], t.vertices),
+				isPointInsideOfPolygon(line[1], t.vertices),
+			]
+			if (!vertexInTriangle[0] && !vertexInTriangle[1] && !intersections.length) {
+				// if both vertex of inside of triangle and no intersections draw line between vertex
+				lines.push(line)
+			} else if (!vertexInTriangle[0] && vertexInTriangle[1] && intersections) {
+				// if vertex A outside, vertex B inside, find closest intersection and draw line A to intersection
+				lines.push([line[0], compareShortestVector(line[0], intersections)[0]])
+			} else if (vertexInTriangle[0] && !vertexInTriangle[1] && intersections) {
+				// if vertex A inside, vertex B outside, find closest intersection and draw line B to intersection
+				lines.push([line[1], compareShortestVector(line[1], intersections)[0]])
+			} else if (vertexInTriangle[0] && vertexInTriangle[1] && intersections[0] && intersections[1]) {
+				// if both vertex in triangle
+				lines.push([intersections[0], intersections[1]])
+			} else if (!vertexInTriangle[0] && !vertexInTriangle[1] && intersections[0] && intersections[1]) {
+				// if both vertex  of triangle and two intersections
+				lines.push([line[0], compareShortestVector(line[0], intersections)[0]])
+				lines.push([line[1], compareShortestVector(line[1], intersections)[0]])
+			}
+		})
+		return lines
 	}
 }
 
@@ -212,21 +161,16 @@ const sketch: Sketch = (p5) => {
 			p5.line(...line[0], ...line[1])
 		}
 		// // triangle 1 is hidden by triangle 0
-		// for (let line of triangles[1].linesOutsideTriangle(triangles[0])) {
-		// 	p5.line(...line[0], ...line[1])
-		// }
+		for (let line of triangles[1].linesOutsideTriangle(triangles[0])) {
+			p5.line(...line[0], ...line[1])
+		}
 		// // triangle 2 inside of triangle 0, but hidden by triangle 1
-		// for (let line of triangles[2].linesInsideTriangle(triangles[0])) {
-		// 	p5.line(...line[0], ...line[1])
-		// }
-		// for (let line of triangles[2].linesOutsideTriangle(triangles[1])) {
-		// 	p5.line(...line[0], ...line[1])
-		// }
-		// triangle 1 is hidden by triangle 0
-		triangles[1].drawTriangleOnTop(triangles[0], p5)
-		// triangle 2 inside of triangle 0, but hidden by triangle 1
-		triangles[2].drawTriangleOnTop(triangles[1], p5)
-		triangles[2].drawTriangleInside(triangles[0], p5)
+		for (let line of triangles[2].linesInsideTriangle(triangles[0])) {
+			p5.line(...line[0], ...line[1])
+		}
+		for (let line of triangles[2].linesOutsideTriangle(triangles[1])) {
+			p5.line(...line[0], ...line[1])
+		}
 	}
 }
 
