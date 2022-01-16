@@ -160,11 +160,11 @@ const sketch: Sketch = (p5) => {
 		for (let line of triangles[0].lines()) {
 			p5.line(...line[0], ...line[1])
 		}
-		// // triangle 1 is hidden by triangle 0
+		// triangle 1 is hidden by triangle 0
 		for (let line of triangles[1].linesOutsideTriangle(triangles[0])) {
 			p5.line(...line[0], ...line[1])
 		}
-		// // triangle 2 inside of triangle 0, but hidden by triangle 1
+		// triangle 2 inside of triangle 0, but hidden by triangle 1
 		for (let line of triangles[2].linesInsideTriangle(triangles[0])) {
 			p5.line(...line[0], ...line[1])
 		}

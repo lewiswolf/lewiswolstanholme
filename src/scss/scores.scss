@@ -21,7 +21,7 @@
 		display: grid;
 		grid-template-rows: repeat(3, 1fr);
 		position: relative;
-		font-family: 'Helvetica';
+		font-family: inherit;
 		background: rgb(34, 31, 32);
 
 		svg {

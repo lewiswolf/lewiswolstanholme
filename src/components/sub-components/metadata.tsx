@@ -33,8 +33,3 @@ const Metadata: React.FC<{
 }
 
 export default Metadata
-
-// 		{/* <meta
-// 	http-equiv='Content-Security-Policy'
-// 	content="script-src 'self' https://www.googletagmanager.com; style-src 'self';"
-// /> */}
