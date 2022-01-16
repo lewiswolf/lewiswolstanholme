@@ -50,12 +50,12 @@ class Triangle {
 
 	linesInsideTriangle = (t: Triangle): Line[] => {
 		let lines: Line[] = []
-		this.lines().forEach((line) => {
+		for (let line of this.lines()) {
 			let intersections: Point[] = []
-			t.lines().forEach((tLine: Line) => {
+			for (let tLine of t.lines()) {
 				let intersection = intersectionLineLine(line, tLine)
 				intersection && intersections.push(intersection)
-			})
+			}
 			const vertexInTriangle: [boolean, boolean] = [
 				isPointInsideOfPolygon(line[0], t.vertices),
 				isPointInsideOfPolygon(line[1], t.vertices),
@@ -73,18 +73,18 @@ class Triangle {
 				// if both vertex outside of triangle and two intersections, draw line between intersections
 				lines.push([intersections[0], intersections[1]])
 			}
-		})
+		}
 		return lines
 	}
 
 	linesOutsideTriangle = (t: Triangle): Line[] => {
 		let lines: Line[] = []
-		this.lines().forEach((line) => {
+		for (let line of this.lines()) {
 			let intersections: Point[] = []
-			t.lines().forEach((tLine: Line) => {
+			for (let tLine of t.lines()) {
 				let intersection = intersectionLineLine(line, tLine)
 				intersection && intersections.push(intersection)
-			})
+			}
 			const vertexInTriangle: [boolean, boolean] = [
 				isPointInsideOfPolygon(line[0], t.vertices),
 				isPointInsideOfPolygon(line[1], t.vertices),
@@ -106,7 +106,7 @@ class Triangle {
 				lines.push([line[0], compareShortestVector(line[0], intersections)[0]])
 				lines.push([line[1], compareShortestVector(line[1], intersections)[0]])
 			}
-		})
+		}
 		return lines
 	}
 }
