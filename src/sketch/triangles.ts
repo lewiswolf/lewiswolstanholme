@@ -68,7 +68,7 @@ class Triangle {
 				lines.push([line[0], intersections[0]])
 			} else if (!vertexInTriangle[0] && vertexInTriangle[1] && intersections[0]) {
 				// if vertex A inside, vertex B outside, find closest intersection and draw line B to intersection
-				lines.push([line[1], compareShortestVector(line[1], intersections)[0]])
+				lines.push([line[1], intersections[0]])
 			} else if (!vertexInTriangle[0] && !vertexInTriangle[1] && intersections[0] && intersections[1]) {
 				// if both vertex outside of triangle and two intersections, draw line between intersections
 				lines.push([intersections[0], intersections[1]])
@@ -101,7 +101,7 @@ class Triangle {
 			} else if (vertexInTriangle[0] && vertexInTriangle[1] && intersections[0] && intersections[1]) {
 				// if both vertex in triangle
 				lines.push([intersections[0], intersections[1]])
-			} else if (!vertexInTriangle[0] && !vertexInTriangle[1] && intersections[0] && intersections[1]) {
+			} else if (!vertexInTriangle[0] && !vertexInTriangle[1] && intersections) {
 				// if both vertex  of triangle and two intersections
 				lines.push([line[0], compareShortestVector(line[0], intersections)[0]])
 				lines.push([line[1], compareShortestVector(line[1], intersections)[0]])
