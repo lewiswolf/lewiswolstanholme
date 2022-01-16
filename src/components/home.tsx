@@ -8,15 +8,17 @@ import sketch from '../sketch/triangles'
 
 export default function Home(): JSX.Element {
 	const fidelity: number = 1000
-	const audio = useRef<HTMLAudioElement>(new Audio(`${process.env.PUBLIC_URL}/audio/newts.mp3`))
+	const audio = useRef<HTMLAudioElement>(null)
 	const [visibility, setVisitibility] = useState<number>(0)
 
 	useEffect(() => {
-		audio.current.volume = visibility / fidelity
-		if (visibility !== 0) {
-			audio.current.play()
-		} else {
-			audio.current.pause()
+		if (audio.current !== null) {
+			audio.current.volume = visibility / fidelity
+			if (visibility !== 0) {
+				audio.current.play()
+			} else {
+				audio.current.pause()
+			}
 		}
 	}, [visibility])
 
@@ -30,6 +32,7 @@ export default function Home(): JSX.Element {
 				/>
 			</header>
 			<main className='home' style={{ opacity: visibility / fidelity }}>
+				<audio ref={audio} src={`${process.env.PUBLIC_URL}/audio/newts.mp3`} />
 				<P5 sketch={sketch} />
 			</main>
 		</>
