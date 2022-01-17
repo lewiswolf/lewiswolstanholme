@@ -7,7 +7,7 @@ export default function Videos(): JSX.Element {
 			{videos_json.map((obj: VideosJSON, i: number): JSX.Element => {
 				return (
 					<iframe
-						allow='accelerometer; autoplay; encrypted-media; gyroscope;'
+						allow='accelerometer; autoplay; encrypted-media; fullscreen; gyroscope;'
 						allowFullScreen={true}
 						frameBorder={0}
 						key={i}

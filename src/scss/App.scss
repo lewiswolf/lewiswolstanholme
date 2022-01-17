@@ -12,6 +12,19 @@ $highlight: #b4b4b4;
 	}
 }
 
+@mixin video() {
+	height: 40.5vw;
+	max-height: 478.125px;
+	width: 72vw;
+	max-width: 850px;
+	justify-self: center;
+
+	@media (max-width: $ipad) {
+		height: calc(56.25vw - 40px);
+		width: 100%;
+	}
+}
+
 // structure
 
 html {

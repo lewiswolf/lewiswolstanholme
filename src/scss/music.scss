@@ -1,12 +1,16 @@
-.music .albumcover {
-	@include focus();
-	height: 100%;
-	width: 100%;
-	cursor: pointer;
+.music {
+	margin-top: 20px;
 
-	img {
+	.albumcover {
+		@include focus();
 		height: 100%;
 		width: 100%;
-		user-select: none;
+		cursor: pointer;
+
+		img {
+			height: 100%;
+			width: 100%;
+			user-select: none;
+		}
 	}
 }

@@ -1,17 +1,10 @@
-.videos iframe {
-	height: 40.5vw;
-	max-height: 478.125px;
-	width: 72vw;
-	max-width: 850px;
-	margin: 0 auto 20px auto;
-	display: flex;
+.videos {
+	margin-top: 20px;
+	display: grid;
+	grid-template-columns: 100%;
+	row-gap: 20px;
 
-	&:last-of-type {
-		margin: 0 auto;
-	}
-
-	@media (max-width: $ipad) {
-		height: calc(56.25vw - 40px);
-		width: 100%;
+	iframe {
+		@include video();
 	}
 }
