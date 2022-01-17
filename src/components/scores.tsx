@@ -67,13 +67,15 @@ export default function Scores(): JSX.Element {
 								role='button'
 								tabIndex={0}
 								onClick={() =>
+									obj.file && // can be deleted when engravings has proper content
 									window.open(
 										`${window.location.protocol}//${window.location.hostname}/api/documents/${obj.file}`,
 										'_blank'
 									)
 								}
 								onKeyDown={(e) => {
-									if (e.key === 'Enter' || e.key === ' ') {
+									// '&& obj.file' can be deleted when engravings has proper content
+									if ((e.key === 'Enter' || e.key === ' ') && obj.file) {
 										e.preventDefault()
 										return window.open(
 											`${window.location.protocol}//${window.location.hostname}/api/documents/${obj.file}`,
