@@ -1,3 +1,8 @@
+const highlight1: string = '#c92c2c'
+const highlight2: string = '#0F8919'
+const highlight3: string = '#8f28db'
+const highlight4: string = '#0E82A9'
+
 const coy: { [key: string]: { [key: string]: string } } = {
 	'code[class*="language-"]': {
 		color: 'black',
@@ -43,7 +48,6 @@ const coy: { [key: string]: { [key: string]: string } } = {
 		hyphens: 'none',
 		position: 'relative',
 		margin: '0',
-		overflow: 'visible',
 		padding: '0',
 		backgroundColor: 'none',
 		WebkitBoxSizing: 'border-box',
@@ -70,7 +74,7 @@ const coy: { [key: string]: { [key: string]: string } } = {
 		position: 'relative',
 		padding: '0',
 		borderRadius: '0.3em',
-		color: '#c92c2c',
+		color: highlight1,
 		border: '1px solid rgba(0, 0, 0, 0.1)',
 		display: 'inline',
 		whiteSpace: 'normal',
@@ -126,77 +130,77 @@ const coy: { [key: string]: { [key: string]: string } } = {
 		color: 'black',
 	},
 	'punctuation': {
-		color: '#5F6364',
+		color: 'black',
 	},
 	'property': {
-		color: '#c92c2c',
+		color: highlight1,
 	},
 	'tag': {
-		color: '#c92c2c',
+		color: highlight1,
 	},
 	'boolean': {
-		color: '#c92c2c',
+		color: highlight1,
 	},
 	'number': {
-		color: '#c92c2c',
+		color: highlight1,
 	},
 	'function-name': {
-		color: '#c92c2c',
+		color: highlight1,
 	},
 	'constant': {
-		color: '#c92c2c',
+		color: highlight1,
 	},
 	'symbol': {
-		color: '#c92c2c',
+		color: highlight1,
 	},
 	'deleted': {
-		color: '#c92c2c',
+		color: highlight1,
 	},
 	'selector': {
-		color: '#0F8919',
+		color: highlight2,
 	},
 	'attr-name': {
-		color: '#0F8919',
+		color: highlight2,
 	},
 	'string': {
-		color: '#0F8919',
+		color: highlight2,
 	},
 	'char': {
-		color: '#0F8919',
+		color: highlight2,
 	},
 	'function': {
-		color: '#0F8919',
+		color: highlight2,
 	},
 	'builtin': {
-		color: '#0F8919',
+		color: highlight2,
 	},
 	'inserted': {
-		color: '#0F8919',
+		color: highlight2,
 	},
 	'operator': {
-		color: '#8f28db',
+		color: highlight3,
 	},
 	'entity': {
-		color: '#8f28db',
+		color: highlight3,
 		'cursor': 'help',
 	},
 	'url': {
-		color: '#8f28db',
+		color: highlight3,
 	},
 	'variable': {
-		color: '#8f28db',
+		color: highlight3,
 	},
 	'atrule': {
-		color: 'rgb(14 130 169)',
+		color: highlight4,
 	},
 	'attr-value': {
-		color: 'rgb(14 130 169)',
+		color: highlight4,
 	},
 	'keyword': {
-		color: 'rgb(14 130 169)',
+		color: highlight4,
 	},
 	'class-name': {
-		color: 'rgb(14 130 169)',
+		color: highlight4,
 	},
 	'regex': {
 		color: '#e90',
@@ -206,12 +210,10 @@ const coy: { [key: string]: { [key: string]: string } } = {
 		fontWeight: 'normal',
 	},
 	'.language-css .token.string': {
-		color: '#8f28db',
-		// 'background': 'rgba(255, 255, 255, 0.5)'
+		color: highlight3,
 	},
 	'.style .token.string': {
-		color: '#8f28db',
-		// 'background': 'rgba(255, 255, 255, 0.5)'
+		color: highlight3,
 	},
 	'bold': {
 		fontWeight: 'bold',

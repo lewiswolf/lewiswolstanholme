@@ -7,27 +7,25 @@
 
 	iframe.website {
 		height: calc(100vh - 200px);
-		width: 100%;
+		width: inherit;
 
 		@media (max-width: $ipad) {
 			height: calc(100vh - 40px);
-			width: 100%;
 		}
 	}
 
 	iframe.maxmsp {
 		height: 748px;
-		width: 100%;
+		width: inherit;
 	}
 
 	.readme {
-		width: 80%;
+		width: inherit;
 		margin: 0 auto;
 		text-align: justify;
 		cursor: default;
 
 		@media (max-width: $ipad) {
-			width: inherit;
 			margin: 0;
 		}
 
