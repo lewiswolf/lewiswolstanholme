@@ -152,10 +152,6 @@ const sketch: Sketch = (p5) => {
 		p5.fill(0, 0)
 		p5.stroke('black')
 		p5.strokeWeight(1)
-		// rotate triangles
-		for (let tri of triangles) {
-			tri.rotate()
-		}
 		// triangle 0 always shows
 		for (let line of triangles[0].lines()) {
 			p5.line(...line[0], ...line[1])
@@ -170,6 +166,10 @@ const sketch: Sketch = (p5) => {
 		}
 		for (let line of triangles[2].linesOutsideTriangle(triangles[1])) {
 			p5.line(...line[0], ...line[1])
+		}
+		// rotate triangles
+		for (let tri of triangles) {
+			tri.rotate()
 		}
 	}
 }
