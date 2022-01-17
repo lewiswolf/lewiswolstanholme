@@ -26,7 +26,11 @@ export default function App(): JSX.Element {
 			<Metadata
 				darkModeFavicon={true}
 				description='Lewis Wolstanholme - Musician, Composer & Creative Coder'
-				title={'Lewis Wolstanholme'}
+				title={`Lewis Wolstanholme${
+					location === '/'
+						? ''
+						: ` | ${location.slice(1, 2).toUpperCase()}${location.slice(2)}`
+				}`}
 			/>
 			<GoogleAnalytics id='G-52FG4N6KPP' />
 			<Navi />
