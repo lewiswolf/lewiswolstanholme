@@ -1,8 +1,23 @@
 .code {
-	iframe {
+	display: grid;
+
+	iframe.video {
+		@include video();
+	}
+
+	iframe.website {
+		height: calc(100vh - 200px);
 		width: 100%;
-		overflow: auto;
-		border: 0;
+
+		@media (max-width: $ipad) {
+			height: calc(100vh - 40px);
+			width: 100%;
+		}
+	}
+
+	iframe.maxmsp {
+		height: 748px;
+		width: 100%;
 	}
 
 	.readme {
@@ -12,11 +27,8 @@
 		cursor: default;
 
 		@media (max-width: $ipad) {
-			width: 100%;
-		}
-
-		> *:first-child {
-			margin-top: 0;
+			width: inherit;
+			margin: 0;
 		}
 
 		> *:last-child {
@@ -31,6 +43,10 @@
 
 		blockquote {
 			margin: 0;
+		}
+
+		pre {
+			overflow-x: scroll;
 		}
 
 		table {

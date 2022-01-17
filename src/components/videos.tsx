@@ -8,7 +8,6 @@ export default function Videos(): JSX.Element {
 				return (
 					<iframe
 						allow='accelerometer; autoplay; encrypted-media; fullscreen; gyroscope;'
-						allowFullScreen={true}
 						frameBorder={0}
 						key={i}
 						src={`https://www.youtube-nocookie.com/embed/${obj.hash}?theme=dark&color=white`}

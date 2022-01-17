@@ -1,5 +1,4 @@
-// dependencies
-import IframeResizer from 'iframe-resizer-react'
+// dependencieså
 import { TextButton, Umenu } from 'maxmsp-gui'
 import { useEffect, useState } from 'react'
 import remarkGfm from 'remark-gfm'
@@ -21,12 +20,13 @@ export default function Code(): JSX.Element {
 		if (pages.indexOf(location) === -1) {
 			navigate(`/code?view=${pages[0]}`)
 		} else {
-			fetch(
-				`https://raw.githubusercontent.com/${projects[location]?.github}/master/readme.md`
-			)
-				.then((res: Response) => res.text())
-				.then((markdown: string) => setMarkdown(markdown.replace('by Lewis Wolf', '')))
-				.catch()
+			projects[location]?.github &&
+				fetch(
+					`https://raw.githubusercontent.com/${projects[location]?.github}/master/readme.md`
+				)
+					.then((res: Response) => res.text())
+					.then((markdown: string) => setMarkdown(markdown.replace('by Lewis Wolf', '')))
+					.catch()
 		}
 	}, [location, navigate, pages])
 
@@ -42,6 +42,7 @@ export default function Code(): JSX.Element {
 				/>
 				<TextButton
 					ariaLabel='Open this project on GitHub.'
+					inactive={!projects[location]?.github}
 					text='GitHub'
 					onClick={() => {
 						window.open(`https://github.com/${projects[location]?.github}`, '_blank')
@@ -50,40 +51,36 @@ export default function Code(): JSX.Element {
 			</header>
 			<main className='code'>
 				{projects[location]?.iframe && (
-					<IframeResizer
-						{...projects[location]?.iframeArguments}
+					<iframe
+						allow='accelerometer; autoplay; encrypted-media; fullscreen; gyroscope;'
+						className={projects[location]?.className}
+						frameBorder={0}
 						src={projects[location]?.iframe}
 						title={projects[location]?.name}
 					/>
 				)}
-				<ReactMarkdown
-					children={markdown}
-					className='readme'
-					components={{
-						code({ className, children }) {
-							const match = /language-(\w+)/.exec(className || '')
-							return match ? (
-								<Prism
-									children={String(children).replace(/\n$/, '')}
-									language={match[1]}
-									style={syntax}
-								/>
-							) : (
-								<code className={className}>{children}</code>
-							)
-						},
-					}}
-					remarkPlugins={[remarkGfm]}
-				/>
+				{projects[location]?.github && markdown !== '404: Not Found' && (
+					<ReactMarkdown
+						children={markdown}
+						className='readme'
+						components={{
+							code({ className, children }) {
+								const match = /language-(\w+)/.exec(className || '')
+								return match ? (
+									<Prism
+										children={String(children).replace(/\n$/, '')}
+										language={match[1]}
+										style={syntax}
+									/>
+								) : (
+									<code className={className}>{children}</code>
+								)
+							},
+						}}
+						remarkPlugins={[remarkGfm]}
+					/>
+				)}
 			</main>
 		</>
 	)
 }
-
-/*
-	Todo:
-		- Fix links in all readmes (semantics).
-		- iframeresizer is as weird as ever.
-		- not all readmes load.
-		- no syntax highlighter for ksp (start by adding it to the code tag at least).
-*/
