@@ -1,31 +1,25 @@
 nav {
-	grid-area: h;
-	height: fit-content;
+	height: 140px;
 	width: 130px;
-	margin: 19.5px 0 0 35px;
+	margin: 20px 0 0 35px;
+	display: grid;
+	grid-area: h;
 	position: absolute;
 	left: 0;
 	right: unset;
 	z-index: 10;
 
 	@media (max-width: $ipad) {
-		margin: 19.5px 19.5px 0 0;
+		margin: 20px 20px 0 0;
 		left: unset;
 		right: 0;
 	}
 
-	.navi-cable {
-		height: 13.5px;
-		width: 100%;
-		position: relative;
-
-		> svg {
-			position: absolute;
-			top: 0;
-		}
+	> div {
+		justify-self: right;
 	}
 
-	> div {
-		float: right;
+	svg {
+		grid-area: 2/1;
 	}
 }

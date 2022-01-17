@@ -1,28 +1,50 @@
 // var
 
 $ipad: 812px;
+$iphone: 400px;
+$highlight: #b4b4b4;
 
-// children
+// mixins
 
-@import './navi.scss';
-@import './home.scss';
-@import './music.scss';
-@import './scores.scss';
-@import './videos.scss';
-@import './code.scss';
-@import './info.scss';
+@mixin focus() {
+	&:focus {
+		outline: $highlight solid 3px;
+	}
+}
+
+@mixin video() {
+	height: 40.5vw;
+	max-height: 478.125px;
+	width: 72vw;
+	max-width: 850px;
+	justify-self: center;
+
+	@media (max-width: $ipad) {
+		height: calc(56.25vw - 40px);
+		width: 100%;
+	}
+}
 
 // structure
 
-body {
+html {
 	height: 100%;
 	width: 100%;
 	margin: 0;
 	font-family: helvetica, sans-serif;
 	font-size: 16px;
 	color: black;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
 	-webkit-text-size-adjust: 100%;
-	background-image: url('../images/background.png');
+	background-image: url('./images/background.png');
 	background-size: 30px 30px;
 	background-color: #e5e5e5;
 }
@@ -35,29 +57,58 @@ body {
 	grid-template-areas: 'h' 'm';
 }
 
-.header {
-	grid-area: h;
+header {
 	height: 160px;
 	max-width: 100%;
 	margin: 0 20px;
 	display: grid;
+	grid-area: h;
+	grid-auto-flow: column;
+	grid-row-gap: 20px;
+	grid-column-gap: 20px;
+	align-content: end;
+	justify-items: center;
+	justify-self: center;
 
 	@media (max-width: $ipad) {
 		height: 100px;
-		margin: 160px 20px -20px 20px;
+		margin: 160px 20px 0 20px;
+		grid-auto-flow: column;
+		align-content: center;
+	}
+
+	@media (max-width: $iphone) {
+		height: 100px;
+		margin: 160px 20px 0 20px;
+		grid-auto-flow: row;
+		align-content: center;
+	}
+
+	p {
+		line-height: 24px;
+		margin: 0;
 	}
 }
 
 main {
-	grid-area: m;
 	height: fit-content;
 	width: calc(100vw - 70px);
 	margin: 20px 35px;
-	float: right;
+	grid-area: m;
+	align-self: center;
 
 	@media (max-width: $ipad) {
 		height: fit-content;
 		width: calc(100vw - 40px);
-		margin: 20px;
+		margin: 0 20px 20px 20px;
 	}
 }
+
+// children
+
+@import './navi';
+@import './home';
+@import './music';
+@import './scores';
+@import './videos';
+@import './code';
