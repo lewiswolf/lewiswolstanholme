@@ -1,4 +1,4 @@
-// dependencieså
+// dependencies
 import { TextButton, Umenu } from 'maxmsp-gui'
 import { useEffect, useState } from 'react'
 import remarkGfm from 'remark-gfm'
