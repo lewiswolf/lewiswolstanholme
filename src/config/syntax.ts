@@ -114,98 +114,98 @@ const coy: { [key: string]: { [key: string]: string } } = {
 		transform: 'rotate(2deg)',
 		right: '0.75em',
 	},
-	'comment': {
+	comment: {
 		color: 'black',
 	},
 	'block-comment': {
 		color: 'black',
 	},
-	'prolog': {
+	prolog: {
 		color: 'black',
 	},
-	'doctype': {
+	doctype: {
 		color: 'black',
 	},
-	'cdata': {
+	cdata: {
 		color: 'black',
 	},
-	'punctuation': {
+	punctuation: {
 		color: 'black',
 	},
-	'property': {
+	property: {
 		color: highlight1,
 	},
-	'tag': {
+	tag: {
 		color: highlight1,
 	},
-	'boolean': {
+	boolean: {
 		color: highlight1,
 	},
-	'number': {
+	number: {
 		color: highlight1,
 	},
 	'function-name': {
 		color: highlight1,
 	},
-	'constant': {
+	constant: {
 		color: highlight1,
 	},
-	'symbol': {
+	symbol: {
 		color: highlight1,
 	},
-	'deleted': {
+	deleted: {
 		color: highlight1,
 	},
-	'selector': {
+	selector: {
 		color: highlight2,
 	},
 	'attr-name': {
 		color: highlight2,
 	},
-	'string': {
+	string: {
 		color: highlight2,
 	},
-	'char': {
+	char: {
 		color: highlight2,
 	},
-	'function': {
+	function: {
 		color: highlight2,
 	},
-	'builtin': {
+	builtin: {
 		color: highlight2,
 	},
-	'inserted': {
+	inserted: {
 		color: highlight2,
 	},
-	'operator': {
+	operator: {
 		color: highlight3,
 	},
-	'entity': {
+	entity: {
 		color: highlight3,
-		'cursor': 'help',
+		cursor: 'help',
 	},
-	'url': {
-		color: highlight3,
-	},
-	'variable': {
+	url: {
 		color: highlight3,
 	},
-	'atrule': {
+	variable: {
+		color: highlight3,
+	},
+	atrule: {
 		color: highlight4,
 	},
 	'attr-value': {
 		color: highlight4,
 	},
-	'keyword': {
+	keyword: {
 		color: highlight4,
 	},
 	'class-name': {
 		color: highlight4,
 	},
-	'regex': {
+	regex: {
 		color: '#e90',
 	},
-	'important': {
+	important: {
 		color: '#e90',
 		fontWeight: 'normal',
 	},
@@ -215,13 +215,13 @@ const coy: { [key: string]: { [key: string]: string } } = {
 	'.style .token.string': {
 		color: highlight3,
 	},
-	'bold': {
+	bold: {
 		fontWeight: 'bold',
 	},
-	'italic': {
+	italic: {
 		fontStyle: 'italic',
 	},
-	'namespace': {
+	namespace: {
 		Opacity: '.7',
 	},
 	'pre[class*="language-"].line-numbers.line-numbers': {
@@ -245,6 +245,6 @@ const coy: { [key: string]: { [key: string]: string } } = {
 	'pre .line-highlight': {
 		marginTop: '0',
 	},
-};
+}
 
 export default coy

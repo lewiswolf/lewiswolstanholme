@@ -22,7 +22,7 @@ export default function Code(): JSX.Element {
 		} else {
 			projects[location]?.github &&
 				fetch(
-					`https://raw.githubusercontent.com/${projects[location]?.github}/master/readme.md`
+					`https://raw.githubusercontent.com/${projects[location]?.github}/master/readme.md`,
 				)
 					.then((res: Response) => res.text())
 					.then((markdown: string) => setMarkdown(markdown.replace('by Lewis Wolf', '')))

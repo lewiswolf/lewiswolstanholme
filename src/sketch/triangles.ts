@@ -18,10 +18,7 @@ class Triangle {
 
 	constructor(size: number, spin: number) {
 		this.vertices = [
-			[
-				size,
-				size,
-			],
+			[size, size],
 			[
 				size * Math.cos((4 * Math.PI) / 3) + Math.random() * 50,
 				size * Math.sin((4 * Math.PI) / 3) + Math.random() * 50,
@@ -69,7 +66,12 @@ class Triangle {
 			} else if (!vertexInTriangle[0] && vertexInTriangle[1] && intersections[0]) {
 				// if vertex A inside, vertex B outside, find closest intersection and draw line B to intersection
 				lines.push([line[1], intersections[0]])
-			} else if (!vertexInTriangle[0] && !vertexInTriangle[1] && intersections[0] && intersections[1]) {
+			} else if (
+				!vertexInTriangle[0] &&
+				!vertexInTriangle[1] &&
+				intersections[0] &&
+				intersections[1]
+			) {
 				// if both vertex outside of triangle and two intersections, draw line between intersections
 				lines.push([intersections[0], intersections[1]])
 			}
@@ -98,7 +100,12 @@ class Triangle {
 			} else if (vertexInTriangle[0] && !vertexInTriangle[1] && intersections) {
 				// if vertex A inside, vertex B outside, find closest intersection and draw line B to intersection
 				lines.push([line[1], compareShortestVector(line[1], intersections)[0]])
-			} else if (vertexInTriangle[0] && vertexInTriangle[1] && intersections[0] && intersections[1]) {
+			} else if (
+				vertexInTriangle[0] &&
+				vertexInTriangle[1] &&
+				intersections[0] &&
+				intersections[1]
+			) {
 				// if both vertex in triangle
 				lines.push([intersections[0], intersections[1]])
 			} else if (!vertexInTriangle[0] && !vertexInTriangle[1] && intersections) {
@@ -119,15 +126,15 @@ const sketch: Sketch = (p5) => {
 	const triangles: [Triangle, Triangle, Triangle] = [
 		new Triangle(
 			Math.random() * 50 + 50,
-			(Math.round(Math.random()) * 2 - 1) * (Math.random() * 0.01 + 0.002)
+			(Math.round(Math.random()) * 2 - 1) * (Math.random() * 0.01 + 0.002),
 		),
 		new Triangle(
 			Math.random() * 50 + 50,
-			(Math.round(Math.random()) * 2 - 1) * (Math.random() * 0.01 + 0.002)
+			(Math.round(Math.random()) * 2 - 1) * (Math.random() * 0.01 + 0.002),
 		),
 		new Triangle(
 			Math.random() * 50 + 50,
-			(Math.round(Math.random()) * 2 - 1) * (Math.random() * 0.01 + 0.002)
+			(Math.round(Math.random()) * 2 - 1) * (Math.random() * 0.01 + 0.002),
 		),
 	]
 

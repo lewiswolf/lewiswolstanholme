@@ -6,7 +6,7 @@ export type CodeProjectsJSON = {
 }
 
 export const projects: { [key: string]: CodeProjectsJSON } = {
-	'tempgen': {
+	tempgen: {
 		className: 'video',
 		github: 'lewiswolf/Temperament-Generator',
 		iframe: 'https://www.youtube-nocookie.com/embed/C4txE2hQ53w?theme=dark&color=white',
@@ -18,7 +18,7 @@ export const projects: { [key: string]: CodeProjectsJSON } = {
 		iframe: 'https://www.youtube-nocookie.com/embed/bQRwxHz54rs?theme=dark&color=white',
 		name: 'Polyphonic Microtuning in Kontakt with Max MSP',
 	},
-	'francisdevine': {
+	francisdevine: {
 		className: 'website',
 		github: '',
 		iframe: 'http://francisdevine.co.uk',

@@ -49,7 +49,7 @@ export default function Scores(): JSX.Element {
 				<Umenu
 					ariaLabel='What type of scores are on the page?'
 					items={pages.map(
-						(page: string) => page.charAt(0).toUpperCase() + page.slice(1)
+						(page: string) => page.charAt(0).toUpperCase() + page.slice(1),
 					)}
 					value={pages.indexOf(location) !== -1 ? pages.indexOf(location) : 0}
 					width={200}
@@ -71,7 +71,7 @@ export default function Scores(): JSX.Element {
 									obj.file && // can be deleted when engravings has proper content
 									window.open(
 										`${window.location.protocol}//${window.location.hostname}/api/documents/${obj.file}`,
-										'_blank'
+										'_blank',
 									)
 								}
 								onKeyDown={(e) => {
@@ -80,7 +80,7 @@ export default function Scores(): JSX.Element {
 										e.preventDefault()
 										return window.open(
 											`${window.location.protocol}//${window.location.hostname}/api/documents/${obj.file}`,
-											'_blank'
+											'_blank',
 										)
 									} else {
 										return null
