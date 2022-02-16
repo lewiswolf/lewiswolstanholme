@@ -154,7 +154,7 @@ const sketch: Sketch = (p5) => {
 
 	p5.draw = (): void => {
 		// canvas styles
-		p5.clear()
+		p5.clear(1, 1, 1, 1)
 		p5.translate(p5.width / 2, p5.height / 2)
 		p5.fill(0, 0)
 		p5.stroke('black')
