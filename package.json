@@ -19,7 +19,7 @@
 		"react-syntax-highlighter": "^15.4.5",
 		"remark-gfm": "^3.0.1",
 		"sass": "^1.49.9",
-		"typescript": "^4.5.5"
+		"typescript": "^4.6.2"
 	},
 	"devDependencies": {
 		"prettier": "^2.5.1"
