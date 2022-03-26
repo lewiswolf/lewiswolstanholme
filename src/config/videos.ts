@@ -9,6 +9,10 @@ export const videos_json: VideosJSON[] = [
 		title: 'terracotta by Julia Set',
 	},
 	{
+		hash: '0arhLOG00Js',
+		title: 'topspin (demo) by Julia Set',
+	},
+	{
 		hash: 'H_7bpFmk4bI',
 		title: 'morass by Julia Set',
 	},
