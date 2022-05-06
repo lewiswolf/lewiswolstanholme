@@ -5,6 +5,10 @@ export type VideosJSON = {
 
 export const videos_json: VideosJSON[] = [
 	{
+		hash: 'wzSV8aIYXWw',
+		title: 'setcell by Julia Set',
+	},
+	{
 		hash: 'LpO2JyVuqN4',
 		title: 'terracotta by Julia Set',
 	},
