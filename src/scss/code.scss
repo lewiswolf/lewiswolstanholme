@@ -46,7 +46,8 @@
 			text-align: left;
 		}
 
-		details {
+		summary {
+			@include focus();
 			margin: 5px 0;
 		}
 

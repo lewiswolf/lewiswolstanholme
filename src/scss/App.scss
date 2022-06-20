@@ -7,7 +7,7 @@ $highlight: #b4b4b4;
 // mixins
 
 @mixin focus() {
-	&:focus {
+	&:focus-visible {
 		outline: $highlight solid 3px;
 	}
 }
