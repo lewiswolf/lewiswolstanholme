@@ -18,6 +18,12 @@ export const projects: { [key: string]: CodeProjectsJSON } = {
 		iframe: 'https://www.youtube-nocookie.com/embed/bQRwxHz54rs?theme=dark&color=white',
 		name: 'Polyphonic Microtuning in Kontakt with Max MSP',
 	},
+	kac_drumset: {
+		className: 'npm start',
+		github: 'lewiswolf/kac_drumset',
+		iframe: '',
+		name: 'kac_drumset',
+	},
 	francisdevine: {
 		className: 'website',
 		github: '',

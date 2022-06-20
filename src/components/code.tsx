@@ -1,6 +1,7 @@
 // dependencies
 import { TextButton, Umenu } from 'maxmsp-gui'
 import { useEffect, useState } from 'react'
+import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import ReactMarkdown from 'react-markdown'
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -77,6 +78,7 @@ export default function Code(): JSX.Element {
 								)
 							},
 						}}
+						rehypePlugins={[rehypeRaw]}
 						remarkPlugins={[remarkGfm]}
 					/>
 				)}
