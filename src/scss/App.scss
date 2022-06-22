@@ -18,10 +18,17 @@ $highlight: #b4b4b4;
 	width: 72vw;
 	max-width: 850px;
 	justify-self: center;
+	user-select: none;
 
 	@media (max-width: $ipad) {
 		height: calc(56.25vw - 40px);
 		width: 100%;
+	}
+}
+
+@mixin highlight_text() {
+	::selection {
+		background: $highlight;
 	}
 }
 
@@ -112,3 +119,4 @@ main {
 @import './scores';
 @import './videos';
 @import './code';
+@import './info';

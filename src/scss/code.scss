@@ -20,6 +20,7 @@
 	}
 
 	.readme {
+		@include highlight_text();
 		width: inherit;
 		text-align: justify;
 		cursor: default;
