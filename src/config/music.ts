@@ -17,7 +17,7 @@ export const music_json: MusicJSON[] = [
 	},
 	{
 		link: 'https://lewiswolf.bandcamp.com/album/chroma',
-		img: 'https://f4.bcbits.com/img/a0519646216_16.jpg',
+		img: 'https://f4.bcbits.com/img/a2566795833_10.jpg',
 		title: 'chroma by lewis wolf',
 	},
 	{
