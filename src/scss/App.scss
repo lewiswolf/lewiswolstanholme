@@ -28,7 +28,7 @@ $highlight: #b4b4b4;
 
 @mixin highlight_text() {
 	::selection {
-		background: $highlight;
+		background-color: $highlight;
 	}
 }
 
@@ -65,6 +65,7 @@ body {
 }
 
 header {
+	@include highlight_text();
 	height: 160px;
 	max-width: 100%;
 	margin: 0 20px;
@@ -92,7 +93,6 @@ header {
 	}
 
 	> p {
-		@include highlight_text();
 		line-height: 24px;
 		margin: 0;
 	}
