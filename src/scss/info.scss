@@ -1,4 +1,12 @@
 .info {
 	@include highlight_text();
 	text-align: justify;
+
+	.bio > p:first-child {
+		margin-top: 0;
+	}
+
+	.bio > p:last-child {
+		margin-bottom: 0;
+	}
 }
