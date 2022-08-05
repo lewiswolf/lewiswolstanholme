@@ -5,8 +5,8 @@ export type VideosJSON = {
 
 export const videos_json: VideosJSON[] = [
 	{
-		hash: 'wzSV8aIYXWw',
-		title: 'setcell by Julia Set',
+		hash: 'IpqrfoCyOmw',
+		title: 'josef by Julia Set',
 	},
 	{
 		hash: 'LpO2JyVuqN4',
@@ -26,7 +26,7 @@ export const videos_json: VideosJSON[] = [
 	},
 	{
 		hash: '20eLg6skiK4',
-		title: 'Chroma by Lewis Wolf',
+		title: 'chroma by Lewis Wolstanholme',
 	},
 	{
 		hash: 'eIMS1Q_vu_M',
@@ -38,6 +38,6 @@ export const videos_json: VideosJSON[] = [
 	},
 	{
 		hash: 'sZYNHRozFBc',
-		title: 'bach.fractal',
+		title: 'bach.fractal by Ciarán Corr and Lewis Wolstanholme',
 	},
 ]

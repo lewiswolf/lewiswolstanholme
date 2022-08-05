@@ -6,28 +6,33 @@ export type MusicJSON = {
 
 export const music_json: MusicJSON[] = [
 	{
+		link: 'https://juliaset.bandcamp.com/album/josef',
+		img: 'https://f4.bcbits.com/img/a3407752053_16.jpg',
+		title: 'josef by Julia Set',
+	},
+	{
 		link: 'https://juliaset.bandcamp.com/album/terracotta',
 		img: 'https://f4.bcbits.com/img/a0499687799_16.jpg',
-		title: 'terracotta by julia set',
+		title: 'terracotta by Julia Set',
 	},
 	{
 		link: 'https://juliaset.bandcamp.com/album/morass-cairn',
 		img: 'https://f4.bcbits.com/img/a2284081809_16.jpg',
-		title: 'morass / cairn by julia set',
+		title: 'morass / cairn by Julia Set',
 	},
 	{
-		link: 'https://lewiswolf.bandcamp.com/album/chroma',
+		link: 'https://lewiswolstanholme.bandcamp.com/album/chroma',
 		img: 'https://f4.bcbits.com/img/a2566795833_10.jpg',
-		title: 'chroma by lewis wolf',
+		title: 'chroma by Lewis Wolstanholme',
 	},
 	{
-		link: 'https://lewiswolf.bandcamp.com/album/noble-seed',
+		link: 'https://lewiswolstanholme.bandcamp.com/album/noble-seed',
 		img: 'https://f4.bcbits.com/img/a1666427238_16.jpg',
-		title: 'noble / seed by lewis wolf / ciarán corr',
+		title: 'noble / seed by Lewis Wolstanholme / Ciarán Corr',
 	},
 	{
-		link: 'https://ciarancorr.bandcamp.com/album/bach-fractal',
-		img: 'https://f4.bcbits.com/img/a1081326527_16.jpg',
-		title: 'bach.fractal',
+		link: 'https://lewiswolstanholme.bandcamp.com/album/bach-fractal',
+		img: 'https://f4.bcbits.com/img/a3526980092_16.jpg',
+		title: 'bach.fractal by Ciarán Corr and Lewis Wolstanholme',
 	},
 ]
