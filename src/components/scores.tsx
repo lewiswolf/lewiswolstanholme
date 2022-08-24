@@ -68,18 +68,16 @@ export default function Scores(): JSX.Element {
 								role='button'
 								tabIndex={0}
 								onClick={() =>
-									obj.file && // can be deleted when engravings has proper content
 									window.open(
-										`${window.location.protocol}//${window.location.hostname}/api/documents/${obj.file}`,
+										`${window.location.protocol}//lewiswolstanholme.co.uk/api/${location}/${obj.file}.pdf`,
 										'_blank',
 									)
 								}
 								onKeyDown={(e) => {
-									// '&& obj.file' can be deleted when engravings has proper content
-									if ((e.key === 'Enter' || e.key === ' ') && obj.file) {
+									if (e.key === 'Enter' || e.key === ' ') {
 										e.preventDefault()
 										return window.open(
-											`${window.location.protocol}//${window.location.hostname}/api/documents/${obj.file}`,
+											`${window.location.protocol}//lewiswolstanholme.co.uk/api/${location}/${obj.file}.pdf`,
 											'_blank',
 										)
 									} else {
