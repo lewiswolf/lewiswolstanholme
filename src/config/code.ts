@@ -6,6 +6,12 @@ export type CodeProjectsJSON = {
 }
 
 export const projects: { [key: string]: CodeProjectsJSON } = {
+	kac_drumset: {
+		className: '',
+		github: 'lewiswolf/kac_drumset',
+		iframe: '',
+		name: 'kac_drumset',
+	},
 	tempgen: {
 		className: 'video',
 		github: 'lewiswolf/Temperament-Generator',
@@ -17,12 +23,6 @@ export const projects: { [key: string]: CodeProjectsJSON } = {
 		github: 'lewiswolf/Polyphonic-Microtuning-in-Kontakt-with-Max-MSP',
 		iframe: 'https://www.youtube-nocookie.com/embed/bQRwxHz54rs?theme=dark&color=white',
 		name: 'Polyphonic Microtuning in Kontakt with Max MSP',
-	},
-	kac_drumset: {
-		className: 'npm start',
-		github: 'lewiswolf/kac_drumset',
-		iframe: '',
-		name: 'kac_drumset',
 	},
 	francisdevine: {
 		className: 'website',
