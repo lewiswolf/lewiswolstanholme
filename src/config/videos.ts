@@ -25,6 +25,10 @@ export const videos_json: VideosJSON[] = [
 		title: 'cairn by Julia Set',
 	},
 	{
+		hash: 's3jbrXySGXg',
+		title: 'weaving by Lewis Wolstanholme',
+	},
+	{
 		hash: '20eLg6skiK4',
 		title: 'chroma by Lewis Wolstanholme',
 	},
