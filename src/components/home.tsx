@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 
 // src
 import { P5 } from './sub-components/p5'
-import sketch from '../sketch/triangles'
+import sketch from '../sketch'
 
 export default function Home(): JSX.Element {
 	const fidelity: number = 1000
