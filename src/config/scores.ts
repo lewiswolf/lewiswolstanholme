@@ -9,9 +9,9 @@ export type ScoresJSON = {
 export const compositions: ScoresJSON[] = [
 	{
 		composer: 'Lewis Wolstanholme',
-		file: 'Weary_Circles_by_Lewis_Wolstanholme',
+		file: 'Teresa_by_Lewis_Wolstanholme',
 		instrumentation: 'in four parts',
-		title: 'Weary Circles',
+		title: 'Teresa',
 		year: '2022',
 	},
 	{
