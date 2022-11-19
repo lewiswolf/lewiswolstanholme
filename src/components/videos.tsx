@@ -11,6 +11,7 @@ export default function Videos(): JSX.Element {
 							<iframe
 								allow='autoplay; fullscreen; picture-in-picture;'
 								frameBorder={0}
+								key={i}
 								src={`https://player.vimeo.com/video/${obj.hash}?h=be7c17d620`}
 								title={obj.title}
 							/>
