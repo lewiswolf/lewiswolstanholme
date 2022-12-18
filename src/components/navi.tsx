@@ -15,7 +15,7 @@ export default function Navi(): JSX.Element {
 				ariaLabel={'Navigation Menu'}
 				items={pages.slice(1)}
 				spacing={20.5}
-				value={location && pages.indexOf(location) !== -1 ? pages.indexOf(location) : 0}
+				setValue={location && pages.indexOf(location) !== -1 ? pages.indexOf(location) : 0}
 				onClick={(i: number) => (i !== 0 ? navigate(`/${pages[i]}`) : navigate('/'))}
 			/>
 			<NaviCable />

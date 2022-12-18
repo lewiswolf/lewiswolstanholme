@@ -1,5 +1,4 @@
 // dependencies
-import 'maxmsp-gui/dist/index.css' // this can be removed with the next build of maxmsp-gui
 import { useEffect } from 'react'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 

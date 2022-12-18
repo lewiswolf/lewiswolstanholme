@@ -36,8 +36,8 @@ export default function Code(): JSX.Element {
 			<header>
 				<Umenu
 					ariaLabel='What code project would you like to see?'
-					items={pages.map((key: string) => projects[key]?.name)}
-					value={pages.indexOf(location) !== -1 ? pages.indexOf(location) : 0}
+					items={pages.map((key: string) => projects[key]?.name || '')}
+					setValue={pages.indexOf(location) !== -1 ? pages.indexOf(location) : 0}
 					width={255}
 					onChange={(i: number) => navigate(`/code?view=${pages[i]}`)}
 				/>

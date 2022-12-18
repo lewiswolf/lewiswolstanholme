@@ -27,7 +27,7 @@ export default function Home(): JSX.Element {
 			<header>
 				<Slider
 					fidelity={fidelity}
-					length={200}
+					width={200}
 					onChange={(v: number) => setVisitibility(v)}
 				/>
 			</header>

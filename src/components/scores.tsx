@@ -51,7 +51,7 @@ export default function Scores(): JSX.Element {
 					items={pages.map(
 						(page: string) => page.charAt(0).toUpperCase() + page.slice(1),
 					)}
-					value={pages.indexOf(location) !== -1 ? pages.indexOf(location) : 0}
+					setValue={pages.indexOf(location) !== -1 ? pages.indexOf(location) : 0}
 					width={200}
 					onChange={(i: number) => navigate(`/scores?view=${pages[i]}`)}
 				/>
