@@ -30,10 +30,10 @@ export const projects: { [key: string]: CodeProjectsJSON } = {
 		iframe: 'http://francisdevine.co.uk',
 		name: 'francisdevine',
 	},
-	// 'maxmsp-gui': {
-	// 	className: 'maxmsp',
-	// 	github: 'lewiswolf/maxmsp-gui',
-	// 	iframe: 'https://lewiswolf.github.io/maxmsp-gui/',
-	// 	name: 'maxmsp-gui',
-	// },
+	'maxmsp-gui': {
+		className: 'maxmsp',
+		github: 'lewiswolf/maxmsp-gui',
+		iframe: 'https://lewiswolf.github.io/maxmsp-gui/',
+		name: 'maxmsp-gui',
+	},
 }
