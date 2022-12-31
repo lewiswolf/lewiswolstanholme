@@ -27,7 +27,8 @@
 		"react-scripts": "^5.0.1"
 	},
 	"overrides": {
-		"@svgr/webpack": "^6.5.1"
+		"@svgr/webpack": "^6.5.1",
+		"tsconfig-paths": "4.1.1"
 	},
 	"scripts": {
 		"start": "react-scripts start",
