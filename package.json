@@ -15,7 +15,7 @@
 		"react-helmet": "^6.1.0",
 		"react-markdown": "^8.0.4",
 		"react-p5-wrapper": "^3.4.0",
-		"react-router-dom": "^6.6.1",
+		"react-router-dom": "^6.6.2",
 		"react-syntax-highlighter": "^15.5.0",
 		"rehype-raw": "^6.1.1",
 		"remark-gfm": "^3.0.1",
@@ -24,7 +24,7 @@
 	},
 	"devDependencies": {
 		"@svgr/webpack": "^6.5.1",
-		"prettier": "^2.8.2",
+		"prettier": "^2.8.3",
 		"react-scripts": "^5.0.1"
 	},
 	"overrides": {

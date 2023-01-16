@@ -15,13 +15,14 @@ $highlight: #b4b4b4;
 @mixin video() {
 	height: 40.5vw;
 	max-height: 478.125px;
-	width: 72vw;
+	width: auto;
 	max-width: 850px;
+	aspect-ratio: 16/9;
 	justify-self: center;
 	user-select: none;
 
 	@media (max-width: $ipad) {
-		height: calc(56.25vw - 40px);
+		height: auto;
 		width: 100%;
 	}
 }
