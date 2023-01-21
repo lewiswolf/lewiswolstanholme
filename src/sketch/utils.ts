@@ -45,23 +45,24 @@ export function intersectionLineLine(a: Line, b: Line): Point | null {
 
 export function isPointInsideOfPolygon(p: Point, V: Point[]): boolean {
 	/*
-	Determines whether or not a cartesion pair is within a polygon. collidePointPoly()
-	 => https://github.com/bmoren/p5.collide2D
+	Determines whether or not a cartesion pair is within a polygon. 
+	Solution 3 => http://paulbourke.net/geometry/polygonmesh/
 	*/
 
-	let collision = false
+	// determine if the polygon is ordered clockwise
+	const clockwise =
+		(V[1]!.x - V[0]!.x) * (V[2]!.y - V[1]!.y) - (V[2]!.x - V[1]!.x) * (V[1]!.y - V[0]!.y) > 0
+			? -1
+			: 1
 	// go through each of the vertices, plus the next vertex in the list
-	V.forEach((v: Point, i: number) => {
-		const w = V[(i + 1) % V.length]!
-		// compare position, flip 'collision' variable back and forth
-		if (
-			((v.y >= p.y && w.y < p.y) || (v.y < p.y && w.y >= p.y)) &&
-			p.x < ((w.x - v.x) * (p.y - v.y)) / (w.y - v.y) + v.x
-		) {
-			collision = !collision
+	for (let n = 0; n < V.length; n++) {
+		const a = V[n]!
+		const b = V[(n + 1) % V.length]!
+		if (((p.y - a.y) * (b.x - a.x) - (p.x - a.x) * (b.y - a.y)) * clockwise > 0) {
+			return false
 		}
-	})
-	return collision
+	}
+	return true
 }
 
 export function rotatePoint(p: Point, theta: number): Point {
