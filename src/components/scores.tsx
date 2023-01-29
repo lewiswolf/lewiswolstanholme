@@ -1,8 +1,3 @@
-// dependencies
-import { Umenu } from 'maxmsp-gui'
-import { useEffect } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
-
 // src
 import GridFromJSON from './sub-components/grid-from-json'
 import { ScoresJSON, compositions, engravings } from '../config/scores'
@@ -33,33 +28,18 @@ const EngravingThumb: React.FC<{ obj: ScoresJSON }> = ({ obj }) => {
 }
 
 export default function Scores(): JSX.Element {
-	const pages: string[] = ['compositions', 'engravings']
-	const location: string = useLocation().search.slice(6)
-	const navigate = useNavigate()
-
-	useEffect(() => {
-		if (pages.indexOf(location) === -1) {
-			navigate(`/scores?view=${pages[0]}`)
-		}
-	})
-
 	return (
 		<>
-			<header>
-				<Umenu
-					ariaLabel='What type of scores are on the page?'
-					items={pages.map(
-						(page: string) => page.charAt(0).toUpperCase() + page.slice(1),
-					)}
-					setValue={pages.indexOf(location) !== -1 ? pages.indexOf(location) : 0}
-					width={200}
-					onChange={(i: number) => navigate(`/scores?view=${pages[i]}`)}
-				/>
-			</header>
 			<main className='scores'>
 				<GridFromJSON
-					json={location && location === pages[1] ? engravings : compositions}
-					cell={(obj: ScoresJSON, i: number): JSX.Element => {
+					json={[
+						...compositions.map((a) => ({ ...a, type: 'compositions' })),
+						...engravings.map((a) => ({ ...a, type: 'engravings' })),
+					]}
+					cell={(
+						obj: ScoresJSON & { type: 'compositions' | 'engravings' },
+						i: number,
+					): JSX.Element => {
 						return (
 							<div
 								aria-label={`Download the score for ${obj.title}.`}
@@ -69,7 +49,7 @@ export default function Scores(): JSX.Element {
 								tabIndex={0}
 								onClick={() =>
 									window.open(
-										`${window.location.protocol}//lewiswolstanholme.co.uk/api/${location}/${obj.file}.pdf`,
+										`${window.location.protocol}//lewiswolstanholme.co.uk/api/${obj.type}/${obj.file}.pdf`,
 										'_blank',
 									)
 								}
@@ -77,7 +57,7 @@ export default function Scores(): JSX.Element {
 									if (e.key === 'Enter' || e.key === ' ') {
 										e.preventDefault()
 										return window.open(
-											`${window.location.protocol}//lewiswolstanholme.co.uk/api/${location}/${obj.file}.pdf`,
+											`${window.location.protocol}//lewiswolstanholme.co.uk/api/${obj.type}/${obj.file}.pdf`,
 											'_blank',
 										)
 									} else {
@@ -85,7 +65,7 @@ export default function Scores(): JSX.Element {
 									}
 								}}
 							>
-								{location && location === pages[0] ? (
+								{obj.type === 'compositions' ? (
 									<CompositionThumb obj={obj} />
 								) : (
 									<EngravingThumb obj={obj} />

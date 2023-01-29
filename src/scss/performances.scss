@@ -1,0 +1,13 @@
+.performances {
+	text-align: left;
+
+	h4 {
+		user-select: none;
+	}
+
+	> div p {
+		padding-left: 22px;
+		margin: 0;
+		text-indent: -22px;
+	}
+}
