@@ -11,14 +11,13 @@
 		"react-helmet": "^6.1.0",
 		"react-markdown": "^8.0.5",
 		"react-p5-wrapper": "^4.1.0",
-		"react-router-dom": "^6.8.0",
+		"react-router-dom": "^6.8.1",
 		"react-syntax-highlighter": "^15.5.0",
 		"rehype-raw": "^6.1.1",
 		"remark-gfm": "^3.0.1",
 		"sass": "^1.58.0"
 	},
 	"devDependencies": {
-		"@svgr/rollup": "^6.5.1",
 		"@types/gtag.js": "^0.0.12",
 		"@types/node": "^18.13.0",
 		"@types/react": "^18.0.27",
