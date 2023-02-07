@@ -1,4 +1,4 @@
 ```bash
 npm install --include=dev
-npm start
+npm run dev
 ```

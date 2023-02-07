@@ -20,11 +20,7 @@ const Metadata: React.FC<{
 	return (
 		<Helmet>
 			{darkModeFavicon && (
-				<link
-					rel='icon'
-					media='(prefers-color-scheme: dark)'
-					href={`${process.env.PUBLIC_URL}/favicon-dark.ico`}
-				/>
+				<link rel='icon' media='(prefers-color-scheme: dark)' href='/favicon-dark.ico' />
 			)}
 			{description && <meta name='description' content={description} />}
 			{title && <title>{title}</title>}

@@ -32,7 +32,7 @@ export default function Home(): JSX.Element {
 				/>
 			</header>
 			<main className='home' style={{ opacity: visibility / fidelity }}>
-				<audio ref={audio} src={`${process.env.PUBLIC_URL}/audio/newts.mp3`} />
+				<audio ref={audio} src='/audio/newts.mp3' />
 				<P5 sketch={sketch} />
 			</main>
 		</>
