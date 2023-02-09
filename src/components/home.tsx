@@ -7,13 +7,12 @@ import { P5 } from './sub-components/p5'
 import sketch from '../sketch'
 
 export default function Home(): JSX.Element {
-	const fidelity: number = 1000
 	const audio = useRef<HTMLAudioElement>(null)
 	const [visibility, setVisitibility] = useState<number>(0)
 
 	useEffect(() => {
 		if (audio.current !== null) {
-			audio.current.volume = visibility / fidelity
+			audio.current.volume = visibility
 			if (visibility !== 0) {
 				audio.current.play()
 			} else {
@@ -25,13 +24,9 @@ export default function Home(): JSX.Element {
 	return (
 		<>
 			<header>
-				<Slider
-					fidelity={fidelity}
-					width={200}
-					onChange={(v: number) => setVisitibility(v)}
-				/>
+				<Slider width={200} onChange={(v: number) => setVisitibility(v)} />
 			</header>
-			<main className='home' style={{ opacity: visibility / fidelity }}>
+			<main className='home' style={{ opacity: visibility }}>
 				<audio ref={audio} src='/audio/newts.mp3' />
 				<P5 sketch={sketch} />
 			</main>
