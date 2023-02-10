@@ -1,53 +1,57 @@
 @import url('https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,700;1,400&display=swap');
 
-.scores .score-cover {
-	@include focus();
-	height: 100%;
-	width: 100%;
-	cursor: pointer;
+.scores {
+	margin-top: 20px;
 
-	p {
-		font-size: 12px;
-		line-height: 12px;
-		margin: 0;
-		font-family: inherit;
-		font-weight: bold;
-		user-select: none;
-	}
-	.composition-thumb {
-		height: 80%;
-		width: 80%;
-		padding: 10%;
-		display: grid;
-		grid-template-rows: repeat(3, 1fr);
-		position: relative;
-		font-family: inherit;
-		background: rgb(34, 34, 34);
-
-		svg {
-			height: 100%;
-			width: 100%;
-			position: absolute;
-			inset: 0 0 0 0;
-		}
+	.score-cover {
+		@include focus();
+		height: 100%;
+		width: 100%;
+		cursor: pointer;
 
 		p {
-			padding: 4%;
-			color: white;
+			font-size: 12px;
+			line-height: 12px;
+			margin: 0;
+			font-family: inherit;
+			font-weight: bold;
+			user-select: none;
+		}
+		.composition-thumb {
+			height: 80%;
+			width: 80%;
+			padding: 10%;
+			display: grid;
+			grid-template-rows: repeat(3, 1fr);
+			position: relative;
+			font-family: inherit;
+			background: rgb(34, 34, 34);
 
-			&:nth-of-type(1) {
-				font-size: 21px;
-				line-height: 21px;
+			svg {
+				height: 100%;
+				width: 100%;
+				position: absolute;
+				inset: 0 0 0 0;
 			}
 
-			&:nth-of-type(2) {
-				height: 24px;
-				align-self: center;
-			}
+			p {
+				padding: 4%;
+				color: white;
 
-			&:nth-of-type(3) {
-				text-align: right;
-				align-self: flex-end;
+				&:nth-of-type(1) {
+					font-size: 21px;
+					line-height: 21px;
+				}
+
+				&:nth-of-type(2) {
+					height: 24px;
+					align-self: center;
+				}
+
+				&:nth-of-type(3) {
+					text-align: right;
+					align-self: flex-end;
+				}
 			}
 		}
 	}
