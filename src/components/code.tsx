@@ -21,13 +21,29 @@ export default function Code(): JSX.Element {
 		if (pages.indexOf(location) === -1) {
 			navigate(`/code?view=${pages[0]}`)
 		} else {
-			projects[location]?.github &&
+			if (projects[location]?.github) {
 				fetch(
 					`https://raw.githubusercontent.com/${projects[location]?.github}/master/readme.md`,
 				)
-					.then((res: Response) => res.text())
+					.then((res: Response) => {
+						if (res.ok) {
+							return res.text()
+						} else {
+							throw new Error()
+						}
+					})
 					.then((markdown: string) => setMarkdown(markdown.replace('by Lewis Wolf', '')))
-					.catch()
+					.catch(() =>
+						fetch(
+							`https://raw.githubusercontent.com/${projects[location]?.github}/master/README.md`,
+						)
+							.then((res: Response) => res.text())
+							.then((markdown: string) =>
+								setMarkdown(markdown.replace('by Lewis Wolf', '')),
+							)
+							.catch(),
+					)
+			}
 		}
 	}, [location, navigate, pages])
 

@@ -12,7 +12,13 @@ export const projects: { [key: string]: CodeProjectsJSON } = {
 		iframe: '',
 		name: 'kac_drumset',
 	},
-	tempgen: {
+	'neural-resonator': {
+		className: 'video',
+		github: 'rodrigodzf/NeuralResonatorVST',
+		iframe: 'https://www.youtube-nocookie.com/embed/HnUc3VTUReo?theme=dark&color=white',
+		name: 'Neural Resonator',
+	},
+	'temperament-generator': {
 		className: 'video',
 		github: 'lewiswolf/Temperament-Generator',
 		iframe: 'https://www.youtube-nocookie.com/embed/C4txE2hQ53w?theme=dark&color=white',
@@ -24,16 +30,16 @@ export const projects: { [key: string]: CodeProjectsJSON } = {
 		iframe: 'https://www.youtube-nocookie.com/embed/bQRwxHz54rs?theme=dark&color=white',
 		name: 'Polyphonic Microtuning in Kontakt with Max MSP',
 	},
-	francisdevine: {
-		className: 'website',
-		github: '',
-		iframe: 'http://francisdevine.co.uk',
-		name: 'francisdevine',
-	},
 	'maxmsp-gui': {
 		className: 'maxmsp',
 		github: 'lewiswolf/maxmsp-gui',
 		iframe: 'https://lewiswolf.github.io/maxmsp-gui/',
 		name: 'maxmsp-gui',
+	},
+	francisdevine: {
+		className: 'website',
+		github: '',
+		iframe: 'http://francisdevine.co.uk',
+		name: 'francisdevine',
 	},
 }

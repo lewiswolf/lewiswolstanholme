@@ -47,6 +47,10 @@
 			text-align: left;
 		}
 
+		img {
+			max-width: 100%;
+		}
+
 		summary {
 			@include focus();
 			margin: 5px 0;
