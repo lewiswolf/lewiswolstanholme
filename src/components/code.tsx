@@ -39,7 +39,14 @@ export default function Code(): JSX.Element {
 						)
 							.then((res: Response) => res.text())
 							.then((markdown: string) =>
-								setMarkdown(markdown.replace('by Lewis Wolf', '')),
+								setMarkdown(
+									markdown
+										.replace('by Lewis Wolf', '')
+										.replace(
+											'[![Watch the video](https://i.ytimg.com/vi/HnUc3VTUReo/maxresdefault.jpg)](https://youtu.be/HnUc3VTUReo)',
+											'',
+										),
+								),
 							)
 							.catch(),
 					)
