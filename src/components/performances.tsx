@@ -60,25 +60,31 @@ export default function Performances(): JSX.Element {
 			constructObjects(past, p)
 		}
 	}
-	// lambda to create both past and future
-	function renderObject(str: string, obj: { [key: number]: PerformanceJSON[] }): JSX.Element {
-		return (
-			<>
-				{<h4 children={str} />}
-				{Object.keys(obj)
-					.reverse()
-					.map((key: string) => [
-						...[<h4 children={key} key={key} />],
-						...obj[parseInt(key)]!.map((o: PerformanceJSON, i: number) => Event(o, i)),
-					])}
-			</>
-		)
-	}
 
 	return (
 		<div className='performances'>
-			{Object.keys(future).length ? renderObject('Future Performances', future) : <></>}
-			{renderObject('Past Performances', past)}
+			<main className='performances'>
+				{Object.keys(future) ? (
+					<>
+						<h2>Future</h2>
+						{Object.keys(future).map((key: string) => [
+							...[<h3 children={key} key={key} />],
+							...future[parseInt(key)]!.reverse().map(
+								(p: PerformanceJSON, i: number) => Event(p, i),
+							),
+						])}
+					</>
+				) : (
+					<></>
+				)}
+				<h2>Past</h2>
+				{Object.keys(past)
+					.reverse()
+					.map((key: string) => [
+						...[<h3 children={key} key={key} />],
+						...past[parseInt(key)]!.map((p: PerformanceJSON, i: number) => Event(p, i)),
+					])}
+			</main>
 		</div>
 	)
 }
