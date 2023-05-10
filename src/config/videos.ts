@@ -6,6 +6,11 @@ export type VideosJSON = {
 
 export const videos_json: VideosJSON[] = [
 	{
+		hash: 'S2Wl10zEWUk',
+		title: 'Julia Set X Nonclassical',
+		type: 'youtube',
+	},
+	{
 		hash: '772567653',
 		title: 'josef by Julia Set',
 		type: 'vimeo',
