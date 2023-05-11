@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 
 // src
+// import Performances from './performances'
 import bio from '../config/bio.md'
 
 export default function Info(): JSX.Element {
@@ -21,6 +22,7 @@ export default function Info(): JSX.Element {
 			</header>
 			<main className='info'>
 				<ReactMarkdown children={markdown} className='bio' />
+				{/* <Performances /> */}
 			</main>
 		</>
 	)

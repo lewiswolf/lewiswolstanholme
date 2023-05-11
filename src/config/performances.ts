@@ -8,6 +8,18 @@ export type PerformanceJSON = {
 export const performances: PerformanceJSON[] = [
 	{
 		artist: 'Julia Set',
+		date: new Date('2023-08-17'),
+		event: '',
+		venue: 'Iklectik Art Lab, London',
+	},
+	{
+		artist: 'Julia Set',
+		date: new Date('2023-05-18'),
+		event: 'Runt of the Litter',
+		venue: 'Unit 3K, London',
+	},
+	{
+		artist: 'Julia Set',
 		date: new Date('2023-01-18'),
 		event: 'nonclassical Battle of the Bands',
 		venue: 'MOTH Club, London',
