@@ -9,8 +9,14 @@ export const performances: PerformanceJSON[] = [
 	{
 		artist: 'Julia Set',
 		date: new Date('2023-08-17'),
-		event: '',
+		event: 'Nullform 1',
 		venue: 'Iklectik Art Lab, London',
+	},
+	{
+		artist: 'Julia Set',
+		date: new Date('2023-06-22'),
+		event: 'C4DM 20th Anniversary',
+		venue: 'Queen Mary University of London',
 	},
 	{
 		artist: 'Julia Set',
