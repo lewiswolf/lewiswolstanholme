@@ -16,7 +16,7 @@ export const projects: { [key: string]: CodeProjectsJSON } = {
 		className: 'video',
 		github: 'rodrigodzf/NeuralResonatorVST',
 		iframe: 'https://www.youtube-nocookie.com/embed/HnUc3VTUReo?theme=dark&color=white',
-		name: 'Neural Resonator',
+		name: 'Neural Resonator VST',
 	},
 	'temperament-generator': {
 		className: 'video',

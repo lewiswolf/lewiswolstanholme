@@ -6,6 +6,11 @@ export type MusicJSON = {
 
 export const music_json: MusicJSON[] = [
 	{
+		link: 'https://juliaset.bandcamp.com/album/sallow',
+		img: 'https://f4.bcbits.com/img/a2573041574_10.jpg',
+		title: 'sallow by Julia Set',
+	},
+	{
 		link: 'https://juliaset.bandcamp.com/album/josef',
 		img: 'https://f4.bcbits.com/img/a3407752053_16.jpg',
 		title: 'josef by Julia Set',
