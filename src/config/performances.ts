@@ -9,7 +9,7 @@ export const performances: PerformanceJSON[] = [
 	{
 		artist: 'Julia Set',
 		date: new Date('2023-08-17'),
-		event: 'Nullform 1',
+		event: 'Nullform 17 (Cancelled)',
 		venue: 'Iklectik Art Lab, London',
 	},
 	{
@@ -75,7 +75,7 @@ export const performances: PerformanceJSON[] = [
 	{
 		artist: 'Julia Set',
 		date: new Date('2020-03-22'),
-		event: 'ColdSwim (cancelled)',
+		event: 'ColdSwim (Cancelled)',
 		venue: 'Rye Wax, London',
 	},
 	{
