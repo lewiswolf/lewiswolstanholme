@@ -20,7 +20,7 @@ export const publication_json: PublicationJSON[] = [
 	// },
 	{
 		authors: ['Lewis Wolstanholme', 'Cyrus Vahidi', 'Andrew McPherson'],
-		date: new Date(),
+		date: new Date('2023-08-23'),
 		permalink: 'http://www.aes.org/e-lib/browse.cfm?elib=22158',
 		title: 'Hearing from Within a Sound: A Series of Techniques for Deconstructing and Spatialising Timbre',
 	},
