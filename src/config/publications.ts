@@ -25,6 +25,12 @@ export const publication_json: PublicationJSON[] = [
 		title: 'Hearing from Within a Sound: A Series of Techniques for Deconstructing and Spatialising Timbre',
 	},
 	{
+		authors: ['Lewis Wolstanholme', 'Andrew McPherson'],
+		date: new Date('2022-12-20'),
+		permalink: 'https://www.qmul.ac.uk/dmrn/media/dmrn/DMRN-17-proceedings---Draft.pdf',
+		title: 'Remarks on a Cultural Investigation of Abstract Percussion Instruments',
+	},
+	{
 		authors: ['Lewis Wolstanholme'],
 		date: new Date('2022-11-23'),
 		permalink: 'https://doi.org/10.5281/zenodo.7274474',
