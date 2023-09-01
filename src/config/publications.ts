@@ -28,7 +28,7 @@ export const publication_json: PublicationJSON[] = [
 			'Victor Shepardson',
 			'Nicola Privato',
 			'Teresa Pelinski',
-			'Adan L. Benito Temprano',
+			'Adán L. Benito Temprano',
 			'Lewis Wolstanholme',
 			'Andrea Martelloni',
 			'Franco Santiago Caspe',
