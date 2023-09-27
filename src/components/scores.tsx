@@ -1,7 +1,7 @@
 // src
 import GridFromJSON from './sub-components/grid-from-json'
 import { ScoresJSON, compositions, engravings } from '../config/scores'
-import CompositionSVG from '../svg/compositions-thumb.svg'
+import CompositionSVG from '../svg/compositions-thumb.svg?react'
 
 const CompositionThumb: React.FC<{ obj: ScoresJSON }> = ({ obj }) => {
 	return (

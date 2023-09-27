@@ -3,7 +3,7 @@ import { Object, RadioGroup } from 'maxmsp-gui'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 // src
-import NaviCable from '../svg/navi-cable.svg'
+import NaviCable from '../svg/navi-cable.svg?react'
 
 export default function Navi(): JSX.Element {
 	const pages = ['home', 'music', 'scores', 'videos', 'code', 'info']

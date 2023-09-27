@@ -12,6 +12,6 @@ export default defineConfig({
 			include: /\.(js|mjs|json|css|svg)$/i,
 		}),
 		react(),
-		svgr({ exportAsDefault: true }),
+		svgr(),
 	],
 })
