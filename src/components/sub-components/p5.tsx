@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { ReactP5Wrapper, Sketch } from 'react-p5-wrapper'
+import { ReactP5Wrapper, Sketch } from '@p5-wrapper/react'
 
 export type Dimensions = {
 	height: number

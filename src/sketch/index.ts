@@ -1,5 +1,5 @@
 // dependencies
-import { P5CanvasInstance, SketchProps } from 'react-p5-wrapper'
+import { P5CanvasInstance, SketchProps } from '@p5-wrapper/react'
 
 // src
 import { Dimensions } from '../components/sub-components/p5'
