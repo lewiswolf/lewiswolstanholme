@@ -59,14 +59,10 @@ const GridFromJSON: React.FC<{
 				const largestGrid: number = content.length * (maxWidth + gridSpacer) - gridSpacer
 				setGrid({
 					width: parentWidth > largestGrid ? `${largestGrid}px` : '100%',
-					gridAutoRows: `${
-						parentWidth > maxWidth ? maxHeight : (maxHeight * parentWidth) / maxWidth
-					}px`,
+					gridAutoRows: `${parentWidth > maxWidth ? maxHeight : (maxHeight * parentWidth) / maxWidth}px`,
 					gridTemplateColumns:
 						parentWidth > maxWidth
-							? `repeat(${
-									parentWidth > largestGrid ? `${content.length}` : 'auto-fill'
-							  }, ${maxWidth}px)`
+							? `repeat(${parentWidth > largestGrid ? `${content.length}` : 'auto-fill'}, ${maxWidth}px)`
 							: `${parentWidth}px`,
 				})
 			}

@@ -1,11 +1,6 @@
 // dependencies
 import { Line, Point } from './types'
-import {
-	compareShortestVector,
-	intersectionLineLine,
-	isPointInsideOfPolygon,
-	rotatePoint,
-} from './utils'
+import { compareShortestVector, intersectionLineLine, isPointInsideOfPolygon, rotatePoint } from './utils'
 
 export class Triangle {
 	spin: number

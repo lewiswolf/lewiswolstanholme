@@ -37,10 +37,7 @@ export default function Performances(): JSX.Element {
 	let future: { [key: number]: PerformanceJSON[] } = {}
 	let past: { [key: number]: PerformanceJSON[] } = {}
 	// constructor for object[year]
-	const constructObjects = (
-		obj: { [key: number]: PerformanceJSON[] },
-		entry: PerformanceJSON,
-	) => {
+	const constructObjects = (obj: { [key: number]: PerformanceJSON[] }, entry: PerformanceJSON) => {
 		let year: number = entry.date.getFullYear()
 		if (obj[year]) {
 			obj[year]!.push(entry)
@@ -49,9 +46,7 @@ export default function Performances(): JSX.Element {
 		}
 	}
 	// first sort all the dates
-	performances.sort(
-		(a: PerformanceJSON, b: PerformanceJSON) => b.date.getTime() - a.date.getTime(),
-	)
+	performances.sort((a: PerformanceJSON, b: PerformanceJSON) => b.date.getTime() - a.date.getTime())
 	// split each performance into future or past, and build yearly array
 	for (let p of performances) {
 		if (p.date.getTime() > Date.now()) {
@@ -69,9 +64,7 @@ export default function Performances(): JSX.Element {
 						<h2>Future</h2>
 						{Object.keys(future).map((key: string) => [
 							...[<h3 children={key} key={key} />],
-							...future[parseInt(key)]!.reverse().map(
-								(p: PerformanceJSON, i: number) => Event(p, i),
-							),
+							...future[parseInt(key)]!.reverse().map((p: PerformanceJSON, i: number) => Event(p, i)),
 						])}
 					</>
 				) : (

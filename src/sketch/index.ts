@@ -11,18 +11,9 @@ export default function sketch(p5: P5CanvasInstance<SketchProps & { dimensions: 
 		width: 0,
 	}
 	const triangles: [Triangle, Triangle, Triangle] = [
-		new Triangle(
-			Math.random() * 50 + 50,
-			(Math.round(Math.random()) * 2 - 1) * (Math.random() * 0.01 + 0.002),
-		),
-		new Triangle(
-			Math.random() * 50 + 50,
-			(Math.round(Math.random()) * 2 - 1) * (Math.random() * 0.01 + 0.002),
-		),
-		new Triangle(
-			Math.random() * 50 + 50,
-			(Math.round(Math.random()) * 2 - 1) * (Math.random() * 0.01 + 0.002),
-		),
+		new Triangle(Math.random() * 50 + 50, (Math.round(Math.random()) * 2 - 1) * (Math.random() * 0.01 + 0.002)),
+		new Triangle(Math.random() * 50 + 50, (Math.round(Math.random()) * 2 - 1) * (Math.random() * 0.01 + 0.002)),
+		new Triangle(Math.random() * 50 + 50, (Math.round(Math.random()) * 2 - 1) * (Math.random() * 0.01 + 0.002)),
 	]
 
 	// create canvas

@@ -22,9 +22,7 @@ export default function Code(): JSX.Element {
 			navigate(`/code?view=${pages[0]}`)
 		} else {
 			if (projects[location]?.github) {
-				fetch(
-					`https://raw.githubusercontent.com/${projects[location]?.github}/master/readme.md`,
-				)
+				fetch(`https://raw.githubusercontent.com/${projects[location]?.github}/master/readme.md`)
 					.then((res: Response) => {
 						if (res.ok) {
 							return res.text()
@@ -34,9 +32,7 @@ export default function Code(): JSX.Element {
 					})
 					.then((markdown: string) => setMarkdown(markdown.replace('by Lewis Wolf', '')))
 					.catch(() =>
-						fetch(
-							`https://raw.githubusercontent.com/${projects[location]?.github}/master/README.md`,
-						)
+						fetch(`https://raw.githubusercontent.com/${projects[location]?.github}/master/README.md`)
 							.then((res: Response) => res.text())
 							.then((markdown: string) =>
 								setMarkdown(

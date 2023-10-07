@@ -50,10 +50,7 @@ export function isPointInsideOfPolygon(p: Point, V: Point[]): boolean {
 	*/
 
 	// determine if the polygon is ordered clockwise
-	const clockwise =
-		(V[1]!.x - V[0]!.x) * (V[2]!.y - V[1]!.y) - (V[2]!.x - V[1]!.x) * (V[1]!.y - V[0]!.y) > 0
-			? -1
-			: 1
+	const clockwise = (V[1]!.x - V[0]!.x) * (V[2]!.y - V[1]!.y) - (V[2]!.x - V[1]!.x) * (V[1]!.y - V[0]!.y) > 0 ? -1 : 1
 	// go through each of the vertices, plus the next vertex in the list
 	for (let n = 0; n < V.length; n++) {
 		const a = V[n]!
