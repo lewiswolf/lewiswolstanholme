@@ -55,8 +55,8 @@ export const engravings = [
 	{
 		composer: 'Robert Matthew-Walker',
 		file: 'Robert_Matthew-Walker_Concerto_for_Viola_and_String_Orchestra',
-		instrumentation: 'concerto for viola and string orchestra',
-		title: 'Christ on the Road to Emmaus',
+		instrumentation: 'Christ on the Road to Emmaus',
+		title: 'Concerto for Viola and String Orchestra',
 		year: '2022',
 	},
 	{
