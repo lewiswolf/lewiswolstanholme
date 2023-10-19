@@ -1,10 +1,10 @@
-export type VideosJSON = {
+export type VideoJSON = {
 	hash: string
 	title: string
 	type: 'youtube' | 'vimeo'
 }
 
-export const videos_json: VideosJSON[] = [
+export const videos: VideoJSON[] = [
 	{
 		hash: '9dWz4KJjG4A',
 		title: 'Julia Set X Barrell Jones (State51 X Nonclassical)',

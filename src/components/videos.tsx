@@ -1,10 +1,10 @@
 // src
-import { VideosJSON, videos_json } from '../config/videos'
+import { VideoJSON, videos } from '../config/videos'
 
 export default function Videos(): JSX.Element {
 	return (
 		<main className='videos'>
-			{videos_json.map((obj: VideosJSON, i: number): JSX.Element => {
+			{videos.map((obj: VideoJSON, i: number): JSX.Element => {
 				switch (obj.type) {
 					case 'vimeo':
 						return (

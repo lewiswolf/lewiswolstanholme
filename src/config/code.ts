@@ -1,11 +1,11 @@
-export type CodeProjectsJSON = {
+export type CodeProjectJSON = {
 	className: string
 	github: string
 	iframe: string
 	name: string
 }
 
-export const projects: { [key: string]: CodeProjectsJSON } = {
+export const projects: { [key: string]: CodeProjectJSON } = {
 	kac_drumset: {
 		className: '',
 		github: 'lewiswolf/kac_drumset',

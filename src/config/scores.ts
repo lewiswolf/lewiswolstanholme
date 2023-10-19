@@ -1,4 +1,4 @@
-export type ScoresJSON = {
+export type ScoreJSON = {
 	composer: string
 	file: string
 	instrumentation: string
@@ -6,7 +6,7 @@ export type ScoresJSON = {
 	year: string
 }
 
-export const compositions: ScoresJSON[] = [
+export const compositions: ScoreJSON[] = [
 	{
 		composer: 'Lewis Wolstanholme',
 		file: 'Red_Kite_by_Lewis_Wolstanholme',
@@ -51,7 +51,7 @@ export const compositions: ScoresJSON[] = [
 	},
 ]
 
-export const engravings = [
+export const engravings: ScoreJSON[] = [
 	{
 		composer: 'Robert Matthew-Walker',
 		file: 'Robert_Matthew-Walker_Concerto_for_Viola_and_String_Orchestra',

@@ -1,9 +1,9 @@
 // src
 import GridFromJSON from './sub-components/grid-from-json'
-import { ScoresJSON, compositions, engravings } from '../config/scores'
+import { ScoreJSON, compositions, engravings } from '../config/scores'
 import CompositionSVG from '../svg/compositions-thumb.svg?react'
 
-const CompositionThumb: React.FC<{ obj: ScoresJSON }> = ({ obj }) => {
+const CompositionThumb: React.FC<{ obj: ScoreJSON }> = ({ obj }) => {
 	return (
 		<div className='composition-thumb' tabIndex={-1}>
 			<CompositionSVG />
@@ -14,7 +14,7 @@ const CompositionThumb: React.FC<{ obj: ScoresJSON }> = ({ obj }) => {
 	)
 }
 
-const EngravingThumb: React.FC<{ obj: ScoresJSON }> = ({ obj }) => {
+const EngravingThumb: React.FC<{ obj: ScoreJSON }> = ({ obj }) => {
 	return (
 		<div className='engraving-thumb' tabIndex={-1}>
 			<p>{obj.composer}</p>
@@ -36,7 +36,7 @@ export default function Scores(): JSX.Element {
 						...compositions.map((a) => ({ ...a, type: 'compositions' })),
 						...engravings.map((a) => ({ ...a, type: 'engravings' })),
 					]}
-					cell={(obj: ScoresJSON & { type: 'compositions' | 'engravings' }, i: number): JSX.Element => {
+					cell={(obj: ScoreJSON & { type: 'compositions' | 'engravings' }, i: number): JSX.Element => {
 						return (
 							<div
 								aria-label={`Download the score for ${obj.title}.`}

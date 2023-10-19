@@ -1,10 +1,10 @@
-export type MusicJSON = {
+export type AlbumJSON = {
 	link: string
 	img: string
 	title: string
 }
 
-export const music_json: MusicJSON[] = [
+export const albums: AlbumJSON[] = [
 	{
 		link: 'https://juliaset.bandcamp.com/album/sallow',
 		img: 'https://f4.bcbits.com/img/a2573041574_10.jpg',

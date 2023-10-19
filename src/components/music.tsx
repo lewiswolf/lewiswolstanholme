@@ -1,13 +1,13 @@
 // src
 import GridFromJSON from './sub-components/grid-from-json'
-import { MusicJSON, music_json } from '../config/music'
+import { AlbumJSON, albums } from '../config/music'
 
 export default function Music(): JSX.Element {
 	return (
 		<main className='music'>
 			<GridFromJSON
-				json={music_json}
-				cell={(obj: MusicJSON, i: number): JSX.Element => (
+				json={albums}
+				cell={(obj: AlbumJSON, i: number): JSX.Element => (
 					<div
 						aria-label={`Listen to ${obj.title}.`}
 						className='albumcover'
