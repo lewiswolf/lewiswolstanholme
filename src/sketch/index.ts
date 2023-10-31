@@ -38,22 +38,22 @@ export default function sketch(p5: P5CanvasInstance<SketchProps & { dimensions: 
 		p5.stroke('black')
 		p5.strokeWeight(1)
 		// triangle 0 always shows
-		for (let line of triangles[0].lines()) {
+		for (const line of triangles[0].lines()) {
 			p5.line(line[0].x, line[0].y, line[1].x, line[1].y)
 		}
 		// triangle 1 is hidden by triangle 0
-		for (let line of triangles[1].linesOutsideTriangle(triangles[0])) {
+		for (const line of triangles[1].linesOutsideTriangle(triangles[0])) {
 			p5.line(line[0].x, line[0].y, line[1].x, line[1].y)
 		}
 		// triangle 2 inside of triangle 0, but hidden by triangle 1
-		for (let line of triangles[2].linesInsideTriangle(triangles[0])) {
+		for (const line of triangles[2].linesInsideTriangle(triangles[0])) {
 			p5.line(line[0].x, line[0].y, line[1].x, line[1].y)
 		}
-		for (let line of triangles[2].linesOutsideTriangle(triangles[1])) {
+		for (const line of triangles[2].linesOutsideTriangle(triangles[1])) {
 			p5.line(line[0].x, line[0].y, line[1].x, line[1].y)
 		}
 		// rotate triangles
-		for (let tri of triangles) {
+		for (const tri of triangles) {
 			tri.rotate()
 		}
 	}

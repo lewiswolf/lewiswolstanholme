@@ -40,11 +40,11 @@ export class Triangle {
 		Returns all of the lines/line segments that are inside of t_prime.
 		*/
 
-		let out: Line[] = []
-		for (let line of this.lines()) {
-			let intersections: Point[] = []
-			for (let line_prime of t_prime.lines()) {
-				let intersection = intersectionLineLine(line, line_prime)
+		const out: Line[] = []
+		for (const line of this.lines()) {
+			const intersections: Point[] = []
+			for (const line_prime of t_prime.lines()) {
+				const intersection = intersectionLineLine(line, line_prime)
 				intersection && intersections.push(intersection)
 			}
 			const v_inside: [boolean, boolean] = [
@@ -77,11 +77,11 @@ export class Triangle {
 		Returns all of the lines/line segments that are outside of t_prime.
 		*/
 
-		let out: Line[] = []
-		for (let line of this.lines()) {
-			let intersections: Point[] = []
-			for (let line_prime of t_prime.lines()) {
-				let intersection = intersectionLineLine(line, line_prime)
+		const out: Line[] = []
+		for (const line of this.lines()) {
+			const intersections: Point[] = []
+			for (const line_prime of t_prime.lines()) {
+				const intersection = intersectionLineLine(line, line_prime)
 				intersection && intersections.push(intersection)
 			}
 			const v_inside: [boolean, boolean] = [

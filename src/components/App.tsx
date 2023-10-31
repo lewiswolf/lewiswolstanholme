@@ -4,7 +4,7 @@ import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 
 // components
 import Metadata from './sub-components/metadata'
-import { GoogleAnalytics, analyticsPageView } from './sub-components/analytics'
+import { GoogleAnalytics, analyticsPageView } from './analytics'
 import Navi from './navi'
 import Home from './home'
 import Music from './music'
