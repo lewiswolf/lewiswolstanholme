@@ -11,7 +11,7 @@ export default function Home(): JSX.Element {
 	const [visibility, setVisitibility] = useState<number>(0)
 
 	useEffect(() => {
-		if (audio.current !== null) {
+		if (audio.current) {
 			audio.current.volume = visibility
 			if (visibility !== 0) {
 				audio.current.play()
@@ -24,7 +24,12 @@ export default function Home(): JSX.Element {
 	return (
 		<>
 			<header>
-				<Slider width={200} onChange={(v: number) => setVisitibility(v)} />
+				<Slider
+					width={200}
+					onChange={(v: number) => {
+						setVisitibility(v)
+					}}
+				/>
 			</header>
 			<main className='home' style={{ opacity: visibility }}>
 				<audio ref={audio} src='/audio/newts.mp3' />
