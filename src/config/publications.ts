@@ -23,7 +23,7 @@ export const publications: PublicationJSON[] = [
 	{
 		authors: ['Lewis Wolstanholme', 'Teresa Pelinski', 'Aliénor Golvet', 'Cyrus Vahidi', 'Vincent Martos'],
 		date: new Date('2023-11-31'),
-		pdf: '',
+		pdf: 'AI_(r)evolution_-_where_are_we_heading?',
 		permalink: 'https://doi.org/10.48550/arXiv.2310.18320',
 		place: 'Institut de Recherche et Coordination Acoustique/Musique (IRCAM), Paris',
 		publication:
@@ -36,7 +36,7 @@ export const publications: PublicationJSON[] = [
 		date: new Date('2023-09-11'),
 		links: { code: 'https://github.com/lewiswolf/kac_prediction' },
 		pdf: 'Wolstanholme_McPherson_2023_Towards_orchestrating_physically_modelled_2D_percussion_instruments',
-		permalink: '',
+		permalink: 'https://appfa2023.silsystem.solutions/atti/000664.pdf',
 		place: 'Politecnico di Torino, Italy',
 		publication: 'Forum Acusticum, 10th Convention of the European Acoustics Association',
 		title: 'Towards Orchestrating Physically Modelled 2D Percussion Instruments',
