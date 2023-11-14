@@ -9,7 +9,7 @@ export default function Info(): JSX.Element {
 	const [markdown, setMarkdown] = useState<string>('')
 
 	useEffect(() => {
-		fetch(bio)
+		void fetch(bio as RequestInfo)
 			.then((res) => res.text())
 			.then((text) => {
 				setMarkdown(text)

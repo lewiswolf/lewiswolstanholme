@@ -14,7 +14,7 @@ export default function Home(): JSX.Element {
 		if (audio.current) {
 			audio.current.volume = visibility
 			if (visibility !== 0) {
-				audio.current.play()
+				void audio.current.play()
 			} else {
 				audio.current.pause()
 			}
