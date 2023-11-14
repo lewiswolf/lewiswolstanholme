@@ -1,11 +1,17 @@
 export type PerformanceJSON = {
-	artist: 'Julia Set' | 'Julia Set X Barrell Jones' | 'Lewis Wolstanholme'
+	artist: 'Julia Set' | 'Lewis Wolstanholme' | 'Lewis Wolstanholme X Mark Cables'
 	date: Date
 	event: string
 	venue: string
 }
 
 export const performances: PerformanceJSON[] = [
+	{
+		artist: 'Lewis Wolstanholme X Mark Cables',
+		date: new Date('2023-11-24'),
+		event: 'Three Pieces for a Disklavier',
+		venue: 'Queen Mary University of London',
+	},
 	{
 		artist: 'Julia Set',
 		date: new Date('2023-11-11'),
