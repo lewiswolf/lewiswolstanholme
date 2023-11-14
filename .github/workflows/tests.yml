@@ -28,5 +28,5 @@ jobs:
 
             - name: Assert types
               run: |
-                  tsc
-                  eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0
+                  npx tsc
+                  npx eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0
