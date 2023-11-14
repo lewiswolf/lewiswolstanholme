@@ -1,5 +1,5 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 
 export const GoogleAnalytics: React.FC<{ id: string }> = ({ id }) => {
 	if (window.location.hostname !== 'localhost') {

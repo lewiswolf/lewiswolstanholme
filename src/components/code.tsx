@@ -18,7 +18,7 @@ export default function Code(): JSX.Element {
 	const [markdown, setMarkdown] = useState<string>('')
 
 	useEffect(() => {
-		if (pages.indexOf(location) === -1) {
+		if (!pages.includes(location)) {
 			navigate(`/code?view=${pages[0]}`)
 		} else {
 			if (projects[location]?.github) {
@@ -30,11 +30,13 @@ export default function Code(): JSX.Element {
 							throw new Error()
 						}
 					})
-					.then((markdown: string) => setMarkdown(markdown.replace('by Lewis Wolf', '')))
+					.then((markdown: string) => {
+						setMarkdown(markdown.replace('by Lewis Wolf', ''))
+					})
 					.catch(() =>
 						fetch(`https://raw.githubusercontent.com/${projects[location]?.github}/master/README.md`)
 							.then((res: Response) => res.text())
-							.then((markdown: string) =>
+							.then((markdown: string) => {
 								setMarkdown(
 									markdown
 										.replace(
@@ -43,8 +45,8 @@ export default function Code(): JSX.Element {
 										)
 										.replace('<div  align="center">', '')
 										.replace('</div>', ''),
-								),
-							)
+								)
+							})
 							.catch(),
 					)
 			}
@@ -57,9 +59,11 @@ export default function Code(): JSX.Element {
 				<Umenu
 					ariaLabel='What code project would you like to see?'
 					items={pages.map((key: string) => projects[key]?.name || '')}
-					setValue={pages.indexOf(location) !== -1 ? pages.indexOf(location) : 0}
+					setValue={pages.includes(location) ? pages.indexOf(location) : 0}
 					width={255}
-					onChange={(i: number) => navigate(`/code?view=${pages[i]}`)}
+					onChange={(i: number) => {
+						navigate(`/code?view=${pages[i]}`)
+					}}
 				/>
 				<TextButton
 					ariaLabel='Open this project on GitHub.'

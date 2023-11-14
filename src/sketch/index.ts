@@ -24,10 +24,8 @@ export default function sketch(p5: P5CanvasInstance<SketchProps & { dimensions: 
 
 	// update canvas props
 	p5.updateWithProps = (props: SketchProps & { dimensions: Dimensions }): void => {
-		if (props.dimensions) {
-			dim = props.dimensions
-			p5.resizeCanvas(dim.width, dim.height)
-		}
+		dim = props.dimensions
+		p5.resizeCanvas(dim.width, dim.height)
 	}
 
 	p5.draw = (): void => {

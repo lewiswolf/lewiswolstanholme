@@ -20,7 +20,7 @@ export const P5: React.FC<{ sketch: Sketch }> = ({ sketch }) => {
 			which the p5 dimensions are inferred.
 		*/
 		const resize = (): void => {
-			if (self.current !== null && self.current.parentElement !== null) {
+			if (self.current?.parentElement) {
 				const parent: DOMRect = self.current.parentElement.getBoundingClientRect()
 				setDim({
 					height: parent.height,
@@ -31,7 +31,9 @@ export const P5: React.FC<{ sketch: Sketch }> = ({ sketch }) => {
 		// Add and remove event listeners
 		window.addEventListener('resize', resize)
 		resize()
-		return () => window.removeEventListener('resize', resize)
+		return () => {
+			window.removeEventListener('resize', resize)
+		}
 	}, [])
 
 	return (

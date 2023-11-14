@@ -62,11 +62,7 @@ export default function Scores(): JSX.Element {
 									}
 								}}
 							>
-								{obj.type === 'compositions' ? (
-									<CompositionThumb obj={obj} />
-								) : (
-									<EngravingThumb obj={obj} />
-								)}
+								{obj.type === 'compositions' ? <CompositionThumb obj={obj} /> : <EngravingThumb obj={obj} />}
 							</div>
 						)
 					}}

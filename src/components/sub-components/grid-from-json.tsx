@@ -29,9 +29,11 @@ const GridFromJSON: React.FC<{
 			from the public folder, or update the content using the prop itself.
 		*/
 		if (typeof json === 'string') {
-			fetch(json)
+			void fetch(json)
 				.then((res: Response) => res.json())
-				.then((json: { [key: string]: any }[]) => setContent(json))
+				.then((json: { [key: string]: any }[]) => {
+					setContent(json)
+				})
 				.catch()
 		} else {
 			setContent(json)
@@ -47,16 +49,16 @@ const GridFromJSON: React.FC<{
 			per row.
 		*/
 		const gridResponse = (): void => {
-			if (self.current !== null && self.current.parentElement !== null) {
+			if (self.current?.parentElement) {
 				const padding_array: number[] = window
 					.getComputedStyle(self.current.parentElement, null)
 					.getPropertyValue('padding-inline')
 					.split(' ')
 					.map((s: string) => parseFloat(s))
+				padding_array[0] = padding_array[0] !== undefined ? padding_array[0] : 0
+				padding_array[1] = padding_array[1] !== undefined ? padding_array[1] : padding_array[0]
 				const parentWidth: number =
-					self.current.parentElement.getBoundingClientRect().width -
-					padding_array[0]! -
-					(padding_array[1]! ? padding_array[1]! : padding_array[0]!)
+					self.current.parentElement.getBoundingClientRect().width - padding_array[0] - padding_array[1]
 				const largestGrid: number = content.length * (maxWidth + gridSpacer) - gridSpacer
 				setGrid({
 					width: parentWidth > largestGrid ? `${largestGrid}px` : '100%',
@@ -72,7 +74,9 @@ const GridFromJSON: React.FC<{
 		if (content.length > 0) {
 			window.addEventListener('resize', gridResponse)
 			gridResponse()
-			return () => window.removeEventListener('resize', gridResponse)
+			return () => {
+				window.removeEventListener('resize', gridResponse)
+			}
 		} else {
 			return () => {}
 		}
