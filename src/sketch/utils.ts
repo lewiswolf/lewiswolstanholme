@@ -49,12 +49,16 @@ export function isPointInsideOfPolygon(p: Point, V: Point[]): boolean {
 	Solution 3 => http://paulbourke.net/geometry/polygonmesh/
 	*/
 
+	// break if polygon is incomplete
+	if (!(V[0] && V[1] && V[2])) {
+		return false
+	}
 	// determine if the polygon is ordered clockwise
-	const clockwise = (V[1]!.x - V[0]!.x) * (V[2]!.y - V[1]!.y) - (V[2]!.x - V[1]!.x) * (V[1]!.y - V[0]!.y) > 0 ? -1 : 1
+	const clockwise = (V[1].x - V[0].x) * (V[2].y - V[1].y) - (V[2].x - V[1].x) * (V[1].y - V[0].y) > 0 ? -1 : 1
 	// go through each of the vertices, plus the next vertex in the list
 	for (let n = 0; n < V.length; n++) {
-		const a = V[n]!
-		const b = V[(n + 1) % V.length]!
+		const a = V[n] as NonNullable<Point>
+		const b = V[(n + 1) % V.length] as NonNullable<Point>
 		if (((p.y - a.y) * (b.x - a.x) - (p.x - a.x) * (b.y - a.y)) * clockwise > 0) {
 			return false
 		}
