@@ -42,6 +42,6 @@
 		"build": "tsc && vite build",
 		"preview": "vite preview",
 		"lint": "npx prettier --write --config ./.prettierrc .",
-		"test": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 && tsc"
+		"test": "tsc && eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
 	}
 }
