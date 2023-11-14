@@ -92,18 +92,18 @@ export class Triangle {
 				// if both vertices are outside of t_prime with no intersections, draw a line
 				// between each vertex
 				out.push(line)
-			} else if (!v_inside[0] && v_inside[1] && intersections) {
+			} else if (!v_inside[0] && v_inside[1] && intersections.length) {
 				// if vertex A is outside and vertex B inside, find closest intersection and draw
 				// from vertex B to intersection
 				out.push([line[0], compareShortestVector(line[0], intersections)[0]])
-			} else if (v_inside[0] && !v_inside[1] && intersections) {
+			} else if (v_inside[0] && !v_inside[1] && intersections.length) {
 				// if vertex A is inside and vertex B outside, find closest intersection and draw
 				// from vertex A to intersection
 				out.push([line[1], compareShortestVector(line[1], intersections)[0]])
 			} else if (v_inside[0] && v_inside[1] && intersections[0] && intersections[1]) {
 				// if both vertices are inside the polygon, draw between intersections
 				out.push([intersections[0], intersections[1]])
-			} else if (!v_inside[0] && !v_inside[1] && intersections) {
+			} else if (!v_inside[0] && !v_inside[1] && intersections.length) {
 				// if both vertices are outside of the polygon, draw between intersections
 				out.push([line[0], compareShortestVector(line[0], intersections)[0]])
 				out.push([line[1], compareShortestVector(line[1], intersections)[0]])

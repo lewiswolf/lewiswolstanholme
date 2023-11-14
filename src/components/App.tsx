@@ -1,5 +1,6 @@
 // dependencies
 import { useEffect } from 'react'
+import { HelmetProvider } from 'react-helmet-async'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 
 // components
@@ -18,10 +19,12 @@ import '../scss/App.scss'
 
 export default function App(): JSX.Element {
 	const location = useLocation().pathname
-	useEffect(() => analyticsPageView(), [location])
+	useEffect(() => {
+		analyticsPageView()
+	}, [location])
 
 	return (
-		<>
+		<HelmetProvider>
 			<Metadata
 				darkModeFavicon={true}
 				description='Lewis Wolstanholme - Musician, Composer & Creative Coder'
@@ -40,6 +43,6 @@ export default function App(): JSX.Element {
 				<Route element={<Info />} path='/info' />
 				<Route element={<Navigate to='/' />} path='*' />
 			</Routes>
-		</>
+		</HelmetProvider>
 	)
 }
