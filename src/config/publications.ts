@@ -24,7 +24,7 @@ export const publications: PublicationJSON[] = [
 		authors: ['Lewis Wolstanholme', 'Teresa Pelinski', 'Aliénor Golvet', 'Cyrus Vahidi', 'Vincent Martos'],
 		date: new Date('2023-11-31'),
 		pdf: 'AI_(r)evolution_-_where_are_we_heading?',
-		permalink: 'https://doi.org/10.48550/arXiv.2310.18320',
+		permalink: 'https://hal.science/hal-04276793',
 		place: 'Institut de Recherche et Coordination Acoustique/Musique (IRCAM), Paris',
 		publication:
 			'AI (r)evolution - where are we heading?: Thoughts about the future of music and sound technologies in the era of deep learning',
