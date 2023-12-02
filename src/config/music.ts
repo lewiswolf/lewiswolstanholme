@@ -4,7 +4,7 @@ export type AlbumJSON = {
 	title: string
 }
 
-export const albums: AlbumJSON[] = [
+export const albums: Readonly<AlbumJSON[]> = [
 	{
 		link: 'https://juliaset.bandcamp.com/album/sallow',
 		img: 'https://f4.bcbits.com/img/a2573041574_10.jpg',
@@ -40,4 +40,4 @@ export const albums: AlbumJSON[] = [
 		img: 'https://f4.bcbits.com/img/a3526980092_16.jpg',
 		title: 'bach.fractal by Ciarán Corr and Lewis Wolstanholme',
 	},
-]
+] as const

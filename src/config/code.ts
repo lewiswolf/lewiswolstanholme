@@ -5,7 +5,7 @@ export type CodeProjectJSON = {
 	name: string
 }
 
-export const projects: { [key: string]: CodeProjectJSON } = {
+export const projects: Readonly<{ [key: string]: CodeProjectJSON }> = {
 	kac_drumset: {
 		className: '',
 		github: 'lewiswolf/kac_drumset',
@@ -42,4 +42,4 @@ export const projects: { [key: string]: CodeProjectJSON } = {
 		iframe: 'http://francisdevine.co.uk',
 		name: 'francisdevine',
 	},
-}
+} as const

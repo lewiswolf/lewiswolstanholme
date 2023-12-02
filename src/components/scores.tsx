@@ -36,7 +36,7 @@ export default function Scores(): JSX.Element {
 						...compositions.map((a) => ({ ...a, type: 'compositions' })),
 						...engravings.map((a) => ({ ...a, type: 'engravings' })),
 					]}
-					cell={(obj: ScoreJSON & { type: 'compositions' | 'engravings' }, i: number): JSX.Element => {
+					cell={(obj: ScoreJSON & Readonly<{ type: 'compositions' | 'engravings' }>, i: number): JSX.Element => {
 						return (
 							<div
 								aria-label={`Download the score for ${obj.title}.`}

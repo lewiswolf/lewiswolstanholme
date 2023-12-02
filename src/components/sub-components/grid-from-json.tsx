@@ -11,12 +11,12 @@ type GridProperties = {
 const GridFromJSON: React.FC<{
 	cell: (obj: any, i: number) => JSX.Element
 	gridSpacer?: number
-	json: { [key: string]: any }[] | string[] | string
+	json: Readonly<{ [key: string]: any }[]> | string[] | string
 	maxHeight?: number
 	maxWidth?: number
 }> = ({ cell, gridSpacer = 20, json, maxWidth = 280, maxHeight = maxWidth }) => {
 	const self = useRef<HTMLDivElement>(null)
-	const [content, setContent] = useState<{ [key: string]: any }[] | string[]>([])
+	const [content, setContent] = useState<Readonly<{ [key: string]: any }[]> | string[]>([])
 	const [gridState, setGrid] = useState<GridProperties>({
 		width: '',
 		gridAutoRows: '',

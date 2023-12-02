@@ -1,5 +1,5 @@
 export type PublicationJSON = {
-	authors: string[]
+	authors: Readonly<string[]>
 	date: Date
 	links?: { [key: string]: string }
 	pdf?: string
@@ -10,7 +10,7 @@ export type PublicationJSON = {
 	type: 'article' | 'conference paper' | 'dataset' | 'performance' | 'presentation' | 'workshop'
 }
 
-export const publications: PublicationJSON[] = [
+export const publications: Readonly<PublicationJSON[]> = [
 	// {
 	// 	authors: ['Lewis Wolstanholme', 'Francis Devine'],
 	// 	date: new Date(),
@@ -123,4 +123,4 @@ export const publications: PublicationJSON[] = [
 		title: 'Subjective Spatial Colour',
 		type: 'performance',
 	},
-]
+] as const

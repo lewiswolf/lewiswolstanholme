@@ -4,7 +4,7 @@ export type VideoJSON = {
 	type: 'youtube' | 'vimeo'
 }
 
-export const videos: VideoJSON[] = [
+export const videos: Readonly<VideoJSON[]> = [
 	{
 		hash: '9dWz4KJjG4A',
 		title: 'Julia Set X Barrell Jones (State51 X Nonclassical)',
@@ -65,4 +65,4 @@ export const videos: VideoJSON[] = [
 		title: 'bach.fractal by Ciarán Corr and Lewis Wolstanholme',
 		type: 'youtube',
 	},
-]
+] as const

@@ -5,7 +5,7 @@ export type PerformanceJSON = {
 	venue: string
 }
 
-export const performances: PerformanceJSON[] = [
+export const performances: Readonly<PerformanceJSON[]> = [
 	{
 		artist: 'Lewis Wolstanholme X Mark Cables',
 		date: new Date('2023-11-24'),
@@ -138,4 +138,4 @@ export const performances: PerformanceJSON[] = [
 	// 	event: 'Coercion',
 	// 	venue: 'Goldsmiths, University of London',
 	// },
-]
+] as const
