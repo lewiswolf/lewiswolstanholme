@@ -23,7 +23,7 @@ export const publications: Readonly<PublicationJSON[]> = [
 	{
 		authors: ['Lewis Wolstanholme', 'Teresa Pelinski', 'Aliénor Golvet', 'Cyrus Vahidi', 'Vincent Martos'],
 		date: new Date('2023-11-31'),
-		pdf: 'AI_(r)evolution_-_where_are_we_heading?',
+		pdf: 'AI_(r)evolution_-_Where_are_We_Heading?',
 		permalink: 'https://hal.science/hal-04276793',
 		place: 'Institut de Recherche et Coordination Acoustique/Musique (IRCAM), Paris',
 		publication:
@@ -35,7 +35,7 @@ export const publications: Readonly<PublicationJSON[]> = [
 		authors: ['Lewis Wolstanholme', 'Andrew McPherson'],
 		date: new Date('2023-09-11'),
 		links: { code: 'https://github.com/lewiswolf/kac_prediction' },
-		pdf: 'Wolstanholme_McPherson_2023_Towards_orchestrating_physically_modelled_2D_percussion_instruments',
+		pdf: 'Wolstanholme_McPherson_2023_Towards_Orchestrating_Physically_Modelled_2D_Percussion_Instruments',
 		permalink: 'https://appfa2023.silsystem.solutions/atti/000664.pdf',
 		place: 'Politecnico di Torino, Italy',
 		publication: 'Forum Acusticum, 10th Convention of the European Acoustics Association',
@@ -77,7 +77,7 @@ export const publications: Readonly<PublicationJSON[]> = [
 			code: 'https://github.com/lewiswolf/hearing-from-within-a-sound',
 			demo: 'https://youtu.be/-0i4IlHmgRs',
 		},
-		pdf: 'Wolstanholme_et_al_2023_Hearing_from_within_a_sound',
+		pdf: 'Wolstanholme_et_al_2023_Hearing_from_Within_a_Sound',
 		permalink: 'http://www.aes.org/e-lib/browse.cfm?elib=22158',
 		place: 'University of Huddersfield, UK',
 		publication: 'International Conference on Spatial and Immersive Audio (AES)',
