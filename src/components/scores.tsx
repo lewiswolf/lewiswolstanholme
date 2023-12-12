@@ -53,12 +53,10 @@ export default function Scores(): JSX.Element {
 								onKeyDown={(e) => {
 									if (e.key === 'Enter' || e.key === ' ') {
 										e.preventDefault()
-										return window.open(
+										window.open(
 											`${window.location.protocol}//lewiswolstanholme.co.uk/api/${obj.type}/${obj.file}.pdf`,
 											'_blank',
 										)
-									} else {
-										return null
 									}
 								}}
 							>
