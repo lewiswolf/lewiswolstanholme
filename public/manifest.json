@@ -2,7 +2,7 @@
 	"background_color": "#e5e5e5",
 	"description": "Lewis Wolstanholme - Musician, Composer & Creative Coder",
 	"developer": {
-		"name": "Lewis Wolf",
+		"name": "Lewis Wolstanholme",
 		"url": "http://lewiswolstanholme.co.uk"
 	},
 	"display": "standalone",
@@ -28,9 +28,9 @@
 			"type": "image/x-icon"
 		}
 	],
-	"manifest_version": 2,
+	"manifest_version": 3,
 	"name": "Lewis Wolstanholme",
-	"short_name": "Lewis Wolf",
+	"short_name": "lewiswolstanholme",
 	"start_url": ".",
 	"theme_color": "#333333"
 }
