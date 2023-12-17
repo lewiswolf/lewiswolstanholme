@@ -1,16 +1,16 @@
 # project
-/image-projects
-/unused
+image-projects
+unused
 todo.md
 
 # dependencies
-/node_modules
+node_modules
 
 # production
-/api
-/build
-/dist
+api
+build
+dist
 
 # misc
-/.vscode
+.vscode
 .DS_Store

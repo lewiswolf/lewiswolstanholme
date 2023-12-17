@@ -11,7 +11,7 @@
 		"react-dom": "^18.2.0",
 		"react-helmet-async": "^2.0.3",
 		"react-markdown": "^9.0.1",
-		"react-router-dom": "^6.20.1",
+		"react-router-dom": "^6.21.0",
 		"react-syntax-highlighter": "^15.5.0",
 		"rehype-raw": "^7.0.0",
 		"remark-gfm": "^4.0.0",
@@ -20,20 +20,20 @@
 	"devDependencies": {
 		"@types/gtag.js": "^0.0.18",
 		"@types/node": "^20.10.4",
-		"@types/p5": "^1.7.4",
-		"@types/react": "^18.2.43",
-		"@types/react-dom": "^18.2.17",
+		"@types/p5": "^1.7.5",
+		"@types/react": "^18.2.45",
+		"@types/react-dom": "^18.2.18",
 		"@types/react-router-dom": "^5.3.3",
 		"@types/react-syntax-highlighter": "^15.5.11",
 		"@typescript-eslint/eslint-plugin": "^6.14.0",
 		"@typescript-eslint/parser": "^6.14.0",
 		"@vitejs/plugin-react-swc": "^3.5.0",
-		"eslint": "^8.55.0",
+		"eslint": "^8.56.0",
 		"eslint-plugin-react-hooks": "^4.6.0",
 		"eslint-plugin-react-refresh": "^0.4.5",
 		"prettier": "^3.1.1",
 		"typescript": "^5.3.3",
-		"vite": "^5.0.8",
+		"vite": "^5.0.10",
 		"vite-plugin-compression2": "^0.11.0",
 		"vite-plugin-svgr": "^4.2.0"
 	},
@@ -41,7 +41,56 @@
 		"dev": "vite --host",
 		"build": "tsc && vite build",
 		"preview": "vite preview",
-		"lint": "prettier --write --config ./.prettierrc .",
+		"lint": "prettier --write .",
 		"test": "tsc && eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+	},
+	"eslintConfig": {
+		"root": true,
+		"env": {
+			"browser": true,
+			"es2020": true
+		},
+		"extends": [
+			"eslint:recommended",
+			"plugin:@typescript-eslint/strict-type-checked",
+			"plugin:react-hooks/recommended"
+		],
+		"ignorePatterns": [
+			"dist",
+			"unused"
+		],
+		"parser": "@typescript-eslint/parser",
+		"parserOptions": {
+			"project": [
+				"./tsconfig.json",
+				"./tsconfig.node.json"
+			]
+		},
+		"plugins": [
+			"react-refresh"
+		],
+		"rules": {
+			"react-refresh/only-export-components": [
+				"warn",
+				{
+					"allowConstantExport": true
+				}
+			]
+		}
+	},
+	"prettier": {
+		"arrowParens": "always",
+		"bracketSpacing": true,
+		"bracketSameLine": false,
+		"endOfLine": "lf",
+		"htmlWhitespaceSensitivity": "strict",
+		"jsxSingleQuote": true,
+		"printWidth": 125,
+		"quoteProps": "as-needed",
+		"semi": false,
+		"singleQuote": true,
+		"tabWidth": 4,
+		"trailingComma": "all",
+		"useTabs": true
 	}
 }
