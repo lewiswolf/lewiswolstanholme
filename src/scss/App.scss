@@ -21,13 +21,13 @@ $highlight: #b4b4b4;
 	justify-self: center;
 	user-select: none;
 
-	@media (max-width: $ipad) {
+	@media (width <= $ipad) {
 		height: auto;
 		width: 100%;
 	}
 }
 
-@mixin highlight_text() {
+@mixin highlight-text() {
 	::selection {
 		background-color: $highlight;
 	}
@@ -51,7 +51,7 @@ body {
 	font-family: inherit;
 	font-size: inherit;
 	color: inherit;
-	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
 	background-image: url('./images/background.png');
 	background-size: 30px 30px;
 	background-color: #e5e5e5;
@@ -59,36 +59,33 @@ body {
 
 #root {
 	display: grid;
-	grid-template-columns: 100vw;
-	grid-template-rows: minmax(160px, auto) max-content;
-	grid-gap: 0px;
-	grid-template-areas: 'h' 'm';
+	grid-gap: 0;
+	grid-template: "h" minmax(160px, auto) "m" max-content / 100vw; 
 }
 
 header {
-	@include highlight_text();
+	@include highlight_text;
 	height: 160px;
 	max-width: 100%;
 	margin: 0 20px;
 	display: grid;
 	grid-area: h;
 	grid-auto-flow: column;
-	grid-row-gap: 20px;
-	grid-column-gap: 20px;
+	grid-gap: 20px;
 	align-content: end;
 	justify-items: center;
 	justify-self: center;
 
-	@media (max-width: $ipad) {
+	@media (width <= $ipad) {
 		height: 100px;
-		margin: 160px 20px 0 20px;
+		margin: 160px 20px 0;
 		grid-auto-flow: column;
 		align-content: center;
 	}
 
-	@media (max-width: $iphone) {
+	@media (width <= $iphone) {
 		height: 100px;
-		margin: 160px 20px 0 20px;
+		margin: 160px 20px 0;
 		grid-auto-flow: row;
 		align-content: center;
 	}
@@ -106,10 +103,10 @@ main {
 	grid-area: m;
 	align-self: center;
 
-	@media (max-width: $ipad) {
+	@media (width <= $ipad) {
 		height: fit-content;
 		width: calc(100vw - 40px);
-		margin: 0 20px 20px 20px;
+		margin: 0 20px 20px;
 	}
 }
 

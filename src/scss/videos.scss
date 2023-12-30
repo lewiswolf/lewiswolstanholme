@@ -5,6 +5,6 @@
 	row-gap: 20px;
 
 	iframe {
-		@include video();
+		@include video;
 	}
 }

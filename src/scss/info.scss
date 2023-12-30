@@ -1,5 +1,5 @@
 .info {
-	@include highlight_text();
+	@include highlight-text;
 	text-align: justify;
 
 	.bio > p:first-child {
