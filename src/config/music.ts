@@ -38,6 +38,6 @@ export const albums: Readonly<AlbumJSON[]> = [
 	{
 		link: 'https://lewiswolstanholme.bandcamp.com/album/bach-fractal',
 		img: 'https://f4.bcbits.com/img/a3526980092_16.jpg',
-		title: 'bach.fractal by Ciarán Corr and Lewis Wolstanholme',
+		title: 'bach.fractal by Ciarán Corr & Lewis Wolstanholme',
 	},
 ] as const

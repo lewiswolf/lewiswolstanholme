@@ -6,6 +6,16 @@ export type VideoJSON = {
 
 export const videos: Readonly<VideoJSON[]> = [
 	{
+		hash: '1iYzt-zUhjA',
+		title: 'king lily by Mark Cables X Lewis Wolf',
+		type: 'youtube',
+	},
+	{
+		hash: 'bjNu__e3OyI',
+		title: 'centerbeam by Julia Set',
+		type: 'youtube',
+	},
+	{
 		hash: '9dWz4KJjG4A',
 		title: 'Julia Set X Barrell Jones (State51 X Nonclassical)',
 		type: 'youtube',
@@ -62,7 +72,7 @@ export const videos: Readonly<VideoJSON[]> = [
 	},
 	{
 		hash: 'sZYNHRozFBc',
-		title: 'bach.fractal by Ciarán Corr and Lewis Wolstanholme',
+		title: 'bach.fractal by Ciarán Corr & Lewis Wolstanholme',
 		type: 'youtube',
 	},
 ] as const

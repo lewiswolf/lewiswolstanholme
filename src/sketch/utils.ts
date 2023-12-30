@@ -45,7 +45,7 @@ export function intersectionLineLine(a: Line, b: Line): Point | null {
 
 export function isPointInsideOfPolygon(p: Point, V: Point[]): boolean {
 	/*
-	Determines whether or not a cartesion pair is within a polygon. 
+	Determines whether or not a cartesion pair is within a polygon.
 	Solution 3 => http://paulbourke.net/geometry/polygonmesh/
 	*/
 
