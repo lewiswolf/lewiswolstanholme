@@ -1,4 +1,4 @@
-@import 'https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,700;1,400&display=swap';
+// @import 'https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,700;1,400&display=swap';
 
 .scores {
 	margin-top: 20px;
@@ -27,14 +27,14 @@
 			position: relative;
 			font-family: inherit;
 			background: rgb(34 34 34);
-			
+
 			svg {
 				height: 100%;
 				width: 100%;
 				position: absolute;
 				inset: 0;
 			}
-			
+
 			p {
 				padding: 4%;
 				color: white;
@@ -43,19 +43,19 @@
 					font-size: 21px;
 					line-height: 21px;
 				}
-				
+
 				&:nth-of-type(2) {
 					height: 24px;
 					align-self: center;
 				}
-				
+
 				&:nth-of-type(3) {
 					text-align: right;
 					align-self: flex-end;
 				}
 			}
 		}
-		
+
 		.engraving-thumb {
 			height: 90%;
 			width: 90%;
@@ -65,8 +65,7 @@
 			justify-items: end;
 			font-family: Tinos, serif;
 			background: white;
-		
-			/* stylelint-disable no-descending-specificity */
+
 			p {
 				width: 70%;
 				padding: 4% 0;
@@ -77,26 +76,25 @@
 					line-height: 21px;
 					width: 100%;
 					grid-area: 1/1;
-					place-self: center;
+					place-self: center start;
 				}
-			
+
 				&:nth-of-type(2) {
 					grid-area: 2/1;
 					align-self: flex-end;
 				}
-			
+
 				&:nth-of-type(3) {
 					grid-area: 3/1;
 					font-style: italic;
 					font-weight: normal;
 				}
-			
+
 				&:nth-of-type(4) {
 					grid-area: 4/1;
 				}
 			}
-			/* stylelint-enable no-descending-specificity */
-		
+
 			hr {
 				height: 3px;
 				width: 70%;
@@ -105,11 +103,11 @@
 				background: black;
 				border: 0;
 				outline: 0;
-			
+
 				&:nth-of-type(1) {
 					grid-area: 2/1;
 				}
-			
+
 				&:nth-of-type(2) {
 					grid-area: 3/1;
 				}

@@ -60,7 +60,7 @@ body {
 #root {
 	display: grid;
 	grid-gap: 0;
-	grid-template: "h" minmax(160px, auto) "m" max-content / 100vw; 
+	grid-template: 'h' minmax(160px, auto) 'm' max-content / 100vw;
 }
 
 header {

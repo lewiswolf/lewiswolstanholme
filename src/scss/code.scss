@@ -7,16 +7,16 @@
 		&.video {
 			@include video;
 		}
-		
+
 		&.website {
 			height: calc(100vh - 200px);
 			width: inherit;
-			
+
 			@media (width <= $ipad) {
 				height: calc(100vh - 40px);
 			}
 		}
-		
+
 		&.maxmsp {
 			height: 748px;
 			width: inherit;
@@ -32,7 +32,7 @@
 		@media (width <= $ipad) {
 			margin: 0;
 		}
-		
+
 		> *:first-child {
 			margin-top: 0;
 		}
@@ -46,15 +46,15 @@
 			color: black;
 			text-decoration: underline;
 		}
-		
+
 		blockquote {
 			margin: 0;
 		}
-		
+
 		h1 {
 			text-align: left;
 		}
-		
+
 		img {
 			max-width: 100%;
 			user-select: none;
@@ -78,7 +78,7 @@
 				border: 2px black solid;
 				border-bottom: 0;
 			}
-			
+
 			th {
 				border: 2px black solid;
 				border-top: 0;
