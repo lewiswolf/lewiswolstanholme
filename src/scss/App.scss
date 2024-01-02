@@ -20,6 +20,7 @@ $highlight: #b4b4b4;
 	aspect-ratio: 16/9;
 	justify-self: center;
 	user-select: none;
+	-webkit-user-select: none;
 
 	@media (width <= $ipad) {
 		height: auto;

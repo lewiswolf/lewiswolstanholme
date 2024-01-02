@@ -3,6 +3,7 @@
 
 	iframe {
 		user-select: none;
+		-webkit-user-select: none;
 
 		&.video {
 			@include video;
@@ -58,6 +59,7 @@
 		img {
 			max-width: 100%;
 			user-select: none;
+			-webkit-user-select: none;
 		}
 
 		summary {
