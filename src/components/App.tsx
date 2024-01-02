@@ -26,7 +26,6 @@ export default function App(): JSX.Element {
 	return (
 		<HelmetProvider>
 			<Metadata
-				darkModeFavicon={true}
 				description='Lewis Wolstanholme - Composer & Artist'
 				title={`Lewis Wolstanholme${
 					location === '/' ? '' : ` | ${location.slice(1, 2).toUpperCase()}${location.slice(2)}`
