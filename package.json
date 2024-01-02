@@ -101,6 +101,7 @@
 			"declaration-empty-line-before": null,
 			"no-descending-specificity": null,
 			"no-invalid-position-at-import-rule": null,
+			"property-no-vendor-prefix": null,
 			"scss/double-slash-comment-empty-line-before": null
 		}
 	}
