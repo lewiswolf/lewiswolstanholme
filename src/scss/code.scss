@@ -7,6 +7,7 @@
 
 		&.video {
 			@include video;
+			margin-bottom: 0.67em;
 		}
 
 		&.website {
@@ -21,6 +22,7 @@
 		&.maxmsp {
 			height: 748px;
 			width: inherit;
+			margin-bottom: 0.67em;
 		}
 	}
 
