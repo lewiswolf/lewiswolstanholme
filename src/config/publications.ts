@@ -36,7 +36,7 @@ export const publications: Readonly<PublicationJSON[]> = [
 		date: new Date('2023-09-11'),
 		links: { code: 'https://github.com/lewiswolf/kac_prediction' },
 		pdf: 'Wolstanholme_McPherson_2023_Towards_Orchestrating_Physically_Modelled_2D_Percussion_Instruments',
-		permalink: 'https://appfa2023.silsystem.solutions/atti/000664.pdf',
+		permalink: 'https://doi.org/10.61782/fa.2023.0664',
 		place: 'Politecnico di Torino, Italy',
 		publication: 'Forum Acusticum, 10th Convention of the European Acoustics Association',
 		title: 'Towards Orchestrating Physically Modelled 2D Percussion Instruments',
