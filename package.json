@@ -52,13 +52,25 @@
 			"browser": true,
 			"es2024": true
 		},
-		"extends": ["eslint:recommended", "plugin:@typescript-eslint/strict-type-checked", "plugin:react-hooks/recommended"],
-		"ignorePatterns": ["dist", "unused"],
+		"extends": [
+			"eslint:recommended",
+			"plugin:@typescript-eslint/strict-type-checked",
+			"plugin:react-hooks/recommended"
+		],
+		"ignorePatterns": [
+			"dist",
+			"unused"
+		],
 		"parser": "@typescript-eslint/parser",
 		"parserOptions": {
-			"project": ["./tsconfig.json", "./tsconfig.node.json"]
+			"project": [
+				"./tsconfig.json",
+				"./tsconfig.node.json"
+			]
 		},
-		"plugins": ["react-refresh"],
+		"plugins": [
+			"react-refresh"
+		],
 		"rules": {
 			"react-refresh/only-export-components": [
 				"warn",
@@ -84,7 +96,7 @@
 		"useTabs": true,
 		"overrides": [
 			{
-				"files": "*.json",
+				"files": "tsconfig.json",
 				"options": {
 					"parser": "json"
 				}
