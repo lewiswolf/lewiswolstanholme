@@ -19,7 +19,7 @@ export default function Code(): JSX.Element {
 
 	useEffect(() => {
 		if (!pages.includes(location)) {
-			navigate(`/code?view=${pages[0]}`)
+			navigate(`/research?view=${pages[0]}`)
 		} else {
 			if (projects[location]?.github) {
 				fetch(`https://raw.githubusercontent.com/${projects[location]?.github}/master/readme.md`)
@@ -62,7 +62,7 @@ export default function Code(): JSX.Element {
 					setValue={pages.includes(location) ? pages.indexOf(location) : 0}
 					width={255}
 					onChange={(i: number) => {
-						navigate(`/code?view=${pages[i]}`)
+						navigate(`/research?view=${pages[i]}`)
 					}}
 				/>
 				<TextButton

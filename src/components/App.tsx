@@ -38,7 +38,7 @@ export default function App(): JSX.Element {
 				<Route element={<Music />} path='/music' />
 				<Route element={<Scores />} path='/scores' />
 				<Route element={<Videos />} path='/videos' />
-				<Route element={<Code />} path='/code' />
+				<Route element={<Code />} path='/research' />
 				<Route element={<Info />} path='/info' />
 				<Route element={<Navigate to='/' />} path='*' />
 			</Routes>
