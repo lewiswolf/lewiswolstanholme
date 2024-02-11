@@ -12,10 +12,24 @@ export type PublicationJSON = {
 
 export const publications: Readonly<PublicationJSON[]> = [
 	// {
+	// 	authors: ['Lewis Wolstanholme', 'Jordie Shier', 'Rodrigo Constanzo', 'Andrew McPherson'],
+	// 	date: new Date(),
+	// 	place: 'Utrecht, Netherlands',
+	// 	publication: '24st International Conference on New Interfaces for Musical Expression (NIME)',
+	// 	title: 'Drum Modal Feedback: Concept Design of an Augmented Percussion Instrument',
+	// 	type: 'conference paper',
+	// },
+	// {
+	// 	authors: ['Corey Ford', '...', 'Lewis Wolstanholme'],
+	// 	date: new Date(),
+	// 	place: 'Chicago, IL',
+	// 	publication: '16th ACM Conference on Creativity & Cognition',
+	// 	title: 'Reflection Across AI-based Music Composition',
+	// 	type: 'conference paper',
+	// },
+	// {
 	// 	authors: ['Lewis Wolstanholme', 'Francis Devine'],
 	// 	date: new Date(),
-	// 	pdf: '',
-	// 	permalink: '',
 	// 	publication: 'Internation Journal of Creative Media Research',
 	// 	title: 'josef: Spatiality as a Material Property of Audiovisual Art',
 	// 	type: 'article',
