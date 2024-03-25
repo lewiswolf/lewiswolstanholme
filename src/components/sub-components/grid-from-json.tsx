@@ -61,12 +61,13 @@ const GridFromJSON: React.FC<{
 					self.current.parentElement.getBoundingClientRect().width - padding_array[0] - padding_array[1]
 				const largestGrid: number = content.length * (maxWidth + gridSpacer) - gridSpacer
 				setGrid({
-					width: parentWidth > largestGrid ? `${largestGrid}px` : '100%',
-					gridAutoRows: `${parentWidth > maxWidth ? maxHeight : (maxHeight * parentWidth) / maxWidth}px`,
+					width: parentWidth > largestGrid ? largestGrid.toString() + 'px' : '100%',
+					gridAutoRows:
+						(parentWidth > maxWidth ? maxHeight : (maxHeight * parentWidth) / maxWidth).toString() + 'px',
 					gridTemplateColumns:
 						parentWidth > maxWidth
-							? `repeat(${parentWidth > largestGrid ? `${content.length}` : 'auto-fill'}, ${maxWidth}px)`
-							: `${parentWidth}px`,
+							? `repeat(${parentWidth > largestGrid ? content.length.toString() : 'auto-fill'}, ${maxWidth.toString()}px)`
+							: parentWidth.toString() + 'px',
 				})
 			}
 		}
@@ -91,7 +92,7 @@ const GridFromJSON: React.FC<{
 				display: 'grid',
 				gridAutoRows: gridState.gridAutoRows,
 				gridTemplateColumns: gridState.gridTemplateColumns,
-				gap: `${gridSpacer}px`,
+				gap: gridSpacer.toString() + 'px',
 				justifyContent: 'space-evenly',
 				justifyItems: 'center',
 				alignItems: 'center',

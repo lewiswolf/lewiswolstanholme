@@ -15,7 +15,7 @@ export const publications: Readonly<PublicationJSON[]> = [
 	// 	authors: ['Lewis Wolstanholme', 'Jordie Shier', 'Rodrigo Constanzo', 'Andrew McPherson'],
 	// 	date: new Date(),
 	// 	place: 'Utrecht, Netherlands',
-	// 	publication: '24st International Conference on New Interfaces for Musical Expression (NIME)',
+	// 	publication: '24th International Conference on New Interfaces for Musical Expression (NIME)',
 	// 	title: 'Drum Modal Feedback: Concept Design of an Augmented Percussion Instrument',
 	// 	type: 'conference paper',
 	// },
