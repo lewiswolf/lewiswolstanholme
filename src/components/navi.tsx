@@ -6,7 +6,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import NaviCable from '../svg/navi-cable.svg?react'
 
 export default function Navi(): JSX.Element {
-	const pages = ['home', 'music', 'scores', 'videos', 'research', 'info']
+	const pages = ['', 'music', 'scores', 'videos', 'research', 'info']
 	const location = useLocation().pathname.slice(1)
 	const navigate = useNavigate()
 	return (
