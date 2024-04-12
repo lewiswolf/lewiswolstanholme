@@ -6,7 +6,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import NaviCable from '../svg/navi-cable.svg?react'
 
 export default function Navi(): JSX.Element {
-	const pages = ['home', 'music', 'scores', 'videos', 'code', 'info']
+	const pages = ['', 'music', 'scores', 'videos', 'code', 'info']
 	const location = useLocation().pathname.slice(1)
 	const navigate = useNavigate()
 	return (
@@ -17,7 +17,7 @@ export default function Navi(): JSX.Element {
 				spacing={20.5}
 				setValue={location && pages.includes(location) ? pages.indexOf(location) : 0}
 				onClick={(i: number) => {
-					i !== 0 ? navigate(`/${pages[i]}`) : navigate('/')
+					navigate(`/${pages[i] || ''}`)
 				}}
 			/>
 			<NaviCable />
