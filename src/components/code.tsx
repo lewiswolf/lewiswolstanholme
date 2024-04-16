@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 // dependencies
 import { TextButton, Umenu } from 'maxmsp-gui'
 import { useEffect, useState } from 'react'

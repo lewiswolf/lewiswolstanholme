@@ -18,6 +18,7 @@ export default function Navi(): JSX.Element {
 				setValue={location && pages.includes(location) ? pages.indexOf(location) : 0}
 				onClick={(i: number) => {
 					navigate(`/${pages[i] || ''}`)
+					navigate(`/${pages[i] || ''}`)
 				}}
 			/>
 			<NaviCable />
