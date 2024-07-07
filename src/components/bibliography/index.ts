@@ -1,2 +1,3 @@
-export type PublicationJSON = import('./api').PublicationJSON
+export type PublicationJSON = import('./types').PublicationJSON
 export { parseBibliography } from './api'
+export { parseCitation } from './components'

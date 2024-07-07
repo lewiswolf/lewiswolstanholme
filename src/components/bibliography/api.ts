@@ -1,16 +1,4 @@
-export type PublicationJSON = {
-	[key: string]: Readonly<{
-		address: string
-		authors: { first_name: string; last_name: string }[]
-		date: Date
-		editors: { first_name: string; last_name: string }[]
-		links: { doi: string; url: string }
-		pdf: string
-		publication: string
-		title: string
-		type: '' | 'article' | 'conference paper' | 'dataset' | 'performance' | 'presentation' | 'workshop'
-	}>
-}
+import { PublicationJSON } from './types'
 
 export const parseBibliography = (s: string): PublicationJSON => {
 	/*
@@ -19,20 +7,29 @@ export const parseBibliography = (s: string): PublicationJSON => {
 
 	const out: PublicationJSON = {}
 	const tmp: { [key: string]: { [key: string]: string } } = {}
+	let bibtex: string = ''
 	let current_key: string | null = null
 	s.split('\n').forEach((line: string) => {
 		// create a new key
 		if (line[0] === '@') {
+			bibtex += line + '\n'
 			const line_tmp = line.split('{') as NonNullable<[string, string]>
 			current_key = line_tmp[1].slice(0, -1)
 			tmp[current_key] = { content_type: line_tmp[0].slice(1) }
 			return
-		} else if (line[0] === '}') {
-			current_key = null
-			return
 		}
-		// add fields to key
 		if (current_key) {
+			// close a key
+			if (line[0] === '}') {
+				tmp[current_key] = { ...tmp[current_key], ...{ bibtex: bibtex + line } }
+				bibtex = ''
+				current_key = null
+				return
+			}
+			// add fields to key
+			if (!line.trim().startsWith('file')) {
+				bibtex += line + '\n'
+			}
 			const [key, content] = line.split('=') as NonNullable<[string, string]>
 			tmp[current_key] = {
 				...tmp[current_key],
@@ -55,12 +52,13 @@ export const parseBibliography = (s: string): PublicationJSON => {
 			address: tmp[key]?.address || '',
 			authors: (() => {
 				return tmp[key]?.author
-					? (tmp[key]?.author as NonNullable<string>).split(' and ').map((author: string) => {
+					? tmp[key].author.split(' and ').map((author: string) => {
 							const [last_name, first_name] = author.split(', ') as NonNullable<[string, string]>
 							return { first_name, last_name }
 						})
 					: []
 			})(),
+			bibtex: tmp[key]?.bibtex || '',
 			date: (() => {
 				const date: [number, number, number] = [
 					parseInt(tmp[key]?.year || '0'),
@@ -84,15 +82,16 @@ export const parseBibliography = (s: string): PublicationJSON => {
 			})(),
 			editors: (() => {
 				return tmp[key]?.editor
-					? (tmp[key]?.editor as NonNullable<string>).split(' and ').map((editor: string) => {
+					? tmp[key].editor.split(' and ').map((editor: string) => {
 							const [last_name, first_name] = editor.split(', ') as NonNullable<[string, string]>
 							return { first_name, last_name }
 						})
 					: []
 			})(),
 			links: { doi: tmp[key]?.doi || '', url: tmp[key]?.url || '' },
+			pages: tmp[key]?.pages || '',
 			pdf: tmp[key]?.file || '',
-			publication: tmp[key]?.journal || tmp[key]?.booktitle || '',
+			publication: tmp[key]?.journal || tmp[key]?.booktitle || tmp[key]?.howpublished || '',
 			title: tmp[key]?.title || '',
 			type: (tmp[key]?.type as PublicationJSON[keyof PublicationJSON]['type']) || '',
 		}
