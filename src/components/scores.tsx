@@ -49,7 +49,7 @@ export default function Scores(): JSX.Element {
 					cell={(obj: ScoreAndType, i: number): JSX.Element => {
 						return (
 							<div
-								aria-label={`Download the score for ${obj.title}.`}
+								aria-label={`Download/purchase the score for ${obj.title}.`}
 								className='score-cover'
 								key={i}
 								role='button'
