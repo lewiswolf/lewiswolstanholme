@@ -28,6 +28,16 @@ const EngravingThumb: React.FC<{ obj: ScoreJSON }> = ({ obj }) => {
 }
 
 export default function Scores(): JSX.Element {
+	type ScoreAndType = ScoreJSON & Readonly<{ type: 'compositions' | 'engravings' }>
+
+	function downloadScore(obj: ScoreAndType): void {
+		if (obj.file) {
+			window.open(`${window.location.protocol}//lewiswolstanholme.co.uk/api/${obj.type}/${obj.file}.pdf`, '_blank')
+		} else if (obj.link) {
+			window.open(obj.link.href, '_blank')
+		}
+	}
+
 	return (
 		<>
 			<main className='scores'>
@@ -36,7 +46,7 @@ export default function Scores(): JSX.Element {
 						...compositions.map((a) => ({ ...a, type: 'compositions' })),
 						...engravings.map((a) => ({ ...a, type: 'engravings' })),
 					]}
-					cell={(obj: ScoreJSON & Readonly<{ type: 'compositions' | 'engravings' }>, i: number): JSX.Element => {
+					cell={(obj: ScoreAndType, i: number): JSX.Element => {
 						return (
 							<div
 								aria-label={`Download the score for ${obj.title}.`}
@@ -44,19 +54,13 @@ export default function Scores(): JSX.Element {
 								key={i}
 								role='button'
 								tabIndex={0}
-								onClick={() =>
-									window.open(
-										`${window.location.protocol}//lewiswolstanholme.co.uk/api/${obj.type}/${obj.file}.pdf`,
-										'_blank',
-									)
-								}
+								onClick={() => {
+									downloadScore(obj)
+								}}
 								onKeyDown={(e) => {
 									if (e.key === 'Enter' || e.key === ' ') {
 										e.preventDefault()
-										window.open(
-											`${window.location.protocol}//lewiswolstanholme.co.uk/api/${obj.type}/${obj.file}.pdf`,
-											'_blank',
-										)
+										downloadScore(obj)
 									}
 								}}
 							>
