@@ -1,6 +1,14 @@
 import type { FC } from 'react'
 import { Helmet } from 'react-helmet-async'
 
+export function analyticsPageView(): void {
+	typeof window.gtag === 'function' &&
+		window.gtag('event', 'pageview', {
+			page_location: window.location.href,
+			page_path: window.location.pathname,
+		})
+}
+
 export const GoogleAnalytics: FC<{ id: string }> = ({ id }) => {
 	return window.location.hostname !== 'localhost' ? (
 		<Helmet>
@@ -15,12 +23,4 @@ gtag("config", "${id}");`}
 	) : (
 		<></>
 	)
-}
-
-export function analyticsPageView(): void {
-	typeof window.gtag === 'function' &&
-		window.gtag('event', 'pageview', {
-			page_location: window.location.href,
-			page_path: window.location.pathname,
-		})
 }
