@@ -16,9 +16,9 @@ import Videos from './videos'
 // scss
 import '../scss/App.scss'
 
-// biome-ignore format: this callback is used to track page views
 export default function App(): JSX.Element {
 	const location = useLocation().pathname
+	// biome-ignore lint/correctness/useExhaustiveDependencies: analyticsPageView calculates its own version of location internally
 	useEffect(() => {
 		analyticsPageView()
 	}, [location])

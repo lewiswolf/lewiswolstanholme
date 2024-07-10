@@ -1,5 +1,6 @@
 .info {
 	text-align: justify;
+
 	@include highlight-text;
 
 	.bio > p:first-child {

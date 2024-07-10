@@ -75,6 +75,7 @@ header {
 	align-content: end;
 	justify-items: center;
 	justify-self: center;
+
 	@include highlight_text;
 
 	@media (width <= $ipad) {
