@@ -5,7 +5,15 @@
 	},
 	"files": {
 		"ignore": ["**/node_modules/**", "**/dist/**", "**/unused/**"],
-		"include": ["**/*.html", "**/*.json", "**/*.scss", "**/*.ts", "**/*.d.ts", "**/*.tsx"]
+		"include": [
+			"**/*.html",
+			"**/*.json",
+			"**/*.scss",
+			"**/*.svg",
+			"**/*.ts",
+			"**/*.d.ts",
+			"**/*.tsx"
+		]
 	},
 	"linter": {
 		"enabled": true,

@@ -8,16 +8,16 @@ type GridProperties = {
 }
 
 export const GridFromJSON: FC<{
-	// biome-ignore lint/suspicious/noExplicitAny: any is used to maintain configurability
+	// biome-ignore lint/suspicious/noExplicitAny: any is used to maintain user configurability
 	cell: (obj: any, i: number) => JSX.Element
 	gridSpacer?: number
-	// biome-ignore lint/suspicious/noExplicitAny: any is used to maintain configurability
+	// biome-ignore lint/suspicious/noExplicitAny: any is used to maintain user configurability
 	json: Readonly<{ [key: string]: any }[]> | string[] | string
 	maxHeight?: number
 	maxWidth?: number
 }> = ({ cell, gridSpacer = 20, json, maxWidth = 280, maxHeight = maxWidth }) => {
 	const self = useRef<HTMLDivElement>(null)
-	// biome-ignore lint/suspicious/noExplicitAny: any is used to maintain configurability
+	// biome-ignore lint/suspicious/noExplicitAny: any is used to maintain user configurability
 	const [content, setContent] = useState<Readonly<{ [key: string]: any }[]> | string[]>([])
 	const [gridState, setGrid] = useState<GridProperties>({
 		width: '',
@@ -33,7 +33,7 @@ export const GridFromJSON: FC<{
 		if (typeof json === 'string') {
 			void fetch(json)
 				.then((res: Response) => res.json())
-				// biome-ignore lint/suspicious/noExplicitAny: any is used to maintain configurability
+				// biome-ignore lint/suspicious/noExplicitAny: any is used to maintain user configurability
 				.then((json: { [key: string]: any }[]) => {
 					setContent(json)
 				})
@@ -102,7 +102,7 @@ export const GridFromJSON: FC<{
 			}}
 		>
 			{
-				// biome-ignore lint/suspicious/noExplicitAny: any is used to maintain configurability
+				// biome-ignore lint/suspicious/noExplicitAny: any is used to maintain user configurability
 				content.map((obj: any, i: number): JSX.Element => cell(obj, i))
 			}
 		</div>

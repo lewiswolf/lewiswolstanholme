@@ -19,6 +19,7 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.8.3",
+		"@prettier/plugin-xml": "^3.4.1",
 		"@types/gtag.js": "^0.0.20",
 		"@types/node": "^20.14.10",
 		"@types/p5": "^1.7.6",
@@ -27,6 +28,7 @@
 		"@types/react-router-dom": "^5.3.3",
 		"@types/react-syntax-highlighter": "^15.5.13",
 		"@vitejs/plugin-react-swc": "^3.7.0",
+		"prettier": "^3.3.2",
 		"stylelint": "^16.6.1",
 		"stylelint-config-standard-scss": "^13.1.0",
 		"typescript": "^5.5.3",
@@ -37,9 +39,28 @@
 	"scripts": {
 		"build": "tsc && vite build",
 		"dev": "vite --host",
-		"format": "biome format --write",
+		"format": "biome format --write && prettier --write ./src/scss && prettier --write ./src/svg",
 		"preview": "vite preview",
 		"test": "tsc && biome lint && stylelint **/*.scss"
+	},
+	"prettier": {
+		"arrowParens": "always",
+		"bracketSpacing": true,
+		"bracketSameLine": false,
+		"endOfLine": "lf",
+		"htmlWhitespaceSensitivity": "strict",
+		"jsxSingleQuote": true,
+		"plugins": ["@prettier/plugin-xml"],
+		"printWidth": 120,
+		"quoteProps": "as-needed",
+		"semi": false,
+		"singleQuote": true,
+		"tabWidth": 4,
+		"trailingComma": "all",
+		"useTabs": true,
+		"xmlQuoteAttributes": "single",
+		"xmlSortAttributesByKey": true,
+		"xmlWhitespaceSensitivity": "preserve"
 	},
 	"stylelint": {
 		"extends": "stylelint-config-standard-scss",

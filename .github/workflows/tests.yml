@@ -24,7 +24,10 @@ jobs:
               run: npm install --include=dev
 
             - name: Format project
-              run: npx @biomejs/biome format
+              run: |
+                  npx @biomejs/biome format
+                  npx prettier --check ./src/scss
+                  npx prettier --check ./src/svg
 
             - name: Assert types
               run: npx tsc
