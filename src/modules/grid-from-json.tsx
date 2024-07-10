@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 // dependencies
-import { useEffect, useRef, useState } from 'react'
+import { type FC, type JSX, useEffect, useRef, useState } from 'react'
 
 type GridProperties = {
 	width: string
@@ -8,7 +7,7 @@ type GridProperties = {
 	gridTemplateColumns: string
 }
 
-const GridFromJSON: React.FC<{
+export const GridFromJSON: FC<{
 	cell: (obj: any, i: number) => JSX.Element
 	gridSpacer?: number
 	json: Readonly<{ [key: string]: any }[]> | string[] | string
@@ -54,20 +53,21 @@ const GridFromJSON: React.FC<{
 					.getComputedStyle(self.current.parentElement, null)
 					.getPropertyValue('padding-inline')
 					.split(' ')
-					.map((s: string) => parseFloat(s))
-				padding_array[0] = padding_array[0] !== undefined ? padding_array[0] : 0
-				padding_array[1] = padding_array[1] !== undefined ? padding_array[1] : padding_array[0]
+					.map((s: string) => Number.parseFloat(s))
 				const parentWidth: number =
-					self.current.parentElement.getBoundingClientRect().width - padding_array[0] - padding_array[1]
+					self.current.parentElement.getBoundingClientRect().width -
+					(padding_array[0] || 0) -
+					(padding_array[1] || 0)
 				const largestGrid: number = content.length * (maxWidth + gridSpacer) - gridSpacer
 				setGrid({
-					width: parentWidth > largestGrid ? largestGrid.toString() + 'px' : '100%',
-					gridAutoRows:
-						(parentWidth > maxWidth ? maxHeight : (maxHeight * parentWidth) / maxWidth).toString() + 'px',
+					width: parentWidth > largestGrid ? `${largestGrid.toString()}px` : '100%',
+					gridAutoRows: `${(parentWidth > maxWidth ? maxHeight : (maxHeight * parentWidth) / maxWidth).toString()}px`,
 					gridTemplateColumns:
 						parentWidth > maxWidth
-							? `repeat(${parentWidth > largestGrid ? content.length.toString() : 'auto-fill'}, ${maxWidth.toString()}px)`
-							: parentWidth.toString() + 'px',
+							? `repeat(${
+									parentWidth > largestGrid ? content.length.toString() : 'auto-fill'
+								}, ${maxWidth.toString()}px)`
+							: `${parentWidth.toString()}px`,
 				})
 			}
 		}
@@ -78,9 +78,8 @@ const GridFromJSON: React.FC<{
 			return () => {
 				window.removeEventListener('resize', gridResponse)
 			}
-		} else {
-			return () => {}
 		}
+		return
 	}, [content.length, gridSpacer, maxHeight, maxWidth])
 
 	return (
@@ -92,7 +91,7 @@ const GridFromJSON: React.FC<{
 				display: 'grid',
 				gridAutoRows: gridState.gridAutoRows,
 				gridTemplateColumns: gridState.gridTemplateColumns,
-				gap: gridSpacer.toString() + 'px',
+				gap: `${gridSpacer.toString()}px`,
 				justifyContent: 'space-evenly',
 				justifyItems: 'center',
 				alignItems: 'center',
@@ -102,5 +101,3 @@ const GridFromJSON: React.FC<{
 		</div>
 	)
 }
-
-export default GridFromJSON

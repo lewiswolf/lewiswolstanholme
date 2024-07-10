@@ -1,12 +1,13 @@
 // dependencies
-import { Object, RadioGroup } from 'maxmsp-gui'
+import { Object as MaxObject, RadioGroup } from 'maxmsp-gui'
+import type { JSX } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 // src
 import NaviCable from '../svg/navi-cable.svg?react'
 
 export default function Navi(): JSX.Element {
-	const pages = ['', 'music', 'scores', 'videos', 'research', 'info']
+	const pages = ['', 'music', 'scores', 'videos', 'projects', 'info']
 	const location = useLocation().pathname.slice(1)
 	const navigate = useNavigate()
 	return (
@@ -22,7 +23,7 @@ export default function Navi(): JSX.Element {
 				}}
 			/>
 			<NaviCable />
-			<Object text='Lewis Wolstanholme' />
+			<MaxObject text='Lewis Wolstanholme' />
 		</nav>
 	)
 }

@@ -1,6 +1,6 @@
 .info {
-	@include highlight-text;
 	text-align: justify;
+	@include highlight-text;
 
 	.bio > p:first-child {
 		margin-top: 0;

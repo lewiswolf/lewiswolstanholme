@@ -1,21 +1,22 @@
 // dependencies
-import { useEffect } from 'react'
+import { type JSX, useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 
 // components
-import { GoogleAnalytics, analyticsPageView } from './analytics'
-import Navi from './navi'
+import { GoogleAnalytics, analyticsPageView } from '../modules/google-analytics'
 import Home from './home'
+import Info from './info'
 import Music from './music'
+import Navi from './navi'
+import Projects from './projects'
 import Scores from './scores'
 import Videos from './videos'
-import Research from './research'
-import Info from './info'
 
 // scss
 import '../scss/App.scss'
 
+// biome-ignore format: this callback is used to track page views
 export default function App(): JSX.Element {
 	const location = useLocation().pathname
 	useEffect(() => {
@@ -36,7 +37,7 @@ export default function App(): JSX.Element {
 				<Route element={<Music />} path='/music' />
 				<Route element={<Scores />} path='/scores' />
 				<Route element={<Videos />} path='/videos' />
-				<Route element={<Research />} path='/research' />
+				<Route element={<Projects />} path='/projects' />
 				<Route element={<Info />} path='/info' />
 				<Route element={<Navigate to='/' />} path='*' />
 			</Routes>

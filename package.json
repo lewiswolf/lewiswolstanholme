@@ -15,9 +15,10 @@
 		"react-syntax-highlighter": "^15.5.0",
 		"rehype-raw": "^7.0.0",
 		"remark-gfm": "^4.0.0",
-		"sass": "^1.77.6"
+		"sass": "^1.77.7"
 	},
 	"devDependencies": {
+		"@biomejs/biome": "^1.8.3",
 		"@types/gtag.js": "^0.0.20",
 		"@types/node": "^20.14.10",
 		"@types/p5": "^1.7.6",
@@ -25,13 +26,7 @@
 		"@types/react-dom": "^18.3.0",
 		"@types/react-router-dom": "^5.3.3",
 		"@types/react-syntax-highlighter": "^15.5.13",
-		"@typescript-eslint/eslint-plugin": "^7.15.0",
-		"@typescript-eslint/parser": "^7.15.0",
 		"@vitejs/plugin-react-swc": "^3.7.0",
-		"eslint": "^8.57.0",
-		"eslint-plugin-react-hooks": "^4.6.2",
-		"eslint-plugin-react-refresh": "^0.4.7",
-		"prettier": "^3.3.2",
 		"stylelint": "^16.6.1",
 		"stylelint-config-standard-scss": "^13.1.0",
 		"typescript": "^5.5.3",
@@ -42,50 +37,9 @@
 	"scripts": {
 		"build": "tsc && vite build",
 		"dev": "vite --host",
-		"format": "prettier --write .",
+		"format": "biome format --write",
 		"preview": "vite preview",
-		"test": "tsc && eslint . --ext ts,tsx && stylelint **/*.scss"
-	},
-	"eslintConfig": {
-		"root": true,
-		"env": {
-			"browser": true,
-			"es2024": true
-		},
-		"extends": [
-			"eslint:recommended",
-			"plugin:@typescript-eslint/strict-type-checked",
-			"plugin:react-hooks/recommended"
-		],
-		"ignorePatterns": [
-			"dist",
-			"unused"
-		],
-		"parser": "@typescript-eslint/parser",
-		"parserOptions": {
-			"project": [
-				"./tsconfig.json",
-				"./tsconfig.node.json"
-			]
-		},
-		"plugins": [
-			"react-refresh"
-		]
-	},
-	"prettier": {
-		"arrowParens": "always",
-		"bracketSpacing": true,
-		"bracketSameLine": false,
-		"endOfLine": "lf",
-		"htmlWhitespaceSensitivity": "strict",
-		"jsxSingleQuote": true,
-		"printWidth": 125,
-		"quoteProps": "as-needed",
-		"semi": false,
-		"singleQuote": true,
-		"tabWidth": 4,
-		"trailingComma": "all",
-		"useTabs": true
+		"test": "tsc && biome lint && stylelint **/*.scss"
 	},
 	"stylelint": {
 		"extends": "stylelint-config-standard-scss",

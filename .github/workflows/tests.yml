@@ -24,12 +24,12 @@ jobs:
               run: npm install --include=dev
 
             - name: Format project
-              run: npx prettier --check .
+              run: npx @biomejs/biome format
 
             - name: Assert types
               run: npx tsc
 
             - name: Lint project
               run: |
-                  npx eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0
+                  npx @biomejs/biome lint
                   npx stylelint **/*.scss

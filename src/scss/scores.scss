@@ -4,10 +4,10 @@
 	margin-top: 20px;
 
 	.score-cover {
-		@include focus;
 		height: 100%;
 		width: 100%;
 		cursor: pointer;
+		@include focus;
 
 		p {
 			font-size: 12px;

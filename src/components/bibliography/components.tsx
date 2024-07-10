@@ -1,4 +1,8 @@
-import { PublicationJSON } from './types'
+// dependencies
+import type { JSX } from 'react'
+
+// src
+import type { PublicationJSON } from './types'
 
 export function parseCitation(P: PublicationJSON[string]): JSX.Element {
 	// format authors
@@ -30,12 +34,12 @@ export function parseCitation(P: PublicationJSON[string]): JSX.Element {
 	return (
 		<p className='citation' key={P.title}>
 			{authors}
-			{'(' + P.date.getFullYear().toString() + '). '}
-			{P.title && P.title + '. '}
+			{`(${P.date.getFullYear().toString()}). `}
+			{P.title && `${P.title}. `}
 			{P.type !== '' && P.type !== 'article' && P.type !== 'dataset' ? 'In ' : ''}
-			{P.publication && <i>{P.publication + '. '}</i>}
-			{P.address && P.address + '. '}
-			{P.pages && P.pages + '. '}
+			{P.publication && <i>{`${P.publication}. `}</i>}
+			{P.address && `${P.address}. `}
+			{P.pages && `${P.pages}. `}
 		</p>
 	)
 }

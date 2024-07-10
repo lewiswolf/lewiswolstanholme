@@ -1,5 +1,5 @@
 // dependencies
-import { Line, Point } from './types'
+import type { Line, Point } from './types'
 import { compareShortestVector, intersectionLineLine, isPointInsideOfPolygon, rotatePoint } from './utils'
 
 export class Triangle {
@@ -63,7 +63,7 @@ export class Triangle {
 				// if vertex A is outside and vertex B inside, find closest intersection and draw
 				// from vertex B to intersection
 				out.push([line[1], intersections[0]])
-			} else if (!v_inside[0] && !v_inside[1] && intersections[0] && intersections[1]) {
+			} else if (!(v_inside[0] || v_inside[1]) && intersections[0] && intersections[1]) {
 				// if both vertices are outside of the polygon with two intersections, draw a line
 				// between both intersections
 				out.push([intersections[0], intersections[1]])
@@ -88,7 +88,7 @@ export class Triangle {
 				isPointInsideOfPolygon(line[0], t_prime.vertices),
 				isPointInsideOfPolygon(line[1], t_prime.vertices),
 			]
-			if (!v_inside[0] && !v_inside[1] && !intersections.length) {
+			if (!(v_inside[0] || v_inside[1] || intersections.length)) {
 				// if both vertices are outside of t_prime with no intersections, draw a line
 				// between each vertex
 				out.push(line)
@@ -103,7 +103,7 @@ export class Triangle {
 			} else if (v_inside[0] && v_inside[1] && intersections[0] && intersections[1]) {
 				// if both vertices are inside the polygon, draw between intersections
 				out.push([intersections[0], intersections[1]])
-			} else if (!v_inside[0] && !v_inside[1] && intersections.length) {
+			} else if (!(v_inside[0] || v_inside[1]) && intersections.length) {
 				// if both vertices are outside of the polygon, draw between intersections
 				out.push([line[0], compareShortestVector(line[0], intersections)[0]])
 				out.push([line[1], compareShortestVector(line[1], intersections)[0]])

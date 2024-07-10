@@ -1,4 +1,4 @@
-import { PublicationJSON } from './types'
+import type { PublicationJSON } from './types'
 
 export const parseBibliography = (s: string): PublicationJSON => {
 	/*
@@ -9,14 +9,14 @@ export const parseBibliography = (s: string): PublicationJSON => {
 	const tmp: { [key: string]: { [key: string]: string } } = {}
 	let bibtex: string = ''
 	let current_key: string | null = null
-	s.split('\n').forEach((line: string) => {
+	for (const line of s.split('\n')) {
 		// create a new key
 		if (line[0] === '@') {
-			bibtex += line + '\n'
+			bibtex += `${line}\n`
 			const line_tmp = line.split('{') as NonNullable<[string, string]>
 			current_key = line_tmp[1].slice(0, -1)
 			tmp[current_key] = { content_type: line_tmp[0].slice(1) }
-			return
+			continue
 		}
 		if (current_key) {
 			// close a key
@@ -24,11 +24,11 @@ export const parseBibliography = (s: string): PublicationJSON => {
 				tmp[current_key] = { ...tmp[current_key], ...{ bibtex: bibtex + line } }
 				bibtex = ''
 				current_key = null
-				return
+				continue
 			}
 			// add fields to key
 			if (!line.trim().startsWith('file')) {
-				bibtex += line + '\n'
+				bibtex += `${line}\n`
 			}
 			const [key, content] = line.split('=') as NonNullable<[string, string]>
 			tmp[current_key] = {
@@ -45,7 +45,7 @@ export const parseBibliography = (s: string): PublicationJSON => {
 				},
 			}
 		}
-	})
+	}
 	// format entries
 	for (const key in tmp) {
 		out[key] = {
@@ -61,7 +61,7 @@ export const parseBibliography = (s: string): PublicationJSON => {
 			bibtex: tmp[key]?.bibtex || '',
 			date: (() => {
 				const date: [number, number, number] = [
-					parseInt(tmp[key]?.year || '0'),
+					Number.parseInt(tmp[key]?.year || '0'),
 					{
 						jan: 0,
 						feb: 1,
@@ -76,7 +76,7 @@ export const parseBibliography = (s: string): PublicationJSON => {
 						nov: 10,
 						dec: 11,
 					}[tmp[key]?.month || 'jan'] as NonNullable<number>,
-					parseInt(tmp[key]?.day || '1'),
+					Number.parseInt(tmp[key]?.day || '1'),
 				]
 				return date[0] ? new Date(...date) : new Date()
 			})(),
