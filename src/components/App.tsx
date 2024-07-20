@@ -9,7 +9,7 @@ import Home from './home'
 import Info from './info'
 import Music from './music'
 import Navi from './navi'
-import Projects from './projects'
+import Code from './code'
 import Scores from './scores'
 import Videos from './videos'
 
@@ -37,7 +37,7 @@ export default function App(): JSX.Element {
 				<Route element={<Music />} path='/music' />
 				<Route element={<Scores />} path='/scores' />
 				<Route element={<Videos />} path='/videos' />
-				<Route element={<Projects />} path='/projects' />
+				<Route element={<Code />} path='/code' />
 				<Route element={<Info />} path='/info' />
 				<Route element={<Navigate to='/' />} path='*' />
 			</Routes>
