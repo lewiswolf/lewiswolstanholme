@@ -1,7 +1,8 @@
 export type ScoreJSON = {
 	composer: string
-	file: string
+	file?: string
 	instrumentation: string
+	link?: URL
 	title: string
 	year: string
 }

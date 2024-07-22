@@ -1,5 +1,5 @@
 // src
-import { Line, Point } from './types'
+import type { Line, Point } from './types'
 
 export function compareShortestVector(p: Point, V: Point[]): [Point, number] {
 	/*
@@ -11,7 +11,7 @@ export function compareShortestVector(p: Point, V: Point[]): [Point, number] {
 	let v_closest: Point = p
 	let idx: number = 0
 	V.forEach((v: Point, i: number) => {
-		const vec = Math.sqrt(Math.pow(p.x - v.x, 2) + Math.pow(p.y - v.y, 2))
+		const vec = Math.sqrt((p.x - v.x) ** 2 + (p.y - v.y) ** 2)
 		if (vec < vec_min || i === 0) {
 			vec_min = vec
 			v_closest = v
@@ -36,11 +36,9 @@ export function intersectionLineLine(a: Line, b: Line): Point | null {
 		((a[1].x - a[0].x) * (a[0].y - b[0].y) - (a[1].y - a[0].y) * (a[0].x - b[0].x)) /
 		((b[1].y - b[0].y) * (a[1].x - a[0].x) - (b[1].x - b[0].x) * (a[1].y - a[0].y))
 	// if uA and uB are betbeen 0-1, lines are colliding
-	if (uA >= 0 && uA <= 1 && uB >= 0 && uB <= 1) {
-		return { x: a[0].x + uA * (a[1].x - a[0].x), y: a[0].y + uA * (a[1].y - a[0].y) }
-	} else {
-		return null
-	}
+	return uA >= 0 && uA <= 1 && uB >= 0 && uB <= 1
+		? { x: a[0].x + uA * (a[1].x - a[0].x), y: a[0].y + uA * (a[1].y - a[0].y) }
+		: null
 }
 
 export function isPointInsideOfPolygon(p: Point, V: Point[]): boolean {

@@ -65,7 +65,6 @@ body {
 }
 
 header {
-	@include highlight_text;
 	height: 160px;
 	max-width: 100%;
 	margin: 0 20px;
@@ -76,6 +75,8 @@ header {
 	align-content: end;
 	justify-items: center;
 	justify-self: center;
+
+	@include highlight_text;
 
 	@media (width <= $ipad) {
 		height: 100px;
@@ -118,5 +119,5 @@ main {
 @import './music';
 @import './scores';
 @import './videos';
-@import './code';
+@import './projects';
 @import './info';

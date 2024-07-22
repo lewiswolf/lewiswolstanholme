@@ -1,9 +1,9 @@
 // dependencies
 import { Slider } from 'maxmsp-gui'
-import { useEffect, useRef, useState } from 'react'
+import { type JSX, useEffect, useRef, useState } from 'react'
 
 // src
-import { P5 } from './sub-components/p5'
+import { P5 } from '../modules/p5'
 import sketch from '../sketch'
 
 export default function Home(): JSX.Element {
@@ -33,7 +33,7 @@ export default function Home(): JSX.Element {
 			</header>
 			<main className='home' style={{ opacity: visibility }}>
 				<audio ref={audio} src='/audio/newts.mp3' />
-				<P5 sketch={sketch} />
+				{P5(sketch)}
 			</main>
 		</>
 	)

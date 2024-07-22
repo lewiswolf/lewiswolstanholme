@@ -1,6 +1,9 @@
+// dependencies
+import type { JSX } from 'react'
+
 // src
-import GridFromJSON from './sub-components/grid-from-json'
-import { AlbumJSON, albums } from '../config/music'
+import { type AlbumJSON, albums } from '../config/music'
+import { GridFromJSON } from '../modules/grid-from-json'
 
 export default function Music(): JSX.Element {
 	return (
@@ -11,7 +14,7 @@ export default function Music(): JSX.Element {
 					<div
 						aria-label={`Listen to ${obj.title}.`}
 						className='albumcover'
-						key={i}
+						key={i.toString()}
 						role='button'
 						tabIndex={0}
 						onClick={() => window.open(obj.link, '_blank')}

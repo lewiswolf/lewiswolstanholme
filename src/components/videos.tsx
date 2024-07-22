@@ -1,5 +1,8 @@
+// dependencies
+import type { JSX } from 'react'
+
 // src
-import { VideoJSON, videos } from '../config/videos'
+import { type VideoJSON, videos } from '../config/videos'
 
 export default function Videos(): JSX.Element {
 	return (
@@ -11,7 +14,7 @@ export default function Videos(): JSX.Element {
 							<iframe
 								allow='autoplay; fullscreen; picture-in-picture;'
 								frameBorder={0}
-								key={i}
+								key={i.toString()}
 								src={`https://player.vimeo.com/video/${obj.hash}?h=be7c17d620`}
 								title={obj.title}
 							/>
@@ -21,7 +24,7 @@ export default function Videos(): JSX.Element {
 							<iframe
 								allow='accelerometer; autoplay; encrypted-media; fullscreen; gyroscope;'
 								frameBorder={0}
-								key={i}
+								key={i.toString()}
 								src={`https://www.youtube-nocookie.com/embed/${obj.hash}?theme=dark&color=white`}
 								title={obj.title}
 							/>

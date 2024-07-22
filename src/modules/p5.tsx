@@ -1,12 +1,13 @@
-import { useEffect, useRef, useState } from 'react'
-import { ReactP5Wrapper, Sketch } from '@p5-wrapper/react'
+// dependencies
+import { type Sketch, ReactP5Wrapper } from '@p5-wrapper/react'
+import { type JSX, useEffect, useRef, useState } from 'react'
 
 export type Dimensions = {
 	height: number
 	width: number
 }
 
-export const P5: React.FC<{ sketch: Sketch }> = ({ sketch }) => {
+export function P5(sketch: Sketch): JSX.Element {
 	const self = useRef<HTMLDivElement>(null)
 	const [dim, setDim] = useState<Dimensions>({
 		height: 0,

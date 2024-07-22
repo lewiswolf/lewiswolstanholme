@@ -5,8 +5,9 @@ import svgr from 'vite-plugin-svgr'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	assetsInclude: ['**/*.md'],
+	assetsInclude: ['**/*.bib', '**/*.md'],
 	build: { sourcemap: true, target: 'ESNext' },
+	esbuild: { legalComments: 'none' },
 	plugins: [
 		compression({
 			algorithm: 'gzip',

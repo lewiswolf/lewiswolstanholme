@@ -1,16 +1,15 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
 // dependencies
 import { TextButton, Umenu } from 'maxmsp-gui'
-import { useEffect, useState } from 'react'
+import { type JSX, useEffect, useState } from 'react'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
-import ReactMarkdown from 'react-markdown'
+import Markdown from 'react-markdown'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Prism } from 'react-syntax-highlighter'
 
 // src
 import { projects } from '../config/code'
-import { default as syntax } from '../config/syntax'
+import { default as syntax } from '../modules/syntax-highlighter'
 
 export default function Code(): JSX.Element {
 	const location: string = useLocation().search.slice(6)
@@ -19,17 +18,14 @@ export default function Code(): JSX.Element {
 	const [markdown, setMarkdown] = useState<string>('')
 
 	useEffect(() => {
-		if (!pages.includes(location)) {
-			navigate(`/code?view=${pages[0]}`)
-		} else {
+		if (pages.includes(location)) {
 			if (projects[location]?.github) {
 				fetch(`https://raw.githubusercontent.com/${projects[location]?.github}/master/readme.md`)
 					.then((res: Response) => {
 						if (res.ok) {
 							return res.text()
-						} else {
-							throw new Error()
 						}
+						throw new Error()
 					})
 					.then((markdown: string) => {
 						setMarkdown(markdown.replace('by Lewis Wolf', ''))
@@ -51,6 +47,8 @@ export default function Code(): JSX.Element {
 							.catch(),
 					)
 			}
+		} else {
+			navigate(`/code?view=${pages[0]}`)
 		}
 	}, [location, navigate, pages])
 
@@ -86,18 +84,15 @@ export default function Code(): JSX.Element {
 					/>
 				)}
 				{projects[location]?.github && markdown !== '404: Not Found' && (
-					<ReactMarkdown
-						children={markdown}
+					<Markdown
 						className='readme'
 						components={{
 							code({ className, children }) {
 								const match = /language-(\w+)/.exec(className || '')
 								return match ? (
-									<Prism
-										children={String(children).replace(/\n$/, '')}
-										language={match[1]}
-										style={syntax}
-									/>
+									<Prism language={match[1]} style={syntax}>
+										{String(children).replace(/\n$/, '')}
+									</Prism>
 								) : (
 									<code className={className}>{children}</code>
 								)
@@ -105,7 +100,9 @@ export default function Code(): JSX.Element {
 						}}
 						rehypePlugins={[rehypeRaw]}
 						remarkPlugins={[remarkGfm]}
-					/>
+					>
+						{markdown}
+					</Markdown>
 				)}
 			</main>
 		</>

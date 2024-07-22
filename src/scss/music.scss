@@ -2,10 +2,11 @@
 	margin-top: 20px;
 
 	.albumcover {
-		@include focus;
 		height: 100%;
 		width: 100%;
 		cursor: pointer;
+
+		@include focus;
 
 		img {
 			height: 100%;

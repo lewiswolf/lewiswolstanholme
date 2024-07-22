@@ -6,8 +6,9 @@
 		-webkit-user-select: none;
 
 		&.video {
-			@include video;
 			margin-bottom: 0.67em;
+
+			@include video;
 		}
 
 		&.website {
@@ -27,10 +28,11 @@
 	}
 
 	.readme {
-		@include highlight_text;
 		width: inherit;
 		text-align: justify;
 		cursor: default;
+
+		@include highlight_text;
 
 		@media (width <= $ipad) {
 			margin: 0;
@@ -45,9 +47,10 @@
 		}
 
 		a {
-			@include focus;
 			color: black;
 			text-decoration: underline;
+
+			@include focus;
 		}
 
 		blockquote {
@@ -65,8 +68,9 @@
 		}
 
 		summary {
-			@include focus;
 			margin: 5px 0;
+
+			@include focus;
 		}
 
 		pre {

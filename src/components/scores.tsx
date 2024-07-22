@@ -1,9 +1,13 @@
+// dependencies
+import type { JSX } from 'react'
+
 // src
-import GridFromJSON from './sub-components/grid-from-json'
-import { ScoreJSON, compositions, engravings } from '../config/scores'
+import { compositions, engravings } from '../config/scores'
+import type { ScoreJSON } from '../config/scores'
+import { GridFromJSON } from '../modules/grid-from-json'
 import CompositionSVG from '../svg/compositions-thumb.svg?react'
 
-const CompositionThumb: React.FC<{ obj: ScoreJSON }> = ({ obj }) => {
+function CompositionThumb(obj: ScoreJSON): JSX.Element {
 	return (
 		<div className='composition-thumb' tabIndex={-1}>
 			<CompositionSVG />
@@ -14,7 +18,7 @@ const CompositionThumb: React.FC<{ obj: ScoreJSON }> = ({ obj }) => {
 	)
 }
 
-const EngravingThumb: React.FC<{ obj: ScoreJSON }> = ({ obj }) => {
+function EngravingThumb(obj: ScoreJSON): JSX.Element {
 	return (
 		<div className='engraving-thumb' tabIndex={-1}>
 			<p>{obj.composer}</p>
@@ -28,6 +32,16 @@ const EngravingThumb: React.FC<{ obj: ScoreJSON }> = ({ obj }) => {
 }
 
 export default function Scores(): JSX.Element {
+	type ScoreAndType = ScoreJSON & Readonly<{ type: 'compositions' | 'engravings' }>
+
+	function downloadScore(obj: ScoreAndType): void {
+		if (obj.file) {
+			window.open(`${window.location.protocol}//lewiswolstanholme.co.uk/api/${obj.type}/${obj.file}.pdf`, '_blank')
+		} else if (obj.link) {
+			window.open(obj.link.href, '_blank')
+		}
+	}
+
 	return (
 		<>
 			<main className='scores'>
@@ -36,31 +50,25 @@ export default function Scores(): JSX.Element {
 						...compositions.map((a) => ({ ...a, type: 'compositions' })),
 						...engravings.map((a) => ({ ...a, type: 'engravings' })),
 					]}
-					cell={(obj: ScoreJSON & Readonly<{ type: 'compositions' | 'engravings' }>, i: number): JSX.Element => {
+					cell={(obj: ScoreAndType, i: number): JSX.Element => {
 						return (
 							<div
-								aria-label={`Download the score for ${obj.title}.`}
+								aria-label={`Download/purchase the score for ${obj.title}.`}
 								className='score-cover'
-								key={i}
+								key={i.toString()}
 								role='button'
 								tabIndex={0}
-								onClick={() =>
-									window.open(
-										`${window.location.protocol}//lewiswolstanholme.co.uk/api/${obj.type}/${obj.file}.pdf`,
-										'_blank',
-									)
-								}
+								onClick={() => {
+									downloadScore(obj)
+								}}
 								onKeyDown={(e) => {
 									if (e.key === 'Enter' || e.key === ' ') {
 										e.preventDefault()
-										window.open(
-											`${window.location.protocol}//lewiswolstanholme.co.uk/api/${obj.type}/${obj.file}.pdf`,
-											'_blank',
-										)
+										downloadScore(obj)
 									}
 								}}
 							>
-								{obj.type === 'compositions' ? <CompositionThumb obj={obj} /> : <EngravingThumb obj={obj} />}
+								{obj.type === 'compositions' ? CompositionThumb(obj) : EngravingThumb(obj)}
 							</div>
 						)
 					}}
