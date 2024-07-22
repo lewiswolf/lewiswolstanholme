@@ -54,10 +54,10 @@ export const parseBibliography = (s: string): PublicationJSON => {
 					[key.trim()]: content
 						.trim()
 						.replace(/\{|\}/g, '')
-						/* eslint-disable */
+						/* eslint-disable no-useless-escape */
 						.replace(/\\\&/g, '&')
 						.replace(/\\\_/g, '_')
-						/* eslint-enable */
+						/* eslint-enable no-useless-escape */
 						.replace(/,$/, ''),
 				},
 			}

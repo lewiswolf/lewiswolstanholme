@@ -8,7 +8,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { Prism } from 'react-syntax-highlighter'
 
 // src
-import { projects } from '../config/code'
+import { type CodeProjectJSON, projects } from '../config/code'
 import { default as syntax } from '../modules/syntax-highlighter'
 
 export default function Code(): JSX.Element {
@@ -20,7 +20,7 @@ export default function Code(): JSX.Element {
 	useEffect(() => {
 		if (pages.includes(location)) {
 			if (projects[location]?.github) {
-				fetch(`https://raw.githubusercontent.com/${projects[location]?.github}/master/readme.md`)
+				fetch(`https://raw.githubusercontent.com/${projects[location].github}/master/readme.md`)
 					.then((res: Response) => {
 						if (res.ok) {
 							return res.text()
@@ -31,7 +31,9 @@ export default function Code(): JSX.Element {
 						setMarkdown(markdown.replace('by Lewis Wolf', ''))
 					})
 					.catch(() =>
-						fetch(`https://raw.githubusercontent.com/${projects[location]?.github}/master/README.md`)
+						fetch(
+							`https://raw.githubusercontent.com/${(projects[location] as NonNullable<CodeProjectJSON>).github}/master/README.md`,
+						)
 							.then((res: Response) => res.text())
 							.then((markdown: string) => {
 								setMarkdown(
@@ -48,7 +50,7 @@ export default function Code(): JSX.Element {
 					)
 			}
 		} else {
-			navigate(`/code?view=${pages[0]}`)
+			pages[0] && navigate(`/code?view=${pages[0]}`)
 		}
 	}, [location, navigate, pages])
 
@@ -61,7 +63,7 @@ export default function Code(): JSX.Element {
 					setValue={pages.includes(location) ? pages.indexOf(location) : 0}
 					width={255}
 					onChange={(i: number) => {
-						navigate(`/code?view=${pages[i]}`)
+						pages[i] && navigate(`/code?view=${pages[i]}`)
 					}}
 				/>
 				<TextButton
@@ -69,7 +71,8 @@ export default function Code(): JSX.Element {
 					inactive={!projects[location]?.github}
 					text='GitHub'
 					onClick={() => {
-						window.open(`https://github.com/${projects[location]?.github}`, '_blank')
+						projects[location]?.github &&
+							window.open(`https://github.com/${projects[location].github}`, '_blank')
 					}}
 				/>
 			</header>
@@ -77,10 +80,10 @@ export default function Code(): JSX.Element {
 				{projects[location]?.iframe && (
 					<iframe
 						allow='accelerometer; autoplay; encrypted-media; fullscreen; gyroscope;'
-						className={projects[location]?.className}
+						className={projects[location].className}
 						frameBorder={0}
-						src={projects[location]?.iframe}
-						title={projects[location]?.name}
+						src={projects[location].iframe}
+						title={projects[location].name}
 					/>
 				)}
 				{projects[location]?.github && markdown !== '404: Not Found' && (

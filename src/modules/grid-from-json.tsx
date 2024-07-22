@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // dependencies
 import { type FC, type JSX, useEffect, useRef, useState } from 'react'
 
