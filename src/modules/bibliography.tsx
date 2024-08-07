@@ -1,8 +1,9 @@
 // dependencies
 import type { JSX } from 'react'
 
-export type PublicationJSON = {
-	[key: string]: Readonly<{
+export type PublicationJSON = Record<
+	string,
+	Readonly<{
 		address: string
 		authors: { first_name: string; last_name: string }[]
 		bibtex: string
@@ -15,7 +16,7 @@ export type PublicationJSON = {
 		title: string
 		type: '' | 'article' | 'conference paper' | 'dataset' | 'performance' | 'presentation' | 'workshop'
 	}>
-}
+>
 
 export const parseBibliography = (s: string): PublicationJSON => {
 	/*
@@ -23,12 +24,12 @@ export const parseBibliography = (s: string): PublicationJSON => {
 	*/
 
 	const out: PublicationJSON = {}
-	const tmp: { [key: string]: { [key: string]: string } } = {}
-	let bibtex: string = ''
+	const tmp: Record<string, Record<string, string>> = {}
+	let bibtex = ''
 	let current_key: string | null = null
 	for (const line of s.split('\n')) {
 		// create a new key
-		if (line[0] === '@') {
+		if (line.startsWith('@')) {
 			bibtex += `${line}\n`
 			const line_tmp = line.split('{') as NonNullable<[string, string]>
 			current_key = line_tmp[1].slice(0, -1)
@@ -37,14 +38,14 @@ export const parseBibliography = (s: string): PublicationJSON => {
 		}
 		if (current_key) {
 			// close a key
-			if (line[0] === '}') {
+			if (line.startsWith('}')) {
 				tmp[current_key] = { ...tmp[current_key], ...{ bibtex: bibtex + line } }
 				bibtex = ''
 				current_key = null
 				continue
 			}
 			// add fields to key
-			if (!line.trim().startsWith('file')) {
+			if (!(line.trim().startsWith('day') || line.trim().startsWith('file') || line.trim().startsWith('type'))) {
 				bibtex += `${line}\n`
 			}
 			const [key, content] = line.split('=') as NonNullable<[string, string]>
@@ -54,10 +55,10 @@ export const parseBibliography = (s: string): PublicationJSON => {
 					[key.trim()]: content
 						.trim()
 						.replace(/\{|\}/g, '')
-						/* eslint-disable */
+						/* eslint-disable no-useless-escape */
 						.replace(/\\\&/g, '&')
 						.replace(/\\\_/g, '_')
-						/* eslint-enable */
+						/* eslint-enable no-useless-escape */
 						.replace(/,$/, ''),
 				},
 			}
@@ -66,7 +67,7 @@ export const parseBibliography = (s: string): PublicationJSON => {
 	// format entries
 	for (const key in tmp) {
 		out[key] = {
-			address: tmp[key]?.address || '',
+			address: tmp[key]?.address ?? '',
 			authors: (() => {
 				return tmp[key]?.author
 					? tmp[key].author.split(' and ').map((author: string) => {
@@ -75,10 +76,10 @@ export const parseBibliography = (s: string): PublicationJSON => {
 						})
 					: []
 			})(),
-			bibtex: tmp[key]?.bibtex || '',
+			bibtex: tmp[key]?.bibtex ?? '',
 			date: (() => {
 				const date: [number, number, number] = [
-					Number.parseInt(tmp[key]?.year || '0'),
+					Number.parseInt(tmp[key]?.year ?? '0'),
 					{
 						jan: 0,
 						feb: 1,
@@ -92,8 +93,8 @@ export const parseBibliography = (s: string): PublicationJSON => {
 						oct: 9,
 						nov: 10,
 						dec: 11,
-					}[tmp[key]?.month || 'jan'] as NonNullable<number>,
-					Number.parseInt(tmp[key]?.day || '1'),
+					}[tmp[key]?.month ?? 'jan'] as NonNullable<number>,
+					Number.parseInt(tmp[key]?.day ?? '1'),
 				]
 				return date[0] ? new Date(...date) : new Date()
 			})(),
@@ -105,12 +106,12 @@ export const parseBibliography = (s: string): PublicationJSON => {
 						})
 					: []
 			})(),
-			links: { doi: tmp[key]?.doi || '', url: tmp[key]?.url || '' },
-			pages: tmp[key]?.pages || '',
-			pdf: tmp[key]?.file || '',
-			publication: tmp[key]?.journal || tmp[key]?.booktitle || tmp[key]?.howpublished || '',
-			title: tmp[key]?.title || '',
-			type: (tmp[key]?.type as PublicationJSON[keyof PublicationJSON]['type']) || '',
+			links: { doi: tmp[key]?.doi ?? '', url: tmp[key]?.url ?? '' },
+			pages: tmp[key]?.pages ?? '',
+			pdf: tmp[key]?.file ?? '',
+			publication: tmp[key]?.journal ?? tmp[key]?.booktitle ?? tmp[key]?.howpublished ?? '',
+			title: tmp[key]?.title ?? '',
+			type: (tmp[key]?.type as PublicationJSON[keyof PublicationJSON]['type'] | undefined) ?? '',
 		}
 	}
 	return out

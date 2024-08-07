@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // dependencies
 import { type FC, type JSX, useEffect, useRef, useState } from 'react'
 
@@ -12,13 +13,13 @@ export const GridFromJSON: FC<{
 	cell: (obj: any, i: number) => JSX.Element
 	gridSpacer?: number
 	// biome-ignore lint/suspicious/noExplicitAny: any is used to maintain user configurability
-	json: Readonly<{ [key: string]: any }[]> | string[] | string
+	json: readonly Record<string, any>[] | string[] | string
 	maxHeight?: number
 	maxWidth?: number
 }> = ({ cell, gridSpacer = 20, json, maxWidth = 280, maxHeight = maxWidth }) => {
 	const self = useRef<HTMLDivElement>(null)
 	// biome-ignore lint/suspicious/noExplicitAny: any is used to maintain user configurability
-	const [content, setContent] = useState<Readonly<{ [key: string]: any }[]> | string[]>([])
+	const [content, setContent] = useState<readonly Record<string, any>[] | string[]>([])
 	const [gridState, setGrid] = useState<GridProperties>({
 		width: '',
 		gridAutoRows: '',
@@ -34,7 +35,7 @@ export const GridFromJSON: FC<{
 			void fetch(json)
 				.then((res: Response) => res.json())
 				// biome-ignore lint/suspicious/noExplicitAny: any is used to maintain user configurability
-				.then((json: { [key: string]: any }[]) => {
+				.then((json: Record<string, any>[]) => {
 					setContent(json)
 				})
 				.catch()
@@ -60,8 +61,8 @@ export const GridFromJSON: FC<{
 					.map((s: string) => Number.parseFloat(s))
 				const parentWidth: number =
 					self.current.parentElement.getBoundingClientRect().width -
-					(padding_array[0] || 0) -
-					(padding_array[1] || 0)
+					(padding_array[0] ?? 0) -
+					(padding_array[1] ?? 0)
 				const largestGrid: number = content.length * (maxWidth + gridSpacer) - gridSpacer
 				setGrid({
 					width: parentWidth > largestGrid ? `${largestGrid.toString()}px` : '100%',

@@ -1,9 +1,9 @@
-const highlight1: string = '#c92c2c'
-const highlight2: string = '#0F8919'
-const highlight3: string = '#8f28db'
-const highlight4: string = '#0E82A9'
+const highlight1 = '#c92c2c'
+const highlight2 = '#0F8919'
+const highlight3 = '#8f28db'
+const highlight4 = '#0E82A9'
 
-const coy: { [key: string]: { [key: string]: string } } = {
+const coy: Record<string, Record<string, string>> = {
 	'code[class*="language-"]': {
 		color: 'black',
 		background: 'unset',

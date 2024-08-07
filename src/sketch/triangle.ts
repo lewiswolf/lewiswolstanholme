@@ -45,7 +45,9 @@ export class Triangle {
 			const intersections: Point[] = []
 			for (const line_prime of t_prime.lines()) {
 				const intersection = intersectionLineLine(line, line_prime)
-				intersection && intersections.push(intersection)
+				if (intersection) {
+					intersections.push(intersection)
+				}
 			}
 			const v_inside: [boolean, boolean] = [
 				isPointInsideOfPolygon(line[0], t_prime.vertices),
@@ -82,7 +84,9 @@ export class Triangle {
 			const intersections: Point[] = []
 			for (const line_prime of t_prime.lines()) {
 				const intersection = intersectionLineLine(line, line_prime)
-				intersection && intersections.push(intersection)
+				if (intersection) {
+					intersections.push(intersection)
+				}
 			}
 			const v_inside: [boolean, boolean] = [
 				isPointInsideOfPolygon(line[0], t_prime.vertices),

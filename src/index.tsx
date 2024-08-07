@@ -6,14 +6,12 @@ import { BrowserRouter } from 'react-router-dom'
 // src
 import App from './components/App'
 
-const root = document.getElementById('root')
-root &&
-	createRoot(root).render(
-		<StrictMode>
-			<BrowserRouter>
-				<HelmetProvider>
-					<App />
-				</HelmetProvider>
-			</BrowserRouter>
-		</StrictMode>,
-	)
+createRoot(document.getElementById('root') as NonNullable<HTMLDivElement>).render(
+	<StrictMode>
+		<BrowserRouter>
+			<HelmetProvider>
+				<App />
+			</HelmetProvider>
+		</BrowserRouter>
+	</StrictMode>,
+)
