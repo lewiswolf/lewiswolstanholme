@@ -7,7 +7,14 @@ export type ScoreJSON = {
 	year: string
 }
 
-export const compositions: Readonly<ScoreJSON[]> = [
+export const compositions: readonly ScoreJSON[] = [
+	// {
+	// 	composer: 'Lewis Wolstanholme',
+	// 	instrumentation: 'for open instrumentation',
+	// 	link: new URL('https://google.com'),
+	// 	title: 'Red Kite',
+	// 	year: '2024',
+	// },
 	{
 		composer: 'Lewis Wolstanholme',
 		file: 'Red_Kite_by_Lewis_Wolstanholme',
@@ -52,7 +59,7 @@ export const compositions: Readonly<ScoreJSON[]> = [
 	},
 ]
 
-export const engravings: Readonly<ScoreJSON[]> = [
+export const engravings: readonly ScoreJSON[] = [
 	{
 		composer: 'Robert Matthew-Walker',
 		file: 'Robert_Matthew-Walker_Concerto_for_Viola_and_String_Orchestra',

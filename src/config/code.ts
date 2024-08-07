@@ -5,7 +5,7 @@ export type CodeProjectJSON = {
 	name: string
 }
 
-export const projects: Readonly<{ [key: string]: CodeProjectJSON }> = {
+export const projects: Readonly<Record<string, CodeProjectJSON>> = {
 	kac_drumset: {
 		className: '',
 		github: 'lewiswolf/kac_drumset',

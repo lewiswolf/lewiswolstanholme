@@ -49,8 +49,8 @@ export default function Code(): JSX.Element {
 							.catch(),
 					)
 			}
-		} else {
-			pages[0] && navigate(`/code?view=${pages[0]}`)
+		} else if (pages[0]) {
+			navigate(`/code?view=${pages[0]}`)
 		}
 	}, [location, navigate, pages])
 
@@ -59,11 +59,13 @@ export default function Code(): JSX.Element {
 			<header>
 				<Umenu
 					ariaLabel='What code project would you like to see?'
-					items={pages.map((key: string) => projects[key]?.name || '')}
+					items={pages.map((key: string) => projects[key]?.name ?? '')}
 					setValue={pages.includes(location) ? pages.indexOf(location) : 0}
 					width={255}
 					onChange={(i: number) => {
-						pages[i] && navigate(`/code?view=${pages[i]}`)
+						if (pages[i]) {
+							navigate(`/code?view=${pages[i]}`)
+						}
 					}}
 				/>
 				<TextButton
@@ -71,8 +73,9 @@ export default function Code(): JSX.Element {
 					inactive={!projects[location]?.github}
 					text='GitHub'
 					onClick={() => {
-						projects[location]?.github &&
+						if (projects[location]?.github) {
 							window.open(`https://github.com/${projects[location].github}`, '_blank')
+						}
 					}}
 				/>
 			</header>
@@ -91,7 +94,7 @@ export default function Code(): JSX.Element {
 						className='readme'
 						components={{
 							code({ className, children }) {
-								const match = /language-(\w+)/.exec(className || '')
+								const match = /language-(\w+)/.exec(className ?? '')
 								return match ? (
 									<Prism language={match[1]} style={syntax}>
 										{String(children).replace(/\n$/, '')}

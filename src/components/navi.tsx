@@ -18,8 +18,7 @@ export default function Navi(): JSX.Element {
 				spacing={20.5}
 				setValue={location && pages.includes(location) ? pages.indexOf(location) : 0}
 				onClick={(i: number) => {
-					navigate(`/${pages[i] || ''}`)
-					navigate(`/${pages[i] || ''}`)
+					navigate(`/${pages[i] ?? ''}`)
 				}}
 			/>
 			<NaviCable />

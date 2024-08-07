@@ -4,7 +4,7 @@ export type VideoJSON = {
 	type: 'youtube' | 'vimeo'
 }
 
-export const videos: Readonly<VideoJSON[]> = [
+export const videos: readonly VideoJSON[] = [
 	{
 		hash: '1iYzt-zUhjA',
 		title: 'king lily by Mark Cables X Lewis Wolf',

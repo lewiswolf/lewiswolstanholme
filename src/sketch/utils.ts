@@ -7,9 +7,9 @@ export function compareShortestVector(p: Point, V: Point[]): [Point, number] {
 	closest point. Return the point itself if V = [].
 	*/
 
-	let vec_min: number = 0
-	let v_closest: Point = p
-	let idx: number = 0
+	let vec_min = 0
+	let v_closest = p
+	let idx = 0
 	V.forEach((v: Point, i: number) => {
 		const vec = Math.sqrt((p.x - v.x) ** 2 + (p.y - v.y) ** 2)
 		if (vec < vec_min || i === 0) {

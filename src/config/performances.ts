@@ -5,7 +5,7 @@ export type PerformanceJSON = {
 	venue: string
 }
 
-export const performances: Readonly<PerformanceJSON[]> = [
+export const performances: readonly PerformanceJSON[] = [
 	{
 		artist: 'Julia Set',
 		date: new Date('2024-05-18'),
