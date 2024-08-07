@@ -18,7 +18,7 @@ export type PublicationJSON = Record<
 	}>
 >
 
-export const parseBibliography = (s: string): PublicationJSON => {
+export function parseBibliography(s: string): PublicationJSON {
 	/*
 	Convert a .bib file to a PublicationJSON object.
 	*/
@@ -79,7 +79,7 @@ export const parseBibliography = (s: string): PublicationJSON => {
 			bibtex: tmp[key]?.bibtex ?? '',
 			date: (() => {
 				const date: [number, number, number] = [
-					Number.parseInt(tmp[key]?.year ?? '0'),
+					tmp[key]?.year ? Number.parseInt(tmp[key].year) : 0,
 					{
 						jan: 0,
 						feb: 1,
@@ -94,7 +94,7 @@ export const parseBibliography = (s: string): PublicationJSON => {
 						nov: 10,
 						dec: 11,
 					}[tmp[key]?.month ?? 'jan'] as NonNullable<number>,
-					Number.parseInt(tmp[key]?.day ?? '1'),
+					tmp[key]?.day ? Number.parseInt(tmp[key].day) : 1,
 				]
 				return date[0] ? new Date(...date) : new Date()
 			})(),
