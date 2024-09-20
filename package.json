@@ -43,7 +43,7 @@
 	"scripts": {
 		"build": "tsc && vite build",
 		"dev": "vite --host",
-		"format": "biome format --write && prettier --write ./src/scss && prettier --write ./src/svg",
+		"format": "biome format --write && prettier --write ./src/scss && prettier --write ./src/svg && prettier --write *.html",
 		"preview": "vite preview",
 		"test": "tsc && biome lint && eslint . && stylelint **/*.scss"
 	},
@@ -55,7 +55,7 @@
 		"htmlWhitespaceSensitivity": "strict",
 		"jsxSingleQuote": true,
 		"plugins": ["@prettier/plugin-xml"],
-		"printWidth": 120,
+		"printWidth": 125,
 		"quoteProps": "as-needed",
 		"semi": false,
 		"singleQuote": true,
