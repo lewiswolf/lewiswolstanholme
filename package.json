@@ -43,7 +43,7 @@
 	"scripts": {
 		"build": "tsc && vite build",
 		"dev": "vite --host",
-		"format": "biome format --write && prettier --write ./src/scss && prettier --write ./src/svg && prettier --write *.html",
+		"format": "biome format --write && prettier --write ./**/*.html ./**/*.scss ./**/*.svg",
 		"preview": "vite preview",
 		"test": "tsc && biome lint && eslint . && stylelint **/*.scss"
 	},
