@@ -5,6 +5,16 @@ export type AlbumJSON = {
 }
 
 export const albums: readonly AlbumJSON[] = [
+	// {
+	// 	link: 'https://lewiswolstanholme.bandcamp.com/album/red-kite',
+	// 	img: '',
+	// 	title: 'red kite by Lewis Wolstanholme',
+	// },
+	// {
+	// 	link: '',
+	// 	img: '',
+	// 	title: 'Julia Set X mori.111111',
+	// },
 	{
 		link: 'https://juliaset.bandcamp.com/album/sallow',
 		img: 'https://f4.bcbits.com/img/a2573041574_10.jpg',

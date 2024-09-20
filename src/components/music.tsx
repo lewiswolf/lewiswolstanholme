@@ -2,8 +2,8 @@
 import type { JSX } from 'react'
 
 // src
-import { type AlbumJSON, albums } from '../config/music'
-import { GridFromJSON } from '../modules/grid-from-json'
+import { type AlbumJSON, albums } from '../config/music.ts'
+import { GridFromJSON } from '../modules/grid-from-json.tsx'
 
 export default function Music(): JSX.Element {
 	return (
@@ -11,12 +11,11 @@ export default function Music(): JSX.Element {
 			<GridFromJSON
 				json={albums}
 				cell={(obj: AlbumJSON, i: number): JSX.Element => (
-					<div
+					<button
 						aria-label={`Listen to ${obj.title}.`}
-						className='albumcover'
 						key={i.toString()}
-						role='button'
 						tabIndex={0}
+						type='button'
 						onClick={() => window.open(obj.link, '_blank')}
 						onKeyDown={(e) => {
 							if (e.key === 'Enter' || e.key === ' ') {
@@ -26,7 +25,7 @@ export default function Music(): JSX.Element {
 						}}
 					>
 						<img alt={`Album artwork for ${obj.title}.`} src={obj.img} tabIndex={-1} />
-					</div>
+					</button>
 				)}
 			/>
 		</main>

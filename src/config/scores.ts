@@ -15,6 +15,13 @@ export const compositions: readonly ScoreJSON[] = [
 	// 	title: 'Red Kite',
 	// 	year: '2024',
 	// },
+	// {
+	// 	composer: 'Julia Set',
+	// 	file: '',
+	// 	instrumentation: 'in four parts',
+	// 	title: 'Folds',
+	// 	year: '2023',
+	// },
 	{
 		composer: 'Lewis Wolstanholme',
 		file: 'Red_Kite_by_Lewis_Wolstanholme',

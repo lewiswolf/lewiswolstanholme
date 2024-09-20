@@ -1,9 +1,12 @@
 .music {
 	margin-top: 20px;
 
-	.albumcover {
+	button {
 		height: 100%;
 		width: 100%;
+		padding: 0;
+		border: 0;
+		background: transparent;
 		cursor: pointer;
 
 		@include focus;

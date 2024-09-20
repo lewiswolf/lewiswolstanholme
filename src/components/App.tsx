@@ -4,14 +4,14 @@ import { Helmet } from 'react-helmet-async'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 
 // components
-import { GoogleAnalytics, analyticsPageView } from '../modules/google-analytics'
-import Home from './home'
-import Info from './info'
-import Music from './music'
-import Navi from './navi'
-import Code from './code'
-import Scores from './scores'
-import Videos from './videos'
+import { GoogleAnalytics, analyticsPageView } from '../modules/google-analytics.tsx'
+import Home from './home.tsx'
+import Info from './info.tsx'
+import Music from './music.tsx'
+import Navi from './navi.tsx'
+import Code from './code.tsx'
+import Scores from './scores.tsx'
+import Videos from './videos.tsx'
 
 // scss
 import '../scss/App.scss'

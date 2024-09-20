@@ -30,10 +30,14 @@
 				"noDefaultExport": "off",
 				"noInferrableTypes": "off",
 				"useNamingConvention": "off"
+			},
+			"suspicious": {
+				"noReactSpecificProps": "off"
 			}
 		}
 	},
 	"formatter": {
+		"enabled": true,
 		"lineEnding": "lf",
 		"lineWidth": 125,
 		"indentWidth": 4,

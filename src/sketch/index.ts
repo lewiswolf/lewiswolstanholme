@@ -2,8 +2,8 @@
 import type { P5CanvasInstance, SketchProps } from '@p5-wrapper/react'
 
 // src
-import type { Dimensions } from '../modules/p5'
-import { Triangle } from './triangle'
+import type { Dimensions } from '../modules/p5.tsx'
+import { Triangle } from './triangle.ts'
 
 export default function sketch(p5: P5CanvasInstance<SketchProps & { dimensions: Dimensions }>) {
 	let dim: Dimensions = {
