@@ -8,8 +8,13 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { Prism } from 'react-syntax-highlighter'
 
 // src
-import { type CodeProjectJSON, projects } from '../config/code'
-import { default as syntax } from '../modules/syntax-highlighter'
+import { type CodeProjectJSON, projects } from '../config/code.ts'
+import { default as syntax } from '../modules/syntax-highlighter.ts'
+
+const regex = {
+	new_line: /\n$/,
+	programming_language: /language-(\w+)/,
+}
 
 export default function Code(): JSX.Element {
 	const location: string = useLocation().search.slice(6)
@@ -25,7 +30,7 @@ export default function Code(): JSX.Element {
 						if (res.ok) {
 							return res.text()
 						}
-						throw new Error()
+						throw new Error('Readme not found.')
 					})
 					.then((markdown: string) => {
 						setMarkdown(markdown.replace('by Lewis Wolf', ''))
@@ -94,10 +99,10 @@ export default function Code(): JSX.Element {
 						className='readme'
 						components={{
 							code({ className, children }) {
-								const match = /language-(\w+)/.exec(className ?? '')
+								const match = regex.programming_language.exec(className ?? '')
 								return match ? (
 									<Prism language={match[1]} style={syntax}>
-										{String(children).replace(/\n$/, '')}
+										{String(children).replace(regex.new_line, '')}
 									</Prism>
 								) : (
 									<code className={className}>{children}</code>

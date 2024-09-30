@@ -2,7 +2,7 @@
 import type { JSX } from 'react'
 
 // src
-import { type VideoJSON, videos } from '../config/videos'
+import { type VideoJSON, videos } from '../config/videos.ts'
 
 export default function Videos(): JSX.Element {
 	return (

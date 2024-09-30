@@ -11,7 +11,7 @@ export const videos: readonly VideoJSON[] = [
 		type: 'youtube',
 	},
 	{
-		hash: 'bjNu__e3OyI',
+		hash: 'fvG4lKJx968',
 		title: 'centerbeam by Julia Set',
 		type: 'youtube',
 	},

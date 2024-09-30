@@ -2,9 +2,8 @@
 import type { JSX } from 'react'
 
 // src
-import { compositions, engravings } from '../config/scores'
-import type { ScoreJSON } from '../config/scores'
-import { GridFromJSON } from '../modules/grid-from-json'
+import { type ScoreJSON, compositions, engravings } from '../config/scores.ts'
+import { GridFromJSON } from '../modules/grid-from-json.tsx'
 import CompositionSVG from '../svg/compositions-thumb.svg?react'
 
 function CompositionThumb(obj: ScoreJSON): JSX.Element {
@@ -52,12 +51,11 @@ export default function Scores(): JSX.Element {
 					]}
 					cell={(obj: ScoreAndType, i: number): JSX.Element => {
 						return (
-							<div
+							<button
 								aria-label={`Download/purchase the score for ${obj.title}.`}
-								className='score-cover'
 								key={i.toString()}
-								role='button'
 								tabIndex={0}
+								type='button'
 								onClick={() => {
 									downloadScore(obj)
 								}}
@@ -69,7 +67,7 @@ export default function Scores(): JSX.Element {
 								}}
 							>
 								{obj.type === 'compositions' ? CompositionThumb(obj) : EngravingThumb(obj)}
-							</div>
+							</button>
 						)
 					}}
 				/>

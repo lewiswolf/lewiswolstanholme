@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client'
 import { HelmetProvider } from 'react-helmet-async'
 import { BrowserRouter } from 'react-router-dom'
 // src
-import App from './components/App'
+import App from './components/App.tsx'
 
 createRoot(document.getElementById('root') as NonNullable<HTMLDivElement>).render(
 	<StrictMode>

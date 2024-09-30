@@ -1,6 +1,15 @@
 // dependencies
 import type { JSX } from 'react'
 
+/* eslint-disable no-useless-escape */
+const regex = {
+	ampersand: /\\\&/g,
+	line_ending_comma: /,$/,
+	curly_braces: /\{|\}/g,
+	underscore: /\\\_/g,
+}
+/* eslint-enable no-useless-escape */
+
 export type PublicationJSON = Record<
 	string,
 	Readonly<{
@@ -54,12 +63,10 @@ export const parseBibliography = (s: string): PublicationJSON => {
 				...{
 					[key.trim()]: content
 						.trim()
-						.replace(/\{|\}/g, '')
-						/* eslint-disable no-useless-escape */
-						.replace(/\\\&/g, '&')
-						.replace(/\\\_/g, '_')
-						/* eslint-enable no-useless-escape */
-						.replace(/,$/, ''),
+						.replace(regex.curly_braces, '')
+						.replace(regex.ampersand, '&')
+						.replace(regex.underscore, '_')
+						.replace(regex.line_ending_comma, ''),
 				},
 			}
 		}

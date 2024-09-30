@@ -1,16 +1,16 @@
 // src
-import type { Line, Point } from './types'
+import type { Line, Point, Polygon } from './types.d.ts'
 
-export function compareShortestVector(p: Point, V: Point[]): [Point, number] {
+export function compareShortestVector(p: Readonly<Point>, P: Readonly<Polygon>): [Point, number] {
 	/*
-	Compare a point with an array points by vector length and return the
-	closest point. Return the point itself if V = [].
+	Compare a point with an array points by vector length and return the closest point.
+	Return the point itself if V = [] and its index.
 	*/
 
 	let vec_min = 0
 	let v_closest = p
 	let idx = 0
-	V.forEach((v: Point, i: number) => {
+	P.forEach((v: Point, i: number) => {
 		const vec = Math.sqrt((p.x - v.x) ** 2 + (p.y - v.y) ** 2)
 		if (vec < vec_min || i === 0) {
 			vec_min = vec
@@ -21,10 +21,36 @@ export function compareShortestVector(p: Point, V: Point[]): [Point, number] {
 	return [v_closest, idx]
 }
 
-export function intersectionLineLine(a: Line, b: Line): Point | null {
+export function isPointInsideConvexPolygon(p: Readonly<Point>, P: Readonly<Polygon>): boolean {
 	/*
-	Finds the point at which two lines intersect. Returns null if they
-	do not intersect.
+	Determines whether or not a cartesian pair is within a polygon, including boundaries.
+	Solution 3 => http://paulbourke.net/geometry/polygonmesh/
+	*/
+
+	function crossProductZ(a: Point, b: Point, p: Point) {
+		return (b.x - a.x) * (p.y - a.y) - (p.x - a.x) * (b.y - a.y)
+	}
+	// determine if the polygon is ordered clockwise
+	const clockwise = crossProductZ(P[0] as Point, P[1] as Point, P[2] as Point) > 0 ? -1 : 1
+	// go through each of the vertices, and test with p
+	const N: number = P.length
+	for (const v of P) {
+		if (p.x === v.x && p.y === v.y) {
+			return true
+		}
+	}
+	// determine if the point is always on the right side of the line
+	for (let n = 0; n < N; n++) {
+		if (crossProductZ(P[n] as Point, P[(n + 1) % N] as Point, p) * clockwise > 0) {
+			return false
+		}
+	}
+	return true
+}
+
+export function lineIntersection(a: Readonly<Line>, b: Readonly<Line>): Point | null {
+	/*
+	Finds the point at which two lines intersect. Returns null if they do not intersect.
 	collisionLineLine() => https://github.com/bmoren/p5.collide2D
 	*/
 
@@ -41,30 +67,7 @@ export function intersectionLineLine(a: Line, b: Line): Point | null {
 		: null
 }
 
-export function isPointInsideOfPolygon(p: Point, V: Point[]): boolean {
-	/*
-	Determines whether or not a cartesion pair is within a polygon.
-	Solution 3 => http://paulbourke.net/geometry/polygonmesh/
-	*/
-
-	// break if polygon is incomplete
-	if (!(V[0] && V[1] && V[2])) {
-		return false
-	}
-	// determine if the polygon is ordered clockwise
-	const clockwise = (V[1].x - V[0].x) * (V[2].y - V[1].y) - (V[2].x - V[1].x) * (V[1].y - V[0].y) > 0 ? -1 : 1
-	// go through each of the vertices, plus the next vertex in the list
-	for (let n = 0; n < V.length; n++) {
-		const a = V[n] as NonNullable<Point>
-		const b = V[(n + 1) % V.length] as NonNullable<Point>
-		if (((p.y - a.y) * (b.x - a.x) - (p.x - a.x) * (b.y - a.y)) * clockwise > 0) {
-			return false
-		}
-	}
-	return true
-}
-
-export function rotatePoint(p: Point, theta: number): Point {
+export function rotatePoint(p: Readonly<Point>, theta: Readonly<number>): Point {
 	/*
 	Rotate a cartesian pair around the origin by the angle theta.
 	*/
