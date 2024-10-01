@@ -9,7 +9,7 @@ export const performances: readonly PerformanceJSON[] = [
 	{
 		artist: 'Julia Set',
 		date: new Date('2024-11-07'),
-		event: 'Julia Set X mori.111111 Extended Party',
+		event: 'Julia Set Extended Party',
 		venue: 'Avalon Cafe, London',
 	},
 	{
