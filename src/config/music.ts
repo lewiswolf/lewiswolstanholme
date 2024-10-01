@@ -7,7 +7,7 @@ export type AlbumJSON = {
 export const albums: readonly AlbumJSON[] = [
 	// {
 	// 	link: 'https://lewiswolstanholme.bandcamp.com/album/red-kite',
-	// 	img: '',
+	// 	img: 'https://f4.bcbits.com/img/a2039280653_10.jpg',
 	// 	title: 'red kite by Lewis Wolstanholme',
 	// },
 	// {
