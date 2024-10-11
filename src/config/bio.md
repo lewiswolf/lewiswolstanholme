@@ -17,9 +17,9 @@ Lewis has developed award winning synthesisers, as well as various audio tools f
 These activities include being the principal technician for Andrew McPherson's magnetic resonator piano, providing tailored technical support for each performer in both studio and live performance contexts.
 Similarly, Lewis has developed a suite of multichannel audio effects for the company Submarine Pickups, providing artists with an explorative approach to designing sounds with hexaphonic guitar pickups.
 He has also engaged in a range of work as an engraver, preparing scores for publication and performance.
-Throughout these activities, Lewis has worked with artists such as Arca, BBC Concert Orchestra, Gwillm Gold, Jon Brion, Pet Shop Boys, Pulp, Royal Philharmonic Orchestra, The Vernon Spring, Xenia Pestova Bennett and many others.
+Throughout these activities, Lewis has worked with artists such as Arca, BBC Concert Orchestra, Gwilym Gold, Jon Brion, Pet Shop Boys, Pulp, Royal Philharmonic Orchestra, The Vernon Spring, Xenia Pestova Bennett and many others.
 
 As an educator, Lewis has worked as a studio manager and lecturer at Queen Mary University of London, and is also a Max Certified Trainer.
-During this time, Lewis has taught the the courses Sound Design, a BSc module which covers sound design using Max MSP, and Sound Recording & Production Techniques, an MSc module focused on the techniques of audio recording, mixing and mastering.
-Outside of Queen Mary, Lewis has hosted lectures and workshops at a number of institutions covering the use of Max MSP as a performing artist.
+During this time, Lewis has taught the courses Sound Design, a BSc module which covers sound design using Max, and Sound Recording & Production Techniques, an MSc module focused on the techniques of audio recording, mixing and mastering.
+Outside of Queen Mary, Lewis has hosted lectures and workshops at a number of institutions covering the use of Max as a performing artist.
 Lewis' approach to education is reflexive towards the student, a practice which he developed during the early parts of his career when he worked as a peripatetic piano and composition tutor.
