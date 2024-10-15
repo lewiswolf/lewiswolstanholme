@@ -3,7 +3,7 @@ His practice centres around contemporary approaches to composition, installation
 Together with Francis Devine, Lewis curates the audiovisual performance project Julia Set, specialising in crossmodal, immersive and improvisatory art practices.
 As a duo, their output lies between the realms of music and the fine arts, with works that aim to challenge a spectator’s perceptive interpretation of the audible and visual world.
 As this project has developed, they have collaborated with a variety of other artists to create works that reinforce their aesthetic dialogue with performative technology and explorative production.
-Julia Set has previously released several of their audiovisual pieces online, curated numerous performances across the UK, and have worked alongside labels such as Nonclassical and State51.
+Julia Set have previously released several of their audiovisual pieces online, curated numerous performances across the UK, and have worked alongside labels such as Nonclassical and State51.
 
 Lewis is currently a part-time PhD researcher in Electronic Engineering & Computer Science at the Centre for Digital Music, Queen Mary University of London.
 Prior to this, he received his BMus and MMus in composition from Goldsmiths, University of London, whilst focusing primarily on experimental composition, microtonal music and aesthetics.
