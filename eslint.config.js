@@ -1,5 +1,5 @@
 import eslint from '@eslint/js'
-import reactRefresh from 'eslint-plugin-react-refresh'
+import reactHooks from 'eslint-plugin-react-hooks'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
@@ -18,9 +18,10 @@ export default tseslint.config(
 			},
 		},
 		plugins: {
-			'react-refresh': reactRefresh,
+			'react-hooks': reactHooks,
 		},
 		rules: {
+			...reactHooks.configs.recommended.rules,
 			'@typescript-eslint/consistent-type-definitions': 'off',
 			'@typescript-eslint/non-nullable-type-assertion-style': 'off',
 		},
