@@ -6,6 +6,11 @@ export type VideoJSON = {
 
 export const videos: readonly VideoJSON[] = [
 	{
+		hash: 'u7pBgv7PYL8',
+		title: 'not for u by Julia Set',
+		type: 'youtube',
+	},
+	{
 		hash: '1iYzt-zUhjA',
 		title: 'king lily by Mark Cables X Lewis Wolf',
 		type: 'youtube',

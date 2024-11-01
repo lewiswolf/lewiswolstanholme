@@ -10,11 +10,11 @@ export const albums: readonly AlbumJSON[] = [
 	// 	img: 'https://f4.bcbits.com/img/a2039280653_10.jpg',
 	// 	title: 'red kite by Lewis Wolstanholme',
 	// },
-	// {
-	// 	link: '',
-	// 	img: '',
-	// 	title: 'Julia Set X mori.111111',
-	// },
+	{
+		link: 'https://juliaset.bandcamp.com/album/julia-set-x-mori-111111',
+		img: 'https://f4.bcbits.com/img/a1325455413_10.jpg',
+		title: 'Julia Set X mori.111111',
+	},
 	{
 		link: 'https://juliaset.bandcamp.com/album/sallow',
 		img: 'https://f4.bcbits.com/img/a2573041574_10.jpg',

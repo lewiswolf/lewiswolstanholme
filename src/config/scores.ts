@@ -15,13 +15,13 @@ export const compositions: readonly ScoreJSON[] = [
 	// 	title: 'Red Kite',
 	// 	year: '2024',
 	// },
-	// {
-	// 	composer: 'Julia Set',
-	// 	file: '',
-	// 	instrumentation: 'in four parts',
-	// 	title: 'Folds',
-	// 	year: '2023',
-	// },
+	{
+		composer: 'Julia Set',
+		instrumentation: 'in four parts',
+		link: new URL('https://juliaset.bandcamp.com/merch/folds-score'),
+		title: 'Folds',
+		year: '2023',
+	},
 	{
 		composer: 'Lewis Wolstanholme',
 		file: 'Red_Kite_by_Lewis_Wolstanholme',
@@ -31,8 +31,8 @@ export const compositions: readonly ScoreJSON[] = [
 	},
 	{
 		composer: 'Lewis Wolstanholme',
-		file: 'Chroma_by_Lewis_Wolstanholme',
 		instrumentation: 'for live electronics and surround sound speakers',
+		link: new URL('https://lewiswolstanholme.bandcamp.com/merch/chroma-score'),
 		title: 'Chroma',
 		year: '2019',
 	},
