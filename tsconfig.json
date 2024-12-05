@@ -36,9 +36,10 @@
 		"isolatedModules": true,
 		// language and environment
 		"jsx": "react-jsx",
-		"lib": ["dom", "dom.iterable", "ESNext"],
+		"lib": ["DOM", "DOM.iterable", "ESNext"],
 		"target": "ESNext",
-		// completeness
+		// compilation
+		"importHelpers": true,
 		"skipLibCheck": true
 	},
 	"include": ["src"],

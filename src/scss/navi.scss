@@ -1,3 +1,5 @@
+@use './utils.scss' as utils;
+
 nav {
 	height: 140px;
 	width: 130px;
@@ -9,7 +11,7 @@ nav {
 	right: unset;
 	z-index: 10;
 
-	@media (width <= $ipad) {
+	@media (max-width: utils.$ipad) {
 		margin: 20px 20px 0 0;
 		left: unset;
 		right: 0;

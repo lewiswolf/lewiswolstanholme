@@ -10,6 +10,7 @@ import { Prism } from 'react-syntax-highlighter'
 // src
 import { type CodeProjectJSON, projects } from '../config/code.ts'
 import { default as syntax } from '../modules/syntax-highlighter.ts'
+import '../scss/projects.scss'
 
 const regex = {
 	new_line: /\n$/,
@@ -55,7 +56,7 @@ export default function Code(): JSX.Element {
 					)
 			}
 		} else if (pages[0]) {
-			navigate(`/code?view=${pages[0]}`)
+			void navigate(`/code?view=${pages[0]}`)
 		}
 	}, [location, navigate, pages])
 
@@ -69,7 +70,7 @@ export default function Code(): JSX.Element {
 					width={255}
 					onChange={(i: number) => {
 						if (pages[i]) {
-							navigate(`/code?view=${pages[i]}`)
+							void navigate(`/code?view=${pages[i]}`)
 						}
 					}}
 				/>

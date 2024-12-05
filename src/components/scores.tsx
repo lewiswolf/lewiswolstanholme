@@ -1,5 +1,6 @@
 // dependencies
 import type { JSX } from 'react'
+import '../scss/scores.scss'
 
 // src
 import { type ScoreJSON, compositions, engravings } from '../config/scores.ts'

@@ -5,6 +5,7 @@ import { type JSX, useEffect, useRef, useState } from 'react'
 // src
 import { P5 } from '../modules/p5.tsx'
 import sketch from '../sketch/index.ts'
+import '../scss/home.scss'
 
 export default function Home(): JSX.Element {
 	const audio = useRef<HTMLAudioElement>(null)

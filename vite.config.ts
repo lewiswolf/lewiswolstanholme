@@ -1,5 +1,5 @@
 import react from '@vitejs/plugin-react-swc'
-import { defineConfig, splitVendorChunkPlugin } from 'vite'
+import { defineConfig } from 'vite'
 import { compression } from 'vite-plugin-compression2'
 import svgr from 'vite-plugin-svgr'
 
@@ -14,7 +14,6 @@ export default defineConfig({
 			include: /\.(js|map|mjs|json|css|svg)$/i,
 		}),
 		react(),
-		splitVendorChunkPlugin(),
 		svgr(),
 	],
 })

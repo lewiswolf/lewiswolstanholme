@@ -4,6 +4,7 @@ import type { JSX } from 'react'
 // src
 import { type AlbumJSON, albums } from '../config/music.ts'
 import { GridFromJSON } from '../modules/grid-from-json.tsx'
+import '../scss/music.scss'
 
 export default function Music(): JSX.Element {
 	return (

@@ -1,0 +1,35 @@
+// var
+
+$ipad: 812px;
+$iphone: 400px;
+$highlight: #b4b4b4;
+
+// mixins
+
+@mixin focus() {
+	&:focus-visible {
+		outline: $highlight solid 3px;
+	}
+}
+
+@mixin video() {
+	height: 40.5vw;
+	max-height: 478.125px;
+	width: auto;
+	max-width: 850px;
+	aspect-ratio: 16/9;
+	justify-self: center;
+	user-select: none;
+	-webkit-user-select: none;
+
+	@media (width <= $ipad) {
+		height: auto;
+		width: 100%;
+	}
+}
+
+@mixin highlight-text() {
+	::selection {
+		background-color: $highlight;
+	}
+}

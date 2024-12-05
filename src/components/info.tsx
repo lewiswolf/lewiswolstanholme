@@ -4,6 +4,7 @@ import Markdown from 'react-markdown'
 
 // src
 import bio from '../config/bio.md'
+import '../scss/info.scss'
 
 export default function Info(): JSX.Element {
 	const [markdown, setMarkdown] = useState<string>('')

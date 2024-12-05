@@ -1,7 +1,9 @@
+@use './utils.scss' as utils;
+
 .info {
 	text-align: justify;
 
-	@include highlight-text;
+	@include utils.highlight-text;
 
 	.bio > p:first-child {
 		margin-top: 0;

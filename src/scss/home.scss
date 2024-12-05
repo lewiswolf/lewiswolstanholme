@@ -1,7 +1,9 @@
+@use './utils.scss' as utils;
+
 .home {
 	height: calc(100vh - 200px);
 
-	@media (width <= $ipad) {
+	@media (max-width: utils.$ipad) {
 		height: calc(100vh - 280px);
 	}
 }

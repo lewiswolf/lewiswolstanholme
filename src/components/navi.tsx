@@ -2,6 +2,7 @@
 import { Object as MaxObject, RadioGroup } from 'maxmsp-gui'
 import type { JSX } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import '../scss/navi.scss'
 
 // src
 import NaviCable from '../svg/navi-cable.svg?react'
@@ -18,7 +19,7 @@ export default function Navi(): JSX.Element {
 				spacing={20.5}
 				setValue={location && pages.includes(location) ? pages.indexOf(location) : 0}
 				onClick={(i: number) => {
-					navigate(`/${pages[i] ?? ''}`)
+					void navigate(`/${pages[i] ?? ''}`)
 				}}
 			/>
 			<NaviCable />

@@ -1,5 +1,6 @@
 // dependencies
 import type { JSX } from 'react'
+import '../scss/videos.scss'
 
 // src
 import { type VideoJSON, videos } from '../config/videos.ts'

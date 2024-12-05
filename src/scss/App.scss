@@ -1,38 +1,4 @@
-// var
-
-$ipad: 812px;
-$iphone: 400px;
-$highlight: #b4b4b4;
-
-// mixins
-
-@mixin focus() {
-	&:focus-visible {
-		outline: $highlight solid 3px;
-	}
-}
-
-@mixin video() {
-	height: 40.5vw;
-	max-height: 478.125px;
-	width: auto;
-	max-width: 850px;
-	aspect-ratio: 16/9;
-	justify-self: center;
-	user-select: none;
-	-webkit-user-select: none;
-
-	@media (width <= $ipad) {
-		height: auto;
-		width: 100%;
-	}
-}
-
-@mixin highlight-text() {
-	::selection {
-		background-color: $highlight;
-	}
-}
+@use './utils.scss' as utils;
 
 // structure
 
@@ -76,16 +42,16 @@ header {
 	justify-items: center;
 	justify-self: center;
 
-	@include highlight_text;
+	@include utils.highlight_text;
 
-	@media (width <= $ipad) {
+	@media (max-width: utils.$ipad) {
 		height: 100px;
 		margin: 160px 20px 0;
 		grid-auto-flow: column;
 		align-content: center;
 	}
 
-	@media (width <= $iphone) {
+	@media (max-width: utils.$iphone) {
 		height: 100px;
 		margin: 160px 20px 0;
 		grid-auto-flow: row;
@@ -105,19 +71,9 @@ main {
 	grid-area: m;
 	align-self: center;
 
-	@media (width <= $ipad) {
+	@media (max-width: utils.$ipad) {
 		height: fit-content;
 		width: calc(100vw - 40px);
 		margin: 0 20px 20px;
 	}
 }
-
-// children
-
-@import './navi';
-@import './home';
-@import './music';
-@import './scores';
-@import './videos';
-@import './projects';
-@import './info';
