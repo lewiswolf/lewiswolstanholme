@@ -4,6 +4,7 @@ import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
 	eslint.configs.recommended,
+	reactHooks.configs['recommended-latest'],
 	...tseslint.configs.strictTypeChecked,
 	...tseslint.configs.stylisticTypeChecked,
 	{
@@ -17,11 +18,7 @@ export default tseslint.config(
 				tsconfigRootDir: import.meta.dirname,
 			},
 		},
-		plugins: {
-			'react-hooks': reactHooks,
-		},
 		rules: {
-			...reactHooks.configs.recommended.rules,
 			'@typescript-eslint/consistent-type-definitions': 'off',
 			'@typescript-eslint/non-nullable-type-assertion-style': 'off',
 		},

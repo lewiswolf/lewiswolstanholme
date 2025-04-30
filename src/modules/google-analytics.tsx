@@ -1,6 +1,5 @@
 // dependencies
-import type { FC } from 'react'
-import { Helmet } from 'react-helmet-async'
+import { useEffect } from 'react'
 
 export function analyticsPageView(): void {
 	if (typeof window.gtag === 'function') {
@@ -11,18 +10,29 @@ export function analyticsPageView(): void {
 	}
 }
 
-export const GoogleAnalytics: FC<{ id: string }> = ({ id }) => {
-	return window.location.hostname !== 'localhost' ? (
-		<Helmet>
-			<script async={true} src={`https://www.googletagmanager.com/gtag/js?id=${id}`} />
-			<script>
-				{`window.dataLayer = window.dataLayer || [];
-function gtag() { window.dataLayer.push(arguments); }
-gtag("js", new Date());
-gtag("config", "${id}");`}
-			</script>
-		</Helmet>
-	) : (
-		<></>
-	)
+export const GoogleAnalytics = ({ id }: { id: string }) => {
+	useEffect(() => {
+		if (window.location.hostname === 'localhost') {
+			return
+		}
+		// load the Google Analytics script
+		const script_1 = document.createElement('script')
+		script_1.async = true
+		script_1.src = `https://www.googletagmanager.com/gtag/js?id=${id}`
+		document.head.appendChild(script_1)
+		const script_2 = document.createElement('script')
+		script_2.innerHTML = `
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${id}');
+		`
+		document.head.appendChild(script_2)
+		// cleanup function to remove the scripts when the component unmounts
+		return () => {
+			document.head.removeChild(script_1)
+			document.head.removeChild(script_2)
+		}
+	}, [id])
+	return null
 }

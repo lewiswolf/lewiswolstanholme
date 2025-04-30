@@ -1,6 +1,5 @@
 // dependencies
 import { type JSX, useEffect } from 'react'
-import { Helmet } from 'react-helmet-async'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 
 // components
@@ -25,11 +24,9 @@ export default function App(): JSX.Element {
 
 	return (
 		<>
-			<Helmet>
-				<title>{`Lewis Wolstanholme${
-					location === '/' ? '' : ` | ${location.slice(1, 2).toUpperCase()}${location.slice(2)}`
-				}`}</title>
-			</Helmet>
+			<title>{`Lewis Wolstanholme${
+				location === '/' ? '' : ` | ${location.slice(1, 2).toUpperCase()}${location.slice(2)}`
+			}`}</title>
 			<GoogleAnalytics id='G-52FG4N6KPP' />
 			<Navi />
 			<Routes>

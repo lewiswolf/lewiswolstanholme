@@ -90,31 +90,31 @@ export default function Code(): JSX.Element {
 					<iframe
 						allow='accelerometer; autoplay; encrypted-media; fullscreen; gyroscope;'
 						className={projects[location].className}
-						frameBorder={0}
 						src={projects[location].iframe}
 						title={projects[location].name}
 					/>
 				)}
 				{projects[location]?.github && markdown !== '404: Not Found' && (
-					<Markdown
-						className='readme'
-						components={{
-							code({ className, children }) {
-								const match = regex.programming_language.exec(className ?? '')
-								return match ? (
-									<Prism language={match[1]} style={syntax}>
-										{String(children).replace(regex.new_line, '')}
-									</Prism>
-								) : (
-									<code className={className}>{children}</code>
-								)
-							},
-						}}
-						rehypePlugins={[rehypeRaw]}
-						remarkPlugins={[remarkGfm]}
-					>
-						{markdown}
-					</Markdown>
+					<div className='readme'>
+						<Markdown
+							components={{
+								code({ className = '', children }) {
+									const match = regex.programming_language.exec(className)
+									return match ? (
+										<Prism language={match[1]} style={syntax}>
+											{typeof children === 'string' ? children.replace(regex.new_line, '') : ''}
+										</Prism>
+									) : (
+										<code className={className}>{children}</code>
+									)
+								},
+							}}
+							rehypePlugins={[rehypeRaw]}
+							remarkPlugins={[remarkGfm]}
+						>
+							{markdown}
+						</Markdown>
+					</div>
 				)}
 			</main>
 		</>

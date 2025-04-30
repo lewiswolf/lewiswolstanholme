@@ -23,7 +23,7 @@ export default function Info(): JSX.Element {
 				<p>lewiswolstanholme@gmail.com</p>
 			</header>
 			<main className='info'>
-				<Markdown className='bio'>{markdown}</Markdown>
+				<Markdown>{markdown}</Markdown>
 			</main>
 		</>
 	)

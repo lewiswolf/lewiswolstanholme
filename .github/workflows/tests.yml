@@ -12,7 +12,7 @@ jobs:
         strategy:
             matrix:
                 os: [macos-latest]
-                node: [21.x, 22.x]
+                node: [22.x]
 
         steps:
             - uses: actions/checkout@master
@@ -26,8 +26,7 @@ jobs:
             - name: Format project
               run: |
                   npx @biomejs/biome format
-                  npx prettier --check ./src/scss
-                  npx prettier --check ./src/svg
+                  npx prettier --check ./**/*.html ./**/*.md ./**/*.scss ./**/*.svg
 
             - name: Assert types
               run: npx tsc
