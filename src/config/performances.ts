@@ -7,6 +7,12 @@ export type PerformanceJSON = {
 
 export const performances: readonly PerformanceJSON[] = [
 	{
+		artist: 'Lewis Wolstanholme',
+		date: new Date('2025-03-27'),
+		event: 'Forum Workshop',
+		venue: 'IRCAM, Paris',
+	},
+	{
 		artist: 'Julia Set',
 		date: new Date('2024-11-14'),
 		event: 'Runt of the Litter',

@@ -11,6 +11,11 @@ export const videos: readonly VideoJSON[] = [
 		type: 'youtube',
 	},
 	{
+		hash: 'tLiyI1yZi8A',
+		title: 'folds by Julia Set',
+		type: 'youtube',
+	},
+	{
 		hash: '1iYzt-zUhjA',
 		title: 'king lily by Mark Cables X Lewis Wolf',
 		type: 'youtube',
