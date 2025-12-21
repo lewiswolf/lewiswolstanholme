@@ -1,3 +1,5 @@
+// biome-ignore-all lint/security/noSecrets : links in this file are publically available
+
 export type CodeProjectJSON = {
 	className: string
 	github: string

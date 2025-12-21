@@ -10,7 +10,7 @@ export function analyticsPageView(): void {
 	}
 }
 
-export const GoogleAnalytics = ({ id }: { id: string }) => {
+export const GoogleAnalytics = ({ G4A_id }: { G4A_id: string }) => {
 	useEffect(() => {
 		if (window.location.hostname === 'localhost') {
 			return
@@ -18,14 +18,14 @@ export const GoogleAnalytics = ({ id }: { id: string }) => {
 		// load the Google Analytics script
 		const script_1 = document.createElement('script')
 		script_1.async = true
-		script_1.src = `https://www.googletagmanager.com/gtag/js?id=${id}`
+		script_1.src = `https://www.googletagmanager.com/gtag/js?id=${G4A_id}`
 		document.head.appendChild(script_1)
 		const script_2 = document.createElement('script')
 		script_2.innerHTML = `
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', '${id}');
+gtag('config', '${G4A_id}');
 		`
 		document.head.appendChild(script_2)
 		// cleanup function to remove the scripts when the component unmounts
@@ -33,6 +33,6 @@ gtag('config', '${id}');
 			document.head.removeChild(script_1)
 			document.head.removeChild(script_2)
 		}
-	}, [id])
+	}, [G4A_id])
 	return null
 }

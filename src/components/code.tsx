@@ -33,17 +33,17 @@ export default function Code(): JSX.Element {
 						}
 						throw new Error('Readme not found.')
 					})
-					.then((markdown: string) => {
-						setMarkdown(markdown.replace('by Lewis Wolf', ''))
+					.then((_markdown: string) => {
+						setMarkdown(_markdown.replace('by Lewis Wolf', ''))
 					})
 					.catch(() =>
 						fetch(
 							`https://raw.githubusercontent.com/${(projects[location] as NonNullable<CodeProjectJSON>).github}/master/README.md`,
 						)
 							.then((res: Response) => res.text())
-							.then((markdown: string) => {
+							.then((_markdown: string) => {
 								setMarkdown(
-									markdown
+									_markdown
 										.replace(
 											'[![Watch the video](https://i.ytimg.com/vi/HnUc3VTUReo/maxresdefault.jpg)](https://youtu.be/HnUc3VTUReo)',
 											'',
@@ -86,7 +86,7 @@ export default function Code(): JSX.Element {
 				/>
 			</header>
 			<main className='code'>
-				{projects[location]?.iframe && (
+				{!!projects[location]?.iframe && (
 					<iframe
 						allow='accelerometer; autoplay; encrypted-media; fullscreen; gyroscope;'
 						className={projects[location].className}

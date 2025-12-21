@@ -43,36 +43,32 @@ export default function Scores(): JSX.Element {
 	}
 
 	return (
-		<>
-			<main className='scores'>
-				<GridFromJSON
-					json={[
-						...compositions.map((a) => ({ ...a, type: 'compositions' })),
-						...engravings.map((a) => ({ ...a, type: 'engravings' })),
-					]}
-					cell={(obj: ScoreAndType, i: number): JSX.Element => {
-						return (
-							<button
-								aria-label={`Download/purchase the score for ${obj.title}.`}
-								key={i.toString()}
-								tabIndex={0}
-								type='button'
-								onClick={() => {
-									downloadScore(obj)
-								}}
-								onKeyDown={(e) => {
-									if (e.key === 'Enter' || e.key === ' ') {
-										e.preventDefault()
-										downloadScore(obj)
-									}
-								}}
-							>
-								{obj.type === 'compositions' ? CompositionThumb(obj) : EngravingThumb(obj)}
-							</button>
-						)
-					}}
-				/>
-			</main>
-		</>
+		<main className='scores'>
+			<GridFromJSON
+				json={[
+					...compositions.map((a) => ({ ...a, type: 'compositions' })),
+					...engravings.map((a) => ({ ...a, type: 'engravings' })),
+				]}
+				cell={(obj: ScoreAndType, i: number): JSX.Element => (
+					<button
+						aria-label={`Download/purchase the score for ${obj.title}.`}
+						key={i.toString()}
+						tabIndex={0}
+						type='button'
+						onClick={() => {
+							downloadScore(obj)
+						}}
+						onKeyDown={(e) => {
+							if (e.key === 'Enter' || e.key === ' ') {
+								e.preventDefault()
+								downloadScore(obj)
+							}
+						}}
+					>
+						{obj.type === 'compositions' ? CompositionThumb(obj) : EngravingThumb(obj)}
+					</button>
+				)}
+			/>
+		</main>
 	)
 }

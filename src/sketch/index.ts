@@ -19,7 +19,7 @@ export default function sketch(p5: P5CanvasInstance<SketchProps & { dimensions: 
 	// create canvas
 	p5.setup = (): void => {
 		p5.createCanvas(dim.width, dim.height)
-		p5.describe('An illusory animation of three triangles rotating.')
+		p5.describe('An illusory animation of three triangles rotating.', p5.FALLBACK)
 	}
 
 	// update canvas props

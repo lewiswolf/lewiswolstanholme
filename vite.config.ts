@@ -10,7 +10,7 @@ export default defineConfig({
 	esbuild: { legalComments: 'none' },
 	plugins: [
 		compression({
-			algorithm: 'gzip',
+			algorithms: ['gzip'],
 			include: /\.(js|map|mjs|json|css|svg)$/i,
 		}),
 		react(),

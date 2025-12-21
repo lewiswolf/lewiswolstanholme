@@ -26,6 +26,7 @@ export default function Home(): JSX.Element {
 		<>
 			<header>
 				<Slider
+					ariaLabel='audiovisual control'
 					width={200}
 					onChange={(v: number) => {
 						setVisitibility(v)

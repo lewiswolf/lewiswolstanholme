@@ -1,43 +1,42 @@
 {
 	"name": "lewiswolstanholme",
-	"version": "1.4.1",
+	"version": "1.4.2",
 	"private": true,
 	"type": "module",
 	"dependencies": {
-		"@p5-wrapper/react": "5.0.0-rc.2",
-		"maxmsp-gui": "^2.5.2",
-		"p5": "^2.0.1",
-		"react": "^19.1.0",
-		"react-dom": "^19.1.0",
+		"@p5-wrapper/react": "^5.0.2",
+		"maxmsp-gui": "^2.5.3",
+		"p5": "^2.1.2",
+		"react": "^19.2.3",
+		"react-dom": "^19.2.3",
 		"react-markdown": "^10.1.0",
-		"react-router-dom": "^7.6.0",
-		"react-syntax-highlighter": "^15.6.1",
+		"react-router-dom": "^7.11.0",
+		"react-syntax-highlighter": "^16.1.0",
 		"rehype-raw": "^7.0.0",
 		"remark-gfm": "^4.0.1",
-		"sass-embedded": "^1.87.0"
+		"sass-embedded": "^1.97.1"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^1.9.4",
-		"@eslint/js": "^9.26.0",
-		"@prettier/plugin-xml": "^3.4.1",
+		"@biomejs/biome": "^2.3.10",
+		"@eslint/js": "^9.39.2",
+		"@prettier/plugin-xml": "^3.4.2",
 		"@types/gtag.js": "^0.0.20",
-		"@types/node": "^22.15.17",
-		"@types/p5": "^1.7.6",
-		"@types/react": "^19.1.3",
-		"@types/react-dom": "^19.1.3",
+		"@types/node": "^25.0.3",
+		"@types/react": "^19.2.7",
+		"@types/react-dom": "^19.2.3",
 		"@types/react-router-dom": "^5.3.3",
 		"@types/react-syntax-highlighter": "^15.5.13",
-		"@vitejs/plugin-react-swc": "^3.9.0",
-		"eslint": "^9.26.0",
-		"eslint-plugin-react-hooks": "^5.2.0",
-		"prettier": "^3.5.3",
-		"stylelint": "^16.19.1",
-		"stylelint-config-standard-scss": "^14.0.0",
-		"typescript": "^5.8.3",
-		"typescript-eslint": "^8.32.0",
-		"vite": "^6.3.5",
-		"vite-plugin-compression2": "^1.3.3",
-		"vite-plugin-svgr": "^4.3.0"
+		"@vitejs/plugin-react-swc": "^4.2.2",
+		"eslint": "^9.39.2",
+		"eslint-plugin-react-hooks": "^7.0.1",
+		"prettier": "^3.7.4",
+		"stylelint": "^16.26.1",
+		"stylelint-config-standard-scss": "^16.0.0",
+		"typescript": "^5.9.3",
+		"typescript-eslint": "^8.50.0",
+		"vite": "^7.3.0",
+		"vite-plugin-compression2": "^2.4.0",
+		"vite-plugin-svgr": "^4.5.0"
 	},
 	"overrides": {
 		"react-syntax-highlighter": {
@@ -48,8 +47,8 @@
 		"build": "tsc && vite build",
 		"dev": "vite --host",
 		"preview": "vite preview",
-		"format": "biome format --write && prettier --write ./**/*.html ./**/*.md ./**/*.scss ./**/*.svg",
-		"test": "tsc && biome lint && eslint . && stylelint **/*.scss"
+		"format": "biome format --write && prettier --write ./**/*.md ./**/*.scss ./**/*.svg",
+		"test": "tsc && biome lint ; eslint . ; stylelint **/*.scss"
 	},
 	"prettier": {
 		"arrowParens": "always",
@@ -58,7 +57,9 @@
 		"endOfLine": "lf",
 		"htmlWhitespaceSensitivity": "strict",
 		"jsxSingleQuote": true,
-		"plugins": ["@prettier/plugin-xml"],
+		"plugins": [
+			"@prettier/plugin-xml"
+		],
 		"printWidth": 125,
 		"quoteProps": "as-needed",
 		"semi": false,
@@ -76,6 +77,7 @@
 			"declaration-empty-line-before": null,
 			"no-descending-specificity": null,
 			"no-invalid-position-at-import-rule": null,
+			"no-invalid-position-declaration": null,
 			"property-no-vendor-prefix": null,
 			"scss/double-slash-comment-empty-line-before": null
 		}

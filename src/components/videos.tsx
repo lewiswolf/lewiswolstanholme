@@ -1,5 +1,5 @@
 // dependencies
-import type { JSX } from 'react'
+import { type JSX, Fragment } from 'react'
 import '../scss/videos.scss'
 
 // src
@@ -13,8 +13,9 @@ export default function Videos(): JSX.Element {
 					case 'vimeo':
 						return (
 							<iframe
-								allow='autoplay; fullscreen; picture-in-picture;'
+								allow='autoplay; encrypted-media; fullscreen; picture-in-picture; web-share'
 								key={i.toString()}
+								referrerPolicy='strict-origin-when-cross-origin'
 								src={`https://player.vimeo.com/video/${obj.hash}?h=be7c17d620`}
 								title={obj.title}
 							/>
@@ -22,14 +23,15 @@ export default function Videos(): JSX.Element {
 					case 'youtube':
 						return (
 							<iframe
-								allow='accelerometer; autoplay; encrypted-media; fullscreen; gyroscope;'
+								allow='autoplay; encrypted-media; fullscreen; picture-in-picture; web-share'
 								key={i.toString()}
-								src={`https://www.youtube-nocookie.com/embed/${obj.hash}?theme=dark&color=white`}
+								referrerPolicy='strict-origin-when-cross-origin'
+								src={`https://www.youtube.com/embed/${obj.hash}?theme=dark&color=white`}
 								title={obj.title}
 							/>
 						)
 					default:
-						return <></>
+						return <Fragment key={i.toString()} />
 				}
 			})}
 		</main>

@@ -27,7 +27,7 @@ export default function App(): JSX.Element {
 			<title>{`Lewis Wolstanholme${
 				location === '/' ? '' : ` | ${location.slice(1, 2).toUpperCase()}${location.slice(2)}`
 			}`}</title>
-			<GoogleAnalytics id='G-52FG4N6KPP' />
+			<GoogleAnalytics G4A_id='G-52FG4N6KPP' />
 			<Navi />
 			<Routes>
 				<Route element={<Home />} path='/' />

@@ -1,5 +1,5 @@
 // dependencies
-import { type Sketch, ReactP5Wrapper } from '@p5-wrapper/react'
+import { type Sketch, P5Canvas } from '@p5-wrapper/react'
 import { type JSX, useEffect, useRef, useState } from 'react'
 
 export type Dimensions = {
@@ -47,7 +47,7 @@ export function P5(sketch: Sketch): JSX.Element {
 				fontSize: 0,
 			}}
 		>
-			{dim.height && dim.width && <ReactP5Wrapper dimensions={dim} sketch={sketch} />}
+			{!!dim.height && !!dim.width && <P5Canvas dimensions={dim} sketch={sketch} />}
 		</div>
 	)
 }

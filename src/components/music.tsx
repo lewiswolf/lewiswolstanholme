@@ -25,7 +25,7 @@ export default function Music(): JSX.Element {
 							}
 						}}
 					>
-						<img alt={`Album artwork for ${obj.title}.`} src={obj.img} tabIndex={-1} />
+						<img alt={`Album artwork for ${obj.title}.`} height={280} src={obj.img} tabIndex={-1} width={280} />
 					</button>
 				)}
 			/>

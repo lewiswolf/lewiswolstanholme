@@ -1,3 +1,6 @@
+// biome-ignore-all lint/complexity/noUselessEscapeInRegex : additional escape is necessary
+// biome-ignore-all lint/nursery/noContinue : logic is working for the time being
+
 // dependencies
 import type { JSX } from 'react'
 
@@ -72,21 +75,20 @@ export const parseBibliography = (s: string): PublicationJSON => {
 		}
 	}
 	// format entries
-	for (const key in tmp) {
+	for (const key of Object.keys(tmp)) {
 		out[key] = {
 			address: tmp[key]?.address ?? '',
-			authors: (() => {
-				return tmp[key]?.author
+			authors: (() =>
+				tmp[key]?.author
 					? tmp[key].author.split(' and ').map((author: string) => {
 							const [last_name, first_name] = author.split(', ') as NonNullable<[string, string]>
 							return { first_name, last_name }
 						})
-					: []
-			})(),
+					: [])(),
 			bibtex: tmp[key]?.bibtex ?? '',
 			date: (() => {
 				const date: [number, number, number] = [
-					Number.parseInt(tmp[key]?.year ?? '0'),
+					Number.parseInt(tmp[key]?.year ?? '0', 10),
 					{
 						jan: 0,
 						feb: 1,
@@ -101,18 +103,17 @@ export const parseBibliography = (s: string): PublicationJSON => {
 						nov: 10,
 						dec: 11,
 					}[tmp[key]?.month ?? 'jan'] as NonNullable<number>,
-					Number.parseInt(tmp[key]?.day ?? '1'),
+					Number.parseInt(tmp[key]?.day ?? '1', 10),
 				]
 				return date[0] ? new Date(...date) : new Date()
 			})(),
-			editors: (() => {
-				return tmp[key]?.editor
+			editors: (() =>
+				tmp[key]?.editor
 					? tmp[key].editor.split(' and ').map((editor: string) => {
 							const [last_name, first_name] = editor.split(', ') as NonNullable<[string, string]>
 							return { first_name, last_name }
 						})
-					: []
-			})(),
+					: [])(),
 			links: { doi: tmp[key]?.doi ?? '', url: tmp[key]?.url ?? '' },
 			pages: tmp[key]?.pages ?? '',
 			pdf: tmp[key]?.file ?? '',
@@ -159,11 +160,11 @@ export function parseCitation(P: PublicationJSON[string]): JSX.Element {
 		<p className='citation' key={P.title}>
 			{authors}
 			{`(${P.date.getFullYear().toString()}). `}
-			{P.title && `${P.title}. `}
+			{!!P.title && `${P.title}. `}
 			{P.type !== '' && P.type !== 'article' && P.type !== 'dataset' ? 'In ' : ''}
-			{P.publication && <i>{`${P.publication}. `}</i>}
-			{P.address && `${P.address}. `}
-			{P.pages && `${P.pages}. `}
+			{!!P.publication && <i>{`${P.publication}. `}</i>}
+			{!!P.address && `${P.address}. `}
+			{!!P.pages && `${P.pages}. `}
 		</p>
 	)
 }

@@ -26,7 +26,7 @@ body {
 
 #root {
 	display: grid;
-	grid-gap: 0;
+	gap: 0;
 	grid-template: 'h' minmax(160px, auto) 'm' max-content / 100vw;
 }
 
@@ -37,7 +37,7 @@ header {
 	display: grid;
 	grid-area: h;
 	grid-auto-flow: column;
-	grid-gap: 20px;
+	gap: 20px;
 	align-content: end;
 	justify-items: center;
 	justify-self: center;

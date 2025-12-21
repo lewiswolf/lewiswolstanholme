@@ -1,10 +1,10 @@
 import eslint from '@eslint/js'
+import { defineConfig } from 'eslint/config'
 import reactHooks from 'eslint-plugin-react-hooks'
 import tseslint from 'typescript-eslint'
 
-export default tseslint.config(
+export default defineConfig(
 	eslint.configs.recommended,
-	reactHooks.configs['recommended-latest'],
 	...tseslint.configs.strictTypeChecked,
 	...tseslint.configs.stylisticTypeChecked,
 	{
@@ -17,6 +17,9 @@ export default tseslint.config(
 				projectService: true,
 				tsconfigRootDir: import.meta.dirname,
 			},
+		},
+		plugins: {
+			'react-hooks': reactHooks,
 		},
 		rules: {
 			'@typescript-eslint/consistent-type-definitions': 'off',

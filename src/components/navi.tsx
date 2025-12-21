@@ -14,7 +14,7 @@ export default function Navi(): JSX.Element {
 	return (
 		<nav>
 			<RadioGroup
-				ariaLabel={'Navigation Menu'}
+				ariaLabel='Navigation Menu'
 				items={pages.slice(1)}
 				spacing={20.5}
 				setValue={location && pages.includes(location) ? pages.indexOf(location) : 0}

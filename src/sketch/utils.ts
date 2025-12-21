@@ -3,15 +3,15 @@ import type { Line, Point, Polygon } from './types.d.ts'
 
 export function compareShortestVector(p: Readonly<Point>, P: Readonly<Polygon>): [Point, number] {
 	/*
-	Compare a point with an array points by vector length and return the closest point.
-	Return the point itself if V = [] and its index.
+	Compare a point with an array points by vector length.
+	Returns the closest point and its index within P - otherwise returns the point itself if P = [].
 	*/
 
 	let vec_min = 0
 	let v_closest = p
 	let idx = 0
 	P.forEach((v: Point, i: number) => {
-		const vec = Math.sqrt((p.x - v.x) ** 2 + (p.y - v.y) ** 2)
+		const vec = Math.hypot(p.x - v.x, p.y - v.y)
 		if (vec < vec_min || i === 0) {
 			vec_min = vec
 			v_closest = v
@@ -27,8 +27,8 @@ export function isPointInsideConvexPolygon(p: Readonly<Point>, P: Readonly<Polyg
 	Solution 3 => http://paulbourke.net/geometry/polygonmesh/
 	*/
 
-	function crossProductZ(a: Point, b: Point, p: Point) {
-		return (b.x - a.x) * (p.y - a.y) - (p.x - a.x) * (b.y - a.y)
+	function crossProductZ(a: Point, b: Point, q: Point) {
+		return (b.x - a.x) * (q.y - a.y) - (q.x - a.x) * (b.y - a.y)
 	}
 	// determine if the polygon is ordered clockwise
 	const clockwise = crossProductZ(P[0] as Point, P[1] as Point, P[2] as Point) > 0 ? -1 : 1
@@ -40,7 +40,7 @@ export function isPointInsideConvexPolygon(p: Readonly<Point>, P: Readonly<Polyg
 		}
 	}
 	// determine if the point is always on the right side of the line
-	for (let n = 0; n < N; n++) {
+	for (let n = 0; n < N; n += 1) {
 		if (crossProductZ(P[n] as Point, P[(n + 1) % N] as Point, p) * clockwise > 0) {
 			return false
 		}

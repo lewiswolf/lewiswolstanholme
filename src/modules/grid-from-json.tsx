@@ -35,8 +35,8 @@ export const GridFromJSON: FC<{
 			void fetch(json)
 				.then((res: Response) => res.json())
 				// biome-ignore lint/suspicious/noExplicitAny: any is used to maintain user configurability
-				.then((json: Record<string, any>[]) => {
-					setContent(json)
+				.then((_json: Record<string, any>[]) => {
+					setContent(_json)
 				})
 				.catch()
 		} else {
