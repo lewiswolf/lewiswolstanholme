@@ -88,8 +88,9 @@ export default function Code(): JSX.Element {
 			<main className='code'>
 				{!!projects[location]?.iframe && (
 					<iframe
-						allow='accelerometer; autoplay; encrypted-media; fullscreen; gyroscope;'
+						allow='autoplay; encrypted-media; fullscreen; picture-in-picture; web-share'
 						className={projects[location].className}
+						referrerPolicy='strict-origin-when-cross-origin'
 						src={projects[location].iframe}
 						title={projects[location].name}
 					/>
