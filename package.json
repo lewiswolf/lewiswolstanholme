@@ -5,7 +5,7 @@
 	"type": "module",
 	"dependencies": {
 		"@p5-wrapper/react": "^5.0.2",
-		"maxmsp-gui": "^2.5.3",
+		"maxmsp-gui": "^2.5.5",
 		"p5": "^2.1.2",
 		"react": "^19.2.3",
 		"react-dom": "^19.2.3",
@@ -33,7 +33,7 @@
 		"stylelint": "^16.26.1",
 		"stylelint-config-standard-scss": "^16.0.0",
 		"typescript": "^5.9.3",
-		"typescript-eslint": "^8.50.0",
+		"typescript-eslint": "^8.50.1",
 		"vite": "^7.3.0",
 		"vite-plugin-compression2": "^2.4.0",
 		"vite-plugin-svgr": "^4.5.0"
