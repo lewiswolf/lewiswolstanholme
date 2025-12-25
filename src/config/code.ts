@@ -17,19 +17,19 @@ export const projects: Readonly<Record<string, CodeProjectJSON>> = {
 	'neural-resonator': {
 		className: 'video',
 		github: 'rodrigodzf/NeuralResonatorVST',
-		iframe: 'https://www.youtube-nocookie.com/embed/HnUc3VTUReo?theme=dark&color=white',
+		iframe: 'https://www.youtube.com/embed/HnUc3VTUReo?theme=dark&color=white',
 		name: 'Neural Resonator VST',
 	},
 	'temperament-generator': {
 		className: 'video',
 		github: 'lewiswolf/Temperament-Generator',
-		iframe: 'https://www.youtube-nocookie.com/embed/C4txE2hQ53w?theme=dark&color=white',
+		iframe: 'https://www.youtube.com/embed/C4txE2hQ53w?theme=dark&color=white',
 		name: 'Temperament Generator',
 	},
 	'microtonal-kontakt': {
 		className: 'video',
 		github: 'lewiswolf/Polyphonic-Microtuning-in-Kontakt-with-Max-MSP',
-		iframe: 'https://www.youtube-nocookie.com/embed/bQRwxHz54rs?theme=dark&color=white',
+		iframe: 'https://www.youtube.com/embed/bQRwxHz54rs?theme=dark&color=white',
 		name: 'Polyphonic Microtuning in Kontakt with Max MSP',
 	},
 	'maxmsp-gui': {
