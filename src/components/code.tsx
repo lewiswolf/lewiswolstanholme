@@ -13,8 +13,8 @@ import { default as syntax } from '../modules/syntax-highlighter.ts'
 import '../scss/projects.scss'
 
 const regex = {
-	new_line: /\n$/,
-	programming_language: /language-(\w+)/,
+	new_line: /\n$/u,
+	programming_language: /language-(?<language>\w+)/u,
 }
 
 export default function Code(): JSX.Element {

@@ -42,9 +42,9 @@ export function P5(sketch: Sketch): JSX.Element {
 			ref={self}
 			className='p5'
 			style={{
+				fontSize: 0,
 				height: '100%',
 				width: '100%',
-				fontSize: 0,
 			}}
 		>
 			{!!dim.height && !!dim.width && <P5Canvas dimensions={dim} sketch={sketch} />}

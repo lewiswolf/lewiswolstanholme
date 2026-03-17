@@ -14,10 +14,10 @@ export default function Home(): JSX.Element {
 	useEffect(() => {
 		if (audio.current) {
 			audio.current.volume = visibility
-			if (visibility !== 0) {
-				void audio.current.play()
-			} else {
+			if (visibility === 0) {
 				audio.current.pause()
+			} else {
+				void audio.current.play()
 			}
 		}
 	}, [visibility])

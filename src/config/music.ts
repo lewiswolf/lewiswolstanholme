@@ -11,43 +11,43 @@ export const albums: readonly AlbumJSON[] = [
 	// 	title: 'red kite by Lewis Wolstanholme',
 	// },
 	{
-		link: 'https://juliaset.bandcamp.com/album/julia-set-x-mori-111111',
 		img: 'https://f4.bcbits.com/img/a1325455413_10.jpg',
+		link: 'https://juliaset.bandcamp.com/album/julia-set-x-mori-111111',
 		title: 'Julia Set X mori.111111',
 	},
 	{
-		link: 'https://juliaset.bandcamp.com/album/sallow',
 		img: 'https://f4.bcbits.com/img/a2573041574_10.jpg',
+		link: 'https://juliaset.bandcamp.com/album/sallow',
 		title: 'sallow by Julia Set',
 	},
 	{
-		link: 'https://juliaset.bandcamp.com/album/josef',
 		img: 'https://f4.bcbits.com/img/a3407752053_16.jpg',
+		link: 'https://juliaset.bandcamp.com/album/josef',
 		title: 'josef by Julia Set',
 	},
 	{
-		link: 'https://juliaset.bandcamp.com/album/terracotta',
 		img: 'https://f4.bcbits.com/img/a0499687799_16.jpg',
+		link: 'https://juliaset.bandcamp.com/album/terracotta',
 		title: 'terracotta by Julia Set',
 	},
 	{
-		link: 'https://juliaset.bandcamp.com/album/morass-cairn',
 		img: 'https://f4.bcbits.com/img/a2284081809_16.jpg',
+		link: 'https://juliaset.bandcamp.com/album/morass-cairn',
 		title: 'morass / cairn by Julia Set',
 	},
 	{
-		link: 'https://lewiswolstanholme.bandcamp.com/album/chroma',
 		img: 'https://f4.bcbits.com/img/a2566795833_10.jpg',
+		link: 'https://lewiswolstanholme.bandcamp.com/album/chroma',
 		title: 'chroma by Lewis Wolstanholme',
 	},
 	{
-		link: 'https://lewiswolstanholme.bandcamp.com/album/noble-seed',
 		img: 'https://f4.bcbits.com/img/a1666427238_16.jpg',
+		link: 'https://lewiswolstanholme.bandcamp.com/album/noble-seed',
 		title: 'noble / seed by Lewis Wolstanholme / Ciarán Corr',
 	},
 	{
-		link: 'https://lewiswolstanholme.bandcamp.com/album/bach-fractal',
 		img: 'https://f4.bcbits.com/img/a3526980092_16.jpg',
+		link: 'https://lewiswolstanholme.bandcamp.com/album/bach-fractal',
 		title: 'bach.fractal by Ciarán Corr & Lewis Wolstanholme',
 	},
 ] as const

@@ -1,6 +1,7 @@
 // dependencies
 import { useEffect } from 'react'
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function analyticsPageView(): void {
 	if (typeof window.gtag === 'function') {
 		window.gtag('event', 'pageview', {
@@ -29,6 +30,7 @@ gtag('config', '${G4A_id}');
 		`
 		document.head.appendChild(script_2)
 		// cleanup function to remove the scripts when the component unmounts
+		// eslint-disable-next-line consistent-return
 		return () => {
 			document.head.removeChild(script_1)
 			document.head.removeChild(script_2)

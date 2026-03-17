@@ -1,17 +1,18 @@
 // biome-ignore-all lint/complexity/noUselessEscapeInRegex : additional escape is necessary
 // biome-ignore-all lint/nursery/noContinue : logic is working for the time being
+/* eslint-disable no-continue */
+/* eslint-disable no-useless-escape */
+/* eslint-disable require-unicode-regexp */
 
 // dependencies
 import type { JSX } from 'react'
 
-/* eslint-disable no-useless-escape */
 const regex = {
 	ampersand: /\\\&/g,
-	line_ending_comma: /,$/,
 	curly_braces: /\{|\}/g,
+	line_ending_comma: /,$/,
 	underscore: /\\\_/g,
 }
-/* eslint-enable no-useless-escape */
 
 export type PublicationJSON = Record<
 	string,
@@ -87,6 +88,7 @@ export const parseBibliography = (s: string): PublicationJSON => {
 					: [])(),
 			bibtex: tmp[key]?.bibtex ?? '',
 			date: (() => {
+				/* eslint-disable sort-keys */
 				const date: [number, number, number] = [
 					Number.parseInt(tmp[key]?.year ?? '0', 10),
 					{
@@ -105,6 +107,7 @@ export const parseBibliography = (s: string): PublicationJSON => {
 					}[tmp[key]?.month ?? 'jan'] as NonNullable<number>,
 					Number.parseInt(tmp[key]?.day ?? '1', 10),
 				]
+				/* eslint-enable sort-keys */
 				return date[0] ? new Date(...date) : new Date()
 			})(),
 			editors: (() =>

@@ -21,9 +21,9 @@ export const GridFromJSON: FC<{
 	// biome-ignore lint/suspicious/noExplicitAny: any is used to maintain user configurability
 	const [content, setContent] = useState<readonly Record<string, any>[] | string[]>([])
 	const [gridState, setGrid] = useState<GridProperties>({
-		width: '',
 		gridAutoRows: '',
 		gridTemplateColumns: '',
+		width: '',
 	})
 
 	useEffect(() => {
@@ -65,7 +65,6 @@ export const GridFromJSON: FC<{
 					(padding_array[1] ?? 0)
 				const largestGrid: number = content.length * (maxWidth + gridSpacer) - gridSpacer
 				setGrid({
-					width: parentWidth > largestGrid ? `${largestGrid.toString()}px` : '100%',
 					gridAutoRows: `${(parentWidth > maxWidth ? maxHeight : (maxHeight * parentWidth) / maxWidth).toString()}px`,
 					gridTemplateColumns:
 						parentWidth > maxWidth
@@ -73,33 +72,31 @@ export const GridFromJSON: FC<{
 									parentWidth > largestGrid ? content.length.toString() : 'auto-fill'
 								}, ${maxWidth.toString()}px)`
 							: `${parentWidth.toString()}px`,
+					width: parentWidth > largestGrid ? `${largestGrid.toString()}px` : '100%',
 				})
 			}
 		}
 		// Add and remove event listeners
-		if (content.length > 0) {
-			window.addEventListener('resize', gridResponse)
-			gridResponse()
-			return () => {
-				window.removeEventListener('resize', gridResponse)
-			}
+		window.addEventListener('resize', gridResponse)
+		gridResponse()
+		return () => {
+			window.removeEventListener('resize', gridResponse)
 		}
-		return
 	}, [content.length, gridSpacer, maxHeight, maxWidth])
 
 	return (
 		<div
 			ref={self}
 			style={{
-				width: gridState.width,
-				margin: '0 auto',
+				alignItems: 'center',
 				display: 'grid',
+				gap: `${gridSpacer.toString()}px`,
 				gridAutoRows: gridState.gridAutoRows,
 				gridTemplateColumns: gridState.gridTemplateColumns,
-				gap: `${gridSpacer.toString()}px`,
 				justifyContent: 'space-evenly',
 				justifyItems: 'center',
-				alignItems: 'center',
+				margin: '0 auto',
+				width: gridState.width,
 			}}
 		>
 			{
