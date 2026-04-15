@@ -1,4 +1,6 @@
+// biome-ignore-all lint/suspicious/noExplicitAny: any is used to maintain user configurability
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 // dependencies
 import { type FC, type JSX, useEffect, useRef, useState } from 'react'
 
@@ -9,16 +11,13 @@ type GridProperties = {
 }
 
 export const GridFromJSON: FC<{
-	// biome-ignore lint/suspicious/noExplicitAny: any is used to maintain user configurability
 	cell: (obj: any, i: number) => JSX.Element
 	gridSpacer?: number
-	// biome-ignore lint/suspicious/noExplicitAny: any is used to maintain user configurability
 	json: readonly Record<string, any>[] | string[] | string
 	maxHeight?: number
 	maxWidth?: number
 }> = ({ cell, gridSpacer = 20, json, maxWidth = 280, maxHeight = maxWidth }) => {
 	const self = useRef<HTMLDivElement>(null)
-	// biome-ignore lint/suspicious/noExplicitAny: any is used to maintain user configurability
 	const [content, setContent] = useState<readonly Record<string, any>[] | string[]>([])
 	const [gridState, setGrid] = useState<GridProperties>({
 		gridAutoRows: '',
@@ -34,7 +33,6 @@ export const GridFromJSON: FC<{
 		if (typeof json === 'string') {
 			void fetch(json)
 				.then((res: Response) => res.json())
-				// biome-ignore lint/suspicious/noExplicitAny: any is used to maintain user configurability
 				.then((_json: Record<string, any>[]) => {
 					setContent(_json)
 				})
@@ -79,7 +77,7 @@ export const GridFromJSON: FC<{
 		// Add and remove event listeners
 		window.addEventListener('resize', gridResponse)
 		gridResponse()
-		return () => {
+		return (): void => {
 			window.removeEventListener('resize', gridResponse)
 		}
 	}, [content.length, gridSpacer, maxHeight, maxWidth])
@@ -99,10 +97,7 @@ export const GridFromJSON: FC<{
 				width: gridState.width,
 			}}
 		>
-			{
-				// biome-ignore lint/suspicious/noExplicitAny: any is used to maintain user configurability
-				content.map((obj: any, i: number): JSX.Element => cell(obj, i))
-			}
+			{content.map((obj: any, i: number): JSX.Element => cell(obj, i))}
 		</div>
 	)
 }

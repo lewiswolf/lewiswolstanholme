@@ -1,17 +1,11 @@
-// biome-ignore-all lint/complexity/noUselessEscapeInRegex : additional escape is necessary
-// biome-ignore-all lint/nursery/noContinue : logic is working for the time being
-/* eslint-disable no-continue */
-/* eslint-disable no-useless-escape */
-/* eslint-disable require-unicode-regexp */
-
 // dependencies
 import type { JSX } from 'react'
 
 const regex = {
-	ampersand: /\\\&/g,
-	curly_braces: /\{|\}/g,
-	line_ending_comma: /,$/,
-	underscore: /\\\_/g,
+	ampersand: /\\&/gu,
+	curly_braces: /\{|\}/gu,
+	line_ending_comma: /,$/u,
+	underscore: /\\_/gu,
 }
 
 export type PublicationJSON = Record<
@@ -47,31 +41,29 @@ export const parseBibliography = (s: string): PublicationJSON => {
 			const line_tmp = line.split('{') as NonNullable<[string, string]>
 			current_key = line_tmp[1].slice(0, -1)
 			tmp[current_key] = { content_type: line_tmp[0].slice(1) }
-			continue
-		}
-		if (current_key) {
+		} else if (current_key) {
 			// close a key
 			if (line.startsWith('}')) {
 				tmp[current_key] = { ...tmp[current_key], ...{ bibtex: bibtex + line } }
 				bibtex = ''
 				current_key = null
-				continue
-			}
-			// add fields to key
-			if (!(line.trim().startsWith('day') || line.trim().startsWith('file') || line.trim().startsWith('type'))) {
-				bibtex += `${line}\n`
-			}
-			const [key, content] = line.split('=') as NonNullable<[string, string]>
-			tmp[current_key] = {
-				...tmp[current_key],
-				...{
-					[key.trim()]: content
-						.trim()
-						.replace(regex.curly_braces, '')
-						.replace(regex.ampersand, '&')
-						.replace(regex.underscore, '_')
-						.replace(regex.line_ending_comma, ''),
-				},
+			} else {
+				// add fields to key
+				if (!(line.trim().startsWith('day') || line.trim().startsWith('file') || line.trim().startsWith('type'))) {
+					bibtex += `${line}\n`
+				}
+				const [key, content] = line.split('=') as NonNullable<[string, string]>
+				tmp[current_key] = {
+					...tmp[current_key],
+					...{
+						[key.trim()]: content
+							.trim()
+							.replace(regex.curly_braces, '')
+							.replace(regex.ampersand, '&')
+							.replace(regex.underscore, '_')
+							.replace(regex.line_ending_comma, ''),
+					},
+				}
 			}
 		}
 	}
@@ -79,7 +71,7 @@ export const parseBibliography = (s: string): PublicationJSON => {
 	for (const key of Object.keys(tmp)) {
 		out[key] = {
 			address: tmp[key]?.address ?? '',
-			authors: (() =>
+			authors: ((): { first_name: string; last_name: string }[] =>
 				tmp[key]?.author
 					? tmp[key].author.split(' and ').map((author: string) => {
 							const [last_name, first_name] = author.split(', ') as NonNullable<[string, string]>
@@ -87,7 +79,7 @@ export const parseBibliography = (s: string): PublicationJSON => {
 						})
 					: [])(),
 			bibtex: tmp[key]?.bibtex ?? '',
-			date: (() => {
+			date: ((): Date => {
 				/* eslint-disable sort-keys */
 				const date: [number, number, number] = [
 					Number.parseInt(tmp[key]?.year ?? '0', 10),
@@ -110,7 +102,7 @@ export const parseBibliography = (s: string): PublicationJSON => {
 				/* eslint-enable sort-keys */
 				return date[0] ? new Date(...date) : new Date()
 			})(),
-			editors: (() =>
+			editors: ((): { first_name: string; last_name: string }[] =>
 				tmp[key]?.editor
 					? tmp[key].editor.split(' and ').map((editor: string) => {
 							const [last_name, first_name] = editor.split(', ') as NonNullable<[string, string]>
@@ -163,11 +155,11 @@ export function parseCitation(P: PublicationJSON[string]): JSX.Element {
 		<p className='citation' key={P.title}>
 			{authors}
 			{`(${P.date.getFullYear().toString()}). `}
-			{!!P.title && `${P.title}. `}
+			{Boolean(P.title) && `${P.title}. `}
 			{P.type !== '' && P.type !== 'article' && P.type !== 'dataset' ? 'In ' : ''}
-			{!!P.publication && <i>{`${P.publication}. `}</i>}
-			{!!P.address && `${P.address}. `}
-			{!!P.pages && `${P.pages}. `}
+			{Boolean(P.publication) && <i>{`${P.publication}. `}</i>}
+			{Boolean(P.address) && `${P.address}. `}
+			{Boolean(P.pages) && `${P.pages}. `}
 		</p>
 	)
 }

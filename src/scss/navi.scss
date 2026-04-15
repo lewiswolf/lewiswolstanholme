@@ -23,5 +23,13 @@ nav {
 
 	svg {
 		grid-area: 2/1;
+
+		path {
+			fill: rgb(138 138 138);
+
+			&:first-of-type {
+				fill: rgb(178 178 178);
+			}
+		}
 	}
 }

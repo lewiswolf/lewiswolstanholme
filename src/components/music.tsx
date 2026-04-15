@@ -1,3 +1,5 @@
+// biome-ignore-all lint/nursery/noJsxPropsBind : here prop bindings are used alongside Aray.map()
+
 // dependencies
 import type { JSX } from 'react'
 
@@ -15,15 +17,17 @@ export default function Music(): JSX.Element {
 					<button
 						aria-label={`Listen to ${obj.title}.`}
 						key={i.toString()}
-						tabIndex={0}
-						type='button'
-						onClick={() => window.open(obj.link, '_blank')}
-						onKeyDown={(e) => {
+						onClick={(): void => {
+							window.open(obj.link, '_blank')
+						}}
+						onKeyDown={(e): void => {
 							if (e.key === 'Enter' || e.key === ' ') {
 								e.preventDefault()
 								window.open(obj.link, '_blank')
 							}
 						}}
+						tabIndex={0}
+						type='button'
 					>
 						<img alt={`Album artwork for ${obj.title}.`} height={280} src={obj.img} tabIndex={-1} width={280} />
 					</button>

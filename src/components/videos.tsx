@@ -16,6 +16,7 @@ export default function Videos(): JSX.Element {
 								allow='autoplay; encrypted-media; fullscreen; picture-in-picture; web-share'
 								key={i.toString()}
 								referrerPolicy='strict-origin-when-cross-origin'
+								sandbox='allow-scripts allow-same-origin'
 								src={`https://player.vimeo.com/video/${obj.hash}?h=be7c17d620`}
 								title={obj.title}
 							/>
@@ -26,6 +27,7 @@ export default function Videos(): JSX.Element {
 								allow='autoplay; encrypted-media; fullscreen; picture-in-picture; web-share'
 								key={i.toString()}
 								referrerPolicy='strict-origin-when-cross-origin'
+								sandbox='allow-scripts allow-same-origin'
 								src={`https://www.youtube.com/embed/${obj.hash}?theme=dark&color=white`}
 								title={obj.title}
 							/>

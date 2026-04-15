@@ -29,7 +29,7 @@ export function isPointInsideConvexPolygon(p: Readonly<Point>, P: Readonly<Polyg
 
 	// AB x AC cross product - z component only, see np.cross =>
 	// https://numpy.org/doc/stable/reference/generated/numpy.cross.html
-	function crossProductZ(a: Point, b: Point, c: Point) {
+	function crossProductZ(a: Point, b: Point, c: Point): number {
 		return (b.x - a.x) * (c.y - a.y) - (c.x - a.x) * (b.y - a.y)
 	}
 	// determine if the polygon is ordered clockwise

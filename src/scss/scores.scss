@@ -40,6 +40,13 @@
 				width: 100%;
 				position: absolute;
 				inset: 0;
+
+				g {
+					fill: none;
+					stroke: white;
+					stroke-width: 4px;
+					stroke-miterlimit: 10;
+				}
 			}
 
 			p {
