@@ -1,33 +1,51 @@
 import eslint from '@eslint/js'
-import { defineConfig } from 'eslint/config'
+import { defineConfig, globalIgnores } from 'eslint/config'
+import globals from 'globals'
 // import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
 
 export default defineConfig(
-	eslint.configs.recommended,
-	...tseslint.configs.strictTypeChecked,
-	...tseslint.configs.stylisticTypeChecked,
+	globalIgnores(['dist', 'unused']),
 	{
-		ignores: ['**/dist/**', '**/unused/**'],
-	},
-	{
+		extends: [
+			eslint.configs.all,
+			tseslint.configs.strictTypeChecked,
+			tseslint.configs.stylisticTypeChecked,
+			// reactHooks.configs.flat.recommended,
+			reactRefresh.configs.vite,
+		],
 		languageOptions: {
 			ecmaVersion: 'latest',
+			globals: globals.browser,
 			parserOptions: {
 				projectService: true,
 				tsconfigRootDir: import.meta.dirname,
 			},
 		},
-		// plugins: {
-		// 'react-hooks': reactHooks,
-		// },
 		rules: {
 			'@typescript-eslint/consistent-type-definitions': 'off',
+			'@typescript-eslint/no-unnecessary-type-arguments': 'off',
 			'@typescript-eslint/non-nullable-type-assertion-style': 'off',
+			camelcase: 'off',
+			'capitalized-comments': 'off',
+			complexity: 'off',
+			'func-style': 'off',
+			'id-length': 'off',
+			'max-lines': 'off',
+			'max-lines-per-function': 'off',
+			'max-statements': 'off',
+			'new-cap': 'off',
+			'no-magic-numbers': 'off',
+			'no-ternary': 'off',
+			'no-underscore-dangle': 'off',
+			'no-void': ['error', { allowAsStatement: true }],
+			'one-var': 'off',
+			'sort-imports': 'off',
 		},
 	},
 	{
-		files: ['**/*.js'],
 		extends: [tseslint.configs.disableTypeChecked],
+		files: ['**/*.js'],
 	},
 )

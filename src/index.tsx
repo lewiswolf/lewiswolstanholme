@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 // src
 import App from './components/App.tsx'
 
-createRoot(document.getElementById('root') as NonNullable<HTMLDivElement>).render(
+createRoot(document.querySelector('#root') as NonNullable<HTMLDivElement>).render(
 	<StrictMode>
 		<BrowserRouter>
 			<App />

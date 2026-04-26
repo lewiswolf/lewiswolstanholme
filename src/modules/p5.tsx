@@ -32,7 +32,7 @@ export function P5(sketch: Sketch): JSX.Element {
 		// Add and remove event listeners
 		window.addEventListener('resize', resize)
 		resize()
-		return () => {
+		return (): void => {
 			window.removeEventListener('resize', resize)
 		}
 	}, [])
@@ -47,7 +47,7 @@ export function P5(sketch: Sketch): JSX.Element {
 				width: '100%',
 			}}
 		>
-			{!!dim.height && !!dim.width && <P5Canvas dimensions={dim} sketch={sketch} />}
+			{Boolean(dim.height) && Boolean(dim.width) && <P5Canvas dimensions={dim} sketch={sketch} />}
 		</div>
 	)
 }

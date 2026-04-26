@@ -22,16 +22,15 @@ export default function Home(): JSX.Element {
 		}
 	}, [visibility])
 
+	// event handlers
+	const _onChange = (v: number): void => {
+		setVisitibility(v)
+	}
+
 	return (
 		<>
 			<header>
-				<Slider
-					ariaLabel='audiovisual control'
-					width={200}
-					onChange={(v: number) => {
-						setVisitibility(v)
-					}}
-				/>
+				<Slider ariaLabel='audiovisual control' onChange={_onChange} width={200} />
 			</header>
 			<main className='home' style={{ opacity: visibility }}>
 				<audio ref={audio} src='/audio/newts.mp3' />
