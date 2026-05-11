@@ -196,6 +196,7 @@
 			},
 			"nursery": {
 				"noAmbiguousAnchorText": "error",
+				"noBaseToString": "error",
 				"noBeforeInteractiveScriptOutsideDocument": "error",
 				"noComponentHookFactories": "error",
 				"noConditionalExpect": "error",
@@ -218,6 +219,7 @@
 				"noEqualsToNull": "error",
 				"noExcessiveClassesPerFile": "off",
 				"noExcessiveLinesPerFile": "off",
+				"noExcessiveNestedCallbacks": "error",
 				"noExcessiveSelectorClasses": "error",
 				"noFloatingClasses": "error",
 				"noFloatingPromises": "error",
@@ -227,8 +229,8 @@
 				"noImpliedEval": "error",
 				"noIncrementDecrement": "error",
 				"noInlineStyles": "off",
-				"noJsxNamespace": "error",
 				"noJsxLeakedDollar": "error",
+				"noJsxNamespace": "error",
 				"noJsxPropsBind": "error",
 				"noLeakedRender": "error",
 				"noLoopFunc": "error",
@@ -252,6 +254,7 @@
 				"noReactNativeDeepImports": "off",
 				"noReactNativeLiteralColors": "off",
 				"noReactNativeRawText": "off",
+				"noReactStringRefs": "error",
 				"noRedundantDefaultExport": "error",
 				"noReturnAssign": "error",
 				"noRootType": "error",
@@ -274,9 +277,11 @@
 				"noUselessReturn": "error",
 				"noUselessTypeConversion": "error",
 				"noVueArrowFuncInWatch": "off",
+				"noVueImportCompilerMacros": "off",
 				"noVueOptionsApi": "off",
-				"noVueVIfWithVFor": "off",
 				"noVueRefAsOperand": "off",
+				"noVueVIfWithVFor": "off",
+				"noVueVOnNumberValues": "off",
 				"useArraySortCompare": "error",
 				"useArraySome": "error",
 				"useAwaitThenable": "error",
@@ -307,6 +312,7 @@
 				"useInputName": "error",
 				"useLoneAnonymousOperation": "error",
 				"useLoneExecutableDefinition": "error",
+				"useMathMinMax": "error",
 				"useNamedCaptureGroup": "error",
 				"useNullishCoalescing": "error",
 				"usePlaywrightValidDescribeCallback": "off",
@@ -321,6 +327,9 @@
 				"useSortedClasses": "error",
 				"useSpread": "error",
 				"useStringStartsEndsWith": "error",
+				"useTestHooksInOrder": "error",
+				"useTestHooksOnTop": "error",
+				"useThisInClassMethods": "error",
 				"useUnicodeRegex": "error",
 				"useVarsOnTop": "error",
 				"useVueConsistentDefinePropsDeclaration": "off",
@@ -329,9 +338,11 @@
 				"useVueDefineMacrosOrder": "off",
 				"useVueHyphenatedAttributes": "off",
 				"useVueMultiWordComponentNames": "off",
+				"useVueNextTickPromise": "off",
 				"useVueValidVBind": "off",
 				"useVueValidVElse": "off",
 				"useVueValidVElseIf": "off",
+				"useVueValidVFor": "off",
 				"useVueValidVHtml": "off",
 				"useVueValidVIf": "off",
 				"useVueValidVOn": "off",
@@ -544,6 +555,7 @@
 		"indentWidth": 4,
 		"lineEnding": "lf",
 		"lineWidth": 125,
+		"trailingNewline": true,
 		"useEditorconfig": false
 	},
 	"css": {
@@ -563,7 +575,9 @@
 	},
 	"javascript": {
 		"formatter": {
+			"arrowParentheses": "always",
 			"jsxQuoteStyle": "single",
+			"operatorLinebreak": "after",
 			"quoteProperties": "asNeeded",
 			"quoteStyle": "single",
 			"semicolons": "asNeeded",
@@ -572,6 +586,7 @@
 	},
 	"json": {
 		"formatter": {
+			"trailingCommas": "none",
 			"lineWidth": 100
 		}
 	}

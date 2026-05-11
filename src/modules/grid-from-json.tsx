@@ -30,16 +30,21 @@ export const GridFromJSON: FC<{
 		This effect is used to dyanmically load the content either as a raw json file
 		from the public folder, or update the content using the prop itself.
 		*/
-		if (typeof json === 'string') {
-			void fetch(json)
-				.then((res: Response) => res.json())
-				.then((_json: Record<string, any>[]) => {
-					setContent(_json)
-				})
-				.catch()
-		} else {
-			setContent(json)
+
+		const loadJSON = async (): Promise<void> => {
+			if (typeof json === 'string') {
+				try {
+					const res = await fetch(json)
+					const data: unknown = await res.json()
+					setContent(data as Record<string, any>[])
+				} catch {
+					// handle error
+				}
+			} else {
+				setContent(json)
+			}
 		}
+		void loadJSON()
 	}, [json])
 
 	useEffect(() => {
