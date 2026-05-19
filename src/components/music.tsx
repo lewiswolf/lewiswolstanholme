@@ -1,7 +1,7 @@
 // biome-ignore-all lint/nursery/noJsxPropsBind : here prop bindings are used alongside Aray.map()
 
 // dependencies
-import type { JSX } from 'react'
+import type { JSX, KeyboardEvent as ReactKeyEvent } from 'react'
 
 // src
 import { type AlbumJSON, albums } from '../config/music.ts'
@@ -20,7 +20,7 @@ export default function Music(): JSX.Element {
 						onClick={(): void => {
 							window.open(obj.link, '_blank')
 						}}
-						onKeyDown={(e): void => {
+						onKeyDown={(e: ReactKeyEvent): void => {
 							if (e.key === 'Enter' || e.key === ' ') {
 								e.preventDefault()
 								window.open(obj.link, '_blank')

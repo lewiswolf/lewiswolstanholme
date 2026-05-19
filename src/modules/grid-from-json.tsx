@@ -1,4 +1,6 @@
-// biome-ignore-all lint/suspicious/noExplicitAny: any is used to maintain user configurability
+// biome-ignore-all lint/nursery/noInlineStyles : this component has been designed to dynamically control a responive css grid
+// biome-ignore-all lint/suspicious/noExplicitAny : any is used to maintain user configurability
+// biome-ignore-all lint/nursery/useExplicitType : any is used to maintain user configurability
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 // dependencies
@@ -25,12 +27,11 @@ export const GridFromJSON: FC<{
 		width: '',
 	})
 
-	useEffect(() => {
+	useEffect((): void => {
 		/*
 		This effect is used to dyanmically load the content either as a raw json file
 		from the public folder, or update the content using the prop itself.
 		*/
-
 		const loadJSON = async (): Promise<void> => {
 			if (typeof json === 'string') {
 				try {
@@ -47,7 +48,7 @@ export const GridFromJSON: FC<{
 		void loadJSON()
 	}, [json])
 
-	useEffect(() => {
+	useEffect((): (() => void) => {
 		/*
 		This effect is used in conjunction with the 'resize' window event listener.
 		When the window is resized, the size of the parent element is queried, from

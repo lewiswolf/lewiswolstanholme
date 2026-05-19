@@ -1,7 +1,7 @@
 // biome-ignore-all lint/nursery/noJsxPropsBind : here prop bindings are used alongside Aray.map()
 
 // dependencies
-import type { JSX } from 'react'
+import type { JSX, KeyboardEvent as ReactKeyEvent } from 'react'
 import '../scss/scores.scss'
 
 // src
@@ -12,7 +12,7 @@ import CompositionSVG from '../svg/compositions-thumb.svg?react'
 function CompositionThumb(obj: ScoreJSON): JSX.Element {
 	return (
 		<div className='composition-thumb' tabIndex={-1}>
-			<CompositionSVG />
+			<CompositionSVG role='img' />
 			<p>{obj.title}</p>
 			<p>{obj.instrumentation}</p>
 			<p>{obj.year}</p>
@@ -56,7 +56,7 @@ export default function Scores(): JSX.Element {
 						onClick={(): void => {
 							downloadScore(obj)
 						}}
-						onKeyDown={(e): void => {
+						onKeyDown={(e: ReactKeyEvent): void => {
 							if (e.key === 'Enter' || e.key === ' ') {
 								e.preventDefault()
 								downloadScore(obj)

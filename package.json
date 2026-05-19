@@ -20,7 +20,7 @@
 		"@biomejs/biome": "^2.4.15",
 		"@eslint/js": "^10.0.1",
 		"@prettier/plugin-xml": "^3.4.2",
-		"@types/node": "^25.8.0",
+		"@types/node": "^25.9.0",
 		"@types/react": "^19.2.14",
 		"@types/react-dom": "^19.2.3",
 		"@types/react-router-dom": "^5.3.3",
@@ -34,7 +34,7 @@
 		"stylelint": "^17.11.1",
 		"stylelint-config-standard-scss": "^17.0.0",
 		"typescript": "^6.0.3",
-		"typescript-eslint": "^8.59.3",
+		"typescript-eslint": "^8.59.4",
 		"vite": "^8.0.13",
 		"vite-plugin-compression2": "^2.5.3",
 		"vite-plugin-svgr": "^5.2.0"

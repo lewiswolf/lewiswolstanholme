@@ -1,3 +1,5 @@
+// biome-ignore-all lint/a11y/useMediaCaption : the audio file is music and does not have captions
+
 // dependencies
 import { Slider } from 'maxmsp-gui'
 import { type JSX, useEffect, useRef, useState } from 'react'

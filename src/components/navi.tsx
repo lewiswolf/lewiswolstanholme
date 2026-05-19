@@ -29,7 +29,7 @@ export const Navi: FC<{ pages: string[] }> = ({ pages }) => {
 					spacing={20.5}
 					setValue={location && pages.includes(location) ? pages.indexOf(location) : 0}
 				/>
-				<NaviCable />
+				<NaviCable role='img' />
 				<MaxObject text='Lewis Wolstanholme' />
 			</nav>
 		</>
