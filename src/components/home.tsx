@@ -11,32 +11,32 @@ import '../scss/home.scss'
 
 export default function Home(): JSX.Element {
 	const audio = useRef<HTMLAudioElement>(null)
-	const [visibility, setVisitibility] = useState<number>(0)
+	const [opacity, setOpacity] = useState<number>(0)
 
 	useEffect(() => {
 		if (audio.current) {
-			audio.current.volume = visibility
-			if (visibility === 0) {
+			audio.current.volume = opacity
+			if (opacity === 0) {
 				audio.current.pause()
-			} else {
+			} else if (audio.current.paused) {
 				void audio.current.play()
 			}
 		}
-	}, [visibility])
+	}, [opacity])
 
 	// event handlers
-	const _onChange = (v: number): void => {
-		setVisitibility(v)
+	const _onSlider = (v: number): void => {
+		setOpacity(v)
 	}
 
 	return (
 		<>
 			<header>
-				<Slider ariaLabel='audiovisual control' onChange={_onChange} width={200} />
+				<Slider ariaLabel='audiovisual control' onChange={_onSlider} width={200} />
 			</header>
-			<main className='home' style={{ opacity: visibility }}>
+			<main className='home'>
 				<audio ref={audio} src='/audio/newts.mp3' />
-				{P5(sketch)}
+				<P5 opacity={opacity} sketch={sketch} />
 			</main>
 		</>
 	)

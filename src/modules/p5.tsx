@@ -1,13 +1,15 @@
+// biome-ignore-all lint/nursery/noInlineStyles : inline styles are use to dynamically render a p5 Sketch
+
 // dependencies
 import { type Sketch, P5Canvas } from '@p5-wrapper/react'
-import { type JSX, useEffect, useRef, useState } from 'react'
+import { type FC, type JSX, useEffect, useRef, useState } from 'react'
 
 export type Dimensions = {
 	height: number
 	width: number
 }
 
-export function P5(sketch: Sketch): JSX.Element {
+export const P5: FC<{ sketch: Sketch; opacity?: number }> = ({ opacity, sketch }): JSX.Element => {
 	const self = useRef<HTMLDivElement>(null)
 	const [dim, setDim] = useState<Dimensions>({
 		height: 0,
@@ -44,6 +46,7 @@ export function P5(sketch: Sketch): JSX.Element {
 			style={{
 				fontSize: 0,
 				height: '100%',
+				opacity: opacity ?? 0,
 				width: '100%',
 			}}
 		>
