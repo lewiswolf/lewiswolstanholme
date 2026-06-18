@@ -1,3 +1,5 @@
+/* eslint-disable @eslint-react/dom-no-unsafe-iframe-sandbox */
+
 // dependencies
 import { TextButton, Umenu } from 'maxmsp-gui'
 import { type JSX, useEffect, useState } from 'react'
@@ -23,10 +25,13 @@ export default function Code(): JSX.Element {
 	const pages: string[] = Object.keys(projects)
 	const [markdown, setMarkdown] = useState<string>('')
 
-	useEffect(() => {
+	useEffect((): (() => void) => {
+		const ctrl = new AbortController()
 		if (pages.includes(location)) {
 			if (projects[location]?.github) {
-				fetch(`https://raw.githubusercontent.com/${projects[location].github}/master/readme.md`)
+				fetch(`https://raw.githubusercontent.com/${projects[location].github}/master/readme.md`, {
+					signal: ctrl.signal,
+				})
 					.then((res: Response) => {
 						if (res.ok) {
 							return res.text()
@@ -57,6 +62,9 @@ export default function Code(): JSX.Element {
 			}
 		} else if (pages[0]) {
 			void navigate(`/code?view=${pages[0]}`)
+		}
+		return (): void => {
+			ctrl.abort()
 		}
 	}, [location, navigate, pages])
 
@@ -95,7 +103,7 @@ export default function Code(): JSX.Element {
 						allow='autoplay; encrypted-media; fullscreen; picture-in-picture; web-share'
 						className={projects[location].className}
 						referrerPolicy='strict-origin-when-cross-origin'
-						sandbox='allow-scripts allow-same-origin'
+						sandbox='allow-presentation allow-same-origin allow-scripts'
 						src={projects[location].iframe}
 						title={projects[location].name}
 					/>

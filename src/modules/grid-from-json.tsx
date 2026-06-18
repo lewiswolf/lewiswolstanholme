@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 // dependencies
-import { type FC, type JSX, useEffect, useRef, useState } from 'react'
+import { type JSX, useEffect, useRef, useState } from 'react'
 
 type GridProperties = {
 	width: string
@@ -12,16 +12,22 @@ type GridProperties = {
 	gridTemplateColumns: string
 }
 
-export const GridFromJSON: FC<{
+export function GridFromJSON({
+	cell,
+	gridSpacer = 20,
+	json,
+	maxWidth = 280,
+	maxHeight = maxWidth,
+}: {
 	cell: (obj: any, i: number) => JSX.Element
 	gridSpacer?: number
 	json: readonly Record<string, any>[] | string[] | string
 	maxHeight?: number
 	maxWidth?: number
-}> = ({ cell, gridSpacer = 20, json, maxWidth = 280, maxHeight = maxWidth }) => {
+}): JSX.Element {
 	const self = useRef<HTMLDivElement>(null)
 	const [content, setContent] = useState<readonly Record<string, any>[] | string[]>([])
-	const [gridState, setGrid] = useState<GridProperties>({
+	const [gridProps, setGridProps] = useState<GridProperties>({
 		gridAutoRows: '',
 		gridTemplateColumns: '',
 		width: '',
@@ -68,7 +74,7 @@ export const GridFromJSON: FC<{
 					(padding_array[0] ?? 0) -
 					(padding_array[1] ?? 0)
 				const largestGrid: number = content.length * (maxWidth + gridSpacer) - gridSpacer
-				setGrid({
+				setGridProps({
 					gridAutoRows: `${(parentWidth > maxWidth ? maxHeight : (maxHeight * parentWidth) / maxWidth).toString()}px`,
 					gridTemplateColumns:
 						parentWidth > maxWidth
@@ -92,15 +98,15 @@ export const GridFromJSON: FC<{
 		<div
 			ref={self}
 			style={{
-				alignItems: 'center',
-				display: 'grid',
-				gap: `${gridSpacer.toString()}px`,
-				gridAutoRows: gridState.gridAutoRows,
-				gridTemplateColumns: gridState.gridTemplateColumns,
-				justifyContent: 'space-evenly',
-				justifyItems: 'center',
-				margin: '0 auto',
-				width: gridState.width,
+				...{
+					alignItems: 'center',
+					display: 'grid',
+					gap: `${gridSpacer.toString()}px`,
+					justifyContent: 'space-evenly',
+					justifyItems: 'center',
+					margin: '0 auto',
+				},
+				...gridProps,
 			}}
 		>
 			{content.map((obj: any, i: number): JSX.Element => cell(obj, i))}
