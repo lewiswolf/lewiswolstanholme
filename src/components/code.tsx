@@ -6,7 +6,7 @@ import { type JSX, useEffect, useState } from 'react'
 import rehype from 'rehype-raw'
 import remark from 'remark-gfm'
 import Markdown from 'react-markdown'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router'
 import { Prism } from 'react-syntax-highlighter'
 
 // src

@@ -1,6 +1,6 @@
 // dependencies
 import type { JSX } from 'react'
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router'
 
 // components
 import Code from './code.tsx'
