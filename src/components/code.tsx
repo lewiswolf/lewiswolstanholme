@@ -1,3 +1,4 @@
+// biome-ignore-all lint/nursery/noUnsafeIframeSandbox : youtube / vimeo embeds do not work without allow-scripts + allow-same-origin
 /* eslint-disable @eslint-react/dom-no-unsafe-iframe-sandbox */
 
 // dependencies
@@ -10,7 +11,7 @@ import { useLocation, useNavigate } from 'react-router'
 import { Prism } from 'react-syntax-highlighter'
 
 // src
-import { type CodeProjectJSON, projects } from '../config/code.ts'
+import { projects } from '../config/code.ts'
 import { default as syntax } from '../modules/syntax-highlighter.ts'
 import '../scss/projects.scss'
 
@@ -32,33 +33,33 @@ export default function Code(): JSX.Element {
 				fetch(`https://raw.githubusercontent.com/${projects[location].github}/master/readme.md`, {
 					signal: ctrl.signal,
 				})
-					.then((res: Response) => {
+					.then((res: Response): Promise<string> => {
 						if (res.ok) {
 							return res.text()
 						}
 						throw new Error('Readme not found.')
 					})
-					.then((_markdown: string) => {
+					.then((_markdown: string): void => {
 						setMarkdown(_markdown.replace('by Lewis Wolf', ''))
 					})
-					.catch(() =>
-						fetch(
-							`https://raw.githubusercontent.com/${(projects[location] as NonNullable<CodeProjectJSON>).github}/master/README.md`,
-						)
-							.then((res: Response) => res.text())
-							.then((_markdown: string) => {
-								setMarkdown(
-									_markdown
-										.replace(
-											'[![Watch the video](https://i.ytimg.com/vi/HnUc3VTUReo/maxresdefault.jpg)](https://youtu.be/HnUc3VTUReo)',
-											'',
-										)
-										.replace('<div  align="center">', '')
-										.replace('</div>', ''),
-								)
-							})
-							.catch(),
-					)
+					.catch((): void => {
+						if (projects[location]) {
+							void fetch(`https://raw.githubusercontent.com/${projects[location].github}/master/README.md`)
+								.then((res: Response): Promise<string> => res.text())
+								.then((_markdown: string): void => {
+									setMarkdown(
+										_markdown
+											.replace(
+												'[![Watch the video](https://i.ytimg.com/vi/HnUc3VTUReo/maxresdefault.jpg)](https://youtu.be/HnUc3VTUReo)',
+												'',
+											)
+											.replace('<div  align="center">', '')
+											.replace('</div>', ''),
+									)
+								})
+								.catch()
+						}
+					})
 			}
 		} else if (pages[0]) {
 			void navigate(`/code?view=${pages[0]}`)
@@ -123,6 +124,7 @@ export default function Code(): JSX.Element {
 									)
 								},
 							}}
+							key={location}
 							rehypePlugins={[rehype]}
 							remarkPlugins={[remark]}
 						>

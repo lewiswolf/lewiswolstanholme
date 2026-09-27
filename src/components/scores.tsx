@@ -9,32 +9,28 @@ import { type ScoreJSON, compositions, engravings } from '../config/scores.ts'
 import { GridFromJSON } from '../modules/grid-from-json.tsx'
 import CompositionSVG from '../svg/compositions-thumb.svg?react'
 
-function CompositionThumb(obj: ScoreJSON): JSX.Element {
-	return (
-		<div className='composition-thumb' tabIndex={-1}>
-			<CompositionSVG role='img' />
-			<p>{obj.title}</p>
-			<p>{obj.instrumentation}</p>
-			<p>{obj.year}</p>
-		</div>
-	)
-}
+const CompositionThumb = (obj: ScoreJSON): JSX.Element => (
+	<div className='composition-thumb' tabIndex={-1}>
+		<CompositionSVG role='img' />
+		<p>{obj.title}</p>
+		<p>{obj.instrumentation}</p>
+		<p>{obj.year}</p>
+	</div>
+)
 
-function EngravingThumb(obj: ScoreJSON): JSX.Element {
-	return (
-		<div className='engraving-thumb' tabIndex={-1}>
-			<p>{obj.composer}</p>
-			<p>{obj.title}</p>
-			<hr />
-			<p>{obj.instrumentation}</p>
-			<hr />
-			<p>{obj.year}</p>
-		</div>
-	)
-}
+const EngravingThumb = (obj: ScoreJSON): JSX.Element => (
+	<div className='engraving-thumb' tabIndex={-1}>
+		<p>{obj.composer}</p>
+		<p>{obj.title}</p>
+		<hr />
+		<p>{obj.instrumentation}</p>
+		<hr />
+		<p>{obj.year}</p>
+	</div>
+)
 
 export default function Scores(): JSX.Element {
-	function downloadScore(obj: ScoreJSON & Readonly<{ type: 'compositions' | 'engravings' }>): void {
+	const downloadScore = (obj: ScoreJSON & Readonly<{ type: 'compositions' | 'engravings' }>): void => {
 		if (obj.file) {
 			window.open(`${window.location.protocol}//lewiswolstanholme.co.uk/api/${obj.type}/${obj.file}.pdf`, '_blank')
 		} else if (obj.link) {

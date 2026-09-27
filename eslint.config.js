@@ -29,7 +29,6 @@ export default defineConfig(
 			'@eslint-react/naming-convention-ref-name': 'off',
 			'@typescript-eslint/consistent-type-definitions': 'off',
 			'@typescript-eslint/no-unnecessary-type-arguments': 'off',
-			'@typescript-eslint/non-nullable-type-assertion-style': 'off',
 			camelcase: 'off',
 			'capitalized-comments': 'off',
 			complexity: 'off',

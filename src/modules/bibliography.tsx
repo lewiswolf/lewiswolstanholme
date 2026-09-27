@@ -1,3 +1,6 @@
+// biome-ignore-all lint/nursery/noUnsafeTypeAssertion : TO FIX imported .bib is not properly and reliably parsed
+/* eslint-disable @typescript-eslint/non-nullable-type-assertion-style */
+
 // dependencies
 import type { JSX } from 'react'
 
@@ -120,18 +123,17 @@ export const parseBibliography = (s: string): PublicationJSON => {
 	return out
 }
 
-export function parseCitation(P: PublicationJSON[string]): JSX.Element {
+export const parseCitation = (P: PublicationJSON[string]): JSX.Element => {
 	/*
 	Format a PublicationJSON object as a JSX element.
 	*/
 
 	// format authors
 	let authors = ''
-	function initials(N: string): string {
-		return N.split(' ')
+	const initials = (N: string): string =>
+		N.split(' ')
 			.map((n: string) => (n[0] ? `${n[0]}.` : ''))
 			.join(' ')
-	}
 	switch (P.authors.length) {
 		case 0:
 			break

@@ -40,7 +40,7 @@
 		"jsx": "react-jsx",
 		"lib": ["DOM", "ESNext"],
 		"target": "ESNext",
-		"types": ["node", "react", "react-dom", "react-router", "react-syntax-highlighter"],
+		"types": ["node", "p5", "react", "react-dom", "react-router", "react-syntax-highlighter"],
 		// compilation
 		"module": "ESNext",
 		"moduleDetection": "force",

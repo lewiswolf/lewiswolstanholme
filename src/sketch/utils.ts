@@ -1,7 +1,7 @@
 // src
 import type { Line, Point, Polygon } from './types.d.ts'
 
-export function compareShortestVector(p: Readonly<Point>, P: Readonly<Polygon>): [Point, number] {
+export const compareShortestVector = (p: Readonly<Point>, P: Readonly<Polygon>): [Point, number] => {
 	/*
 	Compare a point with an array points by vector length.
 	Returns the closest point and its index within P - otherwise returns the point itself if P = [].
@@ -21,7 +21,7 @@ export function compareShortestVector(p: Readonly<Point>, P: Readonly<Polygon>):
 	return [v_closest, idx]
 }
 
-export function isPointInsideConvexPolygon(p: Readonly<Point>, P: Readonly<Polygon>): boolean {
+export const isPointInsideConvexPolygon = (p: Readonly<Point>, P: Readonly<Polygon>): boolean => {
 	/*
 	Determines whether or not a cartesian pair is within a polygon, including boundaries.
 	Solution 3 => http://paulbourke.net/geometry/polygonmesh/
@@ -29,11 +29,11 @@ export function isPointInsideConvexPolygon(p: Readonly<Point>, P: Readonly<Polyg
 
 	// AB x AC cross product - z component only, see np.cross =>
 	// https://numpy.org/doc/stable/reference/generated/numpy.cross.html
-	function crossProductZ(a: Point, b: Point, c: Point): number {
-		return (b.x - a.x) * (c.y - a.y) - (c.x - a.x) * (b.y - a.y)
-	}
+	const crossProductZ = (a: Point, b: Point, c: Point): number => (b.x - a.x) * (c.y - a.y) - (c.x - a.x) * (b.y - a.y)
+
 	// determine if the polygon is ordered clockwise
-	const clockwise = crossProductZ(P[0] as Point, P[1] as Point, P[2] as Point) > 0 ? -1 : 1
+	// @ts-expect-error : if this is not a strict polygon, list indexes may be null
+	const clockwise = crossProductZ(P[0], P[1], P[2]) > 0 ? -1 : 1
 	// go through each of the vertices, and test with p
 	const N: number = P.length
 	for (const v of P) {
@@ -43,14 +43,15 @@ export function isPointInsideConvexPolygon(p: Readonly<Point>, P: Readonly<Polyg
 	}
 	// determine if the point is always on the right side of the line
 	for (let n = 0; n < N; n += 1) {
-		if (crossProductZ(P[n] as Point, P[(n + 1) % N] as Point, p) * clockwise > 0) {
+		// @ts-expect-error : if this is not a strict polygon, list indexes may be null
+		if (crossProductZ(P[n], P[(n + 1) % N], p) * clockwise > 0) {
 			return false
 		}
 	}
 	return true
 }
 
-export function lineIntersection(a: Readonly<Line>, b: Readonly<Line>): Point | null {
+export const lineIntersection = (a: Readonly<Line>, b: Readonly<Line>): Point | null => {
 	/*
 	Finds the point at which two lines intersect. Returns null if they do not intersect.
 	collisionLineLine() => https://github.com/bmoren/p5.collide2D
@@ -69,7 +70,7 @@ export function lineIntersection(a: Readonly<Line>, b: Readonly<Line>): Point | 
 		: null
 }
 
-export function rotatePoint(p: Readonly<Point>, theta: Readonly<number>): Point {
+export const rotatePoint = (p: Readonly<Point>, theta: Readonly<number>): Point => {
 	/*
 	Rotate a cartesian pair around the origin by the angle theta.
 	*/

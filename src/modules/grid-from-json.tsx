@@ -1,6 +1,7 @@
 // biome-ignore-all lint/nursery/noInlineStyles : this component has been designed to dynamically control a responive css grid
-// biome-ignore-all lint/suspicious/noExplicitAny : any is used to maintain user configurability
+// biome-ignore-all lint/nursery/noUnsafeTypeAssertion : any is used to maintain user configurability
 // biome-ignore-all lint/nursery/useExplicitType : any is used to maintain user configurability
+// biome-ignore-all lint/suspicious/noExplicitAny : any is used to maintain user configurability
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 // dependencies
@@ -12,7 +13,7 @@ type GridProperties = {
 	gridTemplateColumns: string
 }
 
-export function GridFromJSON({
+export const GridFromJSON = ({
 	cell,
 	gridSpacer = 20,
 	json,
@@ -24,7 +25,7 @@ export function GridFromJSON({
 	json: readonly Record<string, any>[] | string[] | string
 	maxHeight?: number
 	maxWidth?: number
-}): JSX.Element {
+}): JSX.Element => {
 	const self = useRef<HTMLDivElement>(null)
 	const [content, setContent] = useState<readonly Record<string, any>[] | string[]>([])
 	const [gridProps, setGridProps] = useState<GridProperties>({

@@ -1,3 +1,4 @@
+// biome-ignore-all lint/nursery/noUnsafeIframeSandbox : youtube / vimeo embeds do not work without allow-scripts + allow-same-origin
 /* eslint-disable @eslint-react/dom-no-unsafe-iframe-sandbox */
 
 // dependencies
