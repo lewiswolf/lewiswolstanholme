@@ -31,7 +31,7 @@ const EngravingThumb = (obj: ScoreJSON): JSX.Element => (
 
 export default function Scores(): JSX.Element {
 	const downloadScore = (obj: ScoreJSON & Readonly<{ type: 'compositions' | 'engravings' }>): void => {
-		if (obj.file) {
+		if (typeof obj.file === 'string' && obj.file !== '') {
 			window.open(`${window.location.protocol}//lewiswolstanholme.co.uk/api/${obj.type}/${obj.file}.pdf`, '_blank')
 		} else if (obj.link) {
 			window.open(obj.link.href, '_blank')

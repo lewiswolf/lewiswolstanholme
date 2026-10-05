@@ -61,7 +61,7 @@ export default function Code(): JSX.Element {
 						}
 					})
 			}
-		} else if (pages[0]) {
+		} else if (typeof pages[0] === 'string' && pages[0] !== '') {
 			void navigate(`/code?view=${pages[0]}`)
 		}
 		return (): void => {
