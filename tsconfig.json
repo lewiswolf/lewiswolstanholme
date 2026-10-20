@@ -51,6 +51,6 @@
 		"skipLibCheck": true,
 		"verbatimModuleSyntax": true
 	},
-	"include": ["src"],
+	"include": ["src", "eslint.config.ts"],
 	"references": [{ "path": "./tsconfig.node.json" }]
 }
