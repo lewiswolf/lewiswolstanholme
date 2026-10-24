@@ -1,4 +1,4 @@
 ```bash
-npm install --include=dev
-npm run dev
+bun install --include=dev
+bun run dev
 ```

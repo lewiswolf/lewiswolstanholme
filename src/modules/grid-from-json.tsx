@@ -1,6 +1,6 @@
-// biome-ignore-all lint/nursery/noInlineStyles : this component has been designed to dynamically control a responive css grid
 // biome-ignore-all lint/nursery/noUnsafeTypeAssertion : any is used to maintain user configurability
 // biome-ignore-all lint/nursery/useExplicitType : any is used to maintain user configurability
+// biome-ignore-all lint/style/noInlineStyles : this component has been designed to dynamically control a responive css grid
 // biome-ignore-all lint/suspicious/noExplicitAny : any is used to maintain user configurability
 /* eslint-disable @typescript-eslint/no-explicit-any */
 

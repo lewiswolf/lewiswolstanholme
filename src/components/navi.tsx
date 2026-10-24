@@ -19,7 +19,7 @@ export const Navi: FC<{ pages: string[] }> = ({ pages }) => {
 	return (
 		<>
 			<title>
-				{`Lewis Wolstanholme${location === '/' ? '' : ` | ${location.charAt(1).toUpperCase() + location.slice(2)}`}`}
+				{`Lewis Wolstanholme${location === '/' ? '' : ` | ${location.charAt(1).toUpperCase()}${location.slice(2)}`}`}
 			</title>
 			<nav>
 				<RadioGroup

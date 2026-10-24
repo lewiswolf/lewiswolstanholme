@@ -1,4 +1,4 @@
-// biome-ignore-all lint/nursery/noInlineStyles : inline styles are use to dynamically render a p5 Sketch
+// biome-ignore-all lint/style/noInlineStyles : inline styles are use to dynamically render a p5 Sketch
 
 // dependencies
 import { type Sketch, P5Canvas } from '@p5-wrapper/react'
@@ -42,7 +42,6 @@ export const P5: FC<{ sketch: Sketch; opacity?: number }> = ({ opacity, sketch }
 	return (
 		<div
 			ref={self}
-			className='p5'
 			style={{
 				fontSize: 0,
 				height: '100%',
