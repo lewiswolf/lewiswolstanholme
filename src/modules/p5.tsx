@@ -16,7 +16,7 @@ export const P5: FC<{ sketch: Sketch; opacity?: number }> = ({ opacity, sketch }
 		width: 0,
 	})
 
-	useEffect(() => {
+	useEffect((): (() => void) => {
 		/*
 			This effect is used in conjunction with the 'resize' window event listener.
 			When the window is resized, the size of the parent element is queried, from

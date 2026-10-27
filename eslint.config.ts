@@ -26,11 +26,9 @@ export default defineConfig(globalIgnores(['**/dist', '**/unused']), {
 	rules: {
 		'@eslint-react/naming-convention-ref-name': 'off',
 		'@typescript-eslint/consistent-type-definitions': 'off',
-		'@typescript-eslint/no-unnecessary-type-arguments': 'off',
 		camelcase: 'off',
 		'capitalized-comments': 'off',
 		complexity: 'off',
-		'func-style': 'off',
 		'id-length': 'off',
 		'max-lines': 'off',
 		'max-lines-per-function': 'off',

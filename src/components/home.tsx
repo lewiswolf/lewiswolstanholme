@@ -13,7 +13,7 @@ export default function Home(): JSX.Element {
 	const audio = useRef<HTMLAudioElement>(null)
 	const [opacity, setOpacity] = useState<number>(0)
 
-	useEffect(() => {
+	useEffect((): void => {
 		if (audio.current) {
 			audio.current.volume = opacity
 			if (opacity === 0) {
