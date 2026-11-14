@@ -1,3 +1,5 @@
+ <!-- biome-ignore-all lint/nursery/useTopLevelHeading : this file does not need a heading -->
+
 Lewis is a multidisciplinary artist and musician based in London.
 His practice centres around contemporary approaches to composition, installation and performance, utilising his technological capabilities to develop new techniques towards exploratory sound design and experimental performativity.
 Lewis curates the audiovisual performance project Julia Set, specialising in crossmodal, immersive and improvisatory art practices.

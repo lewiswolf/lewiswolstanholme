@@ -76,7 +76,7 @@ export default function Code(): JSX.Element {
 		}
 	}
 	const _onChange = (i: number): void => {
-		if (pages[i]) {
+		if (typeof pages[i] === 'string') {
 			void navigate(`/code?view=${pages[i]}`)
 		}
 	}

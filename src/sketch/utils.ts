@@ -10,14 +10,14 @@ export const compareShortestVector = (p: Readonly<Point>, P: Readonly<Polygon>):
 	let vec_min = 0
 	let v_closest = p
 	let idx = 0
-	P.forEach((v: Point, i: number) => {
+	for (const [i, v] of P.entries()) {
 		const vec = Math.hypot(p.x - v.x, p.y - v.y)
 		if (vec < vec_min || i === 0) {
 			vec_min = vec
 			v_closest = v
 			idx = i
 		}
-	})
+	}
 	return [v_closest, idx]
 }
 

@@ -99,14 +99,12 @@ export const GridFromJSON = ({
 		<div
 			ref={self}
 			style={{
-				...{
-					alignItems: 'center',
-					display: 'grid',
-					gap: `${gridSpacer.toString()}px`,
-					justifyContent: 'space-evenly',
-					justifyItems: 'center',
-					margin: '0 auto',
-				},
+				alignItems: 'center',
+				display: 'grid',
+				gap: `${gridSpacer.toString()}px`,
+				justifyContent: 'space-evenly',
+				justifyItems: 'center',
+				margin: '0 auto',
 				...gridProps,
 			}}
 		>

@@ -7,6 +7,7 @@ import svgr from 'vite-plugin-svgr'
 export default defineConfig({
 	assetsInclude: ['**/*.bib', '**/*.md'],
 	build: {
+		chunkSizeWarningLimit: 750,
 		rolldownOptions: {
 			output: {
 				comments: {

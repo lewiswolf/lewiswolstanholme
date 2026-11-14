@@ -41,10 +41,6 @@ export default function Scores(): JSX.Element {
 	return (
 		<main className='scores'>
 			<GridFromJSON
-				json={[
-					...compositions.map((a) => ({ ...a, type: 'compositions' })),
-					...engravings.map((a) => ({ ...a, type: 'engravings' })),
-				]}
 				cell={(obj: ScoreJSON & Readonly<{ type: 'compositions' | 'engravings' }>, i: number): JSX.Element => (
 					<button
 						aria-label={`Download/purchase the score for ${obj.title}.`}
@@ -63,6 +59,10 @@ export default function Scores(): JSX.Element {
 					>
 						{obj.type === 'compositions' ? CompositionThumb(obj) : EngravingThumb(obj)}
 					</button>
+				)}
+				json={Array.prototype.concat(
+					compositions.map((a) => Object.assign(a, { type: 'compositions' })),
+					engravings.map((a) => Object.assign(a, { type: 'engravings' })),
 				)}
 			/>
 		</main>
