@@ -47,25 +47,29 @@ export const parseBibliography = (s: string): PublicationJSON => {
 		} else if (current_key) {
 			// close a key
 			if (line.startsWith('}')) {
-				tmp[current_key] = { ...tmp[current_key], ...{ bibtex: bibtex + line } }
+				tmp[current_key] = { bibtex: bibtex + line, ...tmp[current_key] }
 				bibtex = ''
 				current_key = null
 			} else {
 				// add fields to key
-				if (!(line.trim().startsWith('day') || line.trim().startsWith('file') || line.trim().startsWith('type'))) {
+				if (
+					!(
+						line.trimStart().startsWith('day') ||
+						line.trimStart().startsWith('file') ||
+						line.trimStart().startsWith('type')
+					)
+				) {
 					bibtex += `${line}\n`
 				}
 				const [key, content] = line.split('=') as NonNullable<[string, string]>
 				tmp[current_key] = {
+					[key.trim()]: content
+						.trim()
+						.replace(regex.curly_braces, '')
+						.replace(regex.ampersand, '&')
+						.replace(regex.underscore, '_')
+						.replace(regex.line_ending_comma, ''),
 					...tmp[current_key],
-					...{
-						[key.trim()]: content
-							.trim()
-							.replace(regex.curly_braces, '')
-							.replace(regex.ampersand, '&')
-							.replace(regex.underscore, '_')
-							.replace(regex.line_ending_comma, ''),
-					},
 				}
 			}
 		}

@@ -81,28 +81,28 @@
 		}
 
 		table {
-			width: 80%;
+			inline-size: 80%;
 			margin: auto;
 			border-collapse: collapse;
 
 			td {
 				border: 2px black solid;
-				border-bottom: 0;
+				border-block-end: 0;
 			}
 
 			th {
 				border: 2px black solid;
-				border-top: 0;
+				border-block-start: 0;
 			}
 
 			td,
 			th {
 				&:first-of-type {
-					border-left: 0;
+					border-inline-start: 0;
 				}
 
 				&:last-of-type {
-					border-right: 0;
+					border-inline-end: 0;
 				}
 			}
 		}

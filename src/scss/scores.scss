@@ -20,7 +20,7 @@
 			margin: 0;
 			text-align: left;
 			font-family: inherit;
-			font-weight: bold;
+			font-weight: 700;
 			user-select: none;
 			-webkit-user-select: none;
 		}
@@ -89,23 +89,23 @@
 					font-size: 21px;
 					line-height: 21px;
 					width: 100%;
-					grid-area: 1/1;
+					grid-area: 1 / 1;
 					place-self: center start;
 				}
 
 				&:nth-of-type(2) {
-					grid-area: 2/1;
+					grid-area: 2 / 1;
 					align-self: flex-end;
 				}
 
 				&:nth-of-type(3) {
-					grid-area: 3/1;
+					grid-area: 3 / 1;
 					font-style: italic;
-					font-weight: normal;
+					font-weight: 400;
 				}
 
 				&:nth-of-type(4) {
-					grid-area: 4/1;
+					grid-area: 4 / 1;
 				}
 			}
 
@@ -119,11 +119,11 @@
 				outline: 0;
 
 				&:nth-of-type(1) {
-					grid-area: 2/1;
+					grid-area: 2 / 1;
 				}
 
 				&:nth-of-type(2) {
-					grid-area: 3/1;
+					grid-area: 3 / 1;
 				}
 			}
 		}

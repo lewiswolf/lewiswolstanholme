@@ -19,15 +19,11 @@ body {
 	font-size: inherit;
 	color: inherit;
 	text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
 	background-image: url('./images/background.png');
 	background-size: 30px 30px;
 	background-color: rgb(229 229 229);
-}
-
-#root {
-	display: grid;
-	gap: 0;
-	grid-template: 'h' minmax(160px, auto) 'm' max-content / 100vw;
 }
 
 header {
@@ -76,4 +72,10 @@ main {
 		width: calc(100vw - 40px);
 		margin: 0 20px 20px;
 	}
+}
+
+#root {
+	display: grid;
+	gap: 0;
+	grid-template: 'h' minmax(160px, auto) 'm' max-content / 100vw;
 }
