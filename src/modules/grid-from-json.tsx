@@ -7,12 +7,6 @@
 // dependencies
 import { type JSX, useEffect, useRef, useState } from 'react'
 
-type GridProperties = {
-	width: string
-	gridAutoRows: string
-	gridTemplateColumns: string
-}
-
 export const GridFromJSON = ({
 	cell,
 	gridSpacer = 20,
@@ -28,7 +22,11 @@ export const GridFromJSON = ({
 }): JSX.Element => {
 	const self = useRef<HTMLDivElement>(null)
 	const [content, setContent] = useState<readonly Record<string, any>[] | string[]>([])
-	const [gridProps, setGridProps] = useState<GridProperties>({
+	const [gridProps, setGridProps] = useState<{
+		width: string
+		gridAutoRows: string
+		gridTemplateColumns: string
+	}>({
 		gridAutoRows: '',
 		gridTemplateColumns: '',
 		width: '',
